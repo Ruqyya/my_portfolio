@@ -50,7 +50,8 @@ export default function ProjectCard({ project, index = 0, layout = "default" }) 
                 loading="lazy"
                 className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-90" />
+              {/* Strong bottom scrim guarantees white text stays readable over light UI screenshots */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/5 transition-opacity duration-500" />
             </>
           ) : (
             <div className="flex h-full min-h-[280px] flex-col justify-between bg-neutral-900 p-8 transition-colors duration-500 group-hover:bg-neutral-800">
@@ -68,24 +69,23 @@ export default function ProjectCard({ project, index = 0, layout = "default" }) 
             </div>
           )}
 
-          {/* Hover description overlay */}
-          <div className="absolute right-0 bottom-0 left-0 translate-y-2 p-6 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-            <p className="text-sm text-neutral-300">{project.description}</p>
-          </div>
         </div>
 
-        {/* Card footer — visible on image cards */}
+        {/* Card footer — category, title, and hover-revealed description (white on scrim) */}
         {hasImage && (
-          <div className="absolute right-0 bottom-0 left-0 flex items-end justify-between p-6">
-            <div>
-              <span className="mb-2 inline-block rounded-full bg-accent/90 px-3 py-1 text-xs font-medium tracking-wider text-white uppercase">
+          <div className="absolute right-0 bottom-0 left-0 flex items-end justify-between gap-4 p-6">
+            <div className="min-w-0">
+              <span className="mb-2 inline-block rounded-full bg-accent px-3 py-1 text-xs font-medium tracking-wider text-white uppercase">
                 {project.category}
               </span>
-              <h3 className="font-display text-xl font-bold text-white md:text-2xl">
+              <h3 className="font-display text-xl font-bold text-white drop-shadow-sm md:text-2xl">
                 {project.title}
               </h3>
+              <p className="mt-2 max-h-0 overflow-hidden text-sm text-white/85 opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100">
+                {project.description}
+              </p>
             </div>
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-all duration-300 group-hover:bg-accent group-hover:text-white">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm transition-all duration-300 group-hover:bg-accent group-hover:text-white">
               <ArrowUpRight size={18} />
             </div>
           </div>

@@ -1,217 +1,461 @@
 /**
- * Portfolio projects — add new entries here to publish case studies.
- * Each project needs: id, slug, title, category, featured, thumbnail, gallery, etc.
+ * Portfolio projects — curated from Behance plus resume-backed case study copy.
+ * Add new entries here to publish case studies.
  */
 const projects = [
   {
-    id: "healthcare-retention-redesign",
-    slug: "healthcare-retention-redesign",
-    title: "Healthcare App Retention Redesign",
+    id: "marham-healthcare-platform",
+    slug: "marham-healthcare-platform",
+    title: "Marham.pk Healthcare Platform Redesign",
     category: "Healthcare",
+    categories: ["Healthcare", "Web App"],
+    featured: true,
+    year: "2026",
+    client: "Marham.pk",
+    deliverables: ["Healthcare Platform UI", "Web Experience", "Design System"],
+    tools: ["Figma", "Adobe XD"],
+    thumbnail: "/images/projects/behance/marham-hero.png",
+    cardSize: "large",
+    behanceId: "250711451",
+    behanceUrl:
+      "https://www.behance.net/gallery/250711451/Marhampk-Healthcare-Platform-Redesign",
+    description:
+      "Healthcare platform redesign focused on clearer discovery, booking, and trust-building patient flows.",
+    excerpt:
+      "A healthcare platform redesign that makes doctor discovery and booking feel simpler, clearer, and more credible.",
+    process: `For Marham.pk, I focused on the moments where healthcare users need confidence fast: finding the right doctor, understanding services, and moving toward booking without confusion.
+
+I treated the redesign as a trust and usability problem first. The interface uses clean hierarchy, healthcare-friendly spacing, stronger call-to-action placement, and structured content blocks so patients can scan options quickly. The final direction feels professional, calm, and conversion-focused while still giving the brand a modern digital presence.`,
+    gallery: [
+      {
+        src: "/images/projects/behance/marham-hero.png",
+        alt: "Marham.pk healthcare platform redesign preview with desktop website screens",
+        width: 1122,
+        height: 1402,
+      },
+      {
+        src: "/images/projects/behance/marham-2.png",
+        alt: "Marham.pk redesign — doctor discovery and booking screens",
+        width: 1122,
+        height: 1402,
+      },
+      {
+        src: "/images/projects/behance/marham-3.png",
+        alt: "Marham.pk redesign — healthcare service and content layouts",
+        width: 1122,
+        height: 1402,
+      },
+    ],
+  },
+  {
+    id: "oladoc-healthcare-app",
+    slug: "oladoc-healthcare-app",
+    title: "Oladoc Healthcare App UI/UX Design",
+    category: "Mobile App",
     categories: ["Healthcare", "Mobile App"],
     featured: true,
-    year: "2023",
-    client: "AppSol360",
-    deliverables: ["UX Flow Optimization", "Mobile UI Design", "User Research"],
-    tools: ["Figma", "Adobe XD", "InVision"],
-    thumbnail: null,
-    cardSize: "large",
-    description:
-      "Increased healthcare app user retention by 65% through strategic UX improvements.",
-    excerpt:
-      "Strategic UX improvements and optimized user flows that dramatically improved retention for a healthcare mobile app.",
-    process: `The healthcare app was losing users after the first few sessions — engagement dropped sharply once users hit complex onboarding and appointment flows. I started with user research and journey mapping to identify the highest-friction moments.
-
-I redesigned the core user flows with progressive disclosure, clearer health-data entry patterns, and mobile-first navigation that reduced cognitive load. Working closely with the Flutter development team, I ensured pixel-perfect implementation across devices. The result was a 65% increase in user retention and significantly fewer support tickets related to navigation confusion.`,
-    gallery: [],
-  },
-  {
-    id: "ecommerce-conversion-redesign",
-    slug: "ecommerce-conversion-redesign",
-    title: "E-commerce Conversion Redesign",
-    category: "E-commerce",
-    categories: ["E-commerce", "Web App"],
-    featured: true,
-    year: "2023",
-    client: "AppSol360",
-    deliverables: ["Conversion-Focused UI", "A/B Test Designs", "Design System"],
+    year: "2026",
+    client: "Oladoc",
+    deliverables: ["Mobile App UI", "User Flow Design", "Healthcare UX"],
     tools: ["Figma", "Adobe XD"],
-    thumbnail: null,
+    thumbnail: "/images/projects/behance/oladoc-hero.png",
     cardSize: "medium",
+    behanceId: "250981107",
+    behanceUrl:
+      "https://www.behance.net/gallery/250981107/Oladoc-Healthcare-App-UIUX-Design",
     description:
-      "Boosted monthly revenue by $50K+ with a 40% conversion rate increase.",
+      "Mobile healthcare app experience for appointment discovery, doctor profiles, and patient actions.",
     excerpt:
-      "A conversion-focused e-commerce redesign that turned browsing into buying — backed by A/B testing and user research.",
-    process: `The e-commerce platform had traffic but wasn't converting. I conducted competitive analysis and A/B testing on key checkout and product-detail flows to understand where users dropped off.
+      "A mobile healthcare experience designed around quick discovery, clear doctor information, and patient-friendly flows.",
+    process: `The Oladoc concept gave me room to think through a healthcare mobile journey from the patient's point of view. The core challenge was to keep clinical information understandable while still making the app feel lightweight and approachable.
 
-I redesigned the product browsing experience, streamlined checkout to fewer steps, and introduced trust signals and clearer CTAs at decision points. The conversion-focused redesign achieved a 40% increase in conversion rates and boosted monthly revenue by over $50K. Component patterns from this project were added to a shared Figma library used across future e-commerce clients.`,
-    gallery: [],
+I designed mobile-first screens with clear hierarchy, thumb-friendly actions, and focused pathways for browsing doctors, reviewing details, and taking the next step. The result is a polished healthcare app direction that supports both usability and trust.`,
+    gallery: [
+      {
+        src: "/images/projects/behance/oladoc-hero.png",
+        alt: "Oladoc healthcare app UI UX design with mobile app screens",
+        width: 941,
+        height: 1672,
+      },
+      {
+        src: "/images/projects/behance/oladoc-2.png",
+        alt: "Oladoc healthcare app — doctor profile and appointment screens",
+        width: 1122,
+        height: 1402,
+      },
+      {
+        src: "/images/projects/behance/oladoc-3.png",
+        alt: "Oladoc healthcare app — patient flow and detail screens",
+        width: 1122,
+        height: 1402,
+      },
+    ],
   },
   {
-    id: "enterprise-design-system",
-    slug: "enterprise-design-system",
-    title: "Enterprise Design System",
-    category: "Design Systems",
-    categories: ["Design Systems", "SaaS"],
+    id: "sehat-kahani-telemedicine",
+    slug: "sehat-kahani-telemedicine",
+    title: "Sehat Kahani Telemedicine UI/UX Design",
+    category: "Telemedicine",
+    categories: ["Healthcare", "Telemedicine", "Mobile App"],
     featured: true,
-    year: "2024",
-    client: "SQSOL",
-    deliverables: ["Scalable Design System", "High-Fidelity Prototypes", "Design Standards"],
+    year: "2026",
+    client: "Sehat Kahani",
+    deliverables: ["Telemedicine UI", "Patient Flow", "Mobile Experience"],
     tools: ["Figma", "Adobe XD"],
-    thumbnail: null,
+    thumbnail: "/images/projects/behance/sehat-hero.png",
     cardSize: "small",
+    behanceId: "250976877",
+    behanceUrl:
+      "https://www.behance.net/gallery/250976877/Sehat-Kahani-Telemedicine-UIUX-Design",
     description:
-      "Scalable design systems and standards for enterprise clients across the UK.",
+      "Telemedicine interface designed for accessible consultation discovery and patient confidence.",
     excerpt:
-      "Led end-to-end UX/UI for enterprise clients — scalable systems, high-fidelity prototypes, and mentored junior designers.",
-    process: `Enterprise clients needed consistency at scale — multiple products with different designers producing inconsistent UI. I led the creation of a comprehensive design system in Figma with reusable components, design tokens, and documented interaction patterns.
+      "A telemedicine product experience that helps patients move from concern to consultation with less friction.",
+    process: `Telemedicine needs to reduce hesitation. I approached Sehat Kahani as a patient confidence problem: users should know where they are, what to do next, and why the platform is trustworthy.
 
-I established design standards across the team, mentored junior designers on modern UX methodologies, and ran usability testing to validate system components before rollout. The system now serves 10+ products, improving design consistency and reducing design-to-development time significantly.`,
-    gallery: [],
+The UI emphasizes calm healthcare colors, scannable cards, clear doctor/service information, and direct actions. I kept the flow simple so users can browse, understand, and continue without unnecessary decision fatigue.`,
+    gallery: [
+      {
+        src: "/images/projects/behance/sehat-hero.png",
+        alt: "Sehat Kahani telemedicine UI UX design preview with healthcare screens",
+        width: 1122,
+        height: 1402,
+      },
+      {
+        src: "/images/projects/behance/sehat-2.png",
+        alt: "Sehat Kahani telemedicine — consultation and discovery screens",
+        width: 1122,
+        height: 1402,
+      },
+      {
+        src: "/images/projects/behance/sehat-3.png",
+        alt: "Sehat Kahani telemedicine — patient journey screens",
+        width: 1122,
+        height: 1402,
+      },
+    ],
   },
   {
-    id: "67-challenge-edtech",
-    slug: "67-challenge-edtech",
-    title: "67 Challenge — Kids EdTech App",
-    category: "EdTech",
-    categories: ["EdTech", "Mobile App"],
+    id: "telemedicine-case-study",
+    slug: "telemedicine-case-study",
+    title: "Telemedicine Healthcare App Case Study",
+    category: "Healthcare",
+    categories: ["Healthcare", "Telemedicine", "Mobile App"],
     featured: true,
     year: "2026",
-    client: "JJLoLo",
-    deliverables: ["Mobile UI Design", "Onboarding Flows", "Gamified Dashboard"],
-    tools: ["Figma", "Principle"],
-    thumbnail: "/images/projects/67-challenge/dashboard.png",
-    cardSize: "large",
-    description:
-      "Daily math and science missions for kids — playful UI with streak tracking and grade-level onboarding.",
-    excerpt:
-      "A gamified learning app where Prof. Prime guides kids through daily missions, science labs, and cipher challenges.",
-    process: `The goal was to make daily math and science practice feel like an adventure, not homework. I designed a dark-mode group selection screen with bold orange branding, a kid-friendly profile creation flow with grade-level segmentation, and a mission dashboard that uses streaks, points, and character-driven storytelling to keep engagement high.
-
-Every screen balances playfulness with clarity — large touch targets, readable type, and a navigation system that scales as more modules unlock. The visual language uses electric orange as a single accent against neutral dark surfaces, keeping the experience energetic without visual noise.`,
-    gallery: [
-      {
-        src: "/images/projects/67-challenge/group-select.png",
-        alt: "67 Challenge app group selection screen with dark theme and orange star branding",
-        width: 1290,
-        height: 2796,
-      },
-      {
-        src: "/images/projects/67-challenge/landing.png",
-        alt: "67 Challenge landing page with sign-up and subscription options",
-        width: 1290,
-        height: 2796,
-      },
-      {
-        src: "/images/projects/67-challenge/create-profile.png",
-        alt: "Create profile screen with grade level selection buttons in orange",
-        width: 1290,
-        height: 2796,
-      },
-      {
-        src: "/images/projects/67-challenge/dashboard.png",
-        alt: "Gamified dashboard showing daily mission, streak counter, and quick launch modules",
-        width: 1290,
-        height: 2796,
-      },
-      {
-        src: "/images/projects/67-challenge/mission.png",
-        alt: "Today's mission screen with Prof. Prime character and challenge task list",
-        width: 1290,
-        height: 2796,
-      },
-    ],
-  },
-  {
-    id: "bilingual-language-app",
-    slug: "bilingual-language-app",
-    title: "Bilingual Language Learning App",
-    category: "Mobile App",
-    categories: ["Mobile App", "EdTech"],
-    featured: false,
-    year: "2026",
-    client: "Personal Project",
-    deliverables: ["Mobile UI Design", "Course Explorer", "Dark Mode Interface"],
-    tools: ["Figma", "Canva"],
-    thumbnail: "/images/projects/language-app/explore.png",
-    cardSize: "medium",
-    description:
-      "Dark-mode course explorer for Urdu-to-English fluency practice with locked progression states.",
-    excerpt:
-      "A bilingual learning platform UI — course cards, progression locks, and a confident typographic hierarchy.",
-    process: `I designed an Explore screen for a language learning product focused on Urdu-to-English fluency. The interface uses a deep dark palette with electric green CTAs and purple accent highlights for navigation states.
-
-Course cards communicate progression clearly — locked states, bilingual labels, and a single "Continue" action per card. The bottom navigation keeps Explore, Library, and Profile within thumb reach. Typography does the heavy lifting: oversized headlines paired with restrained body copy for a premium, focused learning environment.`,
-    gallery: [
-      {
-        src: "/images/projects/language-app/explore.png",
-        alt: "Dark mode language learning app explore screen with course cards and green continue buttons",
-        width: 1290,
-        height: 2796,
-      },
-    ],
-  },
-  {
-    id: "tax-onboarding-flow",
-    slug: "tax-onboarding-flow",
-    title: "Multi-Step Tax Onboarding Flow",
-    category: "SaaS",
-    categories: ["SaaS", "Web App"],
-    featured: false,
-    year: "2026",
-    client: "SaaS Client",
-    deliverables: ["Multi-Step Form UI", "Progress Stepper", "Validation States"],
+    client: "Brand Concept",
+    deliverables: ["Healthcare App UX", "Case Study", "Mobile Interface"],
     tools: ["Figma", "Adobe XD"],
-    thumbnail: "/images/projects/tax-onboarding/federal-tax.png",
-    cardSize: "small",
+    thumbnail: "/images/projects/behance/telemedicine-hero.png",
+    cardSize: "large",
+    behanceId: "250509473",
+    behanceUrl:
+      "https://www.behance.net/gallery/250509473/Telemedicine-Healthcare-App-Case-Study",
     description:
-      "Six-step tax filing wizard with progress tracking, W-4 form mapping, and accessible form patterns.",
+      "A complete telemedicine app case study with a mobile-first patient journey.",
     excerpt:
-      "A complex payroll tax onboarding flow broken into scannable steps — welcome, personal info, federal tax, state tax, payment, documents.",
-    process: `Tax onboarding is inherently complex — users need guidance without feeling overwhelmed. I designed a six-step progress stepper that maps directly to real tax filing stages, with each step focused on a single decision cluster.
+      "A healthcare app case study showing how telemedicine flows can become more human, direct, and usable.",
+    process: `This case study brings together my strongest healthcare UX patterns: clear onboarding, patient-centered navigation, appointment-focused flows, and clean mobile UI.
 
-Form sections mirror W-4 structure (filing status, multiple jobs, exemptions, adjustments) with clear labels and inline validation. Error states are prominent but non-blocking, giving users a path forward. The layout works across desktop and mobile viewports with consistent spacing and touch-friendly controls.`,
+I designed the experience around reducing anxiety and shortening the path to care. The screens prioritize user intent, readable content, and strong action hierarchy so patients can understand the product quickly and keep moving.`,
     gallery: [
       {
-        src: "/images/projects/tax-onboarding/federal-tax.png",
-        alt: "Desktop tax onboarding step 3 federal tax form with progress stepper",
-        width: 1290,
-        height: 2796,
-      },
-      {
-        src: "/images/projects/tax-onboarding/federal-tax-mobile.png",
-        alt: "Mobile view of federal tax form with filing status dropdown and adjustment fields",
-        width: 1290,
-        height: 2796,
+        src: "/images/projects/behance/telemedicine-hero.png",
+        alt: "Telemedicine healthcare app case study preview with mobile app UI screens",
+        width: 1400,
+        height: 933,
       },
     ],
   },
   {
-    id: "myriad-campus-app",
-    slug: "myriad-campus-app",
-    title: "The Myriad — Campus App UI",
-    category: "Mobile App",
-    categories: ["Mobile App"],
+    id: "zental-dental-website",
+    slug: "zental-dental-website",
+    title: "Zental Dental Luxury Website UI/UX",
+    category: "Dental",
+    categories: ["Healthcare", "Dental", "Web App"],
     featured: false,
     year: "2026",
-    client: "The Myriad",
-    deliverables: ["Location Finder UI", "Support Contact Flow", "Bottom Navigation"],
-    tools: ["Figma"],
-    thumbnail: "/images/projects/myriad-app/locate-us.png",
+    client: "Zental Dental",
+    deliverables: ["Website UI", "Luxury Healthcare Design", "Responsive Layout"],
+    tools: ["Figma", "Photoshop"],
+    thumbnail: "/images/projects/behance/zental-hero.png",
     cardSize: "medium",
+    behanceId: "250980489",
+    behanceUrl:
+      "https://www.behance.net/gallery/250980489/Zental-Dental-Luxury-Website-UIUX",
     description:
-      "Campus location finder with support contact cards for Dubai and Muscat locations.",
+      "Premium dental website design with a clean luxury feel and strong appointment intent.",
     excerpt:
-      "Clean card-based location UI with iconography, chevron navigation, and a five-tab bottom nav.",
-    process: `The Myriad needed a simple way for students and parents to find campus locations across Dubai and Muscat. I designed a card-based Locate Us screen with building icons, location subtitles, and a dedicated support contact entry.
+      "A refined dental website direction balancing clinical trust, premium positioning, and conversion-focused layout.",
+    process: `For Zental Dental, the design needed to feel premium without losing healthcare clarity. I used a clean layout, generous whitespace, elegant image framing, and a confident service hierarchy.
 
-The bottom navigation anchors five core sections — Home, Account, Events, Notifications, and Locate Us — with the active state highlighted in brand red. The layout prioritizes scannability: one action per card, generous padding, and a visual hierarchy that works at a glance.`,
+The goal was to help visitors quickly understand services, feel trust in the clinic, and move toward appointment booking. The final visual direction is polished, calm, and intentionally high-end.`,
     gallery: [
       {
-        src: "/images/projects/myriad-app/locate-us.png",
-        alt: "The Myriad campus app locate us screen with Dubai and Muscat location cards",
-        width: 1290,
-        height: 2796,
+        src: "/images/projects/behance/zental-hero.png",
+        alt: "Zental Dental luxury website UI UX design preview with desktop website sections",
+        width: 1122,
+        height: 1402,
+      },
+    ],
+  },
+  {
+    id: "stock-trading-website",
+    slug: "stock-trading-website",
+    title: "Stock Trading Website Design",
+    category: "Fintech",
+    categories: ["Fintech", "Web App"],
+    featured: false,
+    year: "2026",
+    client: "Brand Concept",
+    deliverables: ["Trading Website UI", "Dashboard Direction", "Landing Page"],
+    tools: ["Figma", "Adobe XD"],
+    thumbnail: "/images/projects/behance/stock-hero.png",
+    cardSize: "small",
+    behanceId: "248940069",
+    behanceUrl:
+      "https://www.behance.net/gallery/248940069/Stock-Trading-Website-Design",
+    description:
+      "Fintech website design with bold dashboard energy and conversion-focused landing structure.",
+    excerpt:
+      "A finance-focused website concept that shows range beyond healthcare while keeping the same UI/UX discipline.",
+    process: `The stock trading website was selected for the portfolio to show range beyond healthcare. I focused on creating a fintech interface that feels bold, data-aware, and easy to scan.
+
+The design uses strong visual hierarchy, confident CTA placement, and dashboard-inspired sections to communicate trust and momentum. It complements the healthcare work by showing that the same UX thinking can scale into finance and SaaS-style products.`,
+    gallery: [
+      {
+        src: "/images/projects/behance/stock-hero.png",
+        alt: "Stock trading website design preview with dark fintech landing page",
+        width: 808,
+        height: 632,
+      },
+    ],
+  },
+  {
+    id: "shumaila-london-clinic",
+    slug: "shumaila-london-clinic",
+    title: "Shumaila's London Clinic Website Redesign",
+    category: "Healthcare",
+    categories: ["Healthcare", "Web App"],
+    featured: false,
+    year: "2026",
+    client: "Shumaila's London Clinic",
+    deliverables: ["Clinic Website UI", "Responsive Layout", "Booking Flow"],
+    tools: ["Figma", "Adobe XD"],
+    thumbnail: "/images/projects/behance/shumaila-1.png",
+    cardSize: "medium",
+    behanceId: "250776423",
+    behanceUrl:
+      "https://www.behance.net/gallery/250776423/Shumailas-London-Clinic-Website-Redesign",
+    description:
+      "Clinic website redesign focused on trust, clear services, and easy appointment intent.",
+    excerpt:
+      "A clinic website redesign that presents services clearly and guides visitors toward booking with confidence.",
+    process: `Shumaila's London Clinic needed a website that felt professional and trustworthy while making services easy to understand. I focused on a clean structure, clear service sections, and strong calls to action.
+
+The redesign prioritizes readability and a calm, clinical aesthetic so visitors can quickly find what they need and move toward booking an appointment.`,
+    gallery: [
+      {
+        src: "/images/projects/behance/shumaila-1.png",
+        alt: "Shumaila's London Clinic website redesign — homepage and services layout",
+        width: 1122,
+        height: 1402,
+      },
+      {
+        src: "/images/projects/behance/shumaila-2.png",
+        alt: "Shumaila's London Clinic website redesign — detail sections",
+        width: 1122,
+        height: 1402,
+      },
+    ],
+  },
+  {
+    id: "bondvet-veterinary",
+    slug: "bondvet-veterinary",
+    title: "BondVet Veterinary Website UI/UX Design",
+    category: "Web App",
+    categories: ["Healthcare", "Veterinary", "Web App"],
+    featured: false,
+    year: "2026",
+    client: "BondVet",
+    deliverables: ["Veterinary Website UI", "Service Pages", "Responsive Design"],
+    tools: ["Figma", "Adobe XD"],
+    thumbnail: "/images/projects/behance/bondvet-1.png",
+    cardSize: "small",
+    behanceId: "250980791",
+    behanceUrl:
+      "https://www.behance.net/gallery/250980791/BondVet-Veterinary-Website-UIUX-Design",
+    description:
+      "Friendly, modern veterinary website with clear services and approachable visual tone.",
+    excerpt:
+      "A veterinary website design that balances a warm, pet-friendly tone with clear service and booking structure.",
+    process: `BondVet needed a website that felt warm and approachable while still being clear about services and care. I designed an inviting layout with friendly imagery framing, readable content, and easy navigation.
+
+The direction keeps pet owners comfortable and informed, with clear paths to learn about services and reach the clinic.`,
+    gallery: [
+      {
+        src: "/images/projects/behance/bondvet-1.png",
+        alt: "BondVet veterinary website UI UX design — homepage layout",
+        width: 1122,
+        height: 1402,
+      },
+      {
+        src: "/images/projects/behance/bondvet-2.png",
+        alt: "BondVet veterinary website UI UX design — service sections",
+        width: 1122,
+        height: 1402,
+      },
+    ],
+  },
+  {
+    id: "goddard-veterinary",
+    slug: "goddard-veterinary",
+    title: "Goddard Veterinary Website Redesign",
+    category: "Web App",
+    categories: ["Healthcare", "Veterinary", "Web App"],
+    featured: false,
+    year: "2026",
+    client: "Goddard",
+    deliverables: ["Veterinary Website UI", "Information Architecture", "Responsive Layout"],
+    tools: ["Figma", "Adobe XD"],
+    thumbnail: "/images/projects/behance/goddard-1.png",
+    cardSize: "medium",
+    behanceId: "250980649",
+    behanceUrl:
+      "https://www.behance.net/gallery/250980649/Goddard-Veterinary-Website-Redesign",
+    description:
+      "Veterinary website redesign with clearer structure, services, and location discovery.",
+    excerpt:
+      "A veterinary website redesign that organizes services and locations into a clean, trustworthy experience.",
+    process: `Goddard's redesign focused on structure and clarity — making it easy for pet owners to find services, understand care options, and locate the nearest practice.
+
+I built a clean information hierarchy with strong sectioning and clear navigation so the experience feels organized and dependable.`,
+    gallery: [
+      {
+        src: "/images/projects/behance/goddard-1.png",
+        alt: "Goddard veterinary website redesign — homepage layout",
+        width: 1122,
+        height: 1402,
+      },
+      {
+        src: "/images/projects/behance/goddard-2.png",
+        alt: "Goddard veterinary website redesign — service and content sections",
+        width: 1122,
+        height: 1402,
+      },
+    ],
+  },
+  {
+    id: "victoria-road-dental",
+    slug: "victoria-road-dental",
+    title: "Victoria Road Dental Website Redesign",
+    category: "Dental",
+    categories: ["Healthcare", "Dental", "Web App"],
+    featured: false,
+    year: "2026",
+    client: "Victoria Road Dental",
+    deliverables: ["Dental Website UI", "Service Pages", "Booking Intent"],
+    tools: ["Figma", "Adobe XD"],
+    thumbnail: "/images/projects/behance/victoria-1.png",
+    cardSize: "small",
+    behanceId: "250977081",
+    behanceUrl:
+      "https://www.behance.net/gallery/250977081/Victoria-Road-Dental-Website-Redesign",
+    description:
+      "Dental practice website redesign with clean service presentation and clear booking path.",
+    excerpt:
+      "A dental practice website redesign focused on clarity, trust, and an easy route to booking.",
+    process: `Victoria Road Dental needed a modern, trustworthy web presence. I designed clear service sections, calm dental-friendly visuals, and a straightforward path toward booking.
+
+The layout keeps content scannable and reassuring so patients feel confident choosing the practice.`,
+    gallery: [
+      {
+        src: "/images/projects/behance/victoria-1.png",
+        alt: "Victoria Road Dental website redesign — homepage layout",
+        width: 1122,
+        height: 1402,
+      },
+      {
+        src: "/images/projects/behance/victoria-2.png",
+        alt: "Victoria Road Dental website redesign — service sections",
+        width: 1122,
+        height: 1402,
+      },
+    ],
+  },
+  {
+    id: "mint-dental-clinic",
+    slug: "mint-dental-clinic",
+    title: "Mint Dental Clinic Website Redesign",
+    category: "Dental",
+    categories: ["Healthcare", "Dental", "Web App"],
+    featured: false,
+    year: "2026",
+    client: "Mint Dental Clinic",
+    deliverables: ["Dental Website UI", "Responsive Layout", "Service Pages"],
+    tools: ["Figma", "Adobe XD"],
+    thumbnail: "/images/projects/behance/mint-1.png",
+    cardSize: "medium",
+    behanceId: "250976631",
+    behanceUrl:
+      "https://www.behance.net/gallery/250976631/Mint-Dental-Clinic-Website-Redesign",
+    description:
+      "Fresh, clean dental clinic website with a friendly tone and clear service hierarchy.",
+    excerpt:
+      "A dental clinic website redesign with a fresh, clean aesthetic and a clear path to appointments.",
+    process: `Mint Dental Clinic's redesign leans into a fresh, clean aesthetic that mirrors the clinic's brand. I focused on bright, calm visuals, clear service sections, and an easy booking route.
+
+The result is a friendly, modern website that feels approachable while communicating professionalism.`,
+    gallery: [
+      {
+        src: "/images/projects/behance/mint-1.png",
+        alt: "Mint Dental Clinic website redesign — homepage layout",
+        width: 1122,
+        height: 1402,
+      },
+      {
+        src: "/images/projects/behance/mint-2.png",
+        alt: "Mint Dental Clinic website redesign — service sections",
+        width: 1122,
+        height: 1402,
+      },
+    ],
+  },
+  {
+    id: "lumina-dental",
+    slug: "lumina-dental",
+    title: "Lumina Dental Website UI/UX Design",
+    category: "Dental",
+    categories: ["Healthcare", "Dental", "Web App"],
+    featured: false,
+    year: "2026",
+    client: "Lumina Dental",
+    deliverables: ["Dental Website UI", "Premium Layout", "Responsive Design"],
+    tools: ["Figma", "Photoshop"],
+    thumbnail: "/images/projects/behance/lumina-1.png",
+    cardSize: "small",
+    behanceId: "250779261",
+    behanceUrl:
+      "https://www.behance.net/gallery/250779261/Lumina-Dental-Website-UIUX-Design",
+    description:
+      "Bright, premium dental website design with confident visuals and clear service flow.",
+    excerpt:
+      "A premium dental website design with bright, confident visuals and a clear service-to-booking flow.",
+    process: `Lumina Dental's design focuses on a bright, premium feel. I used confident typography, clean spacing, and polished imagery to communicate quality and trust.
+
+The layout guides visitors smoothly from understanding services to taking action, keeping the experience elegant and easy to navigate.`,
+    gallery: [
+      {
+        src: "/images/projects/behance/lumina-1.png",
+        alt: "Lumina Dental website UI UX design — homepage layout",
+        width: 1122,
+        height: 1402,
+      },
+      {
+        src: "/images/projects/behance/lumina-2.png",
+        alt: "Lumina Dental website UI UX design — service sections",
+        width: 1122,
+        height: 1402,
       },
     ],
   },
