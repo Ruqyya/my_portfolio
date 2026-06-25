@@ -103,7 +103,7 @@ npm run preview
 
 ## Design Notes
 
-- **Accent color:** Electric orange (`#FF4D00`) — change in `src/index.css` under `@theme`
+- **Accent color:** Electric green (`#00C853`) — change in `src/index.css` under `@theme`
 - **Fonts:** Space Grotesk (headlines) + Inter (body) via Google Fonts
 - **Custom cursor:** Desktop only, automatically disabled on touch devices
 - **Contact page:** Primary CTA links to LinkedIn profile (not email)
