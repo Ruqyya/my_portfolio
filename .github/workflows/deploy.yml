@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - creative-ruqyya-update
+      - main
 
 permissions:
   contents: read
