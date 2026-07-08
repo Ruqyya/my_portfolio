@@ -29,7 +29,7 @@ export default function BrandsBanner() {
         }}
       >
         {[...brands, ...brands, ...brands].map((brand, i) => (
-          <div key={i} className="text-2xl md:text-4xl font-display font-extrabold text-slate-300 dark:text-slate-700/60 uppercase tracking-widest">
+          <div key={i} className="text-2xl md:text-4xl font-display font-extrabold text-slate-800 dark:text-slate-200 uppercase tracking-widest">
             {brand}
           </div>
         ))}
