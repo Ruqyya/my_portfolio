@@ -10,10 +10,12 @@ import "./index.css";
 import App from "./App.tsx";
 import { ThemeProvider } from "./context/ThemeContext.tsx";
 
+const basename = (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "") || "/";
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider>
-      <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "") || "/"}>
+      <BrowserRouter basename={basename}>
         <App />
       </BrowserRouter>
     </ThemeProvider>

@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "fetch:behance": "node scripts/fetch-behance.mjs",
+    "prebuild": "node scripts/fetch-behance.mjs",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview"

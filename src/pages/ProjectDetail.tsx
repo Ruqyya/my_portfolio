@@ -49,13 +49,23 @@ export default function ProjectDetail() {
 
       {/* Hero visual */}
       <Reveal delay={0.15}>
-        <div
-          className="max-w-5xl mx-auto mt-14 mx-5 md:mx-auto rounded-3xl h-72 md:h-[26rem] flex items-center justify-center"
-          style={{ background: `linear-gradient(135deg, ${project.color}18, ${project.color}45)` }}
-        >
-          <span className="font-display font-extrabold text-8xl opacity-20" style={{ color: project.color }}>
-            {project.title.split(" ").map((w) => w[0]).join("").slice(0, 2)}
-          </span>
+        <div className="max-w-5xl mx-auto mt-14 mx-5 md:mx-auto rounded-3xl h-72 md:h-[26rem] overflow-hidden border border-slate-200 dark:border-slate-700">
+          {project.coverImage ? (
+            <img
+              src={project.coverImage}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div
+              className="w-full h-full flex items-center justify-center"
+              style={{ background: `linear-gradient(135deg, ${project.color}18, ${project.color}45)` }}
+            >
+              <span className="font-display font-extrabold text-8xl opacity-20" style={{ color: project.color }}>
+                {project.title.split(" ").map((w) => w[0]).join("").slice(0, 2)}
+              </span>
+            </div>
+          )}
         </div>
       </Reveal>
 
@@ -183,19 +193,17 @@ export default function ProjectDetail() {
 
         <Section title="Gallery">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {[0, 1, 2, 3, 4, 5].map((i) => (
-              <div
-                key={i}
-                className="aspect-square rounded-xl"
-                style={{ background: `linear-gradient(135deg, ${project.color}${20 + i * 8}, ${project.color}55)` }}
-              />
+            {[project.coverImage, project.coverImage, project.coverImage].map((src, i) => (
+              <div key={i} className="aspect-square rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
+                <img src={src} alt={`${project.title} preview ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
+              </div>
             ))}
           </div>
         </Section>
 
         <div>
           <a
-            href="https://behance.net"
+            href={project.behanceUrl}
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 text-sm font-semibold text-[#2563EB] hover:underline"

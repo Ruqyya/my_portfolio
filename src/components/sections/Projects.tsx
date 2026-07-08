@@ -28,7 +28,7 @@ export default function Projects() {
           <SectionHeading
             eyebrow="Selected Work"
             title="Featured projects."
-            description="Eight case studies spanning healthcare, SaaS, fintech, and e-commerce — each one solving a real business problem, not just a visual refresh."
+            description="Real case studies from Behance — healthcare, mobile apps, and web design projects crafted for clarity, trust, and conversion."
           />
 
           <div className="relative w-full lg:w-72">
