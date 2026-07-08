@@ -1,126 +1,168 @@
 {
-  "fetchedAt": "2026-07-08T14:03:32.176Z",
+  "fetchedAt": "2026-07-08T16:25:40.367Z",
   "username": "ghulamruqyya",
   "projects": [
-    {
-      "id": 250711451,
-      "slug": "marham-pk-healthcare-platform-redesign",
-      "title": "Marham.pk Healthcare Platform Redesign",
-      "industry": "Healthcare",
-      "year": "2026",
-      "summary": "Marham.pk Healthcare Platform Redesign — a healthcare UI/UX project by Creative Ruqyya.",
-      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/445908250711451.Y3JvcCwxMTIyLDg3NywwLDA.png",
-      "behanceUrl": "https://www.behance.net/gallery/250711451/Marhampk-Healthcare-Platform-Redesign",
-      "color": "#edf6fc",
-      "tags": [
-        "Healthcare"
-      ],
-      "views": 6,
-      "appreciations": 0
-    },
-    {
-      "id": 250981107,
-      "slug": "oladoc-healthcare-app-ui-ux-design",
-      "title": "Oladoc Healthcare App UI/UX Design",
-      "industry": "Healthcare",
-      "year": "2026",
-      "summary": "Oladoc Healthcare App UI/UX Design — a healthcare UI/UX project by Creative Ruqyya.",
-      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/2c6986250981107.Y3JvcCwxMTIyLDg3NywwLDI3.png",
-      "behanceUrl": "https://www.behance.net/gallery/250981107/Oladoc-Healthcare-App-UIUX-Design",
-      "color": "#fcfcfd",
-      "tags": [
-        "Healthcare",
-        "UI/UX",
-        "Mobile"
-      ],
-      "views": 12,
-      "appreciations": 1
-    },
-    {
-      "id": 250776423,
-      "slug": "shumaila-s-london-clinic-website-redesign",
-      "title": "Shumaila’s London Clinic Website Redesign",
-      "industry": "Healthcare",
-      "year": "2026",
-      "summary": "Shumaila’s London Clinic Website Redesign — a healthcare UI/UX project by Creative Ruqyya.",
-      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/decb99250776423.Y3JvcCwxMTIyLDg3NywwLDA.png",
-      "behanceUrl": "https://www.behance.net/gallery/250776423/Shumailas-London-Clinic-Website-Redesign",
-      "color": "#f6f8f8",
-      "tags": [
-        "Healthcare",
-        "Web Design"
-      ],
-      "views": 3,
-      "appreciations": 0
-    },
     {
       "id": 250980791,
       "slug": "bondvet-veterinary-website-ui-ux-design",
       "title": "BondVet Veterinary Website UI/UX Design",
-      "industry": "Healthcare",
+      "industry": "Veterinary",
       "year": "2026",
-      "summary": "BondVet Veterinary Website UI/UX Design — a healthcare UI/UX project by Creative Ruqyya.",
-      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/ae447e250980791.Y3JvcCwxMTIyLDg3NywwLDEzOA.png",
+      "summary": "BondVet Veterinary Website UI/UX Design — a veterinary UI/UX project by Creative Ruqyya.",
+      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808/ae447e250980791.Y3JvcCwxMTIyLDg3NywwLDEzOA.png",
       "behanceUrl": "https://www.behance.net/gallery/250980791/BondVet-Veterinary-Website-UIUX-Design",
-      "color": "#fbf9f7",
+      "color": "#2563EB",
       "tags": [
-        "Healthcare",
+        "Veterinary",
         "UI/UX",
         "Web Design"
       ],
-      "views": 4,
+      "views": 0,
+      "appreciations": 0
+    },
+    {
+      "id": 135941433,
+      "slug": "coffee-mobile-app-ui-ux-case-study",
+      "title": "Coffee Mobile App UI/UX Case Study",
+      "industry": "Mobile App",
+      "year": "2026",
+      "summary": "Coffee Mobile App UI/UX Case Study — a mobile app UI/UX project by Creative Ruqyya.",
+      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808/5a88d2135941433.Y3JvcCwxNDAwLDEwOTUsMCww.jpg",
+      "behanceUrl": "https://www.behance.net/gallery/135941433/Coffee-Mobile-App-UIUX-Case-Study",
+      "color": "#2563EB",
+      "tags": [
+        "Mobile App",
+        "UI/UX",
+        "Mobile",
+        "Case Study"
+      ],
+      "views": 0,
       "appreciations": 0
     },
     {
       "id": 250980649,
       "slug": "goddard-veterinary-website-redesign",
       "title": "Goddard Veterinary Website Redesign",
-      "industry": "Healthcare",
+      "industry": "Veterinary",
       "year": "2026",
-      "summary": "Goddard Veterinary Website Redesign — a healthcare UI/UX project by Creative Ruqyya.",
-      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/fc3db4250980649.Y3JvcCwxMTIyLDg3NywwLDc0.png",
+      "summary": "Goddard Veterinary Website Redesign — a veterinary UI/UX project by Creative Ruqyya.",
+      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808/fc3db4250980649.Y3JvcCwxMTIyLDg3NywwLDc0.png",
       "behanceUrl": "https://www.behance.net/gallery/250980649/Goddard-Veterinary-Website-Redesign",
-      "color": "#fbf3eb",
+      "color": "#2563EB",
       "tags": [
-        "Healthcare",
-        "Web Design"
+        "Veterinary",
+        "Web Design",
+        "Redesign"
       ],
-      "views": 1,
+      "views": 0,
       "appreciations": 0
     },
     {
-      "id": 250980489,
-      "slug": "zental-dental-luxury-website-ui-ux",
-      "title": "Zental Dental Luxury Website UI/UX",
-      "industry": "Healthcare",
+      "id": 250779261,
+      "slug": "lumina-dental-website-ui-ux-design",
+      "title": "Lumina Dental Website UI/UX Design",
+      "industry": "Dental",
       "year": "2026",
-      "summary": "Zental Dental Luxury Website UI/UX — a healthcare UI/UX project by Creative Ruqyya.",
-      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/c38aad250980489.Y3JvcCwxMTIyLDg3NywwLDYz.png",
-      "behanceUrl": "https://www.behance.net/gallery/250980489/Zental-Dental-Luxury-Website-UIUX",
-      "color": "#fef2ea",
+      "summary": "Lumina Dental Website UI/UX Design — a dental UI/UX project by Creative Ruqyya.",
+      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808/c6a457250779261.Y3JvcCwxMTIyLDg3NywwLDExNg.png",
+      "behanceUrl": "https://www.behance.net/gallery/250779261/Lumina-Dental-Website-UIUX-Design",
+      "color": "#fbfaf6",
       "tags": [
-        "Healthcare",
+        "Dental",
         "UI/UX",
         "Web Design"
       ],
-      "views": 1,
+      "views": 2,
       "appreciations": 0
     },
     {
-      "id": 250977081,
-      "slug": "victoria-road-dental-website-redesign",
-      "title": "Victoria Road Dental Website Redesign",
+      "id": 250711451,
+      "slug": "marham-pk-healthcare-platform-redesign",
+      "title": "Marham.pk Healthcare Platform Redesign",
+      "industry": "SaaS",
+      "year": "2026",
+      "summary": "Marham.pk Healthcare Platform Redesign — a saas UI/UX project by Creative Ruqyya.",
+      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808/445908250711451.Y3JvcCwxMTIyLDg3NywwLDA.png",
+      "behanceUrl": "https://www.behance.net/gallery/250711451/Marhampk-Healthcare-Platform-Redesign",
+      "color": "#2563EB",
+      "tags": [
+        "SaaS",
+        "Healthcare",
+        "Redesign"
+      ],
+      "views": 0,
+      "appreciations": 0
+    },
+    {
+      "id": 187266103,
+      "slug": "medical-clinic-landing-page",
+      "title": "Medical & Clinic- Landing Page",
       "industry": "Healthcare",
       "year": "2026",
-      "summary": "Victoria Road Dental Website Redesign — a healthcare UI/UX project by Creative Ruqyya.",
-      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/4e111b250977081.Y3JvcCwxMTIyLDg3NywwLDExMw.png",
-      "behanceUrl": "https://www.behance.net/gallery/250977081/Victoria-Road-Dental-Website-Redesign",
-      "color": "#fbfafd",
+      "summary": "Medical & Clinic- Landing Page — a healthcare UI/UX project by Creative Ruqyya.",
+      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808/e0cfe2187266103.Y3JvcCw5MjgsNzI2LDI0OCww.png",
+      "behanceUrl": "https://www.behance.net/gallery/187266103/Medical-Clinic-Landing-Page",
+      "color": "#2563EB",
       "tags": [
         "Healthcare",
         "Web Design"
       ],
-      "views": 1,
+      "views": 0,
+      "appreciations": 0
+    },
+    {
+      "id": 250976631,
+      "slug": "mint-dental-clinic-website-redesign",
+      "title": "Mint Dental Clinic Website Redesign",
+      "industry": "Dental",
+      "year": "2026",
+      "summary": "Mint Dental Clinic Website Redesign — a dental UI/UX project by Creative Ruqyya.",
+      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808/63d243250976631.Y3JvcCwxMTIyLDg3NywwLDE3Mg.png",
+      "behanceUrl": "https://www.behance.net/gallery/250976631/Mint-Dental-Clinic-Website-Redesign",
+      "color": "#2563EB",
+      "tags": [
+        "Dental",
+        "Healthcare",
+        "Web Design",
+        "Redesign"
+      ],
+      "views": 0,
+      "appreciations": 0
+    },
+    {
+      "id": 250981107,
+      "slug": "oladoc-healthcare-app-ui-ux-design",
+      "title": "Oladoc Healthcare App UI/UX Design",
+      "industry": "Mobile App",
+      "year": "2026",
+      "summary": "Oladoc Healthcare App UI/UX Design — a mobile app UI/UX project by Creative Ruqyya.",
+      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808/2c6986250981107.Y3JvcCwxMTIyLDg3NywwLDI3.png",
+      "behanceUrl": "https://www.behance.net/gallery/250981107/Oladoc-Healthcare-App-UIUX-Design",
+      "color": "#2563EB",
+      "tags": [
+        "Mobile App",
+        "UI/UX",
+        "Healthcare",
+        "Mobile"
+      ],
+      "views": 0,
+      "appreciations": 0
+    },
+    {
+      "id": 200634421,
+      "slug": "qr-code-scanner-app",
+      "title": "QR Code Scanner App",
+      "industry": "Mobile App",
+      "year": "2026",
+      "summary": "QR Code Scanner App — a mobile app UI/UX project by Creative Ruqyya.",
+      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808/f43d0c200634421.Y3JvcCwxMjI3LDk2MCwxMjQsMA.png",
+      "behanceUrl": "https://www.behance.net/gallery/200634421/QR-Code-Scanner-App",
+      "color": "#2563EB",
+      "tags": [
+        "Mobile App",
+        "Mobile"
+      ],
+      "views": 0,
       "appreciations": 0
     },
     {
@@ -130,7 +172,7 @@
       "industry": "Healthcare",
       "year": "2026",
       "summary": "Sehat Kahani Telemedicine UI/UX Design — a healthcare UI/UX project by Creative Ruqyya.",
-      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/0d9fac250976877.Y3JvcCwxMTIyLDg3NywwLDEzMw.png",
+      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808/0d9fac250976877.Y3JvcCwxMTIyLDg3NywwLDEzMw.png",
       "behanceUrl": "https://www.behance.net/gallery/250976877/Sehat-Kahani-Telemedicine-UIUX-Design",
       "color": "#f9fcf3",
       "tags": [
@@ -141,54 +183,19 @@
       "appreciations": 1
     },
     {
-      "id": 250976631,
-      "slug": "mint-dental-clinic-website-redesign",
-      "title": "Mint Dental Clinic Website Redesign",
+      "id": 250776423,
+      "slug": "shumaila-s-london-clinic-website-redesign",
+      "title": "Shumaila’s London Clinic Website Redesign",
       "industry": "Healthcare",
       "year": "2026",
-      "summary": "Mint Dental Clinic Website Redesign — a healthcare UI/UX project by Creative Ruqyya.",
-      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/63d243250976631.Y3JvcCwxMTIyLDg3NywwLDE3Mg.png",
-      "behanceUrl": "https://www.behance.net/gallery/250976631/Mint-Dental-Clinic-Website-Redesign",
-      "color": "#f8f7f2",
+      "summary": "Shumaila’s London Clinic Website Redesign — a healthcare UI/UX project by Creative Ruqyya.",
+      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808/decb99250776423.Y3JvcCwxMTIyLDg3NywwLDA.png",
+      "behanceUrl": "https://www.behance.net/gallery/250776423/Shumailas-London-Clinic-Website-Redesign",
+      "color": "#f6f8f8",
       "tags": [
         "Healthcare",
-        "Web Design"
-      ],
-      "views": 3,
-      "appreciations": 0
-    },
-    {
-      "id": 250779261,
-      "slug": "lumina-dental-website-ui-ux-design",
-      "title": "Lumina Dental Website UI/UX Design",
-      "industry": "Healthcare",
-      "year": "2026",
-      "summary": "Lumina Dental Website UI/UX Design — a healthcare UI/UX project by Creative Ruqyya.",
-      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/c6a457250779261.Y3JvcCwxMTIyLDg3NywwLDExNg.png",
-      "behanceUrl": "https://www.behance.net/gallery/250779261/Lumina-Dental-Website-UIUX-Design",
-      "color": "#fbfaf6",
-      "tags": [
-        "Healthcare",
-        "UI/UX",
-        "Web Design"
-      ],
-      "views": 2,
-      "appreciations": 0
-    },
-    {
-      "id": 250509473,
-      "slug": "telemedicine-healthcare-app-case-study",
-      "title": "Telemedicine Healthcare App Case Study",
-      "industry": "Healthcare",
-      "year": "2026",
-      "summary": "Telemedicine Healthcare App Case Study — a healthcare UI/UX project by Creative Ruqyya.",
-      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/64c693250509473.Y3JvcCwxMzA5LDEwMjQsMTEzLDA.png",
-      "behanceUrl": "https://www.behance.net/gallery/250509473/Telemedicine-Healthcare-App-Case-Study",
-      "color": "#f9fafd",
-      "tags": [
-        "Healthcare",
-        "Mobile",
-        "Case Study"
+        "Web Design",
+        "Redesign"
       ],
       "views": 3,
       "appreciations": 0
@@ -200,7 +207,7 @@
       "industry": "Fintech",
       "year": "2026",
       "summary": "Stock Trading Website Design — a fintech UI/UX project by Creative Ruqyya.",
-      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/ec19d2248940069.Y3JvcCwxOTA0LDE0OTAsMzExLDA.png",
+      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808/ec19d2248940069.Y3JvcCwxOTA0LDE0OTAsMzExLDA.png",
       "behanceUrl": "https://www.behance.net/gallery/248940069/Stock-Trading-Website-Design",
       "color": "#08070a",
       "tags": [
@@ -209,6 +216,61 @@
       ],
       "views": 8,
       "appreciations": 1
+    },
+    {
+      "id": 250509473,
+      "slug": "telemedicine-healthcare-app-case-study",
+      "title": "Telemedicine Healthcare App Case Study",
+      "industry": "Mobile App",
+      "year": "2026",
+      "summary": "Telemedicine Healthcare App Case Study — a mobile app UI/UX project by Creative Ruqyya.",
+      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808/64c693250509473.Y3JvcCwxMzA5LDEwMjQsMTEzLDA.png",
+      "behanceUrl": "https://www.behance.net/gallery/250509473/Telemedicine-Healthcare-App-Case-Study",
+      "color": "#f9fafd",
+      "tags": [
+        "Mobile App",
+        "Healthcare",
+        "Mobile",
+        "Case Study"
+      ],
+      "views": 3,
+      "appreciations": 0
+    },
+    {
+      "id": 250977081,
+      "slug": "victoria-road-dental-website-redesign",
+      "title": "Victoria Road Dental Website Redesign",
+      "industry": "Dental",
+      "year": "2026",
+      "summary": "Victoria Road Dental Website Redesign — a dental UI/UX project by Creative Ruqyya.",
+      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808/4e111b250977081.Y3JvcCwxMTIyLDg3NywwLDExMw.png",
+      "behanceUrl": "https://www.behance.net/gallery/250977081/Victoria-Road-Dental-Website-Redesign",
+      "color": "#fbfafd",
+      "tags": [
+        "Dental",
+        "Web Design",
+        "Redesign"
+      ],
+      "views": 1,
+      "appreciations": 0
+    },
+    {
+      "id": 250980489,
+      "slug": "zental-dental-luxury-website-ui-ux",
+      "title": "Zental Dental Luxury Website UI/UX",
+      "industry": "Dental",
+      "year": "2026",
+      "summary": "Zental Dental Luxury Website UI/UX — a dental UI/UX project by Creative Ruqyya.",
+      "coverImage": "https://mir-s3-cdn-cf.behance.net/projects/max_808/c38aad250980489.Y3JvcCwxMTIyLDg3NywwLDYz.png",
+      "behanceUrl": "https://www.behance.net/gallery/250980489/Zental-Dental-Luxury-Website-UIUX",
+      "color": "#fef2ea",
+      "tags": [
+        "Dental",
+        "UI/UX",
+        "Web Design"
+      ],
+      "views": 1,
+      "appreciations": 0
     }
   ]
 }

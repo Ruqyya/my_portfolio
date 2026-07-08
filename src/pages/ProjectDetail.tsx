@@ -23,12 +23,17 @@ export default function ProjectDetail() {
       {/* Header */}
       <header className="max-w-4xl mx-auto px-5 md:px-8">
         <Reveal>
-          <Link to="/#work" className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-[#2563EB] mb-8">
-            <ArrowLeft size={15} /> Back to work
-          </Link>
-          <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold mb-5" style={{ backgroundColor: `${project.color}1a`, color: project.color }}>
-            {project.industry} · {project.year}
-          </span>
+          <div className="flex flex-col items-start gap-5 mb-6">
+            <Link to="/#work" className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-[#2563EB]">
+              <ArrowLeft size={15} /> Back to work
+            </Link>
+            <span
+              className="inline-flex items-center rounded-full px-3.5 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-md"
+              style={{ backgroundColor: project.color }}
+            >
+              {project.industry} · {project.year}
+            </span>
+          </div>
           <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-slate-900 dark:text-white leading-[1.1] mb-6">
             {project.title}
           </h1>
@@ -49,16 +54,12 @@ export default function ProjectDetail() {
 
       {/* Hero visual */}
       <Reveal delay={0.15}>
-        <div className="max-w-5xl mx-auto mt-14 mx-5 md:mx-auto rounded-3xl h-72 md:h-[26rem] overflow-hidden border border-slate-200 dark:border-slate-700">
+        <div className="max-w-5xl mx-auto mt-14 px-5 md:px-8">
           {project.coverImage ? (
-            <img
-              src={project.coverImage}
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
+            <ProjectImage src={project.coverImage} alt={project.title} />
           ) : (
             <div
-              className="w-full h-full flex items-center justify-center"
+              className="rounded-3xl aspect-[16/10] flex items-center justify-center border border-slate-200 dark:border-slate-700"
               style={{ background: `linear-gradient(135deg, ${project.color}18, ${project.color}45)` }}
             >
               <span className="font-display font-extrabold text-8xl opacity-20" style={{ color: project.color }}>
@@ -81,7 +82,7 @@ export default function ProjectDetail() {
         ))}
       </div>
 
-      <div className="max-w-3xl mx-auto px-5 md:px-8 mt-20 space-y-16">
+      <div className="max-w-3xl mx-auto px-5 md:px-8 mt-20 space-y-20">
         <Block title="Overview" text={project.overview} />
 
         <Block title="The Challenge" text={project.challenge} />
@@ -137,32 +138,21 @@ export default function ProjectDetail() {
         </Section>
 
         <Section title="Wireframes">
-          <ul className="space-y-3 mb-6">
+          <ul className="space-y-3">
             {project.wireframeNotes.map((w) => (
               <li key={w} className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">— {w}</li>
             ))}
           </ul>
-          <div className="grid grid-cols-3 gap-3">
-            {[0, 1, 2].map((i) => (
-              <div key={i} className="aspect-[3/4] rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-600 flex items-center justify-center text-xs text-slate-400">
-                Wireframe {i + 1}
-              </div>
-            ))}
-          </div>
         </Section>
 
         <Section title="High Fidelity Designs">
-          <div className="grid sm:grid-cols-2 gap-4">
-            {[0, 1].map((i) => (
-              <div
-                key={i}
-                className="aspect-video rounded-xl flex items-center justify-center text-white font-display font-semibold text-sm"
-                style={{ background: `linear-gradient(135deg, ${project.color}, ${project.color}99)` }}
-              >
-                High-fidelity screen {i + 1}
-              </div>
-            ))}
-          </div>
+          {project.coverImage ? (
+            <ProjectImage src={project.coverImage} alt={`${project.title} high-fidelity design`} />
+          ) : (
+            <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+              High-fidelity screens are available on the full Behance case study.
+            </p>
+          )}
         </Section>
 
         <Section title="Design System">
@@ -192,13 +182,12 @@ export default function ProjectDetail() {
         <Block title="Lessons Learned" text={project.lessons} />
 
         <Section title="Gallery">
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {[project.coverImage, project.coverImage, project.coverImage].map((src, i) => (
-              <div key={i} className="aspect-square rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
-                <img src={src} alt={`${project.title} preview ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
-              </div>
-            ))}
-          </div>
+          {project.coverImage ? (
+            <ProjectImage src={project.coverImage} alt={`${project.title} gallery preview`} />
+          ) : null}
+          <p className="mt-5 text-sm text-slate-500 dark:text-slate-400">
+            Full project screens and process are on Behance.
+          </p>
         </Section>
 
         <div>
@@ -253,8 +242,23 @@ function Block({ title, text }: { title: string; text: string }) {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <Reveal>
-      <h2 className="font-display font-bold text-2xl text-slate-900 dark:text-white mb-5">{title}</h2>
+      <h2 className="font-display font-bold text-2xl text-slate-900 dark:text-white mb-6">{title}</h2>
       {children}
     </Reveal>
+  );
+}
+
+function ProjectImage({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-4 md:p-6">
+      <div className="flex items-center justify-center min-h-[220px] md:min-h-[320px]">
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          className="max-w-full max-h-[420px] w-auto h-auto object-contain rounded-xl"
+        />
+      </div>
+    </div>
   );
 }

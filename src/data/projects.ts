@@ -30,11 +30,15 @@ export interface Project {
 
 const INDUSTRY_COLORS: Record<string, string> = {
   Healthcare: "#2563EB",
+  SaaS: "#6366F1",
   Fintech: "#7C3AED",
   "Mobile App": "#14B8A6",
   "Web Design": "#0EA5E9",
+  Dental: "#06B6D4",
+  Veterinary: "#10B981",
   "Food & Beverage": "#F59E0B",
-  "Product Design": "#6366F1",
+  "E-Commerce": "#EC4899",
+  "Product Design": "#8B5CF6",
 };
 
 function buildCaseStudy(b: (typeof behanceData.projects)[number]): Project {

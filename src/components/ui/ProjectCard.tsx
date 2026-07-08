@@ -9,7 +9,7 @@ export default function ProjectCard({ project, delay = 0 }: { project: Project; 
       <article className="group relative flex flex-col h-full rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300">
         <Link to={`/work/${project.slug}`} className="flex flex-col flex-1">
           <div
-            className="relative h-56 overflow-hidden bg-slate-100 dark:bg-slate-900"
+            className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-3"
             style={project.coverImage ? undefined : { background: `linear-gradient(135deg, ${project.color}22, ${project.color}55)` }}
           >
             {project.coverImage ? (
@@ -17,7 +17,7 @@ export default function ProjectCard({ project, delay = 0 }: { project: Project; 
                 src={project.coverImage}
                 alt={project.title}
                 loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-contain object-center rounded-xl group-hover:scale-[1.02] transition-transform duration-500"
               />
             ) : (
               <span
@@ -27,10 +27,15 @@ export default function ProjectCard({ project, delay = 0 }: { project: Project; 
                 {project.title.split(" ").map((w) => w[0]).join("").slice(0, 2)}
               </span>
             )}
-            <span className="absolute top-4 left-4 rounded-full bg-white/90 dark:bg-slate-900/80 backdrop-blur px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-200">
+
+            <span
+              className="absolute top-4 left-4 rounded-full px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wide text-white shadow-lg ring-2 ring-white/30 backdrop-blur-sm"
+              style={{ backgroundColor: project.color }}
+            >
               {project.industry}
             </span>
-            <span className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 dark:bg-slate-900/80 backdrop-blur flex items-center justify-center text-slate-700 dark:text-slate-200 group-hover:bg-slate-900 group-hover:text-white transition-colors">
+
+            <span className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-900/85 text-white shadow-lg flex items-center justify-center group-hover:bg-[#2563EB] transition-colors">
               <ArrowUpRight size={16} />
             </span>
           </div>
@@ -44,7 +49,7 @@ export default function ProjectCard({ project, delay = 0 }: { project: Project; 
             </p>
 
             <div className="mt-auto flex flex-wrap gap-1.5 mb-4">
-              {project.tags.slice(0, 3).map((t) => (
+              {project.tags.slice(0, 4).map((t) => (
                 <span
                   key={t}
                   className="text-[11px] font-medium rounded-full px-2.5 py-1 bg-slate-100 dark:bg-slate-700/60 text-slate-500 dark:text-slate-300"
