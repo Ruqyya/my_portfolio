@@ -1,4 +1,5 @@
 import Hero from "../components/sections/Hero";
+import BrandsBanner from "../components/sections/BrandsBanner";
 import About from "../components/sections/About";
 import Skills from "../components/sections/Skills";
 import Projects from "../components/sections/Projects";
@@ -17,6 +18,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <BrandsBanner />
       <About />
       <PulseDivider color="#14B8A6" className="max-w-4xl mx-auto opacity-40" />
       <Skills />

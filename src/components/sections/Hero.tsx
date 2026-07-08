@@ -136,21 +136,80 @@ export default function Hero() {
             className="relative mx-auto w-full max-w-sm aspect-[4/5] rounded-[2.5rem] bg-gradient-to-br from-[#2563EB] via-[#7C3AED] to-[#14B8A6] p-[3px]"
             style={{ transform: `translate(${mouse.x * 10}px, ${mouse.y * 10}px)` }}
           >
-            <div className="w-full h-full rounded-[2.4rem] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden relative">
-              <svg viewBox="0 0 300 380" className="w-full h-full">
-                <defs>
-                  <linearGradient id="portraitGrad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#2563EB" />
-                    <stop offset="100%" stopColor="#7C3AED" />
-                  </linearGradient>
-                </defs>
-                <rect width="300" height="380" fill="url(#portraitGrad)" opacity="0.12" />
-                <circle cx="150" cy="150" r="62" fill="#64748B" opacity="0.25" />
-                <path d="M60 340 Q150 240 240 340 Z" fill="#64748B" opacity="0.25" />
+            <div className="w-full h-full rounded-[2.4rem] bg-slate-100 dark:bg-slate-800/80 flex flex-col items-center justify-center p-6 overflow-hidden relative">
+              <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 300 380" preserveAspectRatio="none">
+                <path d="M0,190 L50,190 L75,100 L125,280 L175,80 L225,240 L250,190 L300,190" fill="none" stroke="#14B8A6" strokeWidth="4" />
               </svg>
-              <span className="absolute bottom-5 left-5 right-5 text-center text-xs text-slate-400 font-medium">
-                Creative Ruqyya — Product Designer
-              </span>
+              
+              <div className="w-full bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700/50 p-4 z-10 relative">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center">
+                      <Activity size={20} className="text-teal-600 dark:text-teal-400" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-slate-800 dark:text-slate-200">Sarah Jenkins</div>
+                      <div className="text-xs text-slate-500">Patient • ID: 8392</div>
+                    </div>
+                  </div>
+                  <div className="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold rounded-full uppercase">
+                    Stable
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-3 mb-4">
+                  <div className="bg-slate-50 dark:bg-slate-800 rounded-xl p-3">
+                    <div className="text-[10px] text-slate-500 uppercase font-semibold mb-1">Heart Rate</div>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-xl font-bold text-slate-800 dark:text-white">72</span>
+                      <span className="text-[10px] text-slate-400">bpm</span>
+                    </div>
+                  </div>
+                  <div className="bg-slate-50 dark:bg-slate-800 rounded-xl p-3">
+                    <div className="text-[10px] text-slate-500 uppercase font-semibold mb-1">Blood Press.</div>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-xl font-bold text-slate-800 dark:text-white">120/80</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <div className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <motion.div 
+                      className="h-full bg-[#2563EB]"
+                      animate={{ width: ["40%", "75%", "40%"] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                  </div>
+                  <div className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <motion.div 
+                      className="h-full bg-[#14B8A6]"
+                      animate={{ width: ["60%", "90%", "60%"] }}
+                      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 w-full h-16 relative z-10 flex items-center justify-center">
+                 <svg viewBox="0 0 200 60" className="w-full h-full overflow-visible">
+                    <motion.path
+                      d="M0,30 Q25,0 50,30 T100,30 T150,30 T200,30"
+                      fill="none"
+                      stroke="url(#grad)"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      animate={{ d: ["M0,30 Q25,0 50,30 T100,30 T150,30 T200,30", "M0,30 Q25,60 50,30 T100,30 T150,30 T200,30", "M0,30 Q25,0 50,30 T100,30 T150,30 T200,30"] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                    <defs>
+                      <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stopColor="#2563EB" />
+                        <stop offset="100%" stopColor="#14B8A6" />
+                      </linearGradient>
+                    </defs>
+                 </svg>
+              </div>
             </div>
           </motion.div>
 
@@ -183,9 +242,9 @@ export default function Hero() {
           >
             <div className="flex items-center gap-2 text-[#7C3AED] mb-2">
               <TrendingUp size={16} />
-              <span className="text-xs font-semibold">Conversion</span>
+              <span className="text-xs font-semibold">Recovery Rate</span>
             </div>
-            <div className="font-display font-extrabold text-xl text-slate-900 dark:text-white">+58%</div>
+            <div className="font-display font-extrabold text-xl text-slate-900 dark:text-white">98.5%</div>
           </motion.div>
 
           <motion.div
@@ -195,7 +254,7 @@ export default function Hero() {
           >
             <div className="flex items-center gap-2 text-[#14B8A6] mb-2">
               <LayoutGrid size={16} />
-              <span className="text-xs font-semibold">Design System</span>
+              <span className="text-xs font-semibold">Care Modules</span>
             </div>
             <div className="flex gap-1.5">
               {["#2563EB", "#7C3AED", "#14B8A6", "#64748B"].map((c) => (
