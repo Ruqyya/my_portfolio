@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-5 text-center">
       <span className="font-display font-extrabold text-8xl md:text-9xl text-gradient mb-4">404</span>
-      <PulseDivider className="max-w-xs mb-6" color="#7C3AED" />
+      <PulseDivider className="max-w-xs mb-6" color="#0F172A" />
       <h1 className="font-display font-bold text-2xl text-slate-900 dark:text-white mb-3">Page not found</h1>
       <p className="text-slate-500 dark:text-slate-400 max-w-sm mb-8">
         The page you're looking for doesn't exist or may have moved.

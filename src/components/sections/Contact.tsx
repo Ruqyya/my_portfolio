@@ -33,9 +33,9 @@ export default function Contact() {
                 href="https://cal.com"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 p-5 hover:border-[#2563EB] transition-colors group"
+                className="flex items-center gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 p-5 hover:border-[#0EA5E9] transition-colors group"
               >
-                <span className="w-11 h-11 rounded-xl bg-[#2563EB]/10 text-[#2563EB] flex items-center justify-center">
+                <span className="w-11 h-11 rounded-xl bg-[#0EA5E9]/10 text-[#0EA5E9] flex items-center justify-center">
                   <Calendar size={19} />
                 </span>
                 <div>
@@ -44,8 +44,8 @@ export default function Contact() {
                 </div>
               </a>
 
-              <a href="mailto:ghulamruqyya@gmail.com" className="flex items-center gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 p-5 hover:border-[#2563EB] transition-colors">
-                <span className="w-11 h-11 rounded-xl bg-[#7C3AED]/10 text-[#7C3AED] flex items-center justify-center">
+              <a href="mailto:ghulamruqyya@gmail.com" className="flex items-center gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 p-5 hover:border-[#0EA5E9] transition-colors">
+                <span className="w-11 h-11 rounded-xl bg-[#0F172A]/10 text-[#0F172A] flex items-center justify-center">
                   <Mail size={19} />
                 </span>
                 <div>
@@ -75,8 +75,8 @@ export default function Contact() {
               </div>
 
               <div className="flex gap-3 pt-2">
-                <a href="https://www.linkedin.com/in/ghulam-ruqyya-ab0318156/" target="_blank" rel="noreferrer" className="w-11 h-11 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:text-[#2563EB] hover:border-[#2563EB] transition-colors" aria-label="LinkedIn"><Link2 size={17} /></a>
-                <a href="https://www.behance.net/ghulamruqyya" target="_blank" rel="noreferrer" className="w-11 h-11 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:text-[#7C3AED] hover:border-[#7C3AED] transition-colors" aria-label="Behance"><CircleDot size={17} /></a>
+                <a href="https://www.linkedin.com/in/ghulam-ruqyya-ab0318156/" target="_blank" rel="noreferrer" className="w-11 h-11 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:text-[#0EA5E9] hover:border-[#0EA5E9] transition-colors" aria-label="LinkedIn"><Link2 size={17} /></a>
+                <a href="https://www.behance.net/ghulamruqyya" target="_blank" rel="noreferrer" className="w-11 h-11 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:text-[#0F172A] hover:border-[#0F172A] transition-colors" aria-label="Behance"><CircleDot size={17} /></a>
               </div>
             </div>
           </Reveal>
@@ -162,7 +162,7 @@ export default function Contact() {
           font-size: 0.875rem;
           color: rgb(15 23 42);
         }
-        .input:focus { outline: none; box-shadow: 0 0 0 2px #2563EB; }
+        .input:focus { outline: none; box-shadow: 0 0 0 2px #0EA5E9; }
         .dark .input { background: rgb(30 41 59); border-color: rgb(51 65 85); color: white; }
       `}</style>
     </section>
@@ -173,7 +173,7 @@ function Field({ label, required, children }: { label: string; required?: boolea
   return (
     <label className="block">
       <span className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1.5">
-        {label} {required && <span className="text-[#7C3AED]">*</span>}
+        {label} {required && <span className="text-[#0F172A]">*</span>}
       </span>
       {children}
     </label>

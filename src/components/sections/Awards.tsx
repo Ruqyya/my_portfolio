@@ -17,7 +17,7 @@ export default function Awards() {
             return (
               <Reveal key={a.title} delay={i * 0.05}>
                 <div className="rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 p-6 flex items-start gap-4">
-                  <div className="w-11 h-11 shrink-0 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#7C3AED] flex items-center justify-center text-white">
+                  <div className="w-11 h-11 shrink-0 rounded-xl bg-gradient-to-br from-[#0EA5E9] to-[#0F172A] flex items-center justify-center text-white">
                     <Icon size={19} />
                   </div>
                   <div>

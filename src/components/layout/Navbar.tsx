@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Moon, Sun, Activity } from "lucide-react";
+import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
+import logoLight from "../../assets/logo_light.png";
+import logoDark from "../../assets/logo_dark.png";
 
 const links = [
   { label: "About", href: "#about" },
@@ -46,12 +48,10 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-5 md:px-8 h-16 md:h-20 flex items-center justify-between">
         <Link
           to="/"
-          className="flex items-center gap-2 font-display font-extrabold text-lg tracking-tight text-slate-900 dark:text-white"
+          className="flex items-center gap-2 tracking-tight"
         >
-          <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2563EB] via-[#7C3AED] to-[#14B8A6] flex items-center justify-center text-white">
-            <Activity size={16} strokeWidth={2.5} />
-          </span>
-          Creative&nbsp;Ruqyya
+          <img src={logoLight} alt="Creative Ruqyya" className="h-10 w-auto object-contain dark:hidden" />
+          <img src={logoDark} alt="Creative Ruqyya" className="h-10 w-auto object-contain hidden dark:block" />
         </Link>
 
         <div className="hidden lg:flex items-center gap-8">
@@ -59,7 +59,7 @@ export default function Navbar() {
             <button
               key={l.href}
               onClick={() => handleNav(l.href)}
-              className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors"
+              className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-[#0EA5E9] dark:hover:text-[#14B8A6] transition-colors"
             >
               {l.label}
             </button>
@@ -70,7 +70,7 @@ export default function Navbar() {
           <button
             onClick={toggleTheme}
             aria-label="Toggle dark mode"
-            className="w-10 h-10 rounded-full flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-[#2563EB] hover:text-[#2563EB] transition-colors"
+            className="w-10 h-10 rounded-full flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-[#0EA5E9] hover:text-[#0EA5E9] transition-colors"
           >
             {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
           </button>

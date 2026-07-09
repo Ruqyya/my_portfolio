@@ -27,7 +27,7 @@ export default function FAQ() {
                   </span>
                   <Plus
                     size={18}
-                    className={`shrink-0 text-[#2563EB] transition-transform duration-300 ${open === i ? "rotate-45" : ""}`}
+                    className={`shrink-0 text-[#0EA5E9] transition-transform duration-300 ${open === i ? "rotate-45" : ""}`}
                   />
                 </button>
                 <AnimatePresence initial={false}>

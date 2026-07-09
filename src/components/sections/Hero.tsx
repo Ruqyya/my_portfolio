@@ -42,11 +42,11 @@ export default function Hero() {
     >
       {/* Ambient animated gradient blobs */}
       <div
-        className="pointer-events-none absolute -top-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#2563EB]/20 blur-3xl"
+        className="pointer-events-none absolute -top-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#0EA5E9]/20 blur-3xl"
         style={{ transform: `translate(${mouse.x * -20}px, ${mouse.y * -20}px)` }}
       />
       <div
-        className="pointer-events-none absolute top-1/3 -right-40 w-[28rem] h-[28rem] rounded-full bg-[#7C3AED]/20 blur-3xl"
+        className="pointer-events-none absolute top-1/3 -right-40 w-[28rem] h-[28rem] rounded-full bg-[#0F172A]/20 blur-3xl"
         style={{ transform: `translate(${mouse.x * 20}px, ${mouse.y * 20}px)` }}
       />
       <div
@@ -101,7 +101,7 @@ export default function Hero() {
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold px-6 py-3.5 hover:border-[#2563EB] hover:text-[#2563EB] transition-colors"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold px-6 py-3.5 hover:border-[#0EA5E9] hover:text-[#0EA5E9] transition-colors"
             >
               Contact Me
             </a>
@@ -133,7 +133,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative mx-auto w-full max-w-sm aspect-[4/5] rounded-[2.5rem] bg-gradient-to-br from-[#2563EB] via-[#7C3AED] to-[#14B8A6] p-[3px]"
+            className="relative mx-auto w-full max-w-sm aspect-[4/5] rounded-[2.5rem] bg-gradient-to-br from-[#0EA5E9] via-[#0F172A] to-[#14B8A6] p-[3px]"
             style={{ transform: `translate(${mouse.x * 10}px, ${mouse.y * 10}px)` }}
           >
             <div className="w-full h-full rounded-[2.4rem] bg-slate-100 dark:bg-slate-800/80 flex flex-col items-center justify-center p-6 overflow-hidden relative">
@@ -176,7 +176,7 @@ export default function Hero() {
                 <div className="space-y-3">
                   <div className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                     <motion.div 
-                      className="h-full bg-[#2563EB]"
+                      className="h-full bg-[#0EA5E9]"
                       animate={{ width: ["40%", "75%", "40%"] }}
                       transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     />
@@ -204,7 +204,7 @@ export default function Hero() {
                     />
                     <defs>
                       <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0%" stopColor="#2563EB" />
+                        <stop offset="0%" stopColor="#0EA5E9" />
                         <stop offset="100%" stopColor="#14B8A6" />
                       </linearGradient>
                     </defs>
@@ -219,7 +219,7 @@ export default function Hero() {
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className="absolute -top-4 -left-10 glass rounded-2xl p-4 shadow-xl w-44"
           >
-            <div className="flex items-center gap-2 text-[#2563EB] mb-2">
+            <div className="flex items-center gap-2 text-[#0EA5E9] mb-2">
               <Activity size={16} />
               <span className="text-xs font-semibold">Patient Vitals</span>
             </div>
@@ -227,7 +227,7 @@ export default function Hero() {
               <polyline
                 points="0,15 30,15 36,4 42,26 48,15 60,15 68,15 74,6 80,24 86,15 120,15"
                 fill="none"
-                stroke="#2563EB"
+                stroke="#0EA5E9"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -238,9 +238,9 @@ export default function Hero() {
           <motion.div
             animate={{ y: [0, 14, 0] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            className="absolute top-1/3 -right-12 glass rounded-2xl p-4 shadow-xl w-40"
+            className="absolute -bottom-6 -right-8 z-20 glass rounded-2xl p-4 shadow-xl w-40"
           >
-            <div className="flex items-center gap-2 text-[#7C3AED] mb-2">
+            <div className="flex items-center gap-2 text-sky-600 dark:text-sky-400 mb-2">
               <TrendingUp size={16} />
               <span className="text-xs font-semibold">Recovery Rate</span>
             </div>
@@ -257,7 +257,7 @@ export default function Hero() {
               <span className="text-xs font-semibold">Care Modules</span>
             </div>
             <div className="flex gap-1.5">
-              {["#2563EB", "#7C3AED", "#14B8A6", "#64748B"].map((c) => (
+              {["#0EA5E9", "#0F172A", "#14B8A6", "#64748B"].map((c) => (
                 <span key={c} className="w-5 h-5 rounded-md" style={{ backgroundColor: c }} />
               ))}
             </div>
@@ -269,7 +269,7 @@ export default function Hero() {
         href="#about"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="relative mx-auto mt-10 text-slate-400 hover:text-[#2563EB] transition-colors"
+        className="relative mx-auto mt-10 text-slate-400 hover:text-[#0EA5E9] transition-colors"
         aria-label="Scroll to about section"
       >
         <ChevronDown size={22} />

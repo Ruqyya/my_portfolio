@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Link2, CircleDot, Mail, Activity, ArrowUpRight, Phone } from "lucide-react";
+import { Link2, CircleDot, Mail, ArrowUpRight, Phone } from "lucide-react";
+import logoLight from "../../assets/logo_light.png";
+import logoDark from "../../assets/logo_dark.png";
 
 const nav = [
   { label: "About", href: "#about" },
@@ -26,11 +28,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-5 md:px-8">
         <div className="grid md:grid-cols-4 gap-10 mb-14">
           <div className="md:col-span-2">
-            <Link to="/" className="flex items-center gap-2 font-display font-extrabold text-lg text-slate-900 dark:text-white mb-4">
-              <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2563EB] via-[#7C3AED] to-[#14B8A6] flex items-center justify-center text-white">
-                <Activity size={16} strokeWidth={2.5} />
-              </span>
-              Creative Ruqyya
+            <Link to="/" className="flex items-center gap-2 mb-4">
+              <img src={logoLight} alt="Creative Ruqyya" className="h-10 w-auto object-contain dark:hidden" />
+              <img src={logoDark} alt="Creative Ruqyya" className="h-10 w-auto object-contain hidden dark:block" />
             </Link>
             <p className="text-sm text-slate-500 dark:text-slate-400 max-w-sm leading-relaxed">
               Product designer helping Healthcare and SaaS teams build intuitive, scalable, human-centered digital experiences.
@@ -42,7 +42,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {nav.map((l) => (
                 <li key={l.href}>
-                  <a href={l.href} className="text-sm text-slate-500 dark:text-slate-400 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors">
+                  <a href={l.href} className="text-sm text-slate-500 dark:text-slate-400 hover:text-[#0EA5E9] dark:hover:text-[#14B8A6] transition-colors">
                     {l.label}
                   </a>
                 </li>
@@ -63,7 +63,7 @@ export default function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@company.com"
-                  className="min-w-0 flex-1 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+                  className="min-w-0 flex-1 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0EA5E9]"
                 />
                 <button
                   type="submit"
@@ -80,8 +80,8 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-slate-200 dark:border-slate-800">
           <p className="text-xs text-slate-400">© {new Date().getFullYear()} Creative Ruqyya. All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <a href="https://www.linkedin.com/in/ghulam-ruqyya-ab0318156/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-slate-400 hover:text-[#2563EB] transition-colors"><Link2 size={18} /></a>
-            <a href="https://www.behance.net/ghulamruqyya" target="_blank" rel="noreferrer" aria-label="Behance" className="text-slate-400 hover:text-[#7C3AED] transition-colors"><CircleDot size={18} /></a>
+            <a href="https://www.linkedin.com/in/ghulam-ruqyya-ab0318156/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-slate-400 hover:text-[#0EA5E9] transition-colors"><Link2 size={18} /></a>
+            <a href="https://www.behance.net/ghulamruqyya" target="_blank" rel="noreferrer" aria-label="Behance" className="text-slate-400 hover:text-[#0F172A] transition-colors"><CircleDot size={18} /></a>
             <a href="mailto:ghulamruqyya@gmail.com" aria-label="Email" className="text-slate-400 hover:text-[#14B8A6] transition-colors"><Mail size={18} /></a>
             <a href="tel:+923247082535" aria-label="Phone" className="text-slate-400 hover:text-[#14B8A6] transition-colors"><Phone size={18} /></a>
           </div>

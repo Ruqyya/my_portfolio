@@ -16,12 +16,12 @@ export const numbersSection = [
 export const skillGroups = [
   {
     category: "UX",
-    color: "#2563EB",
+    color: "#0EA5E9",
     items: ["User Research", "Personas", "Journey Mapping", "Information Architecture"],
   },
   {
     category: "UI",
-    color: "#7C3AED",
+    color: "#0F172A",
     items: ["Visual Design", "Design Systems", "Accessibility", "Responsive Design"],
   },
   {
@@ -31,7 +31,7 @@ export const skillGroups = [
   },
   {
     category: "Collaboration",
-    color: "#2563EB",
+    color: "#0EA5E9",
     items: ["Agile", "Scrum", "Product Management", "Stakeholder Communication"],
   },
 ];

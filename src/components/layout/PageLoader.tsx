@@ -21,7 +21,7 @@ export default function PageLoader() {
             <polyline
               points="0,30 60,30 75,30 85,6 95,54 105,30 120,30 135,30 145,14 155,46 165,30 200,30"
               fill="none"
-              stroke="#2563EB"
+              stroke="#0EA5E9"
               strokeWidth="3"
               strokeLinecap="round"
               strokeLinejoin="round"

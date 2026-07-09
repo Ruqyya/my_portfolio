@@ -24,7 +24,7 @@ export default function ProjectDetail() {
       <header className="max-w-4xl mx-auto px-5 md:px-8">
         <Reveal>
           <div className="flex flex-col items-start gap-5 mb-6">
-            <Link to="/#work" className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-[#2563EB]">
+            <Link to="/#work" className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-[#0EA5E9]">
               <ArrowLeft size={15} /> Back to work
             </Link>
             <span
@@ -130,7 +130,7 @@ export default function ProjectDetail() {
                 <p className="text-xs text-slate-400 mb-3">{p.role}</p>
                 <p className="text-xs font-semibold text-[#14B8A6] mb-1">Goal</p>
                 <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">{p.goal}</p>
-                <p className="text-xs font-semibold text-[#7C3AED] mb-1">Frustration</p>
+                <p className="text-xs font-semibold text-[#0F172A] mb-1">Frustration</p>
                 <p className="text-sm text-slate-500 dark:text-slate-400">{p.frustration}</p>
               </div>
             ))}
@@ -195,7 +195,7 @@ export default function ProjectDetail() {
             href={project.behanceUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#2563EB] hover:underline"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#0EA5E9] hover:underline"
           >
             View full case study on Behance <ExternalLink size={14} />
           </a>
@@ -208,13 +208,13 @@ export default function ProjectDetail() {
       <div className="max-w-3xl mx-auto px-5 md:px-8 mt-10">
         <Link
           to={`/work/${next.slug}`}
-          className="group flex items-center justify-between rounded-3xl border border-slate-200 dark:border-slate-700 p-8 hover:border-[#2563EB] transition-colors"
+          className="group flex items-center justify-between rounded-3xl border border-slate-200 dark:border-slate-700 p-8 hover:border-[#0EA5E9] transition-colors"
         >
           <div>
             <span className="text-xs font-semibold uppercase tracking-widest text-slate-400">Next project</span>
             <h3 className="font-display font-bold text-xl md:text-2xl text-slate-900 dark:text-white mt-1">{next.title}</h3>
           </div>
-          <ArrowRight className="text-slate-400 group-hover:translate-x-1 group-hover:text-[#2563EB] transition-all" />
+          <ArrowRight className="text-slate-400 group-hover:translate-x-1 group-hover:text-[#0EA5E9] transition-all" />
         </Link>
       </div>
     </article>

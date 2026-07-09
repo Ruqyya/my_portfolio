@@ -29,9 +29,9 @@ export interface Project {
 }
 
 const INDUSTRY_COLORS: Record<string, string> = {
-  Healthcare: "#2563EB",
+  Healthcare: "#0EA5E9",
   SaaS: "#6366F1",
-  Fintech: "#7C3AED",
+  Fintech: "#0F172A",
   "Mobile App": "#14B8A6",
   "Web Design": "#0EA5E9",
   Dental: "#06B6D4",
@@ -42,7 +42,7 @@ const INDUSTRY_COLORS: Record<string, string> = {
 };
 
 function buildCaseStudy(b: (typeof behanceData.projects)[number]): Project {
-  const color = INDUSTRY_COLORS[b.industry] ?? "#2563EB";
+  const color = INDUSTRY_COLORS[b.industry] ?? "#0EA5E9";
 
   return {
     slug: b.slug,

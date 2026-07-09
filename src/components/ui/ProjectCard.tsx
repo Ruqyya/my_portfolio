@@ -35,7 +35,7 @@ export default function ProjectCard({ project, delay = 0 }: { project: Project; 
               {project.industry}
             </span>
 
-            <span className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-900/85 text-white shadow-lg flex items-center justify-center group-hover:bg-[#2563EB] transition-colors">
+            <span className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-900/85 text-white shadow-lg flex items-center justify-center group-hover:bg-[#0EA5E9] transition-colors">
               <ArrowUpRight size={16} />
             </span>
           </div>
@@ -60,7 +60,7 @@ export default function ProjectCard({ project, delay = 0 }: { project: Project; 
             </div>
 
             <div className="flex items-center pt-4 border-t border-slate-100 dark:border-slate-700">
-              <span className="text-xs font-semibold text-[#2563EB] dark:text-[#60A5FA] inline-flex items-center gap-1">
+              <span className="text-xs font-semibold text-[#0EA5E9] dark:text-[#60A5FA] inline-flex items-center gap-1">
                 Case Study <ArrowUpRight size={12} />
               </span>
             </div>
@@ -72,7 +72,7 @@ export default function ProjectCard({ project, delay = 0 }: { project: Project; 
             href={project.behanceUrl}
             target="_blank"
             rel="noreferrer"
-            className="text-xs text-slate-400 inline-flex items-center gap-1 hover:text-[#2563EB] transition-colors"
+            className="text-xs text-slate-400 inline-flex items-center gap-1 hover:text-[#0EA5E9] transition-colors"
           >
             View on Behance <ExternalLink size={12} />
           </a>

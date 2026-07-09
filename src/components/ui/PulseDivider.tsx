@@ -6,7 +6,7 @@ interface PulseDividerProps {
 // Signature motif: an EKG-style pulse line that threads through the page,
 // nodding to the designer's healthcare specialty while reading as a precise,
 // data-driven divider between sections — never purely decorative.
-export default function PulseDivider({ className = "", color = "#2563EB" }: PulseDividerProps) {
+export default function PulseDivider({ className = "", color = "#0EA5E9" }: PulseDividerProps) {
   return (
     <div className={`w-full overflow-hidden ${className}`} aria-hidden="true">
       <svg

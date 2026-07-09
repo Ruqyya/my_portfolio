@@ -27,8 +27,8 @@ export default function Services() {
             const Icon = icons[i % icons.length];
             return (
               <Reveal key={s.title} delay={(i % 5) * 0.06}>
-                <div className="h-full rounded-2xl border border-slate-200 dark:border-slate-700 p-6 hover:border-[#2563EB] dark:hover:border-[#2563EB] hover:shadow-lg transition-all duration-300 group">
-                  <div className="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[#2563EB] mb-4 group-hover:bg-[#2563EB] group-hover:text-white transition-colors">
+                <div className="h-full rounded-2xl border border-slate-200 dark:border-slate-700 p-6 hover:border-[#0EA5E9] dark:hover:border-[#0EA5E9] hover:shadow-lg transition-all duration-300 group">
+                  <div className="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[#0EA5E9] mb-4 group-hover:bg-[#0EA5E9] group-hover:text-white transition-colors">
                     <Icon size={20} />
                   </div>
                   <h3 className="font-display font-bold text-base text-slate-900 dark:text-white mb-2">{s.title}</h3>

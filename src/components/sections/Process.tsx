@@ -14,7 +14,7 @@ export default function Process() {
           align="center"
         />
 
-        <PulseDivider className="mt-14 max-w-4xl mx-auto opacity-50" color="#7C3AED" />
+        <PulseDivider className="mt-14 max-w-4xl mx-auto opacity-50" color="#0F172A" />
 
         <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {process.map((p, i) => (
