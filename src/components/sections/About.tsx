@@ -29,7 +29,7 @@ export default function About() {
         </div>
 
         <Reveal delay={0.2} className="relative flex justify-center lg:justify-end">
-          <div className="relative rounded-3xl overflow-hidden aspect-square md:aspect-[4/5] max-w-sm w-full shadow-2xl border border-slate-200 dark:border-slate-700">
+          <div className="relative rounded-full overflow-hidden aspect-square max-w-[280px] md:max-w-[320px] w-full shadow-2xl border-4 border-[#14B8A6] bg-[#14B8A6]/10">
             <img src={ruqqyaImg} alt="Ruqyya" className="w-full h-full object-cover object-top" />
           </div>
         </Reveal>

@@ -73,7 +73,7 @@ export default function Hero() {
             className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl xl:text-[4.2rem] leading-[1.05] tracking-tight text-slate-900 dark:text-white"
           >
             Designing Digital Products{" "}
-            <span className="text-gradient">That People Love.</span>
+            <span className="text-sky-500 dark:text-sky-400">That People Love.</span>
           </motion.h1>
 
           <motion.p
