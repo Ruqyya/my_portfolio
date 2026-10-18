@@ -1,20 +1,31 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Activity, LayoutGrid, TrendingUp } from "lucide-react";
-import { useCountUp } from "react-countup";
 import { stats } from "../../data/content";
+import Magnetic from "../ui/Magnetic";
 
-function StatCount({ id, end, suffix }: { id: string; end: number; suffix: string }) {
-  useCountUp({
-    ref: id,
-    end,
-    duration: 2,
-    suffix,
-    enableScrollSpy: true,
-    scrollSpyOnce: true,
-  });
+function WordReveal({ text, start, className = "" }: { text: string; start: number; className?: string }) {
+  return (
+    <span className={className} aria-hidden>
+      {text.split(" ").map((w, i) => (
+        <span key={i} className="inline-block overflow-hidden align-bottom pb-[0.12em]">
+          <motion.span
+            className="inline-block"
+            initial={{ y: "110%", opacity: 0, filter: "blur(8px)" }}
+            animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+            transition={{ duration: 0.8, delay: start + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {w}
+            {" "}
+          </motion.span>
+        </span>
+      ))}
+    </span>
+  );
+}
 
-  return <span id={id} />;
+function StatCount({ end, suffix }: { end: number; suffix: string }) {
+  return <span>{end}{suffix}</span>;
 }
 
 export default function Hero() {
@@ -63,18 +74,16 @@ export default function Hero() {
             className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 mb-6"
           >
             <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
-            Available for new projects — Q3 2026
+            Available for new projects
           </motion.span>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+          <h1
+            aria-label="Designing Digital Products That People Love."
             className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl xl:text-[4.2rem] leading-[1.05] tracking-tight text-slate-900 dark:text-white"
           >
-            Designing Digital Products{" "}
-            <span className="text-sky-500 dark:text-sky-400">That People Love.</span>
-          </motion.h1>
+            <WordReveal text="Designing Digital Products" start={0.1} />{" "}
+            <WordReveal text="That People Love." start={0.45} className="text-sky-500 dark:text-sky-400" />
+          </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -92,19 +101,23 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
-            <a
-              href="#work"
-              className="group inline-flex items-center gap-2 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold px-6 py-3.5 hover:opacity-90 transition-all"
-            >
-              View Portfolio
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold px-6 py-3.5 hover:border-[#0EA5E9] hover:text-[#0EA5E9] transition-colors"
-            >
-              Contact Me
-            </a>
+            <Magnetic>
+              <a
+                href="#work"
+                className="group inline-flex items-center gap-2 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold px-6 py-3.5 hover:opacity-90 transition-all"
+              >
+                View Portfolio
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold px-6 py-3.5 hover:border-[#0EA5E9] hover:text-[#0EA5E9] transition-colors"
+              >
+                Contact Me
+              </a>
+            </Magnetic>
           </motion.div>
 
           <motion.div
@@ -116,11 +129,7 @@ export default function Hero() {
             {stats.map((s) => (
               <div key={s.label}>
                 <div className="font-display font-extrabold text-2xl md:text-3xl text-slate-900 dark:text-white">
-                  <StatCount
-                    id={`hero-stat-${s.label.toLowerCase().replace(/\s+/g, "-")}`}
-                    end={s.value}
-                    suffix={s.suffix}
-                  />
+                  <StatCount end={s.value} suffix={s.suffix} />
                 </div>
                 <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">{s.label}</div>
               </div>
@@ -199,7 +208,7 @@ export default function Hero() {
                       stroke="url(#grad)"
                       strokeWidth="4"
                       strokeLinecap="round"
-                      animate={{ d: ["M0,30 Q25,0 50,30 T100,30 T150,30 T200,30", "M0,30 Q25,60 50,30 T100,30 T150,30 T200,30", "M0,30 Q25,0 50,30 T100,30 T150,30 T200,30"] }}
+                      animate={{ pathLength: [0.25, 1, 0.25], opacity: [0.6, 1, 0.6] }}
                       transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     />
                     <defs>

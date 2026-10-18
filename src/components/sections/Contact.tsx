@@ -4,17 +4,39 @@ import { Calendar, Link2, CircleDot, Mail, MapPin, CheckCircle2, Phone } from "l
 import SectionHeading from "../ui/SectionHeading";
 import Reveal from "../ui/Reveal";
 
+// Paste your Formspree endpoint (https://formspree.io/f/xxxxxxx) and your booking link.
+// While FORM_ENDPOINT is empty the form opens the visitor's email app instead of pretending to send.
+const FORM_ENDPOINT = "";
+const CALL_URL = "";
+const EMAIL = "ghulamruqyya@gmail.com";
+
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const submitted = status === "sent";
   const [form, setForm] = useState({
     name: "", email: "", company: "", projectType: "Product Design", budget: "$5k – $15k", message: "",
   });
 
   const handleChange = (field: string, value: string) => setForm((f) => ({ ...f, [field]: value }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (!FORM_ENDPOINT) {
+      const body = `Name: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company}\nProject: ${form.projectType}\nBudget: ${form.budget}\n\n${form.message}`;
+      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(`Project enquiry from ${form.name}`)}&body=${encodeURIComponent(body)}`;
+      return;
+    }
+    setStatus("sending");
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(form),
+      });
+      setStatus(res.ok ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -29,8 +51,8 @@ export default function Contact() {
         <div className="mt-14 grid lg:grid-cols-[1fr_1.2fr] gap-10">
           <Reveal delay={0.1}>
             <div className="space-y-5">
-              <a
-                href="https://cal.com"
+              {CALL_URL && <a
+                href={CALL_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 p-5 hover:border-[#0EA5E9] transition-colors group"
@@ -42,7 +64,7 @@ export default function Contact() {
                   <p className="font-display font-bold text-sm text-slate-900 dark:text-white">Book a call</p>
                   <p className="text-xs text-slate-400">30-minute project discovery call</p>
                 </div>
-              </a>
+              </a>}
 
               <a href="mailto:ghulamruqyya@gmail.com" className="flex items-center gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 p-5 hover:border-[#0EA5E9] transition-colors">
                 <span className="w-11 h-11 rounded-xl bg-[#0F172A]/10 text-[#0F172A] flex items-center justify-center">
@@ -140,11 +162,17 @@ export default function Contact() {
                   />
                 </Field>
 
+                {status === "error" && (
+                  <p role="alert" className="text-sm text-red-500">
+                    Something went wrong. Please email me directly at {EMAIL}.
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="w-full rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold py-3.5 hover:opacity-90 transition-opacity"
+                  disabled={status === "sending"}
+                  className="w-full rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold py-3.5 hover:opacity-90 transition-opacity disabled:opacity-60"
                 >
-                  Send message
+                  {status === "sending" ? "Sending…" : "Send message"}
                 </button>
               </form>
             )}

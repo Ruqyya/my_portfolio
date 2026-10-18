@@ -4,7 +4,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import ScrollProgressBar from "./components/layout/ScrollProgressBar";
 import BackToTop from "./components/layout/BackToTop";
-import PageLoader from "./components/layout/PageLoader";
+import CursorGlow from "./components/layout/CursorGlow";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
 import NotFound from "./pages/NotFound";
@@ -25,7 +25,7 @@ function ScrollToHash() {
 export default function App() {
   return (
     <div className="min-h-screen bg-white dark:bg-[#0F172A] text-slate-900 dark:text-slate-100 selection:bg-teal-300">
-      <PageLoader />
+      <CursorGlow />
       <ScrollProgressBar />
       <Navbar />
       <ScrollToHash />

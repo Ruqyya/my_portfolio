@@ -42,7 +42,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {nav.map((l) => (
                 <li key={l.href}>
-                  <a href={l.href} className="text-sm text-slate-500 dark:text-slate-400 hover:text-[#0EA5E9] dark:hover:text-[#14B8A6] transition-colors">
+                  <a href={l.href} className="inline-block py-1.5 text-sm text-slate-500 dark:text-slate-400 hover:text-[#0EA5E9] dark:hover:text-[#14B8A6] transition-colors">
                     {l.label}
                   </a>
                 </li>

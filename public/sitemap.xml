@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ghulamruqyya.design/</loc><priority>1.0</priority></url>
-  <url><loc>https://ghulamruqyya.design/work/healthcare-dashboard</loc></url>
-  <url><loc>https://ghulamruqyya.design/work/telemedicine-platform</loc></url>
-  <url><loc>https://ghulamruqyya.design/work/hospital-management-system</loc></url>
-  <url><loc>https://ghulamruqyya.design/work/electronic-health-records</loc></url>
-  <url><loc>https://ghulamruqyya.design/work/saas-crm-platform</loc></url>
-  <url><loc>https://ghulamruqyya.design/work/finance-dashboard</loc></url>
-  <url><loc>https://ghulamruqyya.design/work/ai-analytics-platform</loc></url>
-  <url><loc>https://ghulamruqyya.design/work/ecommerce-mobile-app</loc></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/</loc><priority>1.0</priority></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/work/bondvet-veterinary-website-ui-ux-design</loc></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/work/coffee-mobile-app-ui-ux-case-study</loc></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/work/goddard-veterinary-website-redesign</loc></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/work/lumina-dental-website-ui-ux-design</loc></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/work/marham-pk-healthcare-platform-redesign</loc></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/work/medical-clinic-landing-page</loc></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/work/mint-dental-clinic-website-redesign</loc></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/work/oladoc-healthcare-app-ui-ux-design</loc></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/work/qr-code-scanner-app</loc></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/work/sehat-kahani-telemedicine-ui-ux-design</loc></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/work/shumaila-s-london-clinic-website-redesign</loc></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/work/stock-trading-website-design</loc></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/work/telemedicine-healthcare-app-case-study</loc></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/work/victoria-road-dental-website-redesign</loc></url>
+  <url><loc>https://ruqyya.github.io/my_portfolio/work/zental-dental-luxury-website-ui-ux</loc></url>
 </urlset>
