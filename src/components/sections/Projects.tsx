@@ -13,7 +13,7 @@ import {
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading";
 import Reveal from "../ui/Reveal";
-import ProjectMedia from "../ui/ProjectMedia";
+import ProjectMedia, { hasVideo } from "../ui/ProjectMedia";
 import { projects, type Project } from "../../data/projects";
 
 const FEATURED_SLUGS = [
@@ -139,8 +139,11 @@ function FeaturedCard({ project, i, total, progress }: { project: Project; i: nu
                 <span className="h-2.5 w-2.5 rounded-full bg-slate-600" />
                 <span className="h-2.5 w-2.5 rounded-full bg-slate-600" />
               </div>
-              <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
-                <motion.div style={{ y: reduce ? 0 : imgY, scale: 1.12 }} className="absolute inset-0">
+              <div className={`relative overflow-hidden bg-slate-100 ${hasVideo(project) ? "aspect-video" : "aspect-[16/10]"}`}>
+                <motion.div
+                  style={hasVideo(project) ? undefined : { y: reduce ? 0 : imgY, scale: 1.12 }}
+                  className="absolute inset-0"
+                >
                   <ProjectMedia project={project} className="h-full w-full object-cover object-top" />
                 </motion.div>
               </div>

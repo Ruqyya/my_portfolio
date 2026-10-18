@@ -1,5 +1,7 @@
 import type { Project } from "../../data/projects";
 
+export const hasVideo = (p: Project) => Boolean(p.study.preview ?? p.study.video);
+
 // Shows the project's video when one is set in case-studies.ts, otherwise its cover image.
 // Videos live in public/videos/ and are referenced as "videos/<file>.mp4".
 export default function ProjectMedia({ project, className = "" }: { project: Project; className?: string }) {
@@ -14,7 +16,7 @@ export default function ProjectMedia({ project, className = "" }: { project: Pro
         muted
         loop
         playsInline
-        className={className}
+        className={`${className.replace("object-cover object-top", "object-contain")} bg-[#0B1220]`}
       />
     );
   }
