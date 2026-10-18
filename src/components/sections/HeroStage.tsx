@@ -6,7 +6,7 @@ import ProjectMedia from "../ui/ProjectMedia";
 import { projects } from "../../data/projects";
 
 const SLUGS = [
-  "oladoc-healthcare-app-ui-ux-design",
+  "oladoc-homepage-concept-redesign",
   "marham-pk-healthcare-platform-redesign",
   "sehat-kahani-telemedicine-ui-ux-design",
   "telemedicine-healthcare-app-case-study",

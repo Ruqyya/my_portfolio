@@ -5,6 +5,10 @@ export interface CaseStudy {
   summary?: string;
   // Path inside public/, e.g. "videos/oladoc.mp4". Replaces the cover image everywhere once set.
   video?: string;
+  // Small silent loop used on cards and previews (keeps the page light). Falls back to `video`.
+  preview?: string;
+  // Still frame shown before the video plays, e.g. "videos/oladoc-poster.jpg".
+  poster?: string;
   role?: string;
   duration?: string;
   tools?: string[];
@@ -15,6 +19,12 @@ export interface CaseStudy {
 }
 
 export const caseStudies: Record<string, CaseStudy> = {
+  "oladoc-homepage-concept-redesign": {
+    summary: "A concept redesign of the oladoc.com homepage: could it work harder for the patients it serves?",
+    video: "videos/oladoc.mp4",
+    preview: "videos/oladoc-preview.mp4",
+    poster: "videos/oladoc-poster.jpg",
+  },
   // "oladoc-healthcare-app-ui-ux-design": {
   //   summary: "One line on what you designed and for whom.",
   //   role: "Lead Product Designer",

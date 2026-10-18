@@ -45,6 +45,24 @@ function build(b: (typeof behanceData.projects)[number]): Project {
   };
 }
 
-export const projects: Project[] = behanceData.projects.map(build);
+// Projects that live on this site only (no Behance page yet).
+const base = import.meta.env.BASE_URL;
+const own: Project[] = [
+  {
+    id: 0,
+    slug: "oladoc-homepage-concept-redesign",
+    title: "Oladoc Homepage Concept Redesign",
+    industry: "Healthcare",
+    year: "2026",
+    tags: ["Healthcare", "Web Design", "Concept", "Case Study"],
+    color: INDUSTRY_COLORS.Healthcare,
+    coverImage: `${base}${caseStudies["oladoc-homepage-concept-redesign"].poster}`,
+    behanceUrl: "",
+    summary: caseStudies["oladoc-homepage-concept-redesign"].summary ?? "",
+    study: caseStudies["oladoc-homepage-concept-redesign"],
+  },
+];
+
+export const projects: Project[] = [...own, ...behanceData.projects.map(build)];
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);

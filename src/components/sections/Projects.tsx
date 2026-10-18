@@ -17,10 +17,10 @@ import ProjectMedia from "../ui/ProjectMedia";
 import { projects, type Project } from "../../data/projects";
 
 const FEATURED_SLUGS = [
-  "oladoc-healthcare-app-ui-ux-design",
+  "oladoc-homepage-concept-redesign",
   "marham-pk-healthcare-platform-redesign",
   "sehat-kahani-telemedicine-ui-ux-design",
-  "telemedicine-healthcare-app-case-study",
+  "oladoc-healthcare-app-ui-ux-design",
 ];
 const featured = FEATURED_SLUGS.map((s) => projects.find((p) => p.slug === s)).filter((p): p is Project => Boolean(p));
 const industries = ["All", ...Array.from(new Set(projects.map((p) => p.industry)))];
@@ -113,14 +113,16 @@ function FeaturedCard({ project, i, total, progress }: { project: Project; i: nu
                 View case study
                 <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
-              <a
-                href={project.behanceUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm text-slate-300 hover:text-white transition-colors px-2 py-3"
-              >
-                Behance <ExternalLink size={13} />
-              </a>
+              {project.behanceUrl && (
+                <a
+                  href={project.behanceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-slate-300 hover:text-white transition-colors px-2 py-3"
+                >
+                  Behance <ExternalLink size={13} />
+                </a>
+              )}
             </div>
           </div>
 

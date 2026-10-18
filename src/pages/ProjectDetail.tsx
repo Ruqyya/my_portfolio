@@ -62,21 +62,34 @@ export default function ProjectDetail() {
       <Reveal delay={0.15}>
         <div className="max-w-5xl mx-auto mt-12 px-5 md:px-8">
           <div className="rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden bg-slate-50 dark:bg-slate-900">
-            <iframe
-              src={`https://www.behance.net/embed/project/${project.id}?ilo0=1`}
-              title={`${project.title} on Behance`}
-              loading="lazy"
-              allowFullScreen
-              className="w-full h-[70vh] min-h-[420px]"
-            />
+            {study.video ? (
+              <video
+                src={`${import.meta.env.BASE_URL}${study.video}`}
+                poster={study.poster ? `${import.meta.env.BASE_URL}${study.poster}` : project.coverImage}
+                controls
+                playsInline
+                preload="metadata"
+                className="aspect-video w-full bg-black"
+              />
+            ) : (
+              <iframe
+                src={`https://www.behance.net/embed/project/${project.id}?ilo0=1`}
+                title={`${project.title} on Behance`}
+                loading="lazy"
+                allowFullScreen
+                className="w-full h-[70vh] min-h-[420px]"
+              />
+            )}
           </div>
-          <p className="mt-3 text-xs text-slate-400">
-            Not loading?{" "}
-            <a href={project.behanceUrl} target="_blank" rel="noreferrer" className="text-[#0EA5E9] hover:underline">
-              Open the full case study on Behance
-            </a>
-            .
-          </p>
+          {project.behanceUrl && !study.video && (
+            <p className="mt-3 text-xs text-slate-400">
+              Not loading?{" "}
+              <a href={project.behanceUrl} target="_blank" rel="noreferrer" className="text-[#0EA5E9] hover:underline">
+                Open the full case study on Behance
+              </a>
+              .
+            </p>
+          )}
         </div>
       </Reveal>
 
@@ -98,14 +111,16 @@ export default function ProjectDetail() {
         {study.solution && <Block title="The solution" text={study.solution} />}
         {study.outcome && <Block title="The outcome" text={study.outcome} />}
 
-        <a
-          href={project.behanceUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-[#0EA5E9] hover:underline py-2"
-        >
-          View full case study on Behance <ExternalLink size={14} />
-        </a>
+        {project.behanceUrl && (
+          <a
+            href={project.behanceUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#0EA5E9] hover:underline py-2"
+          >
+            View full case study on Behance <ExternalLink size={14} />
+          </a>
+        )}
       </div>
 
       <PulseDivider className="max-w-3xl mx-auto mt-20 opacity-40" color={project.color} />
