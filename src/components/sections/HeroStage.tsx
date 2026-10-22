@@ -8,8 +8,9 @@ import { projects } from "../../data/projects";
 const SLUGS = [
   "oladoc-healthcare-app-ui-ux-design",
   "marham-pk-healthcare-platform-redesign",
+  "shumaila-s-london-clinic-website-redesign",
   "sehat-kahani-telemedicine-ui-ux-design",
-  "telemedicine-healthcare-app-case-study",
+  "zental-dental-luxury-website-ui-ux",
 ];
 const stageProjects = SLUGS.map((s) => projects.find((p) => p.slug === s)).filter((p) => p !== undefined);
 const SWATCHES = ["#0EA5E9", "#0F172A", "#14B8A6", "#64748B"];
