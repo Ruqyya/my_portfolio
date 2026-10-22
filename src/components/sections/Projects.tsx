@@ -17,10 +17,10 @@ import ProjectMedia, { hasVideo } from "../ui/ProjectMedia";
 import { projects, type Project } from "../../data/projects";
 
 const FEATURED_SLUGS = [
-  "oladoc-homepage-concept-redesign",
+  "oladoc-healthcare-app-ui-ux-design",
   "marham-pk-healthcare-platform-redesign",
   "sehat-kahani-telemedicine-ui-ux-design",
-  "oladoc-healthcare-app-ui-ux-design",
+  "telemedicine-healthcare-app-case-study",
 ];
 const featured = FEATURED_SLUGS.map((s) => projects.find((p) => p.slug === s)).filter((p): p is Project => Boolean(p));
 const industries = ["All", ...Array.from(new Set(projects.map((p) => p.industry)))];

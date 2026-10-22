@@ -33,6 +33,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/index.html" element={<Navigate to="/" replace />} />
+          <Route path="/work/oladoc-homepage-concept-redesign" element={<Navigate to="/work/oladoc-healthcare-app-ui-ux-design" replace />} />
           <Route path="/work/:slug" element={<ProjectDetail />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />

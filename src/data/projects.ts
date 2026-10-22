@@ -37,7 +37,7 @@ function build(b: (typeof behanceData.projects)[number]): Project {
     industry: b.industry,
     year: b.year,
     summary: study.summary ?? b.tags.filter((t) => t !== "Case Study").join(" · "),
-    coverImage: b.coverImage,
+    coverImage: study.cover ? `${import.meta.env.BASE_URL}${study.cover}` : b.coverImage,
     behanceUrl: b.behanceUrl,
     color: INDUSTRY_COLORS[b.industry] ?? "#0EA5E9",
     tags: b.tags,
@@ -45,23 +45,8 @@ function build(b: (typeof behanceData.projects)[number]): Project {
   };
 }
 
-// Projects that live on this site only (no Behance page yet).
-const base = import.meta.env.BASE_URL;
-const own: Project[] = [
-  {
-    id: 0,
-    slug: "oladoc-homepage-concept-redesign",
-    title: "Oladoc Homepage Concept Redesign",
-    industry: "Healthcare",
-    year: "2026",
-    tags: ["Healthcare", "Web Design", "Concept", "Case Study"],
-    color: INDUSTRY_COLORS.Healthcare,
-    coverImage: `${base}${caseStudies["oladoc-homepage-concept-redesign"].poster}`,
-    behanceUrl: "",
-    summary: caseStudies["oladoc-homepage-concept-redesign"].summary ?? "",
-    study: caseStudies["oladoc-homepage-concept-redesign"],
-  },
-];
+// Projects that live on this site only (no Behance page yet). Add them here with a caseStudies entry.
+const own: Project[] = [];
 
 export const projects: Project[] = [...own, ...behanceData.projects.map(build)];
 
