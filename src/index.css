@@ -421,3 +421,53 @@ body {
     linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
+
+/* ───────── Editorial Ivory (preview) ─────────
+   Warm Ivory #F7F5F0, Midnight Ink #17242B, Deep Teal #176B68, Champagne #C5A477, Soft Stone #E8E5DE.
+   Scoped with .palette-ivory so the hero and one case study can be approved before the whole site changes.
+   Champagne is decoration only (rules, dots, a ring): it is 2.15:1 on ivory, so no text uses it.
+   Contrast: ink 14.56 on ivory / 12.61 on stone; secondary text #4A595F 6.68 / 5.79; deep teal 5.77 / 5.00; white on teal 6.6. */
+.palette-ivory {
+  --champagne: #c5a477;
+  --paper: #f7f5f0;
+  --paper-2: #e8e5dc;
+  --ink: #17242b;
+  --ink-2: #4a595f;
+  --line: #dcd8cd;
+  --line-strong: #8f958f;
+  --forest: #176b68;
+  --forest-hover: #0f5754;
+  --on-forest: #ffffff;
+  --signal: #176b68;
+  --mark: #176b68;
+  --accent: #176b68;
+  --on-accent: #ffffff;
+  --bezel: #17242b;
+  --focus: #176b68;
+  --p-mint: #ece9e0;
+  --p-bloom: 197, 164, 119;
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-forest: var(--forest);
+  --color-on-forest: var(--on-forest);
+  --color-signal: var(--signal);
+  color: var(--ink);
+}
+.palette-ivory.surface-hero {
+  background:
+    radial-gradient(46rem 28rem at 104% -6%, rgba(197, 164, 119, 0.16), transparent 66%),
+    #f7f5f0;
+}
+.palette-ivory.hero-canvas::before {
+  background-image:
+    linear-gradient(rgba(23, 36, 43, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 36, 43, 0.045) 1px, transparent 1px);
+}
+.palette-ivory.hero-canvas::after { background: radial-gradient(360px circle at var(--mx) var(--my), rgba(197, 164, 119, 0.14), transparent 65%); }
+.palette-ivory .ecg-rule { background: var(--champagne); }
+.palette-ivory .ecg-line { stroke: var(--champagne); }
+.palette-ivory .champagne { color: var(--champagne); }
+.palette-ivory .rule-champagne { background: var(--champagne); }

@@ -59,7 +59,7 @@ function usePrefersReducedMotion() {
 function Layer({ on, className, children }: { on: boolean; className: string; children: React.ReactNode }) {
   return (
     <div
-      className={`absolute transition-all duration-700 ease-out ${className} ${on ? "z-30 scale-[1.03] brightness-100" : "z-10 scale-100 opacity-[0.86] saturate-[0.8]"}`}
+      className={`absolute transition-all duration-700 ease-out ${className} ${on ? "z-30 scale-[1.03] brightness-100" : "z-10 scale-100 saturate-[0.7]"}`}
     >
       {children}
     </div>
@@ -103,11 +103,11 @@ export default function Hero() {
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
-      className="surface-hero hero-canvas relative z-10 pb-24 pt-28 md:pb-28 md:pt-36"
+      className="palette-ivory surface-hero hero-canvas relative z-10 pb-24 pt-28 md:pb-28 md:pt-36"
     >
       <div className="mx-auto grid max-w-[88rem] gap-x-12 gap-y-16 px-5 md:px-10 lg:grid-cols-12 lg:items-center">
         <div className="relative z-30 lg:col-span-7">
-          <p className="mono text-ink-2">Senior Product Designer · Healthcare &amp; SaaS</p>
+          <p className="mono flex items-center gap-3 text-ink-2"><span aria-hidden className="rule-champagne h-px w-10" />Senior Product Designer · Healthcare &amp; SaaS</p>
           <h1
             aria-label="Complex healthcare products. Clearer human experiences."
             className="mt-6 text-[clamp(2.7rem,5.7vw,6rem)] font-medium leading-[1.02] tracking-[-0.025em]"
@@ -156,7 +156,7 @@ export default function Hero() {
         {/* The same booking, seen from three seats. Real Oladoc Figma screens; the tabs bring each room forward. */}
         <figure className="rise relative z-10 lg:col-span-5" style={{ animationDelay: "0.2s" }}>
           <div className="relative mx-auto aspect-[1.04/1] w-full max-w-[36rem]">
-            <div aria-hidden className="absolute inset-[4%] rounded-[2rem] bg-[var(--p-mint)] ring-1 ring-[var(--line)]" />
+            <div aria-hidden className="absolute inset-[4%] rounded-[2rem] bg-[#ece9e0] ring-1 ring-[var(--line)]" />
 
             <Layer on={active === 1} className="left-[10%] top-[2%] w-[86%]">
               <div className="overflow-hidden rounded-xl border border-line bg-paper shadow-[0_30px_50px_-26px_rgba(36,60,57,0.35)]">
@@ -203,7 +203,7 @@ export default function Hero() {
 
             {/* Portrait badge: puts a face next to the work */}
             <div className="absolute -bottom-9 right-0 z-40 flex items-center gap-3 rounded-full border border-line bg-paper py-2 pl-2 pr-5 shadow-[0_16px_30px_-18px_rgba(36,60,57,0.4)] md:right-2">
-              <img src={portrait} alt="Portrait of Ruqyya" width={56} height={56} className="h-14 w-14 rounded-full object-cover object-top ring-2 ring-[var(--accent-soft)]" />
+              <img src={portrait} alt="Portrait of Ruqyya" width={56} height={56} className="h-14 w-14 rounded-full object-cover object-top ring-2 ring-[var(--champagne)]" />
               <span className="text-base leading-tight">
                 <span className="serif block text-xl">Ruqyya</span>
                 <span className="mono text-ink-2">Lahore · Remote</span>
@@ -243,11 +243,11 @@ export default function Hero() {
         {/* Proof strip: a line from the LinkedIn banner runs the full width and ends in three figures taken from LinkedIn */}
         <div className="relative z-30 lg:col-span-12">
           <div aria-hidden className="flex items-center">
-            <span className="ecg-rule h-0.5 rounded-full bg-[var(--accent)]" style={{ flexGrow: 30 }} />
+            <span className="ecg-rule h-0.5 rounded-full" style={{ flexGrow: 30 }} />
             <svg viewBox="0 0 72 40" className="h-10 w-[4.5rem] shrink-0 overflow-visible" fill="none">
-              <path className="ecg-line" d="M0 20 H12 l10 -16 l12 32 l12 -26 l8 10 H72" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" pathLength="1" />
+              <path className="ecg-line" d="M0 20 H12 l10 -16 l12 32 l12 -26 l8 10 H72" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" pathLength="1" />
             </svg>
-            <span className="ecg-rule h-0.5 rounded-full bg-[var(--accent)]" style={{ flexGrow: 70 }} />
+            <span className="ecg-rule h-0.5 rounded-full" style={{ flexGrow: 70 }} />
           </div>
           <dl className="rise mt-8 grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-3" style={{ animationDelay: "0.5s" }}>
             {proof.map((p) => (
@@ -269,7 +269,7 @@ export default function Hero() {
           {[...credits, ...credits].map((c, i) => (
             <span key={i} className="flex items-center gap-10">
               <span className="serif text-2xl text-ink md:text-3xl">{c}</span>
-              <span className="text-[var(--accent)]">◆</span>
+              <span className="champagne">◆</span>
             </span>
           ))}
         </div>

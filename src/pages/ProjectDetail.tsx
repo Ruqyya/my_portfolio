@@ -78,7 +78,7 @@ export default function ProjectDetail() {
   return (
     <article className="relative z-10 pb-24">
       {/* Header band */}
-      <div className="surface-hero pb-40 pt-28 md:pb-56 md:pt-36">
+      <div className="palette-ivory surface-hero pb-40 pt-28 md:pb-56 md:pt-36">
         <header className="mx-auto max-w-[88rem] px-5 md:px-10">
           <div className={s.heroShots ? "grid items-center gap-12 lg:grid-cols-12" : ""}>
             <div className={s.heroShots ? "lg:col-span-7" : ""}>
@@ -103,7 +103,7 @@ export default function ProjectDetail() {
               </div>
             {s.heroShots && (
               <div aria-hidden className="relative mx-auto aspect-[1.08/1] w-full max-w-[34rem] lg:col-span-5">
-                <div className="absolute inset-[5%] rounded-[2rem] bg-[var(--p-mint)] ring-1 ring-[var(--line)]" />
+                <div className="absolute inset-[5%] rounded-[2rem] bg-[#ece9e0] ring-1 ring-[var(--line)]" />
                 <img src={`${base}${s.heroShots[0].src}`} alt="" width={1600} height={1046} fetchPriority="high" className="absolute right-0 top-0 w-[88%] rounded-xl border border-white/15 shadow-[0_40px_70px_-30px_rgba(36,60,57,0.26)]" />
                 <img src={`${base}${s.heroShots[1].src}`} alt="" width={1600} height={1046} loading="lazy" decoding="async" className="absolute bottom-[6%] right-[-2%] w-[56%] rounded-xl border border-white/15 shadow-[0_40px_70px_-30px_rgba(36,60,57,0.26)]" />
                 {[2, 3].map((n, i) => (
