@@ -12,7 +12,7 @@ export default function Annotated({ shot, kind, className = "", stack = false }:
   return (
     <figure className={`grid items-center gap-8 ${phone && !stack ? "md:grid-cols-[minmax(0,19rem)_1fr]" : ""} ${className}`}>
       <div className={`relative mx-auto w-full ${phone ? (stack ? "max-w-[17rem]" : "max-w-[19rem]") : ""}`}>
-        <div className={phone ? "rounded-[2.4rem] bg-[var(--bezel)] p-2 shadow-[0_40px_70px_-28px_rgba(36,60,57,0.26)] ring-1 ring-white/20" : "overflow-hidden rounded-xl border border-white/15 shadow-[0_40px_70px_-28px_rgba(36,60,57,0.26)]"}>
+        <div className={phone ? "rounded-[2.4rem] bg-[var(--bezel)] p-2 shadow-[0_40px_70px_-28px_rgba(36,60,57,0.26)] ring-1 ring-[var(--line)]" : "overflow-hidden rounded-xl border border-[var(--line)] shadow-[0_40px_70px_-28px_rgba(36,60,57,0.26)]"}>
           <img
             src={`${base}${shot.src}`}
             alt={shot.alt}

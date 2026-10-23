@@ -44,29 +44,29 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ───────── Design tokens: "Soft Botanical" ─────────
-   One palette, Soft Botanical Teal + Porcelain. Components read only the roles below, never a hex value,
+/* ───────── Design tokens: "Editorial Ivory" ─────────
+   One palette, Editorial Ivory Teal + Porcelain. Components read only the roles below, never a hex value,
    so the whole site can be re-tuned by changing the primitives.
    Every text pair was measured against WCAG 2.2 AA (see docs/10-SOFT-PALETTE-COMPARISON.md). */
 :root {
-  /* A · Soft Botanical Teal + Porcelain */
-  --p-porcelain: #f5f8f5;
-  --p-tint: #eff4f0;
-  --p-mint: #e4efe9; /* stages behind product screens */
-  --p-ink: #243c39; /* Forest Ink */
-  --p-ink-2: #4a625e;
-  --p-line: #dbe5df;
-  --p-line-strong: #8da39b;
-  --p-action: #427f78; /* Sage Teal: fills, marks, large display type */
-  --p-label: #37706a; /* deeper Sage Teal for small text and links (5.3:1 on porcelain) */
-  --p-hover: #2d5f59;
-  --p-glass: #a8c7bc; /* Sea Glass */
-  --p-deep: #243c39; /* the one dark surface: contact and footer */
-  --p-deep-2: #2e4a46;
-  --p-deep-ink-2: #c3d6ce;
-  --p-deep-line: #3f5b56;
-  --p-bezel: #2a403d;
-  --p-bloom: 168, 199, 188; /* rgb of Sea Glass, for soft gradients */
+  /* Editorial Ivory: Warm Ivory #F7F5F0, Midnight Ink #17242B, Deep Teal #176B68, Champagne #C5A477, Soft Stone #E8E5DE */
+  --p-porcelain: #f7f5f0; /* Warm Ivory */
+  --p-tint: #ebe8e0; /* Soft Stone, a touch lighter so cards and text keep contrast */
+  --p-mint: #ece9e0; /* stage behind product screens */
+  --p-ink: #17242b; /* Midnight Ink */
+  --p-ink-2: #4a595f;
+  --p-line: #dcd8cd;
+  --p-line-strong: #8f958f;
+  --p-action: #176b68; /* Deep Teal: fills, marks, links, emphasised words */
+  --p-label: #176b68; /* 5.77:1 on ivory */
+  --p-hover: #0f5754;
+  --p-glass: #c5a477; /* Champagne: decoration only on light; accent text on ink */
+  --p-deep: #17242b; /* closing footer only */
+  --p-deep-2: #213239;
+  --p-deep-ink-2: #cbd3d3;
+  --p-deep-line: #36484f;
+  --p-bezel: #17242b;
+  --p-bloom: 197, 164, 119;
 }
 
 :root {
@@ -96,9 +96,9 @@
   --ink: var(--p-porcelain);
   --ink-2: var(--p-deep-ink-2);
   --line: var(--p-deep-line);
-  --line-strong: #5f7c76;
+  --line-strong: #5d6f75;
   --forest: var(--p-glass);
-  --forest-hover: #cfe3da;
+  --forest-hover: #e0c9a0;
   --on-forest: var(--p-deep);
   --signal: var(--p-glass);
   --mark: var(--p-glass);
@@ -115,9 +115,9 @@
   --ink: var(--p-porcelain);
   --ink-2: var(--p-deep-ink-2);
   --line: var(--p-deep-line);
-  --line-strong: #5f7c76;
+  --line-strong: #5d6f75;
   --forest: var(--p-glass);
-  --forest-hover: #cfe3da;
+  --forest-hover: #e0c9a0;
   --on-forest: var(--p-deep);
   --signal: var(--p-glass);
   --mark: var(--p-glass);
@@ -165,7 +165,7 @@
   --color-signal: var(--signal);
   color: var(--ink);
   background:
-    radial-gradient(40rem 22rem at 100% 0%, rgba(var(--p-bloom), 0.3), transparent 70%),
+    radial-gradient(40rem 22rem at 100% 0%, rgba(var(--p-bloom), 0.14), transparent 70%),
     var(--p-mint);
 }
 
@@ -174,11 +174,11 @@
   --paper: var(--p-action);
   --paper-2: var(--p-label);
   --ink: #ffffff;
-  --ink-2: #eef5f1;
+  --ink-2: #e6efed;
   --line: rgba(255, 255, 255, 0.3);
   --line-strong: rgba(255, 255, 255, 0.6);
   --forest: #ffffff;
-  --forest-hover: #eef5f1;
+  --forest-hover: #e6efed;
   --on-forest: var(--p-ink);
   --signal: #ffffff;
   --mark: #ffffff;

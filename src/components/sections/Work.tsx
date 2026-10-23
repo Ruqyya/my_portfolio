@@ -87,16 +87,16 @@ function OladocStory() {
 
         <Stage accent={accent} className="mt-10 px-4 pb-12 pt-8 md:px-14 md:pb-20 md:pt-14">
           <div className="relative mx-auto aspect-[1.02/1] w-full max-w-[64rem] md:aspect-[1.55/1]">
-            <div className="absolute right-0 top-0 hidden w-[66%] overflow-hidden rounded-xl border border-white/15 bg-paper shadow-[0_50px_80px_-30px_rgba(36,60,57,0.26)] md:block">
+            <div className="absolute right-0 top-0 hidden w-[66%] overflow-hidden rounded-xl border border-[var(--line)] bg-paper shadow-[0_50px_80px_-30px_rgba(36,60,57,0.26)] md:block">
               <img src={src("case/oladoc/frontdesk.webp")} alt="Oladoc front desk portal with a live queue." loading="lazy" width={1600} height={1046} className="block h-auto w-full" />
             </div>
-            <div className="absolute left-0 top-0 w-full overflow-hidden rounded-xl border border-white/15 bg-paper shadow-[0_50px_80px_-30px_rgba(36,60,57,0.26)] md:left-[18%] md:top-[20%] md:w-[62%]">
+            <div className="absolute left-0 top-0 w-full overflow-hidden rounded-xl border border-[var(--line)] bg-paper shadow-[0_50px_80px_-30px_rgba(36,60,57,0.26)] md:left-[18%] md:top-[20%] md:w-[62%]">
               <img src={src("case/oladoc/docdash.webp")} alt="Oladoc doctor portal dashboard." loading="lazy" width={1600} height={1046} className="block h-auto w-full" />
             </div>
             {["home", "sym", "profile"].map((n, i) => (
               <div
                 key={n}
-                className={`absolute bottom-0 w-[30%] rounded-[1.3rem] bg-[var(--bezel)] p-1 shadow-[0_40px_60px_-24px_rgba(36,60,57,0.26)] ring-1 ring-white/20 md:w-[19%] md:rounded-[1.6rem] md:p-1.5 ${["left-[2%] md:left-0", "left-[34%] md:left-[12%]", "left-[66%] md:left-[24%]"][i]}`}
+                className={`absolute bottom-0 w-[30%] rounded-[1.3rem] bg-[var(--bezel)] p-1 shadow-[0_40px_60px_-24px_rgba(36,60,57,0.26)] ring-1 ring-[var(--line)] md:w-[19%] md:rounded-[1.6rem] md:p-1.5 ${["left-[2%] md:left-0", "left-[34%] md:left-[12%]", "left-[66%] md:left-[24%]"][i]}`}
                 style={{ transform: `translateY(${i === 1 ? "-5%" : "0"}) rotate(${(i - 1) * 3}deg)`, zIndex: i === 1 ? 5 : 4 }}
               >
                 <img src={src(`case/oladoc/${n}.webp`)} alt={`Oladoc patient app, ${n === "sym" ? "search by symptom" : n === "profile" ? "doctor profile" : "home"}.`} loading="lazy" width={700} height={1515} className="block h-auto w-full rounded-[1rem] md:rounded-[1.25rem]" />
@@ -226,7 +226,7 @@ function SehatStory() {
           <div className="lg:sticky lg:top-28 lg:col-span-7">
             <Stage accent={accent} className="px-5 pb-14 pt-9 md:px-10 md:pb-16 md:pt-12">
               <div className="relative">
-                <div className="overflow-hidden rounded-xl border border-white/15 bg-paper shadow-[0_50px_80px_-30px_rgba(36,60,57,0.26)]">
+                <div className="overflow-hidden rounded-xl border border-[var(--line)] bg-paper shadow-[0_50px_80px_-30px_rgba(36,60,57,0.26)]">
                   <div className="flex items-center gap-1.5 border-b border-line bg-paper-2 px-3 py-2.5" aria-hidden>
                     <span className="h-2.5 w-2.5 rounded-full bg-line" />
                     <span className="h-2.5 w-2.5 rounded-full bg-line" />
@@ -234,7 +234,7 @@ function SehatStory() {
                   </div>
                   <img src={src("case/sehat/home.webp")} alt="The redesigned Sehat Kahani homepage with the 60-second promise." loading="lazy" className="block h-auto w-full" />
                 </div>
-                <div className="absolute -bottom-12 -right-1 w-[50%] overflow-hidden rounded-xl border border-white/20 bg-paper shadow-2xl shadow-[#243c39]/20 md:-right-5">
+                <div className="absolute -bottom-12 -right-1 w-[50%] overflow-hidden rounded-xl border border-[var(--line)] bg-paper shadow-2xl shadow-[#243c39]/20 md:-right-5">
                   <img src={src("case/sehat/responsive.webp")} alt="Sehat Kahani layouts for desktop and phone." loading="lazy" className="block h-auto w-full" />
                 </div>
               </div>
