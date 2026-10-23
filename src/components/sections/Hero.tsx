@@ -27,6 +27,13 @@ const portals = [
   },
 ] as const;
 
+// What the card beside the screens says for each room: the same booking from three seats (all taken from the screens).
+const toasts = [
+  { icon: "♥", title: "Chest pain → Cardiologist", sub: "124 verified doctors nearby" },
+  { icon: "✓", title: "New booking, 5:30 PM", sub: "Ayesha Rahman · clinic visit" },
+  { icon: "→", title: "Ayesha arrived", sub: "Check in, then send to Dr. Khan" },
+];
+
 // Real projects with a film, shown as a drifting strip of covers under the hero.
 const strip = projects.filter((p) => p.study.video);
 
@@ -57,10 +64,14 @@ function usePrefersReducedMotion() {
 }
 
 // One layer in the screen stack. `on` lifts it to the front; the others recede.
-function Layer({ on, className, children }: { on: boolean; className: string; children: React.ReactNode }) {
+function Layer({ on, className, depth = 0, children }: { on: boolean; className: string; depth?: number; children: React.ReactNode }) {
   return (
     <div
-      className={`absolute transition-all duration-700 ease-out ${className} ${on ? "z-30 scale-[1.03] brightness-100" : "z-10 scale-100 saturate-[0.7]"}`}
+      className={`absolute ${className} ${on ? "z-30 scale-[1.03] brightness-100" : "z-10 scale-100 saturate-[0.7]"}`}
+      style={{
+        transform: `translate3d(calc(var(--px, 0) * ${depth}px), calc(var(--py, 0) * ${depth}px), 0)`,
+        transition: "scale 0.7s ease-out, filter 0.7s ease-out, transform 0.35s ease-out",
+      }}
     >
       {children}
     </div>
@@ -85,11 +96,22 @@ export default function Hero() {
     const r = section.current.getBoundingClientRect();
     section.current.style.setProperty("--mx", `${e.clientX - r.left}px`);
     section.current.style.setProperty("--my", `${e.clientY - r.top}px`);
+    section.current.style.setProperty("--px", `${(e.clientX - r.left) / r.width - 0.5}`);
+    section.current.style.setProperty("--py", `${(e.clientY - r.top) / r.height - 0.5}`);
     section.current.style.setProperty("--ry", `${((e.clientX - r.left) / r.width - 0.5) * 7}deg`);
     section.current.style.setProperty("--rx", `${-((e.clientY - r.top) / r.height - 0.5) * 5}deg`);
   };
 
   const current = portals[active];
+  // The two CTAs lean toward the pointer a little, then settle back.
+  const lean = (e: React.PointerEvent<HTMLAnchorElement>) => {
+    if (reduce || e.pointerType !== "mouse") return;
+    const r = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.12}px, ${(e.clientY - r.top - r.height / 2) * 0.2}px)`;
+  };
+  const settle = (e: React.PointerEvent<HTMLAnchorElement>) => {
+    e.currentTarget.style.transform = "";
+  };
   // The design-tool cursor sits on the active layer
   const cursorAt = [
     { left: "17%", top: "52%" },
@@ -122,7 +144,7 @@ export default function Hero() {
             <span aria-hidden>
               <span className="block"><Words text="Complex healthcare" start={0.05} /></span>
               <span className="block"><Words text="products." start={0.2} /></span>
-              <span className="block italic text-forest"><Words text="Clearer human experiences." start={0.35} /></span>
+              <span className="shimmer-text block italic text-forest"><Words text="Clearer human experiences." start={0.35} /></span>
             </span>
           </h1>
 
@@ -133,14 +155,18 @@ export default function Hero() {
           <div className="rise mt-9 flex flex-wrap items-center gap-4" style={{ animationDelay: "0.4s" }}>
             <a
               href="#work"
-              className="group inline-flex h-14 items-center gap-3 rounded-full bg-forest px-8 text-lg font-semibold text-on-forest transition-colors hover:bg-[var(--forest-hover)]"
+              onPointerMove={lean}
+              onPointerLeave={settle}
+              className="magnetic group inline-flex h-14 items-center gap-3 rounded-full bg-forest px-8 text-lg font-semibold text-on-forest transition-colors hover:bg-[var(--forest-hover)]"
             >
               Explore My Work
               <ArrowDown size={18} className="transition-transform group-hover:translate-y-0.5" aria-hidden />
             </a>
             <a
               href={MAIL_HREF}
-              className="inline-flex h-14 items-center gap-3 rounded-full border border-[var(--line-strong)] px-8 text-lg font-semibold transition-colors hover:border-forest hover:text-forest"
+              onPointerMove={lean}
+              onPointerLeave={settle}
+              className="magnetic inline-flex h-14 items-center gap-3 rounded-full border border-[var(--line-strong)] px-8 text-lg font-semibold transition-colors hover:border-forest hover:text-forest"
             >
               <Mail size={20} aria-hidden /> Discuss a Project
             </a>
@@ -157,9 +183,11 @@ export default function Hero() {
         {/* The same booking, seen from three seats. Real Oladoc Figma screens; the stack tilts with the pointer and the tabs bring each room forward. */}
         <figure className="rise relative z-10 lg:col-span-6" style={{ animationDelay: "0.2s" }}>
           <div className="hero-tilt relative mx-auto aspect-[1.04/1] w-full max-w-[40rem]">
+            <span aria-hidden className="sonar absolute -inset-6 rounded-[3rem]" />
+            <span aria-hidden className="sonar sonar-b absolute -inset-6 rounded-[3rem]" />
             <div aria-hidden className="absolute inset-0 rounded-[2rem] stage-gradient" />
 
-            <Layer on={active === 1} className="left-[10%] top-[8%] w-[78%]">
+            <Layer on={active === 1} className="left-[10%] top-[8%] w-[78%]" depth={-18}>
               <div className="overflow-hidden rounded-xl border border-line bg-paper shadow-[0_30px_50px_-26px_rgba(0,0,0,0.5)]">
                 <div className="flex items-center gap-1.5 border-b border-line bg-paper-2 px-3 py-2" aria-hidden>
                   <span className="h-2 w-2 rounded-full bg-line" />
@@ -171,7 +199,7 @@ export default function Hero() {
               </div>
             </Layer>
 
-            <Layer on={active === 2} className="right-[5%] top-[47%] w-[60%]">
+            <Layer on={active === 2} className="right-[5%] top-[47%] w-[60%]" depth={-34}>
               <div className="overflow-hidden rounded-xl border border-line bg-paper shadow-[0_30px_50px_-26px_rgba(0,0,0,0.5)]">
                 <div className="flex items-center gap-1.5 border-b border-line bg-paper-2 px-3 py-2" aria-hidden>
                   <span className="h-2 w-2 rounded-full bg-line" />
@@ -183,22 +211,26 @@ export default function Hero() {
               </div>
             </Layer>
 
-            <Layer on={active === 0} className="bottom-[1%] left-[1%] w-[28%]">
+            <Layer on={active === 0} className="bottom-[1%] left-[1%] w-[28%]" depth={-52}>
               <div className="rounded-[1.6rem] bg-[var(--bezel)] p-1.5 shadow-[0_30px_50px_-26px_rgba(0,0,0,0.6)]">
                 <img src={img("sym")} alt="Oladoc patient app: search by symptom." width={700} height={1515} decoding="async" className="block h-auto w-full rounded-[1.3rem]" />
               </div>
             </Layer>
-            <Layer on={active === 0} className="bottom-[-2%] left-[27%] w-[23%]">
+            <Layer on={active === 0} className="bottom-[-2%] left-[27%] w-[23%]" depth={-64}>
               <div className="rounded-[1.4rem] bg-[var(--bezel)] p-1.5 shadow-[0_30px_50px_-26px_rgba(0,0,0,0.6)]">
                 <img src={img("profile")} alt="Oladoc patient app: doctor profile with verification, rating and fee." width={700} height={1515} decoding="async" className="block h-auto w-full rounded-[1.1rem]" />
               </div>
             </Layer>
 
-            {/* Floating details lifted from the real screens */}
-            <span aria-hidden className="hero-float absolute -left-2 top-[3%] z-40 hidden items-center gap-2 rounded-full bg-[#f7fafc] px-4 py-2 text-base font-semibold text-[#0a2552] shadow-xl sm:inline-flex">
-              <span className="grid h-5 w-5 place-items-center rounded-full bg-[#16a34a] text-[11px] text-white">✓</span> PMDC verified
-            </span>
-            <span aria-hidden className="hero-float hero-float-b absolute -right-2 top-[36%] z-40 hidden rounded-full bg-[#f7fafc] px-4 py-2 text-base font-semibold text-[#0a2552] shadow-xl sm:inline-block">
+            {/* One booking, narrated: the card changes with the room that is in front */}
+            <div key={active} aria-hidden className="toast-in absolute -left-4 -top-6 z-40 hidden w-[16.5rem] items-center gap-3 rounded-2xl bg-[#f7fafc] py-3 pl-3 pr-5 text-[#0a2552] shadow-2xl sm:flex">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#0f5974] text-lg text-white">{toasts[active].icon}</span>
+              <span className="text-[0.95rem] font-semibold leading-tight">
+                {toasts[active].title}
+                <span className="block text-sm font-normal text-[#475569]">{toasts[active].sub}</span>
+              </span>
+            </div>
+            <span aria-hidden className="hero-float hero-float-b absolute right-[6%] -top-6 z-40 hidden rounded-full bg-[#f7fafc] px-4 py-2 text-base font-semibold text-[#0a2552] shadow-xl sm:inline-block">
               Total Rs 1,700
             </span>
 
