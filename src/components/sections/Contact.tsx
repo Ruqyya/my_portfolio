@@ -5,7 +5,7 @@ import Reveal from "../ui/Reveal";
 const rows = [
   { k: "Email", v: "ghulamruqyya@gmail.com", href: "mailto:ghulamruqyya@gmail.com" },
   { k: "Phone", v: "+92 324 7082535", href: "tel:+923247082535" },
-  { k: "LinkedIn", v: "ghulam-ruqyya", href: "https://www.linkedin.com/in/ghulam-ruqyya-ab0318156/" },
+  { k: "LinkedIn", v: "ghulam-ruqyya", href: "https://www.linkedin.com/in/ghulamruqyya/" },
   { k: "Behance", v: "behance.net/ghulamruqyya", href: "https://www.behance.net/ghulamruqyya" },
 ];
 

@@ -185,7 +185,7 @@ export default function Hero() {
 
       <div className="mx-auto mt-20 max-w-[88rem] border-y border-line px-5 py-5 md:mt-24 md:px-10">
         <p className="mono flex flex-wrap items-center gap-x-8 gap-y-2 text-ink-2">
-          <span>6+ years</span>
+          <span>5+ years</span>
           <span>Healthcare UX</span>
           <span>SaaS platforms</span>
           <span>Design systems</span>

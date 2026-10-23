@@ -6,7 +6,7 @@ export default function Footer() {
           <span className="serif text-lg text-ink">Creative Ruqyya</span> · Senior Product Designer · Lahore, working worldwide
         </p>
         <ul className="flex flex-wrap gap-x-6 gap-y-2">
-          <li><a className="link-draw py-1" href="https://www.linkedin.com/in/ghulam-ruqyya-ab0318156/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+          <li><a className="link-draw py-1" href="https://www.linkedin.com/in/ghulamruqyya/" target="_blank" rel="noreferrer">LinkedIn</a></li>
           <li><a className="link-draw py-1" href="https://www.behance.net/ghulamruqyya" target="_blank" rel="noreferrer">Behance</a></li>
           <li><a className="link-draw py-1" href="mailto:ghulamruqyya@gmail.com">Email</a></li>
         </ul>

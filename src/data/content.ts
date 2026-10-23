@@ -49,41 +49,84 @@ export const aboutFocus = [
   "Product Strategy",
 ];
 
-export const experience = [
+// Copied from LinkedIn (linkedin.com/in/ghulamruqyya) on 23 Oct 2026, in LinkedIn's order.
+export interface Role {
+  role: string;
+  company: string;
+  type: string;
+  period: string;
+  duration: string;
+  location: string;
+  summary?: string;
+  points: string[];
+}
+
+export const experience: Role[] = [
   {
-    role: "Senior Product Designer",
-    company: "Meridian Health",
-    period: "2022 — Present",
-    description:
-      "Leading design for clinical and operations products used by 3,000+ hospital staff across a multi-site network, from research through design system governance.",
+    role: "Senior Product Designer (UI/UX) - Healthcare & SaaS",
+    company: "SQSOL",
+    type: "Full-time",
+    period: "Jan 2024 — Present",
+    duration: "2 yrs 10 mos",
+    location: "Remote",
+    summary: "Lead product designer for healthcare and B2B SaaS products, owning UX from research to shipped UI.",
+    points: [
+      "Ran end-to-end UX (research, wireframes, prototypes, and production UI) for complex healthcare and SaaS workflows.",
+      "Converted legacy screens into a responsive, WCAG-conscious design system that keeps the product consistent as it scales.",
+      "Streamlined design-to-dev handoff with Figma Dev Mode and reusable component libraries, cutting back-and-forth with engineering.",
+    ],
   },
   {
-    role: "Lead UX Designer",
-    company: "Northwind Digital",
-    period: "2020 — 2022",
-    description:
-      "Owned end-to-end UX for a portfolio of SaaS and healthcare products, building the studio's first shared design system and mentoring two junior designers.",
+    role: "Freelance Product Designer — Healthcare & SaaS (Fiverr)",
+    company: "Fiverr",
+    type: "Self-employed",
+    period: "Aug 2021 — Present",
+    duration: "5 yrs 3 mos",
+    location: "Remote",
+    points: [
+      "Delivered UI/UX projects for international healthcare and SaaS clients, earning a 5-star rating and repeat business.",
+      "Redesigned onboarding and signup flows to make products easier to adopt.",
+      "Managed multiple client projects with consistent, on-time delivery.",
+    ],
   },
   {
-    role: "Healthcare Product Designer",
-    company: "Aster Systems",
-    period: "2019 — 2020",
-    description:
-      "Designed hospital operations tooling with a focus on real-time data and enterprise workflows across five hospital campuses.",
+    role: "Senior Product Designer (UI/UX) - Healthcare",
+    company: "oladoc",
+    type: "Freelance",
+    period: "Jul 2025 — Jan 2026",
+    duration: "7 mos",
+    location: "Punjab, Pakistan · Remote",
+    points: [
+      "Redesigned a patient-intake flow for a healthcare client, lifting completion rates 65%.",
+      "Built a reusable Figma design system that sped up new-feature design and kept the product visually consistent.",
+      "Ran usability tests in Maze, turning user findings into prioritized UX fixes that shipped to production.",
+    ],
   },
   {
-    role: "Product Design Consultant",
-    company: "Independent",
-    period: "2018 — 2019",
-    description:
-      "Advised early-stage SaaS founders on product strategy and UX, shipping MVP designs for six funded startups.",
+    role: "Product Designer (UI/UX) — SaaS",
+    company: "Appsol360",
+    type: "Full-time",
+    period: "Jan 2023 — Dec 2023",
+    duration: "1 yr",
+    location: "United States · Remote",
+    points: [
+      "Restructured a SaaS onboarding flow, cutting first-session drop-off by 50%.",
+      "Designed B2B dashboards that simplified high-traffic workflows and reduced user confusion.",
+      "Partnered with engineers and PMs to take products from wireframe to launch.",
+    ],
   },
   {
-    role: "Freelance Designer",
-    company: "Self-Employed",
-    period: "2017 — 2018",
-    description:
-      "Delivered UI and brand design for small business and consumer app clients, laying the foundation for a product design specialty.",
+    role: "UI/UX Designer",
+    company: "Prob N Tech",
+    type: "Full-time",
+    period: "Feb 2021 — Jun 2022",
+    duration: "1 yr 5 mos",
+    location: "Punjab, Pakistan · Remote",
+    points: [
+      "Designed UI for web and mobile products across healthcare, SaaS, and e-commerce, the foundation of 20+ products shipped to date.",
+      "Standardized component patterns to keep UI consistent across the product suite.",
+      "Conducted user research and wireframing that informed product launches.",
+    ],
   },
 ];
 
