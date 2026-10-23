@@ -44,29 +44,30 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ───────── Design tokens: "Editorial Ivory" ─────────
-   One palette, Editorial Ivory Teal + Porcelain. Components read only the roles below, never a hex value,
+/* ───────── Design tokens: "Ocean Teal" ─────────
+   One palette, Ocean Teal Teal + Porcelain. Components read only the roles below, never a hex value,
    so the whole site can be re-tuned by changing the primitives.
    Every text pair was measured against WCAG 2.2 AA (see docs/10-SOFT-PALETTE-COMPARISON.md). */
 :root {
-  /* Editorial Ivory: Warm Ivory #F7F5F0, Midnight Ink #17242B, Deep Teal #176B68, Champagne #C5A477, Soft Stone #E8E5DE */
-  --p-porcelain: #f7f5f0; /* Warm Ivory */
-  --p-tint: #ebe8e0; /* Soft Stone, a touch lighter so cards and text keep contrast */
-  --p-mint: #ece9e0; /* stage behind product screens */
-  --p-ink: #17242b; /* Midnight Ink */
-  --p-ink-2: #4a595f;
-  --p-line: #dcd8cd;
-  --p-line-strong: #8f958f;
-  --p-action: #176b68; /* Deep Teal: fills, marks, links, emphasised words */
-  --p-label: #176b68; /* 5.77:1 on ivory */
-  --p-hover: #0f5754;
-  --p-glass: #c5a477; /* Champagne: decoration only on light; accent text on ink */
-  --p-deep: #17242b; /* closing footer only */
-  --p-deep-2: #213239;
-  --p-deep-ink-2: #cbd3d3;
-  --p-deep-line: #36484f;
-  --p-bezel: #17242b;
-  --p-bloom: 197, 164, 119;
+  /* Ocean Teal: Turquoise #2CA89F, Ocean Teal #066078, Deep Ink #203A3D, Warm Ivory #FFFAF6, Sea Mist #DCEFEB */
+  --p-porcelain: #fffaf6; /* Warm Ivory */
+  --p-tint: #e9f4f1; /* Sea Mist, lightened for large sections */
+  --p-mint: #dcefeb; /* Sea Mist: stages and chips */
+  --p-ink: #203a3d; /* Deep Ink */
+  --p-ink-2: #4a5e60;
+  --p-line: #d4e4e0;
+  --p-line-strong: #7f9896;
+  --p-action: #066078; /* Ocean Teal: buttons, links, emphasised words (6.86:1 on ivory) */
+  --p-label: #066078;
+  --p-hover: #044a5c;
+  --p-turq: #2ca89f; /* Turquoise: decoration only on light (2.81:1) */
+  --p-glass: #8fdcd3; /* light aqua: accent text on the dark footer and gradient */
+  --p-deep: #203a3d; /* footer */
+  --p-deep-2: #2a474a;
+  --p-deep-ink-2: #cfe0de;
+  --p-deep-line: #3d5a5c;
+  --p-bezel: #203a3d;
+  --p-bloom: 44, 168, 159;
 }
 
 :root {
@@ -81,7 +82,7 @@
   --forest-hover: var(--p-hover);
   --on-forest: #ffffff;
   --signal: var(--p-label); /* labels and section numbers */
-  --mark: var(--p-action); /* decorative: rules, icons, markers */
+  --mark: var(--p-turq); /* decorative: rules, icons, markers */
   --accent: var(--p-action); /* fills and callout markers */
   --on-accent: #ffffff;
   --accent-soft: var(--p-glass);
@@ -96,9 +97,9 @@
   --ink: var(--p-porcelain);
   --ink-2: var(--p-deep-ink-2);
   --line: var(--p-deep-line);
-  --line-strong: #5d6f75;
+  --line-strong: #6a8587;
   --forest: var(--p-glass);
-  --forest-hover: #e0c9a0;
+  --forest-hover: #b9ece6;
   --on-forest: var(--p-deep);
   --signal: var(--p-glass);
   --mark: var(--p-glass);
@@ -115,9 +116,9 @@
   --ink: var(--p-porcelain);
   --ink-2: var(--p-deep-ink-2);
   --line: var(--p-deep-line);
-  --line-strong: #5d6f75;
+  --line-strong: #6a8587;
   --forest: var(--p-glass);
-  --forest-hover: #e0c9a0;
+  --forest-hover: #b9ece6;
   --on-forest: var(--p-deep);
   --signal: var(--p-glass);
   --mark: var(--p-glass);
@@ -171,14 +172,15 @@
 
 /* Sage call-out band: used once, mid-page. */
 .surface-teal {
+  background-image: linear-gradient(120deg, #066078 0%, #0b4f60 100%);
   --paper: var(--p-action);
   --paper-2: var(--p-label);
   --ink: #ffffff;
-  --ink-2: #e6efed;
+  --ink-2: #e2f0ee;
   --line: rgba(255, 255, 255, 0.3);
   --line-strong: rgba(255, 255, 255, 0.6);
   --forest: #ffffff;
-  --forest-hover: #e6efed;
+  --forest-hover: #e2f0ee;
   --on-forest: var(--p-ink);
   --signal: #ffffff;
   --mark: #ffffff;
@@ -205,8 +207,8 @@
 /* Contact: the dark surface with a soft sage bloom. */
 .surface-gradient {
   background:
-    radial-gradient(48rem 30rem at 104% -12%, rgba(var(--p-bloom), 0.3), transparent 70%),
-    linear-gradient(118deg, var(--p-deep) 0%, var(--p-deep-2) 100%);
+    radial-gradient(40rem 26rem at 104% -10%, rgba(44, 168, 159, 0.55), transparent 70%),
+    linear-gradient(120deg, #066078 0%, #0b4f60 52%, #203a3d 100%);
 }
 /* Soft Aqua highlight on dark surfaces */
 .surface-deep h1 .italic, .surface-deep h2 em, .surface-deep h3 em, .surface-deep .accent-italic { color: var(--aqua); }
@@ -422,55 +424,6 @@ body {
     linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
-/* ───────── Editorial Ivory (preview) ─────────
-   Warm Ivory #F7F5F0, Midnight Ink #17242B, Deep Teal #176B68, Champagne #C5A477, Soft Stone #E8E5DE.
-   Scoped with .palette-ivory so the hero and one case study can be approved before the whole site changes.
-   Champagne is decoration only (rules, dots, a ring): it is 2.15:1 on ivory, so no text uses it.
-   Contrast: ink 14.56 on ivory / 12.61 on stone; secondary text #4A595F 6.68 / 5.79; deep teal 5.77 / 5.00; white on teal 6.6. */
-.palette-ivory {
-  --champagne: #c5a477;
-  --paper: #f7f5f0;
-  --paper-2: #e8e5dc;
-  --ink: #17242b;
-  --ink-2: #4a595f;
-  --line: #dcd8cd;
-  --line-strong: #8f958f;
-  --forest: #176b68;
-  --forest-hover: #0f5754;
-  --on-forest: #ffffff;
-  --signal: #176b68;
-  --mark: #176b68;
-  --accent: #176b68;
-  --on-accent: #ffffff;
-  --bezel: #17242b;
-  --focus: #176b68;
-  --p-mint: #ece9e0;
-  --p-bloom: 197, 164, 119;
-  --color-paper: var(--paper);
-  --color-paper-2: var(--paper-2);
-  --color-ink: var(--ink);
-  --color-ink-2: var(--ink-2);
-  --color-line: var(--line);
-  --color-forest: var(--forest);
-  --color-on-forest: var(--on-forest);
-  --color-signal: var(--signal);
-  color: var(--ink);
-}
-.palette-ivory.surface-hero {
-  background:
-    radial-gradient(46rem 28rem at 104% -6%, rgba(197, 164, 119, 0.16), transparent 66%),
-    #f7f5f0;
-}
-.palette-ivory.hero-canvas::before {
-  background-image:
-    linear-gradient(rgba(23, 36, 43, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(23, 36, 43, 0.045) 1px, transparent 1px);
-}
-.palette-ivory.hero-canvas::after { background: radial-gradient(360px circle at var(--mx) var(--my), rgba(197, 164, 119, 0.14), transparent 65%); }
-.palette-ivory .ecg-rule { background: var(--champagne); }
-.palette-ivory .ecg-line { stroke: var(--champagne); }
-.palette-ivory .champagne { color: var(--champagne); }
-.palette-ivory .rule-champagne { background: var(--champagne); }
 
 /* ───────── Ocean Teal (preview) ─────────
    Turquoise #2CA89F, Ocean Teal #066078, Deep Ink #203A3D, Warm Ivory #FFFAF6, Sea Mist #DCEFEB.
