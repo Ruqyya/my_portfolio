@@ -5,10 +5,10 @@ import portrait from "../../assets/ruqqya_img.png";
 
 export default function Approach() {
   return (
-    <section id="approach" className="relative z-10 py-24 md:py-32">
+    <section id="approach" className="sheet sheet-light pb-28 pt-24 md:pb-36 md:pt-32">
       <div className="mx-auto grid max-w-[88rem] gap-14 px-5 md:px-10 lg:grid-cols-12 lg:gap-10">
         <Reveal className="lg:col-span-4">
-          <Eyebrow n="02">Approach</Eyebrow>
+          <Eyebrow n="05">About and process</Eyebrow>
           <figure className="mt-8 max-w-xs">
             <div className="overflow-hidden rounded-t-[999px] border border-line bg-paper-2">
               <img src={portrait} alt="Portrait of Ruqyya" width={408} height={408} loading="lazy" className="aspect-[4/5] w-full object-cover object-top" />
@@ -19,7 +19,7 @@ export default function Approach() {
 
         <div className="lg:col-span-8">
           <Reveal>
-            <h2 className="text-[clamp(2.3rem,5vw,4.3rem)] font-medium leading-[1.08]">
+            <h2 className="text-[clamp(2.5rem,5.4vw,4.8rem)] font-medium leading-[1.08]">
               I start with the people who will use the screen, and <em className="text-forest">work outward from there.</em>
             </h2>
           </Reveal>
@@ -53,6 +53,22 @@ export default function Approach() {
                 </li>
               ))}
             </ol>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <h3 className="mono mt-16 text-ink-2">Working together</h3>
+            <dl className="mt-6 grid gap-8 border-t border-line pt-6 sm:grid-cols-3">
+              {[
+                ["How it starts", "A kickoff conversation, then a proposal with a fixed cost and timeline, so there are no surprises."],
+                ["How we communicate", "Weekly syncs, a shared Notion or Jira board for progress, and Slack for day-to-day questions."],
+                ["What you get", "Detailed specs, a documented design system and interactive prototypes that make handoff to engineering fast."],
+              ].map(([k, v]) => (
+                <div key={k}>
+                  <dt className="serif text-2xl">{k}</dt>
+                  <dd className="mt-2 text-sm text-ink-2">{v}</dd>
+                </div>
+              ))}
+            </dl>
           </Reveal>
         </div>
       </div>

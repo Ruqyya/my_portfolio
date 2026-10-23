@@ -6,6 +6,7 @@ import StickyCta from "./components/layout/StickyCta";
 import Hero from "./components/sections/Hero";
 import NotFound from "./pages/NotFound";
 
+const Expertise = lazy(() => import("./components/sections/Expertise"));
 const Work = lazy(() => import("./components/sections/Work"));
 const Approach = lazy(() => import("./components/sections/Approach"));
 const Experience = lazy(() => import("./components/sections/Experience"));
@@ -19,10 +20,11 @@ function Home() {
     <>
       <Hero />
       <Suspense fallback={<div className="min-h-screen" />}>
+        <Expertise />
         <Work />
-        <Approach />
         <Experience />
         <Voices />
+        <Approach />
         <Faq />
         <Contact />
       </Suspense>

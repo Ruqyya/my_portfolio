@@ -154,7 +154,48 @@ export const process = [
   { step: "Deliver", description: "Hand off production-ready design with the specs engineering actually needs." },
 ];
 
+/** Client reviews received on Fiverr. */
 export const testimonials = [
+  {
+    name: "imteccz",
+    role: "Client",
+    company: "United States",
+    industry: "UI/UX",
+    rating: 5,
+    review:
+      "Ruqyya did a great job! I needed a mock-up made for an application, and Ruqyya was able to get the project done within 3 days. The quality was exactly what I was looking for. Ruqyya went above and beyond, even with limited time!",
+  },
+  {
+    name: "djezzer",
+    role: "Client",
+    company: "Belgium",
+    industry: "UI/UX",
+    rating: 5,
+    review:
+      "I recommend Ruqyya for her wonderful job. You won't be disappointed. Many thanks, once again.",
+  },
+  {
+    name: "tiktokyu2",
+    role: "Client",
+    company: "Canada",
+    industry: "UI/UX",
+    rating: 5,
+    review:
+      "my second job with her! i will comeback for more",
+  },
+  {
+    name: "tiktokyu2",
+    role: "Client",
+    company: "Canada",
+    industry: "UI/UX",
+    rating: 5,
+    review:
+      "wonderful job. will comeback for more",
+  },
+];
+
+/** Supplied by the owner but NOT shown: the companies named here do not appear in her LinkedIn history and nothing links them to her. Move an entry into `testimonials` once there is a source (name, link or screenshot). */
+export const unverifiedTestimonials = [
   {
     name: "Sarah Johnson",
     role: "Senior Product Manager",
@@ -208,60 +249,28 @@ export const testimonials = [
     rating: 5,
     review:
       "Hospital operations software has almost zero room for design experimentation that fails quietly — mistakes show up as real delays for real patients. The bed management redesign was handled with exactly the rigor that context demands.",
-  },
-  {
-    name: "imteccz",
-    role: "Client",
-    company: "United States",
-    industry: "UI/UX",
-    rating: 5,
-    review:
-      "Ruqyya did a great job! I needed a mock-up made for an application, and Ruqyya was able to get the project done within 3 days. The quality was exactly what I was looking for. Ruqyya went above and beyond, even with limited time!",
-  },
-  {
-    name: "djezzer",
-    role: "Client",
-    company: "Belgium",
-    industry: "UI/UX",
-    rating: 5,
-    review:
-      "I recommend Ruqyya for her wonderful job. You won't be disappointed. Many thanks, once again.",
-  },
-  {
-    name: "tiktokyu2",
-    role: "Client",
-    company: "Canada",
-    industry: "UI/UX",
-    rating: 5,
-    review:
-      "my second job with her! i will comeback for more",
-  },
-  {
-    name: "tiktokyu2",
-    role: "Client",
-    company: "Canada",
-    industry: "UI/UX",
-    rating: 5,
-    review:
-      "wonderful job. will comeback for more",
-  },
+  },];
+
+/** Credentials listed on LinkedIn (linkedin.com/in/ghulamruqyya, checked 23 Oct 2026). */
+export const certifications = [
+  { title: "UI/UX Design", org: "Erozgaar GCWUF", year: "2022" },
+  { title: "Create High Fidelity Design and Prototypes in Figma", org: "Coursera", year: "2023" },
+  { title: "Create and Design Digital Products Using Canva", org: "Coursera", year: "2023" },
+  { title: "Leveraging AI in Adobe Photoshop and Creative Cloud", org: "LinkedIn Learning", year: "2023" },
+  { title: "Introduction to Graphic Design: Photoshop", org: "LinkedIn Learning", year: "2023" },
+  { title: "Creating Illustrator Infographics", org: "LinkedIn Learning", year: "2023" },
 ];
 
-export const awards = [
+export const education = { school: "Government College University, Faisalabad", degree: "BS, Computer Science", years: "2016 — 2020" };
+
+/** Not shown: no source on LinkedIn or elsewhere. Restore only with proof. */
+export const unverifiedAwards = [
   { title: "UX Design Award", org: "Interaction Design Foundation", year: "2024" },
   { title: "Best Product Design", org: "Awwwards", year: "2023" },
   { title: "Top Designer", org: "Clutch", year: "2023" },
   { title: "Featured on Behance", org: "Behance Curated Galleries", year: "2022" },
   { title: "Dribbble Recognition", org: "Dribbble Staff Picks", year: "2022" },
   { title: "Design Excellence", org: "UX Design Awards", year: "2021" },
-];
-
-export const certifications = [
-  { title: "Google UX Design", org: "Google", year: "2021" },
-  { title: "Human Centered Design", org: "IDEO.org", year: "2020" },
-  { title: "Design Thinking", org: "Interaction Design Foundation", year: "2020" },
-  { title: "Product Management", org: "Product School", year: "2019" },
-  { title: "Accessibility for Designers", org: "Deque University", year: "2022" },
 ];
 
 export const tools = [

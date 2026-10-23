@@ -2,31 +2,37 @@
 
 Measured on 23 Oct 2026 against a local production build (`vite preview`), Chrome headless, Lighthouse with its default simulated throttling. Local numbers are a guide; re-measure after deploying.
 
-## Lighthouse (home page)
+## Lighthouse (Porcelain & Ink build, second pass, premium branch)
 
-| | Performance | Accessibility | Best practices | SEO |
-|---|---|---|---|---|
-| Mobile | **84** | **100** | **100** | **100** |
-| Desktop | **99** | **100** | **100** | **100** |
+| Page | Device | Performance | Accessibility | Best practices | SEO | LCP | CLS | TBT |
+|---|---|---|---|---|---|---|---|---|
+| Home | Mobile | 82 | 100 | 100 | 100 | 4.6 s | 0 | 40–80 ms |
+| Home | Desktop | 93–96 | 100 | 100 | 100 | 1.4 s | 0 | 0–80 ms |
+| Oladoc case study (before the font change) | Mobile | 94 | 100 | 100 | 100 | 2.9 s | 0.001 | 10 ms |
+| Oladoc case study (before the font change) | Desktop | 100 | 100 | 100 | 100 | 0.8 s | 0.001 | 0 ms |
 
-| Metric | Mobile | Desktop |
-|---|---|---|
-| Largest Contentful Paint | 4.5 s | 0.9 s |
-| Cumulative Layout Shift | 0.017 | 0.005 |
-| Total Blocking Time | 60 ms | 0 ms |
-| First Contentful Paint | 1.6 s | 0.4 s |
+Scores move a few points between runs. Case-study pages were not re-run after the final font change; the change only affects how fonts load.
 
-(Re-measured after the final Teal & Gold theme.)
+- **Target missed on the home page:** mobile Performance is 82, below the 90 goal. The cost is first-load JavaScript (React, router, icons, about 77 KB gzipped): the page is rendered in the browser, so the first headline paints only after the script runs. Fixing that properly means pre-rendering the page at build time, which I did not do.
+- Layout shift went from 0.2 (mid-pass regression) to 0 by self-hosting the fonts, preloading the three important files and adding metric-matched fallbacks for all three families.
+- The first build of this redesign scored 57 on mobile.
+- Not audited with Lighthouse: the other film-based project pages and the five Behance-embed pages.
 
-- **Target missed:** mobile Performance is 84, below the 90 goal. The largest remaining cost is first-load JavaScript (React, router, icon set, about 77 KB gzipped) and Google Fonts loading on a simulated slow connection.
-- The first build of the redesign scored 57 on mobile; the gains came from removing the animation library, lazy-loading sections, metric-matched font fallbacks, and removing opacity animation from the first paragraph.
-- Lighthouse was run only on the home page. Project pages were not audited.
+## Responsive checks
+Run with puppeteer-core driving the installed Chrome at real device sizes (phone 390×844 at 2× pixel density with touch, tablet 820×1180, desktop 1440×900), scrolling the whole page so scroll reveals fire, then checking horizontal overflow, broken images, console errors and failed requests, and saving full-page screenshots.
 
-## Responsive checks (horizontal overflow)
-- Home page checked at 320, 375, 430, 768, 1024, 1440 and 1920 px: no horizontal overflow at any width. After the final theme, re-checked at 320, 375, 768 and 1920 px (not 430, 1024, 1440).
-- Rendered with headless Chrome at 1440 px (home page, a project page); layout, colours and type looked as intended. A 390 px render could not be taken that way because headless Chrome will not go narrower than about 500 px.
-- Oladoc project page checked at 320, 768 and 1440 px: no overflow. Not checked at 375, 430, 1024, 1920.
-- Visual inspection by screenshot at 1440 (light and dark), 375 and 1280. Not inspected visually at 320 and 768 beyond the overflow test.
+| Page | Phone | Tablet | Desktop |
+|---|---|---|---|
+| Home | no overflow, no broken images | no overflow, no broken images | no overflow, no broken images |
+| Oladoc case study | no overflow, no broken images | not run | no overflow, no broken images |
+| Marham case study | not run | no overflow, no broken images | no overflow, no broken images |
+| Zental case study | no overflow, no broken images | not run | not run |
+| Sehat Kahani case study | not run | no overflow, no broken images | not run |
+| Coffee (Behance-only page) | no overflow, no broken images | not run | not run |
+
+The only failed requests were the browser cancelling video downloads when a video scrolled out of view or was paused, which is normal. No JavaScript errors were logged. Earlier checks at 320 and 1920 px found no overflow on the home page and the Oladoc page.
+
+Screenshots of the final render are in `docs/screens/`.
 
 ## Accessibility checks performed
 - Lighthouse accessibility 100 (home page, mobile and desktop).

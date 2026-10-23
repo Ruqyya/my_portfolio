@@ -12,7 +12,7 @@ const rows = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="surface-deep relative z-10 pb-24 pt-24 md:pb-32 md:pt-32">
+    <section id="contact" className="surface-deep sheet pb-24 pt-24 md:pb-32 md:pt-32">
       <div className="mx-auto max-w-[88rem] px-5 md:px-10">
         <Reveal>
           <Eyebrow n="07">Contact</Eyebrow>

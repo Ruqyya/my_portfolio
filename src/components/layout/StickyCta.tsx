@@ -39,7 +39,7 @@ export default function StickyCta() {
       href={MAIL_HREF}
       aria-hidden={!show}
       tabIndex={show ? 0 : -1}
-      className={`fixed bottom-4 left-4 right-4 z-40 inline-flex h-14 items-center justify-center gap-3 rounded-full bg-[#f5dc95] px-7 font-semibold text-[#0a464e] shadow-xl shadow-black/25 transition-all duration-500 sm:left-auto sm:right-6 sm:w-auto ${
+      className={`fixed bottom-4 left-4 right-4 z-40 inline-flex h-14 items-center justify-center gap-3 rounded-full bg-[#c9aa7a] px-7 font-semibold text-[#0f1b21] shadow-xl shadow-black/25 transition-all duration-500 sm:left-auto sm:right-6 sm:w-auto ${
         show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"
       }`}
     >

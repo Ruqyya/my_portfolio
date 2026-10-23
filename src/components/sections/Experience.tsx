@@ -1,15 +1,15 @@
 import Eyebrow from "../ui/Eyebrow";
 import Reveal from "../ui/Reveal";
-import { experience, services, tools } from "../../data/content";
+import { education, experience } from "../../data/content";
 
 export default function Experience() {
   return (
     <>
-      <section id="experience" className="surface-tint relative z-10 py-24 md:py-32">
+      <section id="experience" className="surface-tint sheet pb-28 pt-24 md:pb-36 md:pt-32">
         <div className="mx-auto max-w-[88rem] px-5 md:px-10">
           <Reveal>
             <Eyebrow n="03">Experience</Eyebrow>
-            <h2 className="mt-6 max-w-3xl text-[clamp(2.3rem,5vw,4.3rem)] font-medium leading-[1.08]">
+            <h2 className="mt-6 max-w-3xl text-[clamp(2.5rem,5.4vw,4.8rem)] font-medium leading-[1.08]">
               Healthcare and SaaS products, <em className="text-forest">from research to shipped UI.</em>
             </h2>
             <p className="mono mt-6 text-ink-2">
@@ -49,32 +49,15 @@ export default function Experience() {
               </li>
             ))}
           </ol>
+          <Reveal className="mt-10">
+            <p className="mono text-ink-2">Education</p>
+            <p className="serif mt-2 text-2xl">
+              {education.degree}, {education.school} <span className="text-ink-2">· {education.years}</span>
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      <section id="capabilities" className="relative z-10 py-24 md:py-32">
-        <div className="mx-auto grid max-w-[88rem] gap-12 px-5 md:px-10 lg:grid-cols-12">
-          <Reveal className="lg:col-span-4">
-            <Eyebrow n="04">Capabilities</Eyebrow>
-            <h2 className="mt-6 text-[clamp(2.3rem,4.6vw,3.9rem)] font-medium leading-[1.08]">What I can take on.</h2>
-            <p className="mono mt-10 text-ink-2">Tools</p>
-            <p className="mt-3 text-ink-2">{tools.join(" · ")}</p>
-          </Reveal>
-          <div className="lg:col-span-8">
-            <ul className="grid gap-x-10 border-t border-line sm:grid-cols-2">
-              {services.map((s, i) => (
-                <li key={s.title} className="border-b border-line">
-                  <Reveal delay={(i % 4) * 0.04} className="py-5">
-                    <h3 className="text-xl font-medium md:text-2xl">{s.title}</h3>
-                    <p className="mt-1 text-sm text-ink-2">{s.description}</p>
-                  </Reveal>
-                </li>
-              ))}
-            </ul>
-            
-          </div>
-        </div>
-      </section>
     </>
   );
 }

@@ -5,25 +5,23 @@ import { MAIL_HREF, proof } from "../../data/contact";
 import portrait from "../../assets/ruqqya_img.png";
 
 const base = import.meta.env.BASE_URL;
+const img = (n: string) => `${base}case/oladoc/${n}.webp`;
 
-// Regions measured on the Oladoc cover image (percent of width/height).
+// The three "rooms" of the Oladoc product. Each one brings its real Figma screens to the front.
 const portals = [
   {
     id: "patient",
     label: "Patient app",
-    box: { x: 6.5, y: 41, w: 21, h: 57 },
     text: "Search by symptom, see verified cardiologists nearby, and book a slot.",
   },
   {
     id: "doctor",
     label: "Doctor portal",
-    box: { x: 28.5, y: 40, w: 32, h: 33 },
     text: "Today's appointments, the patient queue and quick actions in one morning view.",
   },
   {
     id: "desk",
     label: "Front desk",
-    box: { x: 62, y: 40, w: 32.5, h: 33 },
     text: "A live queue with check-in status, and a fast way to register a walk-in.",
   },
 ] as const;
@@ -57,6 +55,17 @@ function usePrefersReducedMotion() {
   return reduce;
 }
 
+// One layer in the screen stack. `on` lifts it to the front; the others recede.
+function Layer({ on, className, children }: { on: boolean; className: string; children: React.ReactNode }) {
+  return (
+    <div
+      className={`absolute transition-all duration-700 ease-out ${className} ${on ? "z-30 scale-[1.03] brightness-100" : "z-10 scale-100 brightness-[0.72] saturate-[0.85]"}`}
+    >
+      {children}
+    </div>
+  );
+}
+
 export default function Hero() {
   const reduce = usePrefersReducedMotion();
   const [active, setActive] = useState(0);
@@ -65,7 +74,7 @@ export default function Hero() {
 
   useEffect(() => {
     if (reduce || paused) return;
-    const t = setInterval(() => setActive((a) => (a + 1) % portals.length), 4200);
+    const t = setInterval(() => setActive((a) => (a + 1) % portals.length), 4600);
     return () => clearInterval(t);
   }, [reduce, paused]);
 
@@ -78,17 +87,22 @@ export default function Hero() {
   };
 
   const current = portals[active];
-  const cursor = { left: `${current.box.x + current.box.w - 6}%`, top: `${current.box.y + current.box.h - 8}%` };
+  // The design-tool cursor sits on the active layer
+  const cursorAt = [
+    { left: "17%", top: "52%" },
+    { left: "78%", top: "30%" },
+    { left: "88%", top: "70%" },
+  ][active];
 
   return (
-    <section id="top" ref={section} onPointerMove={light} className="surface-deep hero-canvas relative z-10 pt-28 md:pt-32">
-      <div className="mx-auto grid max-w-[88rem] gap-14 px-5 md:px-10 lg:grid-cols-12 lg:gap-8">
-        <div className="lg:col-span-7">
+    <section id="top" ref={section} onPointerMove={light} className="surface-deep hero-canvas relative z-10 pb-24 pt-28 md:pb-28 md:pt-32">
+      <div className="mx-auto grid max-w-[88rem] gap-14 px-5 md:px-10 lg:grid-cols-12 lg:items-start lg:gap-10">
+        <div className="lg:col-span-6">
           <p className="mono text-ink-2">Senior Product Designer · Healthcare &amp; SaaS UX</p>
 
           <h1
             aria-label="Healthcare software, designed for the patient, the doctor and the front desk."
-            className="mt-6 text-[clamp(2.8rem,5.5vw,5.4rem)] font-medium leading-[1.02]"
+            className="mt-6 text-[clamp(2.9rem,5.6vw,5.6rem)] font-medium leading-[1.02]"
           >
             <span aria-hidden>
               <Words text="Healthcare software, designed for" start={0.05} />
@@ -96,22 +110,21 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="rise mt-8 max-w-xl text-lg text-ink-2" style={{ animationDelay: "0.3s" }}>
-            I design patient apps, clinician portals and clinic websites for healthcare and SaaS teams, from the first research
-            conversation to the last screen.
+          <p className="rise mt-8 max-w-xl text-xl text-ink-2" style={{ animationDelay: "0.3s" }}>
+            I help healthcare and SaaS product teams turn complex workflows into products patients and clinicians trust, from the first
+            research conversation to production UI.
           </p>
 
-          {/* Conversion block: one clear primary action, one low-commitment alternative, then reassurance */}
           <div className="rise mt-10" style={{ animationDelay: "0.4s" }}>
             <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
               <a
                 href={MAIL_HREF}
-                className="group inline-flex h-14 items-center gap-3 rounded-full bg-forest px-7 font-semibold text-on-forest shadow-lg shadow-black/20 transition-transform hover:-translate-y-0.5"
+                className="group inline-flex h-14 items-center gap-3 rounded-full bg-forest px-8 text-lg font-semibold text-on-forest shadow-lg shadow-black/25 transition-transform hover:-translate-y-0.5"
               >
-                <Mail size={18} aria-hidden /> Email me about your project
+                <Mail size={20} aria-hidden /> Discuss a project
               </a>
-              <a href="#work" className="group inline-flex items-center gap-2 py-2 font-semibold">
-                <span className="link-draw">See the work</span>
+              <a href="#work" className="group inline-flex items-center gap-2 py-2 text-lg font-semibold">
+                <span className="link-draw">Explore my work</span>
                 <ArrowDown size={18} className="transition-transform group-hover:translate-y-0.5" />
               </a>
             </div>
@@ -128,7 +141,6 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Proof, quoted from LinkedIn */}
           <dl className="rise mt-12 grid max-w-2xl grid-cols-3 gap-4 border-t border-line pt-6" style={{ animationDelay: "0.5s" }}>
             {proof.map((p) => (
               <div key={p.value} className="flex flex-col-reverse">
@@ -142,64 +154,65 @@ export default function Hero() {
           </dl>
         </div>
 
-        {/* Signature piece: walk through the three rooms of one real product */}
+        {/* Signature piece: the same booking, seen from three seats. Real Figma screens. */}
         <figure
-          className="rise lg:col-span-5 lg:mt-6"
+          className="rise lg:col-span-6"
           style={{ animationDelay: "0.2s" }}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onFocusCapture={() => setPaused(true)}
           onBlurCapture={() => setPaused(false)}
         >
-          <div className="relative">
-            <div className="relative -rotate-1 border border-line bg-paper-2 p-3 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.55)] md:p-4">
-              <div className="relative overflow-hidden">
-                <img
-                  src={`${base}videos/oladoc-cover.jpg`}
-                  alt="Oladoc, designed end to end: a patient app, a doctor portal and a front desk screen shown side by side."
-                  width={1200}
-                  height={938}
-                  fetchPriority="high"
-                  decoding="async"
-                  className="block h-auto w-full"
-                />
-                {portals.map((p, i) => (
-                  <div
-                    key={p.id}
-                    aria-hidden
-                    className="pointer-events-none absolute transition-all duration-500"
-                    style={{
-                      left: `${p.box.x}%`,
-                      top: `${p.box.y}%`,
-                      width: `${p.box.w}%`,
-                      height: `${p.box.h}%`,
-                      outline: i === active ? "2px solid var(--signal)" : "2px solid transparent",
-                      outlineOffset: "4px",
-                      background: i === active ? "transparent" : "color-mix(in srgb, var(--paper) 50%, transparent)",
-                    }}
-                  />
-                ))}
-                {/* Design-tool cursor that moves to whichever portal is being described */}
-                <div aria-hidden className="pointer-events-none absolute z-10 transition-all duration-700 ease-out" style={cursor}>
-                  <svg width="22" height="22" viewBox="0 0 24 24" className="drop-shadow-md">
-                    <path d="M3 2l7.5 18 2.4-7.1L20 10.5 3 2z" fill="#f5dc95" stroke="#0a464e" strokeWidth="1.5" strokeLinejoin="round" />
-                  </svg>
-                  <span className="ml-4 -mt-1 inline-block whitespace-nowrap rounded-full rounded-tl-none bg-[#f5dc95] px-2.5 py-1 text-[10px] font-semibold text-[#0a464e] shadow">
-                    Ruqyya
-                  </span>
+          <div className="relative mx-auto aspect-[1.12/1] w-full max-w-[40rem]">
+            {/* soft stage */}
+            <div aria-hidden className="absolute inset-[6%] rounded-[2rem] bg-gradient-to-br from-white/[0.07] to-transparent ring-1 ring-white/10" />
+
+            <Layer on={active === 1} className="left-[12%] top-[2%] w-[84%]">
+              <div className="overflow-hidden rounded-xl border border-line bg-paper shadow-[0_40px_70px_-30px_rgba(0,0,0,0.7)]">
+                <div className="flex items-center gap-1.5 border-b border-line bg-paper-2 px-3 py-2" aria-hidden>
+                  <span className="h-2 w-2 rounded-full bg-line" />
+                  <span className="h-2 w-2 rounded-full bg-line" />
+                  <span className="h-2 w-2 rounded-full bg-line" />
+                  <span className="mono ml-3 text-ink-2">Doctor portal</span>
                 </div>
+                <img src={img("docdash")} alt="Oladoc doctor portal: the day's appointments and patient queue." width={1600} height={1046} fetchPriority="high" decoding="async" className="block h-auto w-full" />
               </div>
+            </Layer>
+
+            <Layer on={active === 2} className="right-0 top-[40%] w-[66%]">
+              <div className="overflow-hidden rounded-xl border border-line bg-paper shadow-[0_40px_70px_-30px_rgba(0,0,0,0.7)]">
+                <div className="flex items-center gap-1.5 border-b border-line bg-paper-2 px-3 py-2" aria-hidden>
+                  <span className="h-2 w-2 rounded-full bg-line" />
+                  <span className="h-2 w-2 rounded-full bg-line" />
+                  <span className="h-2 w-2 rounded-full bg-line" />
+                  <span className="mono ml-3 text-ink-2">Front desk</span>
+                </div>
+                <img src={img("frontdesk")} alt="Oladoc front desk: a live queue with check-in status on every row." width={1600} height={1046} decoding="async" className="block h-auto w-full" />
+              </div>
+            </Layer>
+
+            <Layer on={active === 0} className="bottom-[1%] left-[2%] w-[27%]">
+              <div className="rounded-[1.6rem] bg-[#0a1418] p-1.5 shadow-[0_40px_60px_-24px_rgba(0,0,0,0.75)] ring-1 ring-white/15">
+                <img src={img("sym")} alt="Oladoc patient app: search by symptom." width={700} height={1515} decoding="async" className="block h-auto w-full rounded-[1.3rem]" />
+              </div>
+            </Layer>
+            <Layer on={active === 0} className="bottom-[-2%] left-[26%] w-[22%]">
+              <div className="rounded-[1.4rem] bg-[#0a1418] p-1.5 shadow-[0_40px_60px_-24px_rgba(0,0,0,0.75)] ring-1 ring-white/15">
+                <img src={img("profile")} alt="Oladoc patient app: doctor profile with verification, rating and fee." width={700} height={1515} decoding="async" className="block h-auto w-full rounded-[1.1rem]" />
+              </div>
+            </Layer>
+
+            {/* Design-tool cursor that moves to whichever portal is being described */}
+            <div aria-hidden className="pointer-events-none absolute z-40 transition-all duration-700 ease-out" style={cursorAt}>
+              <svg width="22" height="22" viewBox="0 0 24 24" className="drop-shadow-md">
+                <path d="M3 2l7.5 18 2.4-7.1L20 10.5 3 2z" fill="#c9aa7a" stroke="#0f1b21" strokeWidth="1.5" strokeLinejoin="round" />
+              </svg>
+              <span className="ml-4 -mt-1 inline-block whitespace-nowrap rounded-full rounded-tl-none bg-[#c9aa7a] px-2.5 py-1 text-[10px] font-semibold text-[#0f1b21] shadow">Ruqyya</span>
             </div>
 
             {/* Portrait badge: puts a face next to the work */}
-            <div className="absolute -bottom-7 -left-3 flex items-center gap-3 rounded-full border border-line bg-paper py-2 pl-2 pr-5 shadow-xl shadow-black/30 md:-left-6">
-              <img
-                src={portrait}
-                alt="Portrait of Ruqyya"
-                width={56}
-                height={56}
-                className="h-14 w-14 rounded-full object-cover object-top ring-2 ring-[#f5dc95]"
-              />
+            <div className="absolute -bottom-9 right-0 z-40 flex items-center gap-3 rounded-full border border-line bg-paper py-2 pl-2 pr-5 shadow-xl shadow-black/30 md:right-4">
+              <img src={portrait} alt="Portrait of Ruqyya" width={56} height={56} className="h-14 w-14 rounded-full object-cover object-top ring-2 ring-[#c9aa7a]" />
               <span className="text-sm leading-tight">
                 <span className="serif block text-xl">Ruqyya</span>
                 <span className="mono text-ink-2">Lahore · Remote</span>
@@ -207,8 +220,8 @@ export default function Hero() {
             </div>
           </div>
 
-          <figcaption className="mt-14">
-            <p className="mono text-ink-2">Fig. 1 · Oladoc, three portals, one product</p>
+          <figcaption className="mt-16">
+            <p className="mono text-ink-2">Fig. 1 · Oladoc: three seats, one booking</p>
             <div role="tablist" aria-label="Portals in the Oladoc project" className="mt-4 flex flex-wrap gap-2">
               {portals.map((p, i) => (
                 <button
@@ -227,15 +240,15 @@ export default function Hero() {
                 </button>
               ))}
             </div>
-            <div id="portal-panel" role="tabpanel" aria-labelledby={`portal-tab-${current.id}`} aria-live="polite" className="mt-5 min-h-[4.5rem]">
-              <p className="serif text-xl leading-snug">{current.text}</p>
+            <div id="portal-panel" role="tabpanel" aria-labelledby={`portal-tab-${current.id}`} aria-live="polite" className="mt-5 min-h-[7.5rem]">
+              <p className="serif text-2xl leading-snug">{current.text}</p>
             </div>
             <p className="mono mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-ink-2">
               <span>47 screens</span>
               <span>3 portals</span>
               <span>4 journeys</span>
               <Link to="/work/oladoc-healthcare-app-ui-ux-design" className="link-draw inline-flex items-center gap-1 py-1 text-ink">
-                Read the project <ArrowUpRight size={14} />
+                Read the case study <ArrowUpRight size={14} />
               </Link>
             </p>
           </figcaption>

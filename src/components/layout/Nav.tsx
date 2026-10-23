@@ -5,9 +5,10 @@ import { useTheme } from "../../context/ThemeContext";
 import { MAIL_HREF } from "../../data/contact";
 
 const links = [
+  { to: "/#expertise", label: "Expertise" },
   { to: "/#work", label: "Work" },
-  { to: "/#approach", label: "Approach" },
   { to: "/#experience", label: "Experience" },
+  { to: "/#approach", label: "Process" },
   { to: "/#contact", label: "Contact" },
 ];
 
@@ -60,7 +61,7 @@ export default function Nav() {
             href={MAIL_HREF}
             className="hidden h-11 items-center rounded-full bg-forest px-5 text-sm font-semibold text-on-forest transition-transform hover:-translate-y-0.5 md:inline-flex"
           >
-            Email me
+            Discuss a project
           </a>
           <button
             type="button"
