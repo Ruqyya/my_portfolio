@@ -95,7 +95,7 @@ export default function Hero() {
   ][active];
 
   return (
-    <section id="top" ref={section} onPointerMove={light} className="surface-deep hero-canvas relative z-10 pb-24 pt-28 md:pb-28 md:pt-32">
+    <section id="top" ref={section} onPointerMove={light} className="surface-deep surface-gradient hero-canvas relative z-10 pb-24 pt-28 md:pb-28 md:pt-32">
       <div className="mx-auto grid max-w-[88rem] gap-x-10 gap-y-12 px-5 md:px-10 lg:grid-cols-12">
         <div className="relative z-30 lg:col-span-12">
           <p className="mono text-ink-2">Senior Product Designer · Healthcare &amp; SaaS</p>
@@ -170,7 +170,7 @@ export default function Hero() {
         >
           <div className="relative mx-auto aspect-[1.12/1] w-full max-w-[40rem] lg:ml-0 lg:mr-[-3vw] lg:max-w-none">
             {/* soft stage */}
-            <div aria-hidden className="absolute inset-[6%] rounded-[2rem] bg-paper-2 ring-1 ring-line" />
+            <div aria-hidden className="absolute inset-[6%] rounded-[2rem] bg-white/[0.05] ring-1 ring-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]" />
 
             <Layer on={active === 1} className="left-[12%] top-[2%] w-[84%]">
               <div className="overflow-hidden rounded-xl border border-line bg-paper shadow-[0_40px_70px_-30px_rgba(0,0,0,0.7)]">

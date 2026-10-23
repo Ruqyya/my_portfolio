@@ -337,3 +337,30 @@ body {
 /* Heartbeat line: draws in once, then a faint pulse travels along it */
 .ecg-line { stroke-dasharray: 1; stroke-dashoffset: 1; animation: ecg-draw 1.6s 0.6s var(--ease-out-expo) forwards; }
 @keyframes ecg-draw { to { stroke-dashoffset: 0; } }
+
+/* Goddard-inspired depth: deep navy, ocean blue, a teal bloom in one corner.
+   Stops sampled from the Goddard cover (#0A2A59 / #0F5974 / #159797), the navy deepened for text.
+   Used on the hero and the contact section only. Text zones sit on navy; teal never sits behind small text.
+   Contrast on the stops: white 15.0 (navy), 12.7 (mid), 7.8 (ocean); #C9D6E3 body text 10.2 / 8.6 / 5.3. */
+:root { --aqua: #a0f2ed; }
+.surface-gradient {
+  --paper: #0a2552;
+  --paper-2: #0e3363;
+  --ink-2: #c9d6e3;
+  --line: rgba(160, 242, 237, 0.2);
+  --line-strong: rgba(201, 214, 227, 0.5);
+  background:
+    radial-gradient(22rem 26rem at 108% 6%, rgba(21, 151, 151, 0.9), rgba(17, 138, 145, 0.45) 42%, transparent 72%),
+    linear-gradient(118deg, #0a2552 0%, #0b3361 54%, #0e4468 100%);
+}
+@media (min-width: 1024px) {
+  .surface-gradient {
+    background:
+      radial-gradient(56rem 44rem at 104% 14%, rgba(21, 151, 151, 0.9), rgba(17, 138, 145, 0.5) 40%, transparent 72%),
+      radial-gradient(40rem 30rem at 78% 96%, rgba(15, 89, 116, 0.55), transparent 70%),
+      linear-gradient(118deg, #0a2552 0%, #0b3361 52%, #0d4266 100%);
+  }
+}
+/* Soft Aqua for headline highlights on dark surfaces (cyan stays on actions, marks and the heartbeat line) */
+.surface-deep h1 .italic, .surface-deep h2 em, .surface-deep h3 em, .surface-deep .accent-italic { color: var(--aqua); }
+.surface-gradient.hero-canvas::after { background: radial-gradient(360px circle at var(--mx) var(--my), rgba(160, 242, 237, 0.07), transparent 65%); }
