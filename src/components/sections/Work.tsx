@@ -35,6 +35,20 @@ function Label({ children }: { children: React.ReactNode }) {
   return <dt className="mono text-signal">{children}</dt>;
 }
 
+// Three short facts, never a paragraph: the problem, my role, the decision that mattered.
+function Facts({ items, cols = "sm:grid-cols-3" }: { items: [string, React.ReactNode][]; cols?: string }) {
+  return (
+    <dl className={`grid gap-x-8 gap-y-5 border-t border-line pt-6 ${cols}`}>
+      {items.map(([k, v]) => (
+        <div key={k}>
+          <Label>{k}</Label>
+          <dd className="mt-1.5 text-lg leading-snug">{v}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
 function Actions({ p, accent, hasFilm }: { p: Project; accent: string; hasFilm: boolean }) {
   return (
     <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -65,7 +79,7 @@ function Stage({ children, accent, className = "" }: { children: React.ReactNode
 
 /* 01 · Oladoc: the stage comes first, wide, with the story laid out underneath in four columns */
 function OladocStory() {
-  const { p, s, d, role, delivers } = useStory(OLADOC, 0);
+  const { p, s, d } = useStory(OLADOC, 0);
   const accent = "#FCA025";
   const lead = proof[0];
   return (
@@ -82,7 +96,7 @@ function OladocStory() {
               <Link to={`/work/${p.slug}`} className="link-draw">One booking, seen from <em className="text-forest">three seats.</em></Link>
             </h3>
           </div>
-          <p className="text-xl leading-relaxed text-ink-2 lg:col-span-4">{p.title}. {s.summary}</p>
+          <p className="text-xl leading-snug text-ink-2 lg:col-span-4">{p.title}</p>
         </div>
 
         <Stage accent={accent} className="mt-10 px-4 pb-12 pt-8 md:px-14 md:pb-20 md:pt-14">
@@ -105,38 +119,15 @@ function OladocStory() {
           </div>
         </Stage>
 
-        <dl className="mt-12 grid gap-x-10 gap-y-8 border-t border-line pt-10 md:grid-cols-2 xl:grid-cols-4">
-          <div>
-            <Label>The problem</Label>
-            <dd className="mt-2 text-lg leading-relaxed">{s.tldr?.problem}</dd>
-          </div>
-          <div>
-            <Label>My role</Label>
-            <dd className="mt-2 text-lg leading-relaxed">{role}</dd>
-          </div>
-          {d && (
-            <div>
-              <Label>The key decision</Label>
-              <dd className="mt-2 text-lg leading-relaxed">
-                <span className="serif block text-2xl leading-snug">{d.title}.</span>
-                <span className="mt-1 block text-ink-2">{d.text}</span>
-              </dd>
-            </div>
-          )}
-          <div>
-            <Label>What it delivers</Label>
-            <dd className="mt-2">
-              <ul className="space-y-2 text-lg leading-snug">
-                {delivers.map((t) => (
-                  <li key={t} className="flex gap-3">
-                    <span aria-hidden className="mt-[0.8em] h-px w-4 shrink-0" style={{ background: accent }} />
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </dd>
-          </div>
-        </dl>
+        <div className="mt-10">
+          <Facts
+            items={[
+              ["The problem", "Patients can't tell which doctor to see, and clinic staff worked in tools built only for doctors."],
+              ["My role", "UX and UI design, end to end"],
+              ["Key decision", d ? d.title : ""],
+            ]}
+          />
+        </div>
 
         <div className="mt-10 flex flex-col gap-8 border-t border-line pt-8 md:flex-row md:items-center md:justify-between">
           <p className="flex items-baseline gap-4">
@@ -155,7 +146,7 @@ function OladocStory() {
 
 /* 02 · Marham: a real before and after you can drag, with the story beside it */
 function MarhamStory() {
-  const { p, s, d, role, delivers } = useStory(MARHAM, 3);
+  const { p, s, d } = useStory(MARHAM, 3);
   const accent = "#3CC2B5";
   return (
     <Reveal>
@@ -172,29 +163,16 @@ function MarhamStory() {
             </h3>
             <p className="mt-4 text-xl text-ink-2">{p.title}</p>
 
-            <dl className="mt-8 space-y-6 border-t border-line pt-7">
-              <div>
-                <Label>The problem</Label>
-                <dd className="mt-2 text-lg leading-relaxed">{s.tldr?.problem}</dd>
-              </div>
-              <div>
-                <Label>My role</Label>
-                <dd className="mt-2 text-lg leading-relaxed">{role}</dd>
-              </div>
-              {d && (
-                <div>
-                  <Label>The key decision</Label>
-                  <dd className="mt-2 text-lg leading-relaxed">
-                    <span className="serif text-2xl">{d.title}.</span> <span className="text-ink-2">{d.text}</span>
-                  </dd>
-                </div>
-              )}
-            </dl>
-            <ul className="mt-7 flex flex-wrap gap-2">
-              {delivers.map((t) => (
-                <li key={t} className="rounded-full border border-line px-4 py-2 text-base">{t}</li>
-              ))}
-            </ul>
+            <div className="mt-8">
+              <Facts
+                cols="sm:grid-cols-1"
+                items={[
+                  ["The problem", "An outdated design that did not build trust, with weak hierarchy across devices."],
+                  ["My role", "UI/UX design: website and mobile layouts"],
+                  ["Key decision", d ? d.title : ""],
+                ]}
+              />
+            </div>
             <div className="mt-9">
               <Actions p={p} accent={accent} hasFilm={Boolean(s.video)} />
             </div>
@@ -217,7 +195,7 @@ function MarhamStory() {
 
 /* 03 · Sehat Kahani: led by the decision, with a big screen and the responsive set */
 function SehatStory() {
-  const { p, s, d, role, delivers } = useStory(SEHAT, 0);
+  const { p, s, d } = useStory(SEHAT, 0);
   const accent = "#B4DC4A";
   return (
     <Reveal>
@@ -256,28 +234,18 @@ function SehatStory() {
               <blockquote className="mt-8 border-l-2 pl-6" style={{ borderColor: accent }}>
                 <p className="mono text-signal">The key decision</p>
                 <p className="serif mt-2 text-[clamp(1.6rem,2.4vw,2.2rem)] leading-snug">{d.title}.</p>
-                <p className="mt-2 text-lg leading-relaxed text-ink-2">{d.text}</p>
               </blockquote>
             )}
 
-            <dl className="mt-8 grid gap-6 sm:grid-cols-2">
-              <div>
-                <Label>The problem</Label>
-                <dd className="mt-2 text-lg leading-relaxed">{s.tldr?.problem}</dd>
-              </div>
-              <div>
-                <Label>My role</Label>
-                <dd className="mt-2 text-lg leading-relaxed">{role}</dd>
-              </div>
-            </dl>
-            <ul className="mt-7 space-y-2 text-lg">
-              {delivers.map((t) => (
-                <li key={t} className="flex gap-3">
-                  <span aria-hidden className="mt-[0.8em] h-px w-4 shrink-0" style={{ background: accent }} />
-                  {t}
-                </li>
-              ))}
-            </ul>
+            <div className="mt-8">
+              <Facts
+                cols="sm:grid-cols-2"
+                items={[
+                  ["The problem", "Little clarity or trust, and a slow path to a doctor."],
+                  ["My role", "UI/UX design: homepage, consultation journey, mobile"],
+                ]}
+              />
+            </div>
             <div className="mt-9">
               <Actions p={p} accent={accent} hasFilm={Boolean(s.video)} />
             </div>
@@ -317,7 +285,7 @@ function GalleryCard({ project, n, big }: { project: Project; n: number; big: bo
         <h3 className={`mt-2 font-medium leading-[1.12] ${big ? "text-[clamp(1.7rem,2.6vw,2.5rem)]" : "text-[clamp(1.5rem,2vw,1.9rem)]"}`}>
           <span className="link-draw">{project.title}</span>
         </h3>
-        <p className="mt-3 max-w-xl text-lg leading-relaxed text-ink-2">{project.summary}</p>
+        
       </Link>
     </article>
   );
@@ -337,7 +305,7 @@ export default function Work() {
               Three products, <em className="text-forest">and the thinking behind them.</em>
             </h2>
             <p className="mt-6 max-w-2xl text-xl leading-relaxed text-ink-2">
-              Each story starts with the problem, shows my role and the decision that mattered most, then the design that came out of it.
+              The problem, my role, the decision that mattered.
             </p>
           </Reveal>
           <div className="mt-16 space-y-10 md:mt-20 md:space-y-14">

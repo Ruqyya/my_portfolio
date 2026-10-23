@@ -19,18 +19,7 @@ export default function Contact() {
           <h2 className="mt-6 max-w-5xl text-[clamp(3rem,8vw,7.4rem)] font-medium leading-[1]">
             Let's talk about your <em className="text-forest">product.</em>
           </h2>
-          <p className="mt-8 max-w-2xl text-xl leading-relaxed text-ink-2">
-            Tell me what you are building and who it is for. I reply within one business day, from Lahore, and work with teams in any
-            time zone.
-          </p>
-          <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-ink-2">
-            {["What you are building", "Who it is for", "When you need it"].map((t) => (
-              <li key={t} className="flex items-center gap-2">
-                <span aria-hidden className="text-forest">✦</span>
-                {t}
-              </li>
-            ))}
-          </ul>
+          <p className="mt-8 max-w-xl text-xl leading-snug text-ink-2">Tell me what you are building. I reply within one business day.</p>
         </Reveal>
 
         <Reveal delay={0.1}>
@@ -44,16 +33,14 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={0.12}>
-          <ol className="mt-12 grid gap-6 md:grid-cols-3">
-            {[
-              ["You write", "A few lines on what you are building, who it is for and when you need it."],
-              ["I reply", "Within one business day, with questions or a short call to understand the product."],
-              ["You get a proposal", "A fixed cost and timeline, so there are no surprises."],
-            ].map(([k, v], i) => (
-              <li key={k} className="rounded-2xl border border-line p-6">
-                <span className="mono text-signal">{String(i + 1).padStart(2, "0")}</span>
-                <p className="serif mt-2 text-2xl">{k}</p>
-                <p className="mt-2 text-lg leading-relaxed text-ink-2">{v}</p>
+          <ol className="mt-12 flex flex-wrap items-center gap-x-4 gap-y-3 text-lg">
+            {["You write", "I reply in a day", "You get a proposal"].map((k, i) => (
+              <li key={k} className="flex items-center gap-4">
+                <span className="inline-flex items-center gap-3 rounded-full border border-line px-5 py-2.5">
+                  <span className="mono text-signal">{String(i + 1).padStart(2, "0")}</span>
+                  {k}
+                </span>
+                {i < 2 && <span aria-hidden className="h-px w-8 bg-[var(--line-strong)]" />}
               </li>
             ))}
           </ol>

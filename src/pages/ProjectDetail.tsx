@@ -275,23 +275,15 @@ export default function ProjectDetail() {
                 {s.research.text && <H2>{s.research.text}</H2>}
               </Reveal>
               {s.research.documented && (
-                <Reveal className="mt-10 grid gap-5 md:grid-cols-2">
-                  <div className="rounded-2xl border border-line p-6">
-                    <p className="mono text-signal">Documented in the project files</p>
-                    <ul className="mt-3 space-y-2 text-lg leading-snug">
-                      {s.research.documented.map((t) => (
-                        <li key={t} className="flex gap-3"><Check size={18} className="mt-1 shrink-0 text-forest" aria-hidden />{t}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="rounded-2xl border border-dashed border-[var(--line-strong)] p-6">
-                    <p className="mono text-ink-2">Not documented, so not claimed</p>
-                    <ul className="mt-3 space-y-2 text-lg leading-snug text-ink-2">
-                      {(s.research.notDocumented ?? []).map((t) => (
-                        <li key={t} className="flex gap-3"><span aria-hidden className="mt-[0.8em] h-px w-4 shrink-0 bg-[var(--line-strong)]" />{t}</li>
-                      ))}
-                    </ul>
-                  </div>
+                <Reveal className="mt-8 flex flex-wrap items-center gap-2">
+                  <span className="mono mr-1 text-signal">Documented</span>
+                  {["Persona", "Empathy maps", "Journey map", "Information architecture"].map((t) => (
+                    <span key={t} className="inline-flex items-center gap-1.5 rounded-full border border-line px-4 py-2 text-base"><Check size={16} className="text-forest" aria-hidden />{t}</span>
+                  ))}
+                  <span className="mono ml-3 mr-1 text-ink-2">Not documented</span>
+                  {(s.research.notDocumented ?? []).map((t) => (
+                    <span key={t} className="rounded-full border border-dashed border-[var(--line-strong)] px-4 py-2 text-base text-ink-2">{t}</span>
+                  ))}
                 </Reveal>
               )}
               {s.research.documented && s.research.insights && (

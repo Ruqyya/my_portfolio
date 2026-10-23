@@ -4,10 +4,8 @@ import Annotated from "./Annotated";
 
 const rows = [
   ["problem", "Problem"],
-  ["evidence", "Evidence"],
   ["decision", "Design decision"],
   ["benefit", "Intended benefit"],
-  ["outcome", "Verified outcome"],
 ] as const;
 
 // Each decision as a record, so the reasoning is as visible as the screen: problem, evidence, decision, intended benefit, outcome.
@@ -29,10 +27,15 @@ export default function DecisionRecords({ decisions }: { decisions: Decision[] }
                     {rows.map(([k, label]) => (
                       <div key={k} className="grid gap-1 py-4 sm:grid-cols-[8.5rem_1fr] sm:gap-5">
                         <dt className="mono pt-1 text-signal">{label}</dt>
-                        <dd className={`text-lg leading-relaxed ${k === "outcome" ? "text-ink-2" : ""} ${k === "decision" ? "font-medium" : ""}`}>{d.record![k]}</dd>
+                        <dd className={`text-lg leading-relaxed ${k === "decision" ? "font-medium" : ""}`}>{d.record![k]}</dd>
                       </div>
                     ))}
                   </dl>
+                )}
+                {d.record && (
+                  <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-dashed border-[var(--line-strong)] px-4 py-2 text-base text-ink-2">
+                    <span className="mono text-signal">Outcome</span> Not measured
+                  </p>
                 )}
                 {d.record?.tradeoff && (
                   <p className="mt-6 rounded-2xl bg-paper-2 p-5 text-lg leading-relaxed">

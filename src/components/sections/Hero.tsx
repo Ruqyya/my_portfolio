@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowDown, ArrowUpRight, Mail } from "lucide-react";
 import { MAIL_HREF, proof } from "../../data/contact";
+import { projects } from "../../data/projects";
 import portrait from "../../assets/ruqqya_img.png";
 
 const base = import.meta.env.BASE_URL;
@@ -26,8 +27,8 @@ const portals = [
   },
 ] as const;
 
-// Real projects, shown as a moving credit line under the hero.
-const credits = ["Oladoc", "Marham.pk", "Shumaila's London", "Sehat Kahani", "Zental", "Goddard Veterinary", "Mint Dental", "Victoria Road Dental", "Bond Vet", "Lumina Dental"];
+// Real projects with a film, shown as a drifting strip of covers under the hero.
+const strip = projects.filter((p) => p.study.video);
 
 function Words({ text, start, className = "" }: { text: string; start: number; className?: string }) {
   return (
@@ -84,6 +85,8 @@ export default function Hero() {
     const r = section.current.getBoundingClientRect();
     section.current.style.setProperty("--mx", `${e.clientX - r.left}px`);
     section.current.style.setProperty("--my", `${e.clientY - r.top}px`);
+    section.current.style.setProperty("--ry", `${((e.clientX - r.left) / r.width - 0.5) * 7}deg`);
+    section.current.style.setProperty("--rx", `${-((e.clientY - r.top) / r.height - 0.5) * 5}deg`);
   };
 
   const current = portals[active];
@@ -99,67 +102,65 @@ export default function Hero() {
       id="top"
       ref={section}
       onPointerMove={light}
+      onPointerLeave={() => section.current && ["--rx", "--ry"].forEach((k) => section.current!.style.setProperty(k, "0deg"))}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
-      className="surface-deep surface-hero hero-canvas relative z-10 pb-24 pt-28 md:pb-28 md:pt-36"
+      className="surface-deep surface-hero hero-canvas relative z-10 pb-20 pt-28 md:pb-24 md:pt-32"
     >
-      <div className="mx-auto grid max-w-[88rem] gap-x-12 gap-y-16 px-5 md:px-10 lg:grid-cols-12 lg:items-center">
-        <div className="relative z-30 lg:col-span-7">
-          <p className="mono flex items-center gap-3 text-ink-2"><span aria-hidden className="rule-champagne h-px w-10" />Senior Product Designer · Healthcare &amp; SaaS</p>
+      <div className="mx-auto grid max-w-[88rem] gap-x-10 gap-y-14 px-5 md:px-10 lg:min-h-[calc(100svh-9rem)] lg:grid-cols-12 lg:items-center">
+        <div className="relative z-30 lg:col-span-6">
+          <p className="mono flex items-center gap-3 text-ink-2">
+            <span aria-hidden className="rule-champagne h-px w-10" />
+            Senior Product Designer · Healthcare &amp; SaaS
+          </p>
           <h1
             aria-label="Complex healthcare products. Clearer human experiences."
-            className="mt-6 text-[clamp(2.7rem,5.7vw,6rem)] font-medium leading-[1.02] tracking-[-0.025em]"
+            className="mt-6 text-[clamp(3rem,6.4vw,6.6rem)] font-medium leading-[0.98] tracking-[-0.03em]"
           >
             <span aria-hidden>
-              <span className="block"><Words text="Complex healthcare products." start={0.05} /></span>
-              <span className="block italic text-forest"><Words text="Clearer human experiences." start={0.3} /></span>
+              <span className="block"><Words text="Complex healthcare" start={0.05} /></span>
+              <span className="block"><Words text="products." start={0.2} /></span>
+              <span className="block italic text-forest"><Words text="Clearer human experiences." start={0.35} /></span>
             </span>
           </h1>
 
-          <p className="rise mt-8 max-w-xl text-xl leading-relaxed text-ink-2" style={{ animationDelay: "0.3s" }}>
-            I help healthcare and SaaS teams turn complicated workflows into clear, accessible products, from the first research
-            conversation to production-ready UI.
+          <p className="rise mt-7 max-w-md text-xl leading-snug text-ink-2" style={{ animationDelay: "0.3s" }}>
+            Product design for healthcare and SaaS teams, from research to shipped UI.
           </p>
 
-          <div className="rise mt-10" style={{ animationDelay: "0.4s" }}>
-            <div className="flex flex-wrap items-center gap-4">
-              <a
-                href="#work"
-                className="group inline-flex h-14 items-center gap-3 rounded-full bg-forest px-8 text-lg font-semibold text-on-forest transition-colors hover:bg-[var(--forest-hover)]"
-              >
-                Explore My Work
-                <ArrowDown size={18} className="transition-transform group-hover:translate-y-0.5" aria-hidden />
-              </a>
-              <a
-                href={MAIL_HREF}
-                className="inline-flex h-14 items-center gap-3 rounded-full border border-[var(--line-strong)] px-8 text-lg font-semibold transition-colors hover:border-forest hover:text-forest"
-              >
-                <Mail size={20} aria-hidden /> Discuss a Project
-              </a>
-            </div>
-            <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-base text-ink-2">
-              <span className="inline-flex items-center gap-2">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent)] opacity-50" aria-hidden />
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--accent)]" aria-hidden />
-                </span>
-                Open to new projects
-              </span>
-              <span>Replies within one business day</span>
-              <span>Remote, any time zone</span>
-            </p>
+          <div className="rise mt-9 flex flex-wrap items-center gap-4" style={{ animationDelay: "0.4s" }}>
+            <a
+              href="#work"
+              className="group inline-flex h-14 items-center gap-3 rounded-full bg-forest px-8 text-lg font-semibold text-on-forest transition-colors hover:bg-[var(--forest-hover)]"
+            >
+              Explore My Work
+              <ArrowDown size={18} className="transition-transform group-hover:translate-y-0.5" aria-hidden />
+            </a>
+            <a
+              href={MAIL_HREF}
+              className="inline-flex h-14 items-center gap-3 rounded-full border border-[var(--line-strong)] px-8 text-lg font-semibold transition-colors hover:border-forest hover:text-forest"
+            >
+              <Mail size={20} aria-hidden /> Discuss a Project
+            </a>
           </div>
+          <p className="rise mt-6 inline-flex items-center gap-2 text-base text-ink-2" style={{ animationDelay: "0.5s" }}>
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent)] opacity-50" aria-hidden />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--accent)]" aria-hidden />
+            </span>
+            Open to new projects · Remote, any time zone
+          </p>
         </div>
 
-        {/* The same booking, seen from three seats. Real Oladoc Figma screens; the tabs bring each room forward. */}
-        <figure className="rise relative z-10 lg:col-span-5" style={{ animationDelay: "0.2s" }}>
-          <div className="relative mx-auto aspect-[1.04/1] w-full max-w-[36rem]">
+        {/* The same booking, seen from three seats. Real Oladoc Figma screens; the stack tilts with the pointer and the tabs bring each room forward. */}
+        <figure className="rise relative z-10 lg:col-span-6" style={{ animationDelay: "0.2s" }}>
+          <div className="hero-tilt relative mx-auto aspect-[1.04/1] w-full max-w-[40rem]">
             <div aria-hidden className="absolute inset-0 rounded-[2rem] stage-gradient" />
 
             <Layer on={active === 1} className="left-[10%] top-[8%] w-[78%]">
-              <div className="overflow-hidden rounded-xl border border-line bg-paper shadow-[0_30px_50px_-26px_rgba(36,60,57,0.35)]">
+              <div className="overflow-hidden rounded-xl border border-line bg-paper shadow-[0_30px_50px_-26px_rgba(0,0,0,0.5)]">
                 <div className="flex items-center gap-1.5 border-b border-line bg-paper-2 px-3 py-2" aria-hidden>
                   <span className="h-2 w-2 rounded-full bg-line" />
                   <span className="h-2 w-2 rounded-full bg-line" />
@@ -171,7 +172,7 @@ export default function Hero() {
             </Layer>
 
             <Layer on={active === 2} className="right-[5%] top-[47%] w-[60%]">
-              <div className="overflow-hidden rounded-xl border border-line bg-paper shadow-[0_30px_50px_-26px_rgba(36,60,57,0.35)]">
+              <div className="overflow-hidden rounded-xl border border-line bg-paper shadow-[0_30px_50px_-26px_rgba(0,0,0,0.5)]">
                 <div className="flex items-center gap-1.5 border-b border-line bg-paper-2 px-3 py-2" aria-hidden>
                   <span className="h-2 w-2 rounded-full bg-line" />
                   <span className="h-2 w-2 rounded-full bg-line" />
@@ -183,15 +184,23 @@ export default function Hero() {
             </Layer>
 
             <Layer on={active === 0} className="bottom-[1%] left-[1%] w-[28%]">
-              <div className="rounded-[1.6rem] bg-[var(--bezel)] p-1.5 shadow-[0_30px_50px_-26px_rgba(36,60,57,0.4)]">
+              <div className="rounded-[1.6rem] bg-[var(--bezel)] p-1.5 shadow-[0_30px_50px_-26px_rgba(0,0,0,0.6)]">
                 <img src={img("sym")} alt="Oladoc patient app: search by symptom." width={700} height={1515} decoding="async" className="block h-auto w-full rounded-[1.3rem]" />
               </div>
             </Layer>
             <Layer on={active === 0} className="bottom-[-2%] left-[27%] w-[23%]">
-              <div className="rounded-[1.4rem] bg-[var(--bezel)] p-1.5 shadow-[0_30px_50px_-26px_rgba(36,60,57,0.4)]">
+              <div className="rounded-[1.4rem] bg-[var(--bezel)] p-1.5 shadow-[0_30px_50px_-26px_rgba(0,0,0,0.6)]">
                 <img src={img("profile")} alt="Oladoc patient app: doctor profile with verification, rating and fee." width={700} height={1515} decoding="async" className="block h-auto w-full rounded-[1.1rem]" />
               </div>
             </Layer>
+
+            {/* Floating details lifted from the real screens */}
+            <span aria-hidden className="hero-float absolute -left-2 top-[3%] z-40 hidden items-center gap-2 rounded-full bg-[#f7fafc] px-4 py-2 text-base font-semibold text-[#0a2552] shadow-xl sm:inline-flex">
+              <span className="grid h-5 w-5 place-items-center rounded-full bg-[#16a34a] text-[11px] text-white">✓</span> PMDC verified
+            </span>
+            <span aria-hidden className="hero-float hero-float-b absolute -right-2 top-[36%] z-40 hidden rounded-full bg-[#f7fafc] px-4 py-2 text-base font-semibold text-[#0a2552] shadow-xl sm:inline-block">
+              Total Rs 1,700
+            </span>
 
             {/* Design-tool cursor that moves to whichever portal is being described */}
             <div aria-hidden className="pointer-events-none absolute z-40 transition-all duration-700 ease-out" style={cursorAt}>
@@ -201,8 +210,8 @@ export default function Hero() {
               <span className="ml-4 -mt-1 inline-block whitespace-nowrap rounded-full rounded-tl-none bg-[var(--accent)] px-2.5 py-1 text-[11px] font-semibold text-[var(--on-accent)] shadow-sm">Ruqyya</span>
             </div>
 
-            {/* Portrait badge: puts a face next to the work */}
-            <div className="absolute -bottom-9 right-0 z-40 flex items-center gap-3 rounded-full border border-line bg-paper py-2 pl-2 pr-5 shadow-[0_16px_30px_-18px_rgba(36,60,57,0.4)] md:right-2">
+            {/* Portrait badge */}
+            <div className="absolute -bottom-9 right-0 z-40 flex items-center gap-3 rounded-full border border-line bg-paper py-2 pl-2 pr-5 shadow-[0_16px_30px_-18px_rgba(0,0,0,0.5)] md:right-2">
               <span className="portrait-disc h-14 w-14 shrink-0 overflow-hidden rounded-full ring-2 ring-[var(--paper)]"><img src={portrait} alt="Portrait of Ruqyya" width={56} height={56} className="h-full w-full object-cover object-top" /></span>
               <span className="text-base leading-tight">
                 <span className="serif block text-xl">Ruqyya</span>
@@ -211,9 +220,8 @@ export default function Hero() {
             </div>
           </div>
 
-          <figcaption className="mt-16">
-            <p className="mono text-ink-2">Oladoc: three seats, one booking</p>
-            <div role="tablist" aria-label="Portals in the Oladoc project" className="mt-4 flex flex-wrap gap-2">
+          <figcaption className="mt-14 flex flex-wrap items-center gap-x-4 gap-y-3">
+            <div role="tablist" aria-label="Portals in the Oladoc project" className="flex flex-wrap gap-2">
               {portals.map((p, i) => (
                 <button
                   key={p.id}
@@ -231,54 +239,60 @@ export default function Hero() {
                 </button>
               ))}
             </div>
-            <div id="portal-panel" role="tabpanel" aria-labelledby={`portal-tab-${current.id}`} aria-live="polite" className="mt-5 min-h-[5.5rem]">
-              <p className="serif text-2xl leading-snug">{current.text}</p>
-            </div>
             <Link to="/work/oladoc-healthcare-app-ui-ux-design" className="link-draw mono inline-flex items-center gap-1 py-1 text-signal">
-              Read the Oladoc case study <ArrowUpRight size={14} />
+              Oladoc case study <ArrowUpRight size={14} />
             </Link>
+            <p id="portal-panel" role="tabpanel" aria-labelledby={`portal-tab-${current.id}`} aria-live="polite" className="sr-only">{current.text}</p>
           </figcaption>
         </figure>
+      </div>
 
-        {/* Proof strip: a line from the LinkedIn banner runs the full width and ends in three figures taken from LinkedIn */}
-        <div className="relative z-30 lg:col-span-12">
-          <div aria-hidden className="flex items-center">
-            <span className="ecg-rule h-0.5 rounded-full" style={{ flexGrow: 30 }} />
-            <svg viewBox="0 0 72 40" className="h-10 w-[4.5rem] shrink-0 overflow-visible" fill="none">
-              <path className="ecg-line" d="M0 20 H12 l10 -16 l12 32 l12 -26 l8 10 H72" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" pathLength="1" />
-            </svg>
-            <span className="ecg-rule h-0.5 rounded-full" style={{ flexGrow: 70 }} />
-          </div>
-          <dl className="rise mt-8 grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-3" style={{ animationDelay: "0.5s" }}>
-            {proof.map((p) => (
-              <div key={p.value} className="flex flex-col-reverse">
-                <dt className="mt-2 text-base leading-snug text-ink-2 sm:text-lg">
-                  {p.label}
-                  <span className="mono mt-1 block normal-case tracking-normal">{p.source}</span>
-                </dt>
-                <dd className="serif text-5xl font-medium text-forest md:text-6xl">{p.value}</dd>
-              </div>
-            ))}
-          </dl>
+      {/* Proof: three figures taken from LinkedIn */}
+      <div className="relative z-30 mx-auto mt-16 max-w-[88rem] px-5 md:mt-20 md:px-10">
+        <div aria-hidden className="flex items-center">
+          <span className="ecg-rule h-0.5 rounded-full" style={{ flexGrow: 30 }} />
+          <svg viewBox="0 0 72 40" className="h-10 w-[4.5rem] shrink-0 overflow-visible" fill="none">
+            <path className="ecg-line" d="M0 20 H12 l10 -16 l12 32 l12 -26 l8 10 H72" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" pathLength="1" />
+          </svg>
+          <span className="ecg-rule h-0.5 rounded-full" style={{ flexGrow: 70 }} />
+        </div>
+        <dl className="rise mt-6 grid grid-cols-3 gap-4 md:gap-10" style={{ animationDelay: "0.5s" }}>
+          {proof.map((p) => (
+            <div key={p.value} className="flex flex-col-reverse">
+              <dt className="mt-1 text-sm leading-snug text-ink-2 md:text-lg">
+                {p.label}
+                <span className="mono mt-1 hidden normal-case tracking-normal md:block">{p.source}</span>
+              </dt>
+              <dd className="serif text-[clamp(2.4rem,6vw,5rem)] font-medium leading-none text-forest">{p.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      {/* Film strip of real projects: covers drift past, each one links to its case study */}
+      <div className="relative mt-16 overflow-hidden py-2 md:mt-20" aria-label="Selected projects">
+        <div className="marquee marquee-fast flex w-max items-center gap-5 px-3">
+          {[...strip, ...strip].map((p, i) => (
+            <Link
+              key={`${p.slug}-${i}`}
+              to={`/work/${p.slug}`}
+              tabIndex={i >= strip.length ? -1 : 0}
+              aria-hidden={i >= strip.length}
+              className="group relative block h-40 shrink-0 overflow-hidden rounded-2xl ring-1 ring-white/15 transition-transform duration-500 hover:-translate-y-1 md:h-56"
+            >
+              <img src={p.coverImage} alt={i >= strip.length ? "" : `${p.title}, cover`} loading="lazy" className="h-full w-auto object-cover" />
+              <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0a2552]/90 to-transparent px-4 pb-3 pt-10 text-base font-semibold text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+                {p.title.replace(/ (Website|UI\/UX|Case Study|Redesign|Design|App).*$/i, "")}
+              </span>
+            </Link>
+          ))}
         </div>
       </div>
 
-      {/* Moving credit line of real projects */}
-      <div className="relative mt-20 overflow-hidden border-y border-line py-5 md:mt-24" aria-label="Projects I have designed">
-        <div className="marquee flex w-max items-center gap-10 whitespace-nowrap" aria-hidden>
-          {[...credits, ...credits].map((c, i) => (
-            <span key={i} className="flex items-center gap-10">
-              <span className="serif text-2xl text-ink md:text-3xl">{c}</span>
-              <span className="champagne">◆</span>
-            </span>
-          ))}
-        </div>
-        <ul className="sr-only">
-          {credits.map((c) => (
-            <li key={c}>{c}</li>
-          ))}
-        </ul>
-      </div>
+      <a href="#expertise" className="scroll-cue mono absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-ink-2 md:flex" aria-label="Scroll to the next section">
+        Scroll
+        <span aria-hidden className="scroll-line h-8 w-px bg-[var(--accent)]" />
+      </a>
     </section>
   );
 }

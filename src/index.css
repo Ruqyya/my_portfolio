@@ -440,3 +440,14 @@ body {
 }
 
 
+
+/* Hero motion: the screen stack tilts with the pointer, two chips float, a cover strip drifts, a cue invites the scroll. */
+.hero-tilt { transform: perspective(1500px) rotateY(var(--ry, 0deg)) rotateX(var(--rx, 0deg)); transition: transform 0.25s ease-out; transform-style: preserve-3d; }
+@keyframes hero-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.hero-float { animation: hero-float 5s ease-in-out infinite; }
+.hero-float-b { animation-delay: -2.4s; }
+.marquee-fast { animation-duration: 70s; }
+@keyframes scroll-line { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+.scroll-line { animation: scroll-line 2.2s ease-in-out infinite; }
+.hero-canvas > .scroll-cue { position: absolute; }
+@media (prefers-reduced-motion: reduce) { .hero-tilt { transform: none; } .hero-float, .scroll-line { animation: none; } }

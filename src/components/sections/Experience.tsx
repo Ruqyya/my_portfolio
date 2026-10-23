@@ -22,28 +22,17 @@ export default function Experience() {
           <ol className="mt-14 border-t border-line">
             {experience.map((e, i) => (
               <li key={e.company + e.period} className="border-b border-line">
-                <Reveal delay={i * 0.04} className="grid gap-4 py-8 md:grid-cols-12 md:gap-8">
+                <Reveal delay={i * 0.04} className="grid gap-2 py-6 md:grid-cols-12 md:items-center md:gap-8">
                   <div className="md:col-span-3">
                     <p className="mono text-ink-2">{e.period}</p>
                     <p className="mono mt-1 text-ink-2">{e.duration}</p>
                   </div>
                   <div className="md:col-span-4">
-                    <h3 className="text-2xl font-medium md:text-3xl">{e.role}</h3>
+                    <h3 className="text-2xl font-medium leading-tight md:text-3xl">{e.role}</h3>
                     <p className="mt-2 font-semibold text-forest">{e.company}</p>
-                    <p className="mt-1 text-base text-ink-2">
-                      {e.type} · {e.location}
-                    </p>
                   </div>
-                  <div className="md:col-span-5">
-                    {e.summary && <p className="text-ink">{e.summary}</p>}
-                    <ul className={`space-y-3 text-ink-2 ${e.summary ? "mt-4" : ""}`}>
-                      {e.points.map((p) => (
-                        <li key={p} className="flex gap-3">
-                          <span aria-hidden className="mt-[0.7em] h-px w-4 shrink-0 bg-signal" />
-                          <span>{p}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="md:col-span-5 md:text-right">
+                    <p className="mono text-ink-2">{e.type}</p>
                   </div>
                 </Reveal>
               </li>
