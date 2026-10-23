@@ -60,11 +60,11 @@
 
   /* semantic roles, light theme */
   --paper: #f8fafc; /* surface */
-  --paper-2: #eaf2f6; /* tinted surface */
+  --paper-2: #eef1f5; /* cool-neutral porcelain */
   --ink: #080d19; /* primary text */
-  --ink-2: #4a5b6e; /* secondary text (Silver Slate, deepened for light grounds) */
-  --line: #d3dee7; /* hairline borders */
-  --line-strong: #9fb2c3; /* control borders (3:1) */
+  --ink-2: #475569; /* secondary text (Silver Slate, deepened for light grounds) */
+  --line: #dbe1e8; /* hairline borders */
+  --line-strong: #98a6b6; /* control borders (3:1) */
   --forest: #06707a; /* action, links, emphasis */
   --forest-hover: #055b64;
   --on-forest: #ffffff;
@@ -193,9 +193,8 @@
 
 /* Light sections get depth from a faint teal wash instead of flat mint */
 .surface-tint {
-  background:
-    radial-gradient(56rem 28rem at 0% 0%, color-mix(in srgb, var(--forest) 7%, transparent), transparent 70%),
-    var(--paper-2);
+  background: var(--paper-2);
+  color: var(--ink);
 }
 
 /* Metric-matched fallbacks so the page does not reflow when the web font arrives. */
@@ -252,7 +251,7 @@ html {
 body {
   font-family: var(--font-sans);
   font-size: 1.125rem;
-  line-height: 1.65;
+  line-height: 1.7;
   background: var(--paper);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
@@ -269,8 +268,9 @@ body {
 }
 .mono {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
 }
 
@@ -364,3 +364,11 @@ body {
 /* Soft Aqua for headline highlights on dark surfaces (cyan stays on actions, marks and the heartbeat line) */
 .surface-deep h1 .italic, .surface-deep h2 em, .surface-deep h3 em, .surface-deep .accent-italic { color: var(--aqua); }
 .surface-gradient.hero-canvas::after { background: radial-gradient(360px circle at var(--mx) var(--my), rgba(160, 242, 237, 0.07), transparent 65%); }
+
+@media (min-width: 768px) {
+  body { font-size: 1.1875rem; }
+}
+
+.ecg-rule { transform-origin: left; transform: scaleX(0); animation: ecg-rule 1.4s 0.5s var(--ease-out-expo) forwards; }
+@keyframes ecg-rule { to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .ecg-rule { transform: none; } .ecg-line { stroke-dashoffset: 0; } }

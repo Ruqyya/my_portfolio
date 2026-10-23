@@ -37,7 +37,7 @@ export default function SectionRail({ items }: { items: RailItem[] }) {
               <a
                 href={`#${i.id}`}
                 aria-current={i.id === active ? "true" : undefined}
-                className={`flex items-baseline gap-3 py-1 text-sm transition-colors ${i.id === active ? "font-semibold text-ink" : "text-ink-2 hover:text-ink"}`}
+                className={`flex items-baseline gap-3 py-1 text-base transition-colors ${i.id === active ? "font-semibold text-ink" : "text-ink-2 hover:text-ink"}`}
               >
                 <span className="mono text-signal">{String(n + 1).padStart(2, "0")}</span>
                 {i.label}

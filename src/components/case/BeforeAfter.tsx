@@ -13,7 +13,7 @@ export default function BeforeAfter({ before, after }: { before: Shot; after: Sh
       <div className="relative aspect-[4/3] w-full select-none overflow-hidden rounded-xl border border-line bg-paper-2 shadow-[0_30px_60px_-30px_rgba(23,36,43,0.45)]">
         <img src={`${base}${after.src}`} alt={after.alt} loading="lazy" className="absolute inset-0 h-full w-full object-contain" />
         <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
-          <img src={`${base}${before.src}`} alt={before.alt} loading="lazy" className="h-full w-full object-contain bg-paper-2" />
+          <img src={`${base}${before.src}`} alt={before.alt} loading="lazy" className="h-full w-full object-cover object-left-top bg-paper-2" />
         </div>
         <span className="mono absolute left-4 top-4 rounded-full bg-[#080d19]/85 px-3 py-1 text-[#f8fafc]">Before</span>
         <span className="mono absolute right-4 top-4 rounded-full bg-[#20d6d2] px-3 py-1 text-[#080d19]">After</span>

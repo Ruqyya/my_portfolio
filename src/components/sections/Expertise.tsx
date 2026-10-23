@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
 import Eyebrow from "../ui/Eyebrow";
 import Reveal from "../ui/Reveal";
+import { MAIL_HREF } from "../../data/contact";
 
 // Every card is tied to evidence: a project on this site or a role on LinkedIn.
 const areas = [
@@ -57,10 +58,16 @@ export default function Expertise() {
               {frame.map(([k, v]) => (
                 <div key={k}>
                   <dt className="mono text-signal">{k}</dt>
-                  <dd className="mt-1 text-lg text-ink-2">{v}</dd>
+                  <dd className="mt-1 text-xl leading-relaxed text-ink-2">{v}</dd>
                 </div>
               ))}
             </dl>
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a href={MAIL_HREF} className="inline-flex h-14 items-center gap-3 rounded-full bg-forest px-8 text-lg font-semibold text-on-forest transition-colors hover:bg-[var(--forest-hover)]">
+                <Mail size={20} aria-hidden /> Discuss your product
+              </a>
+              <span className="text-ink-2">Reply within one business day</span>
+            </div>
             <p className="mono mt-8 text-ink-2">Tools · Figma · Figma Dev Mode · Maze · Photoshop · Illustrator</p>
           </Reveal>
 
@@ -74,8 +81,8 @@ export default function Expertise() {
                 <Reveal delay={(i % 2) * 0.06} className="group flex h-full flex-col rounded-xl border border-line bg-paper-2/60 p-6 transition-transform duration-300 hover:-translate-y-1 md:p-7">
                   <span className="mono text-signal">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="mt-3 text-[1.7rem] font-medium leading-tight">{a.title}</h3>
-                  <p className="mt-3 text-ink-2">{a.text}</p>
-                  <p className="mt-auto pt-6 text-sm font-semibold text-forest">
+                  <p className="mt-3 text-lg leading-relaxed text-ink-2">{a.text}</p>
+                  <p className="mt-auto pt-6 text-base font-semibold text-forest">
                     {a.proof.to ? (
                       <Link to={a.proof.to} className="link-draw inline-flex items-center gap-1 py-1">
                         {a.proof.label} <ArrowUpRight size={14} />

@@ -165,7 +165,7 @@ export default function ProjectDetail() {
                 {s.context.facts && (
                   <ul className="mt-6 flex flex-wrap gap-2">
                     {s.context.facts.map((f) => (
-                      <li key={f} className="rounded-full border border-line px-4 py-1.5 text-sm text-ink-2">{f}</li>
+                      <li key={f} className="rounded-full border border-line px-4 py-1.5 text-base text-ink-2">{f}</li>
                     ))}
                   </ul>
                 )}
@@ -216,7 +216,7 @@ export default function ProjectDetail() {
                     {p.items && (
                       <ul className="mt-4 flex flex-wrap gap-2">
                         {p.items.map((it) => (
-                          <li key={it} className="rounded-full border border-line px-3 py-1 text-sm text-ink-2">{it}</li>
+                          <li key={it} className="rounded-full border border-line px-3 py-1 text-base text-ink-2">{it}</li>
                         ))}
                       </ul>
                     )}
@@ -334,7 +334,7 @@ export default function ProjectDetail() {
                   <li key={st.label} className="relative border-b border-line py-6 md:border-b-0 md:border-r md:px-6 md:last:border-r-0 md:first:pl-0">
                     <span className="mono text-signal">{String(i + 1).padStart(2, "0")}</span>
                     <p className="serif mt-2 text-2xl">{st.label}</p>
-                    {st.text && <p className="mt-1 text-sm text-ink-2">{st.text}</p>}
+                    {st.text && <p className="mt-1 text-base text-ink-2">{st.text}</p>}
                   </li>
                 ))}
               </ol>
@@ -383,7 +383,7 @@ export default function ProjectDetail() {
                         <span className="mono pt-1.5 text-signal">{String(i + 1).padStart(2, "0")}</span>
                         <span>
                           <span className="serif block text-2xl">{f.title}</span>
-                          {f.text && <span className="mt-1 block text-sm text-ink-2">{f.text}</span>}
+                          {f.text && <span className="mt-1 block text-base text-ink-2">{f.text}</span>}
                         </span>
                       </Reveal>
                     </li>

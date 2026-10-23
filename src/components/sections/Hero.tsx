@@ -95,7 +95,7 @@ export default function Hero() {
   ][active];
 
   return (
-    <section id="top" ref={section} onPointerMove={light} className="surface-deep surface-gradient hero-canvas relative z-10 pb-24 pt-28 md:pb-28 md:pt-32">
+    <section id="top" ref={section} onPointerMove={light} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)} className="surface-deep surface-gradient hero-canvas relative z-10 pb-24 pt-28 md:pb-28 md:pt-32">
       <div className="mx-auto grid max-w-[88rem] gap-x-10 gap-y-12 px-5 md:px-10 lg:grid-cols-12">
         <div className="relative z-30 lg:col-span-12">
           <p className="mono text-ink-2">Senior Product Designer · Healthcare &amp; SaaS</p>
@@ -129,7 +129,7 @@ export default function Hero() {
                 <ArrowDown size={18} className="transition-transform group-hover:translate-y-0.5" aria-hidden />
               </a>
             </div>
-            <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink-2">
+            <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-base text-ink-2">
               <span className="inline-flex items-center gap-2">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-forest opacity-60" aria-hidden />
@@ -142,31 +142,44 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Heartbeat line from the LinkedIn banner: draws once, then a pulse travels along it */}
-          <svg aria-hidden viewBox="0 0 520 40" className="mt-12 h-10 w-full max-w-[32rem] overflow-visible" fill="none">
-            <path className="ecg-line" d="M0 20 H190 l14 -16 l16 32 l14 -26 l10 10 H520" stroke="var(--brand-cyan)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" pathLength="1" />
-          </svg>
-          <dl className="rise mt-3 grid max-w-xl grid-cols-3 gap-4" style={{ animationDelay: "0.5s" }}>
-            {proof.map((p) => (
-              <div key={p.value} className="flex flex-col-reverse">
-                <dt className="mt-1 text-xs leading-snug text-ink-2 sm:text-sm">
+          <div className="rise mt-12 border-t border-line pt-8" style={{ animationDelay: "0.55s" }}>
+            <p className="mono text-ink-2">Fig. 1 · Oladoc: three seats, one booking</p>
+            <div role="tablist" aria-label="Portals in the Oladoc project" className="mt-4 flex flex-wrap gap-2">
+              {portals.map((p, i) => (
+                <button
+                  key={p.id}
+                  role="tab"
+                  type="button"
+                  id={`portal-tab-${p.id}`}
+                  aria-selected={i === active}
+                  aria-controls="portal-panel"
+                  onClick={() => setActive(i)}
+                  className={`h-11 rounded-full border px-5 text-base font-semibold transition-colors ${
+                    i === active ? "border-signal text-signal" : "border-line text-ink-2 hover:border-ink hover:text-ink"
+                  }`}
+                >
                   {p.label}
-                  <span className="mono mt-1 block normal-case tracking-normal opacity-80">{p.source}</span>
-                </dt>
-                <dd className="serif text-4xl font-medium text-forest sm:text-5xl">{p.value}</dd>
-              </div>
-            ))}
-          </dl>
+                </button>
+              ))}
+            </div>
+            <div id="portal-panel" role="tabpanel" aria-labelledby={`portal-tab-${current.id}`} aria-live="polite" className="mt-5 min-h-[5.5rem]">
+              <p className="serif text-2xl leading-snug md:text-[1.7rem]">{current.text}</p>
+            </div>
+            <p className="mono mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-ink-2">
+              <span>47 screens</span>
+              <span>3 portals</span>
+              <span>4 journeys</span>
+              <Link to="/work/oladoc-healthcare-app-ui-ux-design" className="link-draw inline-flex items-center gap-1 py-1 text-ink">
+                Read the case study <ArrowUpRight size={14} />
+              </Link>
+            </p>
+          </div>
         </div>
 
         {/* Signature piece: the same booking, seen from three seats. Real Figma screens. */}
         <figure
           className="rise relative z-10 lg:col-span-7 lg:-mt-36"
           style={{ animationDelay: "0.2s" }}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          onFocusCapture={() => setPaused(true)}
-          onBlurCapture={() => setPaused(false)}
         >
           <div className="relative mx-auto aspect-[1.12/1] w-full max-w-[40rem] lg:ml-0 lg:mr-[-3vw] lg:max-w-none">
             {/* soft stage */}
@@ -218,46 +231,35 @@ export default function Hero() {
             {/* Portrait badge: puts a face next to the work */}
             <div className="absolute -bottom-9 right-0 z-40 flex items-center gap-3 rounded-full border border-line bg-paper py-2 pl-2 pr-5 shadow-xl shadow-black/40 md:right-4">
               <img src={portrait} alt="Portrait of Ruqyya" width={56} height={56} className="h-14 w-14 rounded-full object-cover object-top ring-2 ring-[#20d6d2]" />
-              <span className="text-sm leading-tight">
+              <span className="text-base leading-tight">
                 <span className="serif block text-xl">Ruqyya</span>
                 <span className="mono text-ink-2">Lahore · Remote</span>
               </span>
             </div>
           </div>
-
-          <figcaption className="mt-16">
-            <p className="mono text-ink-2">Fig. 1 · Oladoc: three seats, one booking</p>
-            <div role="tablist" aria-label="Portals in the Oladoc project" className="mt-4 flex flex-wrap gap-2">
-              {portals.map((p, i) => (
-                <button
-                  key={p.id}
-                  role="tab"
-                  type="button"
-                  id={`portal-tab-${p.id}`}
-                  aria-selected={i === active}
-                  aria-controls="portal-panel"
-                  onClick={() => setActive(i)}
-                  className={`h-11 rounded-full border px-5 text-sm font-semibold transition-colors ${
-                    i === active ? "border-signal text-signal" : "border-line text-ink-2 hover:border-ink hover:text-ink"
-                  }`}
-                >
-                  {p.label}
-                </button>
-              ))}
-            </div>
-            <div id="portal-panel" role="tabpanel" aria-labelledby={`portal-tab-${current.id}`} aria-live="polite" className="mt-5 min-h-[7.5rem]">
-              <p className="serif text-2xl leading-snug">{current.text}</p>
-            </div>
-            <p className="mono mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-ink-2">
-              <span>47 screens</span>
-              <span>3 portals</span>
-              <span>4 journeys</span>
-              <Link to="/work/oladoc-healthcare-app-ui-ux-design" className="link-draw inline-flex items-center gap-1 py-1 text-ink">
-                Read the case study <ArrowUpRight size={14} />
-              </Link>
-            </p>
-          </figcaption>
         </figure>
+
+        {/* Proof strip: the banner's heartbeat line runs the full width and ends in three verified figures */}
+        <div className="relative z-30 lg:col-span-12">
+          <div aria-hidden className="flex items-center">
+            <span className="ecg-rule h-0.5 rounded-full bg-[var(--brand-cyan)]" style={{ flexGrow: 30 }} />
+            <svg viewBox="0 0 72 40" className="h-10 w-[4.5rem] shrink-0 overflow-visible" fill="none">
+              <path className="ecg-line" d="M0 20 H12 l10 -16 l12 32 l12 -26 l8 10 H72" stroke="var(--brand-cyan)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" pathLength="1" />
+            </svg>
+            <span className="ecg-rule h-0.5 rounded-full bg-[var(--brand-cyan)]" style={{ flexGrow: 70 }} />
+          </div>
+          <dl className="rise mt-8 grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-3" style={{ animationDelay: "0.5s" }}>
+            {proof.map((p) => (
+              <div key={p.value} className="flex flex-col-reverse">
+                <dt className="mt-2 text-base leading-snug text-ink-2 sm:text-lg">
+                  {p.label}
+                  <span className="mono mt-1 block normal-case tracking-normal opacity-90">{p.source}</span>
+                </dt>
+                <dd className="serif text-5xl font-medium text-forest md:text-6xl">{p.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </div>
 
       {/* Moving credit line of real projects */}

@@ -30,7 +30,7 @@ export default function Experience() {
                   <div className="md:col-span-4">
                     <h3 className="text-2xl font-medium md:text-3xl">{e.role}</h3>
                     <p className="mt-2 font-semibold text-forest">{e.company}</p>
-                    <p className="mt-1 text-sm text-ink-2">
+                    <p className="mt-1 text-base text-ink-2">
                       {e.type} · {e.location}
                     </p>
                   </div>

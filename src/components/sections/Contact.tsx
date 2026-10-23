@@ -19,7 +19,7 @@ export default function Contact() {
           <h2 className="mt-6 max-w-5xl text-[clamp(3rem,8vw,7.4rem)] font-medium leading-[1]">
             Let's talk about your <em className="text-forest">product.</em>
           </h2>
-          <p className="mt-8 max-w-xl text-lg text-ink-2">
+          <p className="mt-8 max-w-2xl text-xl leading-relaxed text-ink-2">
             Tell me what you are building and who it is for. I reply within one business day, from Lahore, and work with teams in any
             time zone.
           </p>
@@ -41,6 +41,22 @@ export default function Contact() {
             <span className="serif text-[clamp(1.5rem,4vw,3.2rem)] font-medium">ghulamruqyya@gmail.com</span>
             <ArrowUpRight size={36} className="text-signal transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
           </a>
+        </Reveal>
+
+        <Reveal delay={0.12}>
+          <ol className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              ["You write", "A few lines on what you are building, who it is for and when you need it."],
+              ["I reply", "Within one business day, with questions or a short call to understand the product."],
+              ["You get a proposal", "A fixed cost and timeline, so there are no surprises."],
+            ].map(([k, v], i) => (
+              <li key={k} className="rounded-2xl border border-line p-6">
+                <span className="mono text-signal">{String(i + 1).padStart(2, "0")}</span>
+                <p className="serif mt-2 text-2xl">{k}</p>
+                <p className="mt-2 text-lg leading-relaxed text-ink-2">{v}</p>
+              </li>
+            ))}
+          </ol>
         </Reveal>
 
         <Reveal delay={0.15}>

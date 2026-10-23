@@ -48,7 +48,7 @@ export default function Approach() {
                   <span className="mono pt-1.5 text-signal">{String(i + 1).padStart(2, "0")}</span>
                   <span>
                     <span className="serif text-2xl transition-transform duration-300 group-hover:translate-x-1">{p.step}</span>
-                    <span className="mt-1 block text-sm text-ink-2">{p.description}</span>
+                    <span className="mt-1 block text-base text-ink-2">{p.description}</span>
                   </span>
                 </li>
               ))}
@@ -65,7 +65,7 @@ export default function Approach() {
               ].map(([k, v]) => (
                 <div key={k}>
                   <dt className="serif text-2xl">{k}</dt>
-                  <dd className="mt-2 text-sm text-ink-2">{v}</dd>
+                  <dd className="mt-2 text-base text-ink-2">{v}</dd>
                 </div>
               ))}
             </dl>
