@@ -6,8 +6,17 @@
 //  - "measured" is for numbers that have a source. Leave it out until real analytics exist.
 //  - Every field is optional. A section on the project page only shows when its data is present.
 
+// A numbered callout placed on a screenshot. x and y are percentages of the image.
+export interface Note {
+  x: number;
+  y: number;
+  text: string;
+}
 export interface Insight {
   title: string;
+  doing?: string; // journey map: what the person does at this stage
+  feeling?: { label: string; level: number }; // level 0 (lowest) to 1 (highest), read off the journey map
+  shot?: Shot; // the screen that answers this stage
   text?: string;
   thought?: string; // what the user is thinking at this stage
   response?: string; // what the design does about it
@@ -16,11 +25,42 @@ export interface Shot {
   src: string; // path inside public/, e.g. "case/oladoc/home.webp"
   alt: string;
   caption?: string;
+  notes?: Note[];
+}
+// One decision, written as a record: what was wrong, how we know, what changed, what it is meant to do, and whether that is measured.
+export interface DecisionRecord {
+  problem: string;
+  evidence: string;
+  decision: string;
+  benefit: string; // intended, never presented as a result
+  outcome: string; // "Not measured" unless a sourced number exists
+  tradeoff?: string;
+}
+export interface Task {
+  id: string;
+  label: string;
+  title: string;
+  text: string;
+  kind: "phones" | "flow" | "wide" | "single";
+  shots: Shot[];
+}
+export interface Outcomes {
+  quantitative: { value: string; label: string; source: string; status: string }[];
+  qualitative: string[]; // documented findings
+  intended: string[]; // what the design is meant to improve: not measured
+  notVerified: string[]; // what does not exist in the project files
+  reflection: string[]; // written in the first person
+}
+export interface Signal {
+  skill: string;
+  evidence: string;
+  to?: string; // section id on the page
 }
 export interface Decision {
   title: string;
   text: string;
   shots?: Shot[];
+  record?: DecisionRecord;
   kind?: "phone" | "wide";
 }
 export interface Person {
@@ -54,7 +94,7 @@ export interface CaseStudy {
   context?: { text: string; facts?: string[]; note?: string };
   problem?: { headline: string; points: Insight[]; why?: string };
   users?: { text?: string; people: Person[] };
-  research?: { text?: string; insights?: Insight[]; shot?: Shot };
+  research?: { text?: string; insights?: Insight[]; shot?: Shot; documented?: string[]; notDocumented?: string[] };
   decisions?: Decision[];
   // Shown only when real material exists. Do not fill from guesses: see docs/07-CASE-STUDY-QUESTIONS.md.
   tradeoffs?: Insight[]; // what was weighed and what was given up
@@ -68,12 +108,19 @@ export interface CaseStudy {
   features?: Insight[];
   delivered?: string[];
   measured?: { value: string; label: string; source: string }[];
+  overview?: { k: string; v: string }[]; // six cells, readable in 15 seconds
+  heroShots?: Shot[]; // images composed beside the title
+  tasks?: Task[]; // the finished experience, organised by what a user is trying to do
+  outcomes?: Outcomes;
+  signals?: Signal[]; // skills shown, each tied to evidence on the page
   shows?: string[];
   imageNote?: string;
 }
 
 const still = (k: string, n: string, alt: string, caption?: string): Shot => ({ src: `case/${k}/${n}.webp`, alt, caption });
 const NOTE = "Stills from the project film. Screens are my design; photography is stock or client-supplied.";
+
+import { oladocStory } from "./oladoc-story";
 
 export const caseStudies: Record<string, CaseStudy> = {
   /* ───────── Oladoc ───────── */
@@ -193,6 +240,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     },
     delivered: ["47 screens across three products", "4 clickable journeys", "One design system shared by patient, doctor and front-desk screens", "6 research insights, each tied to a screen"],
     shows: ["Designing for several user types inside one product", "Turning research into screen-level decisions", "Keeping mobile and desktop products consistent through a design system"],
+    ...oladocStory,
   },
 
   /* ───────── Marham ───────── */
