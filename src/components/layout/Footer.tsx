@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="surface-deep surface-deep-flat relative z-10 border-t border-line">
-      <div className="mx-auto flex max-w-[88rem] flex-col gap-4 px-5 py-10 text-sm text-ink-2 md:flex-row md:items-center md:justify-between md:px-10">
+      <div className="mx-auto flex max-w-[88rem] flex-col gap-4 px-5 py-10 text-base text-ink-2 md:flex-row md:items-center md:justify-between md:px-10">
         <p>
           <span className="serif text-lg text-ink">Creative Ruqyya</span> · Senior Product Designer · Lahore, working worldwide
         </p>

@@ -1,6 +1,6 @@
 # 10 · Soft palette comparison: A (Soft Botanical Teal + Porcelain) vs B (Ocean Blue + Mist)
 
-Both variants are live in the same code. Components read only colour roles; the two palettes are the primitives at the top of `src/index.css`. Variant A is the default. Variant B turns on with `<html data-palette="ocean">`. Screenshots: `docs/screens/soft-A-*` and `soft-B-*`.
+DECISION (24 Oct 2026): the owner chose A. Variant B was removed from the code. The comparison below is kept as the record. Final screenshots: `docs/screens/final-*`.
 
 ## Palettes
 
@@ -52,3 +52,9 @@ A is more distinctive, more restful and separates the authentic screens better f
 - Oladoc headline "Designing a clearer path from finding care to booking it." with "Oladoc Healthcare App UX/UI Case Study" shown above it and kept in the page title for search.
 - "Watch the film" removed. The video is a 74-second animated summary (problem, screens, numbers), not a product demonstration, so it is labelled "Animated project summary". Header links now go to different places: "Discuss a similar project" (email) and "Explore the design process" (research section); a "See the final experience" link sits under the video. On the home page cards, "Watch the summary".
 - Dark sections reduced to the contact block and footer; nav, hero, Experience and the case-study header are light. Product screens sit on a soft mint stage with light shadows.
+
+## Rollout of A (after the decision)
+- Ocean variant removed from `src/index.css`.
+- Green tints made quieter: tint `#EFF4F0`, mint stage `#E4EFE9`, corner glow reduced. Contrast re-measured: secondary text 5.90 on tint and 5.57 on mint; small links 5.12 and 4.83.
+- Footer text raised one size; dark theme checked (hero, tabs and nav follow the dark surface).
+- Checked at 390, 820 and 1440 px on the home page and the Oladoc, Marham, Sehat Kahani, Goddard and Coffee pages: no horizontal overflow, no broken images, no script errors.

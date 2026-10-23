@@ -224,7 +224,7 @@ export default function Hero() {
                   aria-controls="portal-panel"
                   onClick={() => setActive(i)}
                   className={`h-11 rounded-full border px-5 text-base font-semibold transition-colors ${
-                    i === active ? "border-forest bg-[var(--p-mint)] text-forest" : "border-line text-ink-2 hover:border-forest hover:text-forest"
+                    i === active ? "border-forest bg-paper-2 text-forest" : "border-line text-ink-2 hover:border-forest hover:text-forest"
                   }`}
                 >
                   {p.label}
