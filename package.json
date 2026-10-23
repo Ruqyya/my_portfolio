@@ -12,15 +12,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fontsource/inter": "^5.2.8",
-    "framer-motion": "^12.42.2",
     "lucide-react": "^1.23.0",
     "react": "^19.2.7",
-    "react-countup": "^6.5.3",
     "react-dom": "^19.2.7",
-    "react-intersection-observer": "^10.0.3",
-    "react-router-dom": "^7.18.1",
-    "swiper": "^14.0.1"
+    "react-router-dom": "^7.18.1"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.2",

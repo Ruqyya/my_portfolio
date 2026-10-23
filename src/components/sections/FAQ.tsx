@@ -1,53 +1,28 @@
-import { useState } from "react";
 import { Plus } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import SectionHeading from "../ui/SectionHeading";
+import Eyebrow from "../ui/Eyebrow";
 import Reveal from "../ui/Reveal";
 import { faqs } from "../../data/content";
 
-export default function FAQ() {
-  const [open, setOpen] = useState<number | null>(0);
-
+export default function Faq() {
   return (
-    <section id="faq" className="relative py-24 md:py-32 bg-slate-50 dark:bg-slate-900/40">
-      <div className="max-w-3xl mx-auto px-5 md:px-8">
-        <SectionHeading eyebrow="FAQ" title="Frequently asked questions." align="center" />
-
-        <div className="mt-14 space-y-3">
-          {faqs.map((f, i) => (
-            <Reveal key={f.q} delay={i * 0.03}>
-              <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 overflow-hidden">
-                <button
-                  onClick={() => setOpen(open === i ? null : i)}
-                  className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
-                  aria-expanded={open === i}
-                >
-                  <span className="font-display font-semibold text-slate-900 dark:text-white text-sm md:text-base">
-                    {f.q}
-                  </span>
-                  <Plus
-                    size={18}
-                    className={`shrink-0 text-[#0EA5E9] transition-transform duration-300 ${open === i ? "rotate-45" : ""}`}
-                  />
-                </button>
-                <AnimatePresence initial={false}>
-                  {open === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <p className="px-6 pb-5 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                        {f.a}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </Reveal>
-          ))}
+    <section id="faq" className="relative z-10 pt-28 md:pt-44">
+      <div className="mx-auto grid max-w-[88rem] gap-12 px-5 md:px-10 lg:grid-cols-12">
+        <Reveal className="lg:col-span-4">
+          <Eyebrow n="06">Before we talk</Eyebrow>
+          <h2 className="mt-6 text-[clamp(2.3rem,4.6vw,3.9rem)] font-medium leading-[1.08]">Common questions.</h2>
+        </Reveal>
+        <div className="lg:col-span-8">
+          <div className="border-t border-line">
+            {faqs.map((f) => (
+              <details key={f.q} name="faq" className="group border-b border-line">
+                <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
+                  <span className="serif text-xl font-medium md:text-2xl">{f.q}</span>
+                  <Plus size={22} aria-hidden className="shrink-0 text-forest transition-transform duration-300 group-open:rotate-45" />
+                </summary>
+                <p className="max-w-2xl pb-6 text-ink-2">{f.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </div>
     </section>

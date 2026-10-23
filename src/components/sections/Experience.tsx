@@ -1,36 +1,65 @@
-import SectionHeading from "../ui/SectionHeading";
+import Eyebrow from "../ui/Eyebrow";
 import Reveal from "../ui/Reveal";
-import { experience } from "../../data/content";
+import { experience, services, skillGroups, tools } from "../../data/content";
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-24 md:py-32 bg-slate-50 dark:bg-slate-900/40">
-      <div className="max-w-5xl mx-auto px-5 md:px-8">
-        <SectionHeading eyebrow="Career" title="Experience timeline." align="center" />
-
-        <div className="relative mt-16 pl-8 md:pl-0">
-          <div className="absolute left-3 md:left-1/2 top-0 bottom-0 w-px bg-slate-200 dark:bg-slate-700 md:-translate-x-1/2" />
-
-          <div className="space-y-10">
-            {experience.map((item, i) => (
-              <Reveal key={item.role + item.company} delay={i * 0.06}>
-                <div className={`relative md:grid md:grid-cols-2 md:gap-10 ${i % 2 === 0 ? "" : ""}`}>
-                  <span className="absolute -left-[1.9rem] md:left-1/2 top-1.5 w-3.5 h-3.5 rounded-full bg-[#0EA5E9] ring-4 ring-white dark:ring-slate-900 md:-translate-x-1/2 z-10" />
-
-                  <div className={`${i % 2 === 0 ? "md:text-right md:pr-14" : "md:col-start-2 md:pl-14"}`}>
-                    <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 p-6">
-                      <span className="text-xs font-semibold text-[#0EA5E9] dark:text-[#60A5FA]">{item.period}</span>
-                      <h3 className="font-display font-bold text-lg text-slate-900 dark:text-white mt-1">{item.role}</h3>
-                      <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-2">{item.company}</p>
-                      <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{item.description}</p>
-                    </div>
+    <>
+      <section id="experience" className="relative z-10 pt-28 md:pt-44">
+        <div className="mx-auto max-w-[88rem] px-5 md:px-10">
+          <Reveal>
+            <Eyebrow n="03">Experience</Eyebrow>
+            <h2 className="mt-6 max-w-3xl text-[clamp(2.3rem,5vw,4.3rem)] font-medium leading-[1.08]">
+              Six years, from freelance interfaces to <em className="text-forest">design leadership.</em>
+            </h2>
+          </Reveal>
+          <ol className="mt-14 border-t border-line">
+            {experience.map((e, i) => (
+              <li key={e.company + e.period} className="border-b border-line">
+                <Reveal delay={i * 0.04} className="grid gap-2 py-8 md:grid-cols-12 md:gap-8">
+                  <p className="mono text-ink-2 md:col-span-3">{e.period}</p>
+                  <div className="md:col-span-4">
+                    <h3 className="text-2xl font-medium md:text-3xl">{e.role}</h3>
+                    <p className="mt-1 font-semibold text-forest">{e.company}</p>
                   </div>
-                </div>
-              </Reveal>
+                  <p className="text-ink-2 md:col-span-5">{e.description}</p>
+                </Reveal>
+              </li>
             ))}
+          </ol>
+        </div>
+      </section>
+
+      <section id="capabilities" className="relative z-10 pt-28 md:pt-44">
+        <div className="mx-auto grid max-w-[88rem] gap-12 px-5 md:px-10 lg:grid-cols-12">
+          <Reveal className="lg:col-span-4">
+            <Eyebrow n="04">Capabilities</Eyebrow>
+            <h2 className="mt-6 text-[clamp(2.3rem,4.6vw,3.9rem)] font-medium leading-[1.08]">What I can take on.</h2>
+            <p className="mono mt-10 text-ink-2">Tools</p>
+            <p className="mt-3 text-ink-2">{tools.join(" · ")}</p>
+          </Reveal>
+          <div className="lg:col-span-8">
+            <ul className="border-t border-line">
+              {services.map((s, i) => (
+                <li key={s.title} className="border-b border-line">
+                  <Reveal delay={(i % 4) * 0.04} className="grid gap-1 py-5 md:grid-cols-[14rem_1fr] md:gap-8">
+                    <h3 className="text-xl font-medium md:text-2xl">{s.title}</h3>
+                    <p className="text-ink-2">{s.description}</p>
+                  </Reveal>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-12 grid gap-8 sm:grid-cols-2">
+              {skillGroups.map((g) => (
+                <div key={g.category}>
+                  <h3 className="mono text-signal">{g.category}</h3>
+                  <p className="mt-2 text-ink-2">{g.items.join(", ")}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

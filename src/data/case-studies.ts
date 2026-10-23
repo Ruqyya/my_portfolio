@@ -27,6 +27,11 @@ export const caseStudies: Record<string, CaseStudy> = {
     preview: "videos/oladoc-preview.mp4",
     poster: "videos/oladoc-poster.jpg",
     cover: "videos/oladoc-cover.jpg",
+    results: [
+      { label: "Screens", value: "47" },
+      { label: "Portals", value: "3" },
+      { label: "User journeys", value: "4" },
+    ],
   },
   "marham-pk-healthcare-platform-redesign": {
     summary: "Web and mobile UX/UI redesign of the Marham.pk healthcare platform.",

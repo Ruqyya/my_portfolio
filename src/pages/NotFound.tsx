@@ -1,21 +1,13 @@
 import { Link } from "react-router-dom";
-import { Home } from "lucide-react";
-import PulseDivider from "../components/ui/PulseDivider";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-5 text-center">
-      <span className="font-display font-extrabold text-8xl md:text-9xl text-gradient mb-4">404</span>
-      <PulseDivider className="max-w-xs mb-6" color="#0F172A" />
-      <h1 className="font-display font-bold text-2xl text-slate-900 dark:text-white mb-3">Page not found</h1>
-      <p className="text-slate-500 dark:text-slate-400 max-w-sm mb-8">
-        The page you're looking for doesn't exist or may have moved.
-      </p>
-      <Link
-        to="/"
-        className="inline-flex items-center gap-2 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold px-6 py-3 hover:opacity-90 transition-opacity"
-      >
-        <Home size={16} /> Back to home
+    <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-[88rem] flex-col justify-center px-5 pt-24 md:px-10">
+      <p className="mono text-signal">404</p>
+      <h1 className="mt-4 text-[clamp(3rem,8vw,6.6rem)] font-medium leading-none">This page isn't on the chart.</h1>
+      <p className="mt-6 max-w-md text-ink-2">The page you're looking for doesn't exist or may have moved.</p>
+      <Link to="/" className="mt-10 inline-flex h-14 w-fit items-center rounded-full bg-forest px-7 font-semibold text-on-forest">
+        Back to home
       </Link>
     </div>
   );

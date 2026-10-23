@@ -1,91 +1,15 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Link2, CircleDot, Mail, ArrowUpRight, Phone } from "lucide-react";
-import logoLight from "../../assets/logo_light.png";
-import logoDark from "../../assets/logo_dark.png";
-
-const nav = [
-  { label: "About", href: "#about" },
-  { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
-];
-
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setSubscribed(true);
-    setEmail("");
-  };
-
   return (
-    <footer className="relative border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0B1220] pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
-        <div className="grid md:grid-cols-4 gap-10 mb-14">
-          <div className="md:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <img src={logoLight} alt="Creative Ruqyya" className="h-10 w-auto object-contain dark:hidden" />
-              <img src={logoDark} alt="Creative Ruqyya" className="h-10 w-auto object-contain hidden dark:block" />
-            </Link>
-            <p className="text-sm text-slate-500 dark:text-slate-400 max-w-sm leading-relaxed">
-              Product designer helping Healthcare and SaaS teams build intuitive, scalable, human-centered digital experiences.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-display font-bold text-sm text-slate-900 dark:text-white mb-4">Navigate</h4>
-            <ul className="space-y-2.5">
-              {nav.map((l) => (
-                <li key={l.href}>
-                  <a href={l.href} className="inline-block py-1.5 text-sm text-slate-500 dark:text-slate-400 hover:text-[#0EA5E9] dark:hover:text-[#14B8A6] transition-colors">
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-display font-bold text-sm text-slate-900 dark:text-white mb-4">Newsletter</h4>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">Occasional notes on product design. No spam.</p>
-            {subscribed ? (
-              <p className="text-sm text-[#14B8A6] font-medium">You're subscribed — thank you!</p>
-            ) : (
-              <form onSubmit={handleSubscribe} className="flex gap-2">
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@company.com"
-                  className="min-w-0 flex-1 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0EA5E9]"
-                />
-                <button
-                  type="submit"
-                  aria-label="Subscribe"
-                  className="rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-3 py-2 hover:opacity-90 transition-opacity"
-                >
-                  <ArrowUpRight size={16} />
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-slate-200 dark:border-slate-800">
-          <p className="text-xs text-slate-400">© {new Date().getFullYear()} Creative Ruqyya. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <a href="https://www.linkedin.com/in/ghulam-ruqyya-ab0318156/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-slate-400 hover:text-[#0EA5E9] transition-colors"><Link2 size={18} /></a>
-            <a href="https://www.behance.net/ghulamruqyya" target="_blank" rel="noreferrer" aria-label="Behance" className="text-slate-400 hover:text-[#0F172A] transition-colors"><CircleDot size={18} /></a>
-            <a href="mailto:ghulamruqyya@gmail.com" aria-label="Email" className="text-slate-400 hover:text-[#14B8A6] transition-colors"><Mail size={18} /></a>
-            <a href="tel:+923247082535" aria-label="Phone" className="text-slate-400 hover:text-[#14B8A6] transition-colors"><Phone size={18} /></a>
-          </div>
-        </div>
+    <footer className="surface-deep surface-deep-flat relative z-10 border-t border-line">
+      <div className="mx-auto flex max-w-[88rem] flex-col gap-4 px-5 py-10 text-sm text-ink-2 md:flex-row md:items-center md:justify-between md:px-10">
+        <p>
+          <span className="serif text-lg text-ink">Creative Ruqyya</span> · Senior Product Designer · Lahore, working worldwide
+        </p>
+        <ul className="flex flex-wrap gap-x-6 gap-y-2">
+          <li><a className="link-draw py-1" href="https://www.linkedin.com/in/ghulam-ruqyya-ab0318156/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+          <li><a className="link-draw py-1" href="https://www.behance.net/ghulamruqyya" target="_blank" rel="noreferrer">Behance</a></li>
+          <li><a className="link-draw py-1" href="mailto:ghulamruqyya@gmail.com">Email</a></li>
+        </ul>
       </div>
     </footer>
   );

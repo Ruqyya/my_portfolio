@@ -1,89 +1,194 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ───────── Design tokens: "Teal & Gold" ─────────
+   Taken from the Shumaila's London project: deep teal ground, bright teal glow, soft gold accent,
+   pale mint paper. Every text pair was measured against WCAG 2.2 AA (see docs/03-DESIGN-SYSTEM.md). */
+:root {
+  --paper: #f2f8f8;
+  --paper-2: #e2efef;
+  --ink: #0a2f34;
+  --ink-2: #3d5f64;
+  --line: #bbd3d5;
+  --forest: #0e6a72; /* action colour on light surfaces */
+  --on-forest: #ffffff;
+  --signal: #8a6414; /* annotation colour on light surfaces (dark gold) */
+  --focus: #0e6a72;
+}
+.dark {
+  --paper: #061e22;
+  --paper-2: #0b2c32;
+  --ink: #e6f2f2;
+  --ink-2: #9bbdc0;
+  --line: #1c474d;
+  --forest: #4dc6cc;
+  --on-forest: #04262b;
+  --signal: #f5dc95;
+  --focus: #4dc6cc;
+}
+
+/* Deep teal surface used for the hero, nav, testimonials, contact and project headers.
+   Re-declares the colour aliases so Tailwind utilities pick up the new values inside it. */
+.surface-deep {
+  --paper: #0a464e;
+  --paper-2: #0e5660;
+  --ink: #ffffff;
+  --ink-2: #b9d9db;
+  --line: #2f7780;
+  --forest: #f5dc95; /* gold becomes the action and emphasis colour on teal */
+  --on-forest: #0a464e;
+  --signal: #f5dc95;
+  --focus: #f5dc95;
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-forest: var(--forest);
+  --color-on-forest: var(--on-forest);
+  --color-signal: var(--signal);
+  color: var(--ink);
+  background:
+    radial-gradient(64rem 40rem at 108% -12%, #0d5f67 0%, transparent 62%),
+    linear-gradient(165deg, #0a464e 0%, #08393f 100%);
+}
+.surface-deep-flat {
+  background: #08373e;
+}
+
+/* Metric-matched fallbacks so the page does not reflow when the web font arrives. */
+@font-face {
+  font-family: "Cormorant Fallback G";
+  src: local("Georgia");
+  font-style: normal;
+  size-adjust: 88.1%;
+}
+@font-face {
+  font-family: "Cormorant Fallback G";
+  src: local("Georgia Italic"), local("Georgia-Italic");
+  font-style: italic;
+  size-adjust: 79.6%;
+}
+@font-face {
+  font-family: "Cormorant Fallback T";
+  src: local("Times New Roman"), local("Times");
+  font-style: normal;
+  size-adjust: 96.9%;
+}
+@font-face {
+  font-family: "Cormorant Fallback T";
+  src: local("Times New Roman Italic"), local("TimesNewRomanPS-ItalicMT");
+  font-style: italic;
+  size-adjust: 89.3%;
+}
+
 @theme {
-  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", "Cormorant Fallback G", "Cormorant Fallback T", Georgia, serif;
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
-  --color-primary: #0EA5E9;
-  --color-secondary: #0F172A;
-  --color-accent: #14B8A6;
-  --color-bg: #FFFFFF;
-  --color-bg-dark: #0F172A;
-  --color-neutral: #64748B;
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-forest: var(--forest);
+  --color-on-forest: var(--on-forest);
+  --color-signal: var(--signal);
 
-  --animate-marquee: marquee 32s linear infinite;
-  --animate-pulse-line: pulse-line 2.4s ease-in-out infinite;
-  --animate-float: float 6s ease-in-out infinite;
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-@keyframes pulse-line {
-  0%, 100% { stroke-dashoffset: 0; }
-  50% { stroke-dashoffset: -40; }
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-14px); }
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  font-family: var(--font-body);
-  background-color: #FFFFFF;
-  color: #0F172A;
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  background: var(--paper);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-.dark body {
-  background-color: #0F172A;
-  color: #E2E8F0;
+@layer base {
+  h1, h2, h3, .serif {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+}
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-::selection {
-  background-color: #14B8A6;
-  color: #0F172A;
+::selection { background: var(--forest); color: var(--on-forest); }
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-/* Custom scrollbar */
+/* Paper grain, very light, adds depth without a gradient */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+.dark body::before { opacity: 0.1; mix-blend-mode: screen; }
+
+/* Underline that draws in on hover */
+.link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.45s var(--ease-out-expo);
+}
+.link-draw:hover, .link-draw:focus-visible { background-size: 100% 1px; }
+
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #64748B55; border-radius: 999px; }
-::-webkit-scrollbar-thumb:hover { background: #0EA5E988; }
+::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--ink) 25%, transparent); border-radius: 999px; }
 
-.font-display { font-family: var(--font-display); }
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--forest);
+  color: var(--on-forest);
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+}
+.skip-link:focus { top: 1rem; }
 
-.glass {
-  background: color-mix(in srgb, white 65%, transparent);
-  backdrop-filter: blur(16px);
-  border: 1px solid color-mix(in srgb, white 40%, transparent);
+/* Motion: transforms only on the hero (so text paints at once), opacity+lift on scroll reveals */
+@keyframes word-rise { from { transform: translateY(105%); } to { transform: none; } }
+@keyframes rise { from { transform: translateY(18px); } to { transform: none; } }
+.word-rise { display: inline-block; animation: word-rise 0.9s var(--ease-out-expo) both; }
+.rise { animation: rise 0.8s var(--ease-out-expo) both; }
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+  transition-delay: var(--d, 0s);
 }
-.dark .glass {
-  background: color-mix(in srgb, #0F172A 55%, transparent);
-  border: 1px solid color-mix(in srgb, white 8%, transparent);
-}
-
-.text-gradient {
-  background-image: linear-gradient(90deg, #0EA5E9, #0F172A, #14B8A6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.grid-bg {
-  background-image:
-    linear-gradient(color-mix(in srgb, #64748B 12%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, #64748B 12%, transparent) 1px, transparent 1px);
-  background-size: 44px 44px;
-}
+.reveal.is-in { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;

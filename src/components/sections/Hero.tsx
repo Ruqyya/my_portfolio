@@ -1,199 +1,197 @@
-import { useEffect, useRef } from "react";
-import { motion, useMotionValue, useReducedMotion, useTransform } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
-import { stats } from "../../data/content";
-import Magnetic from "../ui/Magnetic";
-import HeroStage from "./HeroStage";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 
-function WordReveal({ text, start, className = "" }: { text: string; start: number; className?: string }) {
+const base = import.meta.env.BASE_URL;
+
+// Regions measured on the Oladoc cover image (percent of width/height).
+const portals = [
+  {
+    id: "patient",
+    label: "Patient app",
+    box: { x: 6.5, y: 41, w: 21, h: 57 },
+    text: "Search by symptom, see verified cardiologists nearby, and book a slot.",
+  },
+  {
+    id: "doctor",
+    label: "Doctor portal",
+    box: { x: 28.5, y: 40, w: 32, h: 33 },
+    text: "Today's appointments, the patient queue and quick actions in one morning view.",
+  },
+  {
+    id: "desk",
+    label: "Front desk",
+    box: { x: 62, y: 40, w: 32.5, h: 33 },
+    text: "A live queue with check-in status, and a fast way to register a walk-in.",
+  },
+] as const;
+
+function Words({ text, start, className = "" }: { text: string; start: number; className?: string }) {
   return (
-    <span className={className} aria-hidden>
+    <span className={className}>
       {text.split(" ").map((w, i) => (
-        <span key={i} className="inline-block overflow-hidden align-bottom pb-[0.12em]">
-          <motion.span
-            className="inline-block"
-            initial={{ y: "110%", opacity: 0, filter: "blur(8px)" }}
-            animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-            transition={{ duration: 0.8, delay: start + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-          >
-            {w}
-            {" "}
-          </motion.span>
+        <span key={i} className="inline-block overflow-hidden align-bottom pb-[0.1em]">
+          <span className="word-rise" style={{ animationDelay: `${start + i * 0.07}s` }}>
+            {w}&nbsp;
+          </span>
         </span>
       ))}
     </span>
   );
 }
 
-// Figma-style selection that "picks" the key phrase once the headline has landed.
-function SelectionBox() {
-  const reduce = useReducedMotion();
-  if (reduce) return null;
-  const handle = "absolute h-2 w-2 border border-sky-500 bg-white";
-  return (
-    <motion.span
-      aria-hidden
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1.9, duration: 0.5 }}
-      className="pointer-events-none absolute -inset-x-3 -inset-y-1 hidden sm:block border border-sky-500/80"
-    >
-      <span className={`${handle} -left-1 -top-1`} />
-      <span className={`${handle} -right-1 -top-1`} />
-      <span className={`${handle} -left-1 -bottom-1`} />
-      <span className={`${handle} -right-1 -bottom-1`} />
-      <motion.span
-        initial={{ x: 90, y: 70, opacity: 0 }}
-        animate={{ x: 0, y: 0, opacity: 1 }}
-        transition={{ delay: 2.2, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute -bottom-7 -right-2 flex items-start"
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24">
-          <path d="M3 2l7.5 18 2.4-7.1L20 10.5 3 2z" fill="#0EA5E9" stroke="white" strokeWidth="1.5" strokeLinejoin="round" />
-        </svg>
-        <span className="ml-2 mt-3 rounded-full rounded-tl-none bg-[#0EA5E9] px-2 py-0.5 font-sans text-[10px] font-semibold tracking-normal text-white">
-          Ruqyya
-        </span>
-      </motion.span>
-    </motion.span>
-  );
-}
-
-function StatCount({ end, suffix }: { end: number; suffix: string }) {
-  return <span>{end}{suffix}</span>;
+function usePrefersReducedMotion() {
+  const [reduce, setReduce] = useState(false);
+  useEffect(() => {
+    const q = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduce(q.matches);
+    const on = () => setReduce(q.matches);
+    q.addEventListener("change", on);
+    return () => q.removeEventListener("change", on);
+  }, []);
+  return reduce;
 }
 
 export default function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
+  const reduce = usePrefersReducedMotion();
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    const handle = (e: PointerEvent) => {
-      if (!ref.current) return;
-      const rect = ref.current.getBoundingClientRect();
-      mx.set((e.clientX - rect.left - rect.width / 2) / rect.width);
-      my.set((e.clientY - rect.top - rect.height / 2) / rect.height);
-    };
-    window.addEventListener("pointermove", handle, { passive: true });
-    return () => window.removeEventListener("pointermove", handle);
-  }, [mx, my]);
-  const b1x = useTransform(mx, (v) => v * -40);
-  const b1y = useTransform(my, (v) => v * -40);
-  const b2x = useTransform(mx, (v) => v * 40);
-  const b2y = useTransform(my, (v) => v * 40);
-  const b3x = useTransform(mx, (v) => v * 28);
-  const b3y = useTransform(my, (v) => v * 28);
+    if (reduce || paused) return;
+    const t = setInterval(() => setActive((a) => (a + 1) % portals.length), 4200);
+    return () => clearInterval(t);
+  }, [reduce, paused]);
+
+  const current = portals[active];
 
   return (
-    <section
-      id="home"
-      ref={ref}
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden grid-bg pt-24 pb-16"
-    >
-      {/* Ambient animated gradient blobs */}
-      <motion.div
-        className="pointer-events-none absolute -top-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#0EA5E9]/20 blur-3xl"
-        style={{ x: b1x, y: b1y }}
-      />
-      <motion.div
-        className="pointer-events-none absolute top-1/3 -right-40 w-[28rem] h-[28rem] rounded-full bg-[#0F172A]/20 blur-3xl"
-        style={{ x: b2x, y: b2y }}
-      />
-      <motion.div
-        className="pointer-events-none absolute bottom-0 left-1/3 w-[24rem] h-[24rem] rounded-full bg-[#14B8A6]/15 blur-3xl"
-        style={{ x: b3x, y: b3y }}
-      />
-
-      <div className="relative max-w-7xl mx-auto px-5 md:px-8 w-full grid lg:grid-cols-[1.15fr_0.85fr] gap-16 items-center">
-        <div>
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 mb-6"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#14B8A6] animate-pulse" />
-            Available for new projects
-          </motion.span>
+    <section id="top" className="surface-deep relative z-10 pb-20 pt-28 md:pb-28 md:pt-36">
+      <div className="mx-auto grid max-w-[88rem] gap-14 px-5 md:px-10 lg:grid-cols-12 lg:gap-8">
+        <div className="lg:col-span-7">
+          <p className="mono flex flex-wrap items-center gap-x-4 gap-y-1 text-ink-2">
+            <span className="inline-flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-forest" aria-hidden /> Open to new projects
+            </span>
+            <span aria-hidden className="hidden h-px w-8 bg-line sm:block" />
+            <span>Senior Product Designer · Healthcare &amp; SaaS UX</span>
+          </p>
 
           <h1
-            aria-label="Designing Digital Products That People Love."
-            className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl xl:text-[4.2rem] leading-[1.05] tracking-tight text-slate-900 dark:text-white"
+            aria-label="Healthcare software, designed for the patient, the doctor and the front desk."
+            className="mt-8 text-[clamp(3rem,7.2vw,6.8rem)] font-medium leading-[1.02]"
           >
-            <WordReveal text="Designing Digital Products" start={0.1} />{" "}
-            <span className="relative block w-fit">
-              <WordReveal text="That People Love." start={0.45} className="text-sky-500 dark:text-sky-400" />
-              <SelectionBox />
+            <span aria-hidden>
+              <Words text="Healthcare software, designed for" start={0.05} />
+              <Words text="the patient, the doctor and the front desk." start={0.3} className="italic text-forest" />
             </span>
           </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-9 text-lg text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed"
-          >
-            I help Healthcare and SaaS companies build intuitive, scalable, and
-            human-centered digital experiences through strategic product design.
-          </motion.p>
+          <p className="rise mt-8 max-w-xl text-lg text-ink-2" style={{ animationDelay: "0.3s" }}>
+            I'm Ruqyya. I design patient apps, clinician portals and clinic websites for healthcare and SaaS teams, from the first
+            research conversation to the last screen.
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-9 flex flex-wrap items-center gap-4"
-          >
-            <Magnetic>
-              <a
-                href="#work"
-                className="group inline-flex items-center gap-2 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold px-6 py-3.5 hover:opacity-90 transition-all"
-              >
-                View Portfolio
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold px-6 py-3.5 hover:border-[#0EA5E9] hover:text-[#0EA5E9] transition-colors"
-              >
-                Contact Me
-              </a>
-            </Magnetic>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-xl"
-          >
-            {stats.map((s) => (
-              <div key={s.label}>
-                <div className="font-display font-extrabold text-2xl md:text-3xl text-slate-900 dark:text-white">
-                  <StatCount end={s.value} suffix={s.suffix} />
-                </div>
-                <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">{s.label}</div>
-              </div>
-            ))}
-          </motion.div>
+          <div className="rise mt-10 flex flex-wrap items-center gap-x-8 gap-y-4" style={{ animationDelay: "0.4s" }}>
+            <a
+              href="#work"
+              className="group inline-flex h-14 items-center gap-3 rounded-full bg-forest px-7 font-semibold text-on-forest transition-transform hover:-translate-y-0.5"
+            >
+              Explore selected work
+              <ArrowDown size={18} className="transition-transform group-hover:translate-y-0.5" />
+            </a>
+            <a href="#approach" className="link-draw py-2 font-semibold">
+              About my approach
+            </a>
+            <a href="#contact" className="link-draw py-2 font-semibold">
+              Get in touch
+            </a>
+          </div>
         </div>
 
-        <div className="relative hidden lg:block">
-          <HeroStage mx={mx} my={my} />
-        </div>
+        {/* Signature piece: walk through the three rooms of one real product */}
+        <figure
+          className="rise lg:col-span-5 lg:mt-10"
+          style={{ animationDelay: "0.2s" }}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocusCapture={() => setPaused(true)}
+          onBlurCapture={() => setPaused(false)}
+        >
+          <div className="relative -rotate-1 border border-line bg-paper-2 p-3 shadow-[0_30px_60px_-30px_rgba(20,32,28,0.45)] md:p-4">
+            <div className="relative overflow-hidden">
+              <img
+                src={`${base}videos/oladoc-cover.jpg`}
+                alt="Oladoc, designed end to end: a patient app, a doctor portal and a front desk screen shown side by side."
+                width={1200}
+                height={938}
+                fetchPriority="high"
+                decoding="async"
+                className="block h-auto w-full"
+              />
+              {portals.map((p, i) => (
+                <div
+                  key={p.id}
+                  aria-hidden
+                  className="pointer-events-none absolute transition-all duration-500"
+                  style={{
+                    left: `${p.box.x}%`,
+                    top: `${p.box.y}%`,
+                    width: `${p.box.w}%`,
+                    height: `${p.box.h}%`,
+                    outline: i === active ? "2px solid var(--signal)" : "2px solid transparent",
+                    outlineOffset: "4px",
+                    background: i === active ? "transparent" : "color-mix(in srgb, var(--paper) 50%, transparent)",
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+
+          <figcaption className="mt-6">
+            <p className="mono text-ink-2">Fig. 1 · Oladoc, three portals, one product</p>
+            <div role="tablist" aria-label="Portals in the Oladoc project" className="mt-4 flex flex-wrap gap-2">
+              {portals.map((p, i) => (
+                <button
+                  key={p.id}
+                  role="tab"
+                  type="button"
+                  id={`portal-tab-${p.id}`}
+                  aria-selected={i === active}
+                  aria-controls="portal-panel"
+                  onClick={() => setActive(i)}
+                  className={`h-11 rounded-full border px-5 text-sm font-semibold transition-colors ${
+                    i === active ? "border-signal text-signal" : "border-line text-ink-2 hover:border-ink hover:text-ink"
+                  }`}
+                >
+                  {p.label}
+                </button>
+              ))}
+            </div>
+            <div id="portal-panel" role="tabpanel" aria-labelledby={`portal-tab-${current.id}`} aria-live="polite" className="mt-5 min-h-[4.5rem]">
+              <p className="serif text-xl leading-snug">{current.text}</p>
+            </div>
+            <p className="mono mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-ink-2">
+              <span>47 screens</span>
+              <span>3 portals</span>
+              <span>4 journeys</span>
+              <Link to="/work/oladoc-healthcare-app-ui-ux-design" className="link-draw inline-flex items-center gap-1 py-1 text-ink">
+                Read the project <ArrowUpRight size={14} />
+              </Link>
+            </p>
+          </figcaption>
+        </figure>
       </div>
 
-      <motion.a
-        href="#about"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="relative mx-auto mt-10 text-slate-400 hover:text-[#0EA5E9] transition-colors"
-        aria-label="Scroll to about section"
-      >
-        <ChevronDown size={22} />
-      </motion.a>
+      <div className="mx-auto mt-20 max-w-[88rem] border-y border-line px-5 py-5 md:mt-24 md:px-10">
+        <p className="mono flex flex-wrap items-center gap-x-8 gap-y-2 text-ink-2">
+          <span>6+ years</span>
+          <span>Healthcare UX</span>
+          <span>SaaS platforms</span>
+          <span>Design systems</span>
+          <span>Remote worldwide</span>
+        </p>
+      </div>
     </section>
   );
 }
