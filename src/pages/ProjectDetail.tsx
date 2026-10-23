@@ -78,7 +78,7 @@ export default function ProjectDetail() {
   return (
     <article className="relative z-10 pb-24">
       {/* Header band */}
-      <div className="palette-ocean surface-hero pb-40 pt-28 md:pb-56 md:pt-36">
+      <div className="surface-deep surface-hero pb-40 pt-28 md:pb-56 md:pt-36">
         <header className="mx-auto max-w-[88rem] px-5 md:px-10">
           <div className={s.heroShots ? "grid items-center gap-12 lg:grid-cols-12" : ""}>
             <div className={s.heroShots ? "lg:col-span-7" : ""}>

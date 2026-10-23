@@ -103,7 +103,7 @@ export default function Hero() {
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
-      className="palette-ocean surface-hero hero-canvas relative z-10 pb-24 pt-28 md:pb-28 md:pt-36"
+      className="surface-deep surface-hero hero-canvas relative z-10 pb-24 pt-28 md:pb-28 md:pt-36"
     >
       <div className="mx-auto grid max-w-[88rem] gap-x-12 gap-y-16 px-5 md:px-10 lg:grid-cols-12 lg:items-center">
         <div className="relative z-30 lg:col-span-7">

@@ -44,30 +44,30 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ───────── Design tokens: "Ocean Teal" ─────────
-   One palette, Ocean Teal Teal + Porcelain. Components read only the roles below, never a hex value,
+/* ───────── Design tokens: "Goddard" ─────────
+   One palette, Goddard Teal + Porcelain. Components read only the roles below, never a hex value,
    so the whole site can be re-tuned by changing the primitives.
    Every text pair was measured against WCAG 2.2 AA (see docs/10-SOFT-PALETTE-COMPARISON.md). */
 :root {
-  /* Ocean Teal: Turquoise #2CA89F, Ocean Teal #066078, Deep Ink #203A3D, Warm Ivory #FFFAF6, Sea Mist #DCEFEB */
-  --p-porcelain: #fffaf6; /* Warm Ivory */
-  --p-tint: #e9f4f1; /* Sea Mist, lightened for large sections */
-  --p-mint: #dcefeb; /* Sea Mist: stages and chips */
-  --p-ink: #203a3d; /* Deep Ink */
-  --p-ink-2: #4a5e60;
-  --p-line: #d4e4e0;
-  --p-line-strong: #7f9896;
-  --p-action: #066078; /* Ocean Teal: buttons, links, emphasised words (6.86:1 on ivory) */
-  --p-label: #066078;
-  --p-hover: #044a5c;
-  --p-turq: #2ca89f; /* Turquoise: decoration only on light (2.81:1) */
-  --p-glass: #8fdcd3; /* light aqua: accent text on the dark footer and gradient */
-  --p-deep: #203a3d; /* footer */
-  --p-deep-2: #2a474a;
-  --p-deep-ink-2: #cfe0de;
-  --p-deep-line: #3d5a5c;
-  --p-bezel: #203a3d;
-  --p-bloom: 44, 168, 159;
+  /* Goddard palette, sampled from the Goddard Veterinary cover: navy #0A2A59, ocean #0F5974, teal #159797, aqua highlight #A0F2ED */
+  --p-porcelain: #f7fafc; /* light ground for content */
+  --p-tint: #eaf0f5;
+  --p-mint: #e2edf4; /* stage behind product screens */
+  --p-ink: #0a2552; /* deep navy: headings and body */
+  --p-ink-2: #475569;
+  --p-line: #d6e1ea;
+  --p-line-strong: #8195a8;
+  --p-action: #0f5974; /* ocean: buttons, links, emphasised words on light (7.4:1) */
+  --p-label: #0f5974;
+  --p-hover: #0b4660;
+  --p-turq: #159797; /* teal: decoration only on light (3.4:1) */
+  --p-glass: #a0f2ed; /* soft aqua: accent on navy (11.7:1) */
+  --p-deep: #0a2552;
+  --p-deep-2: #0e3363;
+  --p-deep-ink-2: #c9d6e3;
+  --p-deep-line: #25477a;
+  --p-bezel: #07183a;
+  --p-bloom: 21, 151, 151;
 }
 
 :root {
@@ -97,9 +97,9 @@
   --ink: var(--p-porcelain);
   --ink-2: var(--p-deep-ink-2);
   --line: var(--p-deep-line);
-  --line-strong: #6a8587;
+  --line-strong: #5a7aa0;
   --forest: var(--p-glass);
-  --forest-hover: #b9ece6;
+  --forest-hover: #d3f8f4;
   --on-forest: var(--p-deep);
   --signal: var(--p-glass);
   --mark: var(--p-glass);
@@ -116,9 +116,9 @@
   --ink: var(--p-porcelain);
   --ink-2: var(--p-deep-ink-2);
   --line: var(--p-deep-line);
-  --line-strong: #6a8587;
+  --line-strong: #5a7aa0;
   --forest: var(--p-glass);
-  --forest-hover: #b9ece6;
+  --forest-hover: #d3f8f4;
   --on-forest: var(--p-deep);
   --signal: var(--p-glass);
   --mark: var(--p-glass);
@@ -172,7 +172,7 @@
 
 /* Sage call-out band: used once, mid-page. */
 .surface-teal {
-  background-image: linear-gradient(120deg, #066078 0%, #0b4f60 100%);
+  background-image: linear-gradient(120deg, #0f5974 0%, #0b3361 100%);
   --paper: var(--p-action);
   --paper-2: var(--p-label);
   --ink: #ffffff;
@@ -198,18 +198,33 @@
 }
 
 /* Hero and header band: light and restful, with one soft Sea Glass bloom in the corner. */
-.surface-hero {
+/* Hero, case-study header and contact: the Goddard-cover gradient. Navy to ocean, with one teal bloom in the corner, away from the text. */
+.surface-hero, .surface-gradient {
   background:
-    radial-gradient(52rem 34rem at 104% -8%, rgba(var(--p-bloom), 0.34), transparent 68%),
-    linear-gradient(180deg, var(--p-porcelain) 0%, var(--p-tint) 100%);
+    radial-gradient(34rem 26rem at 106% 8%, rgba(21, 151, 151, 0.85), rgba(17, 138, 145, 0.4) 42%, transparent 72%),
+    linear-gradient(118deg, #0a2552 0%, #0b3361 54%, #0e4468 100%);
   color: var(--ink);
 }
-/* Contact: the dark surface with a soft sage bloom. */
-.surface-gradient {
-  background:
-    radial-gradient(40rem 26rem at 104% -10%, rgba(44, 168, 159, 0.55), transparent 70%),
-    linear-gradient(120deg, #066078 0%, #0b4f60 52%, #203a3d 100%);
+@media (min-width: 1024px) {
+  .surface-hero, .surface-gradient {
+    background:
+      radial-gradient(56rem 44rem at 104% 14%, rgba(21, 151, 151, 0.9), rgba(17, 138, 145, 0.5) 40%, transparent 72%),
+      radial-gradient(40rem 30rem at 78% 96%, rgba(15, 89, 116, 0.55), transparent 70%),
+      linear-gradient(118deg, #0a2552 0%, #0b3361 52%, #0d4266 100%);
+  }
 }
+.surface-hero.hero-canvas::before {
+  background-image:
+    linear-gradient(rgba(170, 185, 201, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(170, 185, 201, 0.07) 1px, transparent 1px);
+}
+.surface-hero.hero-canvas::after { background: radial-gradient(360px circle at var(--mx) var(--my), rgba(160, 242, 237, 0.08), transparent 65%); }
+.stage-gradient { background: rgba(255, 255, 255, 0.06); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14); }
+.portrait-disc { background: linear-gradient(135deg, #159797 0%, #0f5974 100%); }
+.ecg-rule { background: #20d6d2; }
+.ecg-line { stroke: #20d6d2; }
+.champagne { color: #a0f2ed; }
+.rule-champagne { background: #20d6d2; }
 /* Soft Aqua highlight on dark surfaces */
 .surface-deep h1 .italic, .surface-deep h2 em, .surface-deep h3 em, .surface-deep .accent-italic { color: var(--aqua); }
 
@@ -413,7 +428,7 @@ body {
 @media (prefers-reduced-motion: reduce) { .ecg-rule { transform: none; } .ecg-line { stroke-dashoffset: 0; } }
 
 /* Dark theme: the hero and header band follow the page instead of staying light */
-.dark .surface-hero {
+.dark .surface-hero-unused {
   background:
     radial-gradient(52rem 34rem at 104% -8%, rgba(var(--p-bloom), 0.16), transparent 68%),
     linear-gradient(180deg, var(--p-deep) 0%, var(--p-deep-2) 100%);
@@ -425,53 +440,3 @@ body {
 }
 
 
-/* ───────── Ocean Teal (preview) ─────────
-   Turquoise #2CA89F, Ocean Teal #066078, Deep Ink #203A3D, Warm Ivory #FFFAF6, Sea Mist #DCEFEB.
-   Scoped with .palette-ocean so the hero and one case study can be approved before the whole site changes.
-   Turquoise is 2.81:1 on ivory, so it is decoration only (rules, dots, icons, gradient). Text and buttons use Ocean Teal.
-   Contrast: ink 11.68 on ivory / 10.14 on mist; secondary text #4A5E60 6.62 / 5.75; Ocean Teal 6.86 / 5.96; white on Ocean Teal 7.11. */
-.palette-ocean {
-  --champagne: #2ca89f; /* the accent hooks used by the hero rules, diamonds and portrait ring */
-  --gradient-ocean: linear-gradient(135deg, #2ca89f 0%, #1a8490 48%, #066078 100%);
-  --paper: #fffaf6;
-  --paper-2: #dcefeb;
-  --ink: #203a3d;
-  --ink-2: #4a5e60;
-  --line: #d4e4e0;
-  --line-strong: #7f9896;
-  --forest: #066078;
-  --forest-hover: #044a5c;
-  --on-forest: #ffffff;
-  --signal: #066078;
-  --mark: #2ca89f;
-  --accent: #066078;
-  --on-accent: #ffffff;
-  --bezel: #203a3d;
-  --focus: #066078;
-  --color-paper: var(--paper);
-  --color-paper-2: var(--paper-2);
-  --color-ink: var(--ink);
-  --color-ink-2: var(--ink-2);
-  --color-line: var(--line);
-  --color-forest: var(--forest);
-  --color-on-forest: var(--on-forest);
-  --color-signal: var(--signal);
-  color: var(--ink);
-}
-.palette-ocean.surface-hero {
-  background:
-    radial-gradient(46rem 28rem at 104% -6%, rgba(44, 168, 159, 0.16), transparent 66%),
-    #fffaf6;
-}
-.palette-ocean.hero-canvas::before {
-  background-image:
-    linear-gradient(rgba(32, 58, 61, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(32, 58, 61, 0.04) 1px, transparent 1px);
-}
-.palette-ocean.hero-canvas::after { background: radial-gradient(360px circle at var(--mx) var(--my), rgba(44, 168, 159, 0.12), transparent 65%); }
-.palette-ocean .ecg-rule { background: linear-gradient(90deg, #2ca89f, #066078); }
-.palette-ocean .ecg-line { stroke: #2ca89f; }
-.palette-ocean .champagne { color: var(--champagne); }
-.palette-ocean .rule-champagne { background: var(--gradient-ocean); }
-.palette-ocean .stage-gradient { background: var(--gradient-ocean); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25); }
-.palette-ocean .portrait-disc { background: var(--gradient-ocean); }
