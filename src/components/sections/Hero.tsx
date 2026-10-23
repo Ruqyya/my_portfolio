@@ -103,7 +103,7 @@ export default function Hero() {
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
-      className="palette-ivory surface-hero hero-canvas relative z-10 pb-24 pt-28 md:pb-28 md:pt-36"
+      className="palette-ocean surface-hero hero-canvas relative z-10 pb-24 pt-28 md:pb-28 md:pt-36"
     >
       <div className="mx-auto grid max-w-[88rem] gap-x-12 gap-y-16 px-5 md:px-10 lg:grid-cols-12 lg:items-center">
         <div className="relative z-30 lg:col-span-7">
@@ -156,9 +156,9 @@ export default function Hero() {
         {/* The same booking, seen from three seats. Real Oladoc Figma screens; the tabs bring each room forward. */}
         <figure className="rise relative z-10 lg:col-span-5" style={{ animationDelay: "0.2s" }}>
           <div className="relative mx-auto aspect-[1.04/1] w-full max-w-[36rem]">
-            <div aria-hidden className="absolute inset-[4%] rounded-[2rem] bg-[#ece9e0] ring-1 ring-[var(--line)]" />
+            <div aria-hidden className="absolute inset-0 rounded-[2rem] stage-gradient" />
 
-            <Layer on={active === 1} className="left-[10%] top-[2%] w-[86%]">
+            <Layer on={active === 1} className="left-[10%] top-[8%] w-[78%]">
               <div className="overflow-hidden rounded-xl border border-line bg-paper shadow-[0_30px_50px_-26px_rgba(36,60,57,0.35)]">
                 <div className="flex items-center gap-1.5 border-b border-line bg-paper-2 px-3 py-2" aria-hidden>
                   <span className="h-2 w-2 rounded-full bg-line" />
@@ -170,7 +170,7 @@ export default function Hero() {
               </div>
             </Layer>
 
-            <Layer on={active === 2} className="right-0 top-[42%] w-[68%]">
+            <Layer on={active === 2} className="right-[5%] top-[47%] w-[60%]">
               <div className="overflow-hidden rounded-xl border border-line bg-paper shadow-[0_30px_50px_-26px_rgba(36,60,57,0.35)]">
                 <div className="flex items-center gap-1.5 border-b border-line bg-paper-2 px-3 py-2" aria-hidden>
                   <span className="h-2 w-2 rounded-full bg-line" />
@@ -203,7 +203,7 @@ export default function Hero() {
 
             {/* Portrait badge: puts a face next to the work */}
             <div className="absolute -bottom-9 right-0 z-40 flex items-center gap-3 rounded-full border border-line bg-paper py-2 pl-2 pr-5 shadow-[0_16px_30px_-18px_rgba(36,60,57,0.4)] md:right-2">
-              <img src={portrait} alt="Portrait of Ruqyya" width={56} height={56} className="h-14 w-14 rounded-full object-cover object-top ring-2 ring-[var(--champagne)]" />
+              <span className="portrait-disc h-14 w-14 shrink-0 overflow-hidden rounded-full ring-2 ring-[var(--paper)]"><img src={portrait} alt="Portrait of Ruqyya" width={56} height={56} className="h-full w-full object-cover object-top" /></span>
               <span className="text-base leading-tight">
                 <span className="serif block text-xl">Ruqyya</span>
                 <span className="mono text-ink-2">Lahore · Remote</span>

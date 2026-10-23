@@ -28,7 +28,7 @@ export default function Nav() {
 
   return (
     <header
-      className={`palette-ivory fixed inset-x-0 top-0 z-50 border-b bg-paper/90 text-ink backdrop-blur-md transition-colors duration-300 ${
+      className={`palette-ocean fixed inset-x-0 top-0 z-50 border-b bg-paper/90 text-ink backdrop-blur-md transition-colors duration-300 ${
         scrolled || open ? "border-line shadow-[0_10px_30px_-22px_rgba(36,60,57,0.35)]" : "border-transparent"
       }`}
     >
