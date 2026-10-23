@@ -44,7 +44,7 @@ export default function DecisionRecords({ decisions }: { decisions: Decision[] }
 
               <div className="lg:col-span-6">
                 {d.shots?.map((sh) => (
-                  <div key={sh.src} className="surface-deep rounded-[1.75rem] p-5 md:p-9">
+                  <div key={sh.src} className="surface-stage rounded-[1.75rem] p-5 md:p-9">
                     <Annotated shot={sh} kind={d.kind === "wide" ? "wide" : "phone"} stack className="gap-8" />
                   </div>
                 ))}

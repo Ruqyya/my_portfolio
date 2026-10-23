@@ -31,7 +31,7 @@ export default function ProjectDetail() {
   useEffect(() => {
     if (!project) return;
     const prev = document.title;
-    document.title = `${project.title} · Creative Ruqyya`;
+    document.title = `${project.study.identifier ?? project.title} · Creative Ruqyya`;
     return () => {
       document.title = prev;
     };
@@ -78,7 +78,7 @@ export default function ProjectDetail() {
   return (
     <article className="relative z-10 pb-24">
       {/* Header band */}
-      <div className="surface-deep pb-40 pt-28 md:pb-56 md:pt-36">
+      <div className="surface-hero pb-40 pt-28 md:pb-56 md:pt-36">
         <header className="mx-auto max-w-[88rem] px-5 md:px-10">
           <div className={s.heroShots ? "grid items-center gap-12 lg:grid-cols-12" : ""}>
             <div className={s.heroShots ? "lg:col-span-7" : ""}>
@@ -86,26 +86,28 @@ export default function ProjectDetail() {
               <ArrowLeft size={14} /> All work
             </Link>
             <p className="mono mt-10 text-signal">
-              Case study — {project.industry} · {project.year}
+              {s.identifier ?? `Case study — ${project.industry} · ${project.year}`}
             </p>
-            <h1 className="mt-4 max-w-5xl text-[clamp(2.8rem,6.6vw,6.2rem)] font-medium leading-[1.02]">{project.title}</h1>
+            <h1 className={`mt-4 max-w-5xl font-medium ${s.headline ? "text-[clamp(2.4rem,5vw,4.8rem)] leading-[1.06]" : "text-[clamp(2.8rem,6.6vw,6.2rem)] leading-[1.02]"}`}>{s.headline ?? project.title}</h1>
             {s.summary && <p className="mt-8 max-w-2xl text-xl text-ink-2">{s.summary}</p>}
   
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
               <a href={MAIL_HREF} className="inline-flex h-14 items-center gap-3 rounded-full bg-forest px-7 font-semibold text-on-forest transition-transform hover:-translate-y-0.5">
                 <Mail size={18} aria-hidden /> Discuss a similar project
               </a>
-              <a href="#film" className="link-draw py-2 font-semibold">Watch the film ↓</a>
+              <a href={s.research ? "#research" : s.tasks || s.stills ? "#screens" : "#film"} className="link-draw py-2 text-lg font-semibold">
+                {s.research ? "Explore the design process ↓" : s.tasks || s.stills ? "See the final experience ↓" : "Watch the project summary ↓"}
+              </a>
             </div>
   
               </div>
             {s.heroShots && (
               <div aria-hidden className="relative mx-auto aspect-[1.08/1] w-full max-w-[34rem] lg:col-span-5">
-                <div className="absolute inset-[5%] rounded-[2rem] bg-white/[0.05] ring-1 ring-white/15" />
-                <img src={`${base}${s.heroShots[0].src}`} alt="" width={1600} height={1046} fetchPriority="high" className="absolute right-0 top-0 w-[88%] rounded-xl border border-white/15 shadow-[0_40px_70px_-30px_rgba(0,0,0,0.85)]" />
-                <img src={`${base}${s.heroShots[1].src}`} alt="" width={1600} height={1046} loading="lazy" decoding="async" className="absolute bottom-[6%] right-[-2%] w-[56%] rounded-xl border border-white/15 shadow-[0_40px_70px_-30px_rgba(0,0,0,0.85)]" />
+                <div className="absolute inset-[5%] rounded-[2rem] bg-[var(--p-mint)] ring-1 ring-[var(--line)]" />
+                <img src={`${base}${s.heroShots[0].src}`} alt="" width={1600} height={1046} fetchPriority="high" className="absolute right-0 top-0 w-[88%] rounded-xl border border-white/15 shadow-[0_40px_70px_-30px_rgba(36,60,57,0.26)]" />
+                <img src={`${base}${s.heroShots[1].src}`} alt="" width={1600} height={1046} loading="lazy" decoding="async" className="absolute bottom-[6%] right-[-2%] w-[56%] rounded-xl border border-white/15 shadow-[0_40px_70px_-30px_rgba(36,60,57,0.26)]" />
                 {[2, 3].map((n, i) => (
-                  <img key={n} src={`${base}${s.heroShots![n].src}`} alt="" width={700} height={1515} loading="lazy" decoding="async" className="absolute bottom-0 w-[24%] rounded-[1.4rem] border-[5px] border-[#05080f] shadow-[0_30px_50px_-20px_rgba(0,0,0,0.9)]" style={{ left: `${i * 17}%`, transform: `rotate(${i ? 3 : -3}deg)` }} />
+                  <img key={n} src={`${base}${s.heroShots![n].src}`} alt="" width={700} height={1515} loading="lazy" decoding="async" className="absolute bottom-0 w-[24%] rounded-[1.4rem] border-[5px] border-[var(--bezel)] shadow-[0_30px_50px_-20px_rgba(36,60,57,0.26)]" style={{ left: `${i * 17}%`, transform: `rotate(${i ? 3 : -3}deg)` }} />
                 ))}
               </div>
             )}
@@ -114,7 +116,7 @@ export default function ProjectDetail() {
           {s.overview ? (
             <dl className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
               {s.overview.map((o) => (
-                <div key={o.k} className="bg-[#0a1220] p-6 md:p-7">
+                <div key={o.k} className="bg-paper p-6 md:p-7">
                   <dt className="mono text-signal">{o.k}</dt>
                   <dd className="mt-2 text-lg leading-snug text-ink">{o.v}</dd>
                 </div>
@@ -135,8 +137,8 @@ export default function ProjectDetail() {
 
       {/* Film */}
       <Reveal>
-        <section id="film" aria-label="Project film" className="relative z-20 mx-auto -mt-28 max-w-[88rem] px-5 md:-mt-44 md:px-10">
-          <div className="rounded-xl border border-line bg-paper p-2 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.5)] md:p-3">
+        <section id="film" aria-label="Project summary video" className="relative z-20 mx-auto -mt-28 max-w-[88rem] px-5 md:-mt-44 md:px-10">
+          <div className="rounded-xl border border-line bg-paper p-2 shadow-[0_40px_80px_-30px_rgba(36,60,57,0.26)] md:p-3">
             {s.video ? (
               <video
                 src={`${base}${s.video}`}
@@ -158,7 +160,14 @@ export default function ProjectDetail() {
               />
             )}
           </div>
-          {s.video && <p className="mono mt-3 text-ink-2">Sound on for the full walkthrough</p>}
+          {s.video && (
+            <div className="mt-4 flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
+              <p className="mono text-ink-2">Animated project summary, about a minute. Sound on.</p>
+              {s.research && (s.tasks || s.stills) && (
+                <a href="#screens" className="link-draw mono py-1 text-signal">See the final experience ↓</a>
+              )}
+            </div>
+          )}
         </section>
       </Reveal>
 
@@ -226,7 +235,7 @@ export default function ProjectDetail() {
               </ul>
               {s.problem.why && (
                 <Reveal className="mt-10">
-                  <p className="surface-deep serif rounded-[1.75rem] p-7 text-[clamp(1.35rem,2.2vw,1.8rem)] leading-snug md:p-10">{s.problem.why}</p>
+                  <p className="surface-stage serif rounded-[1.75rem] p-7 text-[clamp(1.35rem,2.2vw,1.8rem)] leading-snug md:p-10">{s.problem.why}</p>
                 </Reveal>
               )}
             </section>
@@ -241,7 +250,7 @@ export default function ProjectDetail() {
               </Reveal>
               <div className="mt-10 grid gap-5 md:grid-cols-3">
                 {s.users.people.map((p, i) => (
-                  <Reveal key={p.name} delay={i * 0.05} className={`rounded-xl border border-line p-6 ${p.quote ? "surface-deep md:col-span-3" : "bg-paper-2/60"}`}>
+                  <Reveal key={p.name} delay={i * 0.05} className={`rounded-xl border border-line p-6 ${p.quote ? "surface-stage md:col-span-3" : "bg-paper-2/60"}`}>
                     {p.tag && <p className={`mono text-signal`}>{p.tag}</p>}
                     <h3 className="mt-2 text-2xl font-medium">{p.name}</h3>
                     {p.quote && <p className="serif mt-4 max-w-3xl text-[clamp(1.4rem,2.4vw,2rem)] italic leading-snug">“{p.quote}”</p>}

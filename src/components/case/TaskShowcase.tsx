@@ -45,7 +45,7 @@ export default function TaskShowcase({ tasks }: { tasks: Task[] }) {
         ))}
       </div>
 
-      <div id="task-panel" role="tabpanel" aria-labelledby={`task-tab-${t.id}`} className="surface-deep mt-6 rounded-[1.75rem] px-5 py-10 md:px-12 md:py-14">
+      <div id="task-panel" role="tabpanel" aria-labelledby={`task-tab-${t.id}`} className="surface-stage mt-6 rounded-[1.75rem] px-5 py-10 md:px-12 md:py-14">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="mono text-signal">{String(on + 1).padStart(2, "0")} · {t.label}</p>
@@ -74,7 +74,7 @@ export default function TaskShowcase({ tasks }: { tasks: Task[] }) {
                   <li key={sh.src} className="relative">
                     <Phone shot={sh} />
                     {i < t.shots.length - 1 && (
-                      <span aria-hidden className="absolute -right-3 top-[36%] hidden h-px w-6 bg-[var(--brand-cyan)] md:block" />
+                      <span aria-hidden className="absolute -right-3 top-[36%] hidden h-px w-6 bg-[var(--accent)] md:block" />
                     )}
                   </li>
                 ))}

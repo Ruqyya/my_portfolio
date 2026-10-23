@@ -44,64 +44,108 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ───────── Design tokens: "Midnight & Cyan" ─────────
-   Brand palette (from the LinkedIn banner): Midnight Ink #080D19, Electric Cyan #20D6D2,
-   Deep Teal #087F86, Porcelain #F8FAFC, Silver Slate #AAB9C9, White #FFFFFF.
-   Semantic roles below. Cyan fails contrast as text on light, so on porcelain the action and
-   link colour is an AA-tuned deep teal (#06707A) and cyan is kept for dark surfaces, rules and marks.
-   Every text pair was measured against WCAG 2.2 AA (see docs/03-DESIGN-SYSTEM.md). */
+/* ───────── Design tokens: "Soft Botanical" ─────────
+   Two palettes share one set of roles. Variant A (default) is Soft Botanical Teal + Porcelain;
+   variant B (`<html data-palette="ocean">`) is a cooler Ocean Blue + Mist. Components only read the roles,
+   never a hex value, so a palette is chosen by changing the primitives below.
+   Every text pair was measured against WCAG 2.2 AA (see docs/10-SOFT-PALETTE-COMPARISON.md). */
 :root {
-  /* brand (never change per theme) */
-  --brand-midnight: #080d19;
-  --brand-cyan: #20d6d2;
-  --brand-teal: #087f86;
-  --brand-porcelain: #f8fafc;
-  --brand-slate: #aab9c9;
+  /* A · Soft Botanical Teal + Porcelain */
+  --p-porcelain: #f5f8f5;
+  --p-tint: #e9f1ec;
+  --p-mint: #dcece5; /* stages behind product screens */
+  --p-ink: #243c39; /* Forest Ink */
+  --p-ink-2: #4a625e;
+  --p-line: #d6e2db;
+  --p-line-strong: #8da39b;
+  --p-action: #427f78; /* Sage Teal: fills, marks, large display type */
+  --p-label: #37706a; /* deeper Sage Teal for small text and links (5.3:1 on porcelain) */
+  --p-hover: #2d5f59;
+  --p-glass: #a8c7bc; /* Sea Glass */
+  --p-deep: #243c39; /* the one dark surface: contact and footer */
+  --p-deep-2: #2e4a46;
+  --p-deep-ink-2: #c3d6ce;
+  --p-deep-line: #3f5b56;
+  --p-bezel: #2a403d;
+  --p-bloom: 168, 199, 188; /* rgb of Sea Glass, for soft gradients */
+}
+:root[data-palette="ocean"] {
+  /* B · Ocean Blue + Mist */
+  --p-porcelain: #f4f7fa;
+  --p-tint: #e8eef4;
+  --p-mint: #dde8f1;
+  --p-ink: #1f3347;
+  --p-ink-2: #4a5f73;
+  --p-line: #d9e2ea;
+  --p-line-strong: #8a9db0;
+  --p-action: #3f6e96;
+  --p-label: #35607f;
+  --p-hover: #2b4f69;
+  --p-glass: #a9c2d6;
+  --p-deep: #1f3347;
+  --p-deep-2: #28425a;
+  --p-deep-ink-2: #c2d2e0;
+  --p-deep-line: #3d566d;
+  --p-bezel: #26394d;
+  --p-bloom: 169, 194, 214;
+}
 
-  /* semantic roles, light theme */
-  --paper: #f8fafc; /* surface */
-  --paper-2: #eef1f5; /* cool-neutral porcelain */
-  --ink: #080d19; /* primary text */
-  --ink-2: #475569; /* secondary text (Silver Slate, deepened for light grounds) */
-  --line: #dbe1e8; /* hairline borders */
-  --line-strong: #98a6b6; /* control borders (3:1) */
-  --forest: #06707a; /* action, links, emphasis */
-  --forest-hover: #055b64;
+:root {
+  /* semantic roles, light */
+  --paper: var(--p-porcelain);
+  --paper-2: var(--p-tint);
+  --ink: var(--p-ink);
+  --ink-2: var(--p-ink-2);
+  --line: var(--p-line);
+  --line-strong: var(--p-line-strong);
+  --forest: var(--p-label); /* action, links, emphasis */
+  --forest-hover: var(--p-hover);
   --on-forest: #ffffff;
-  --signal: #06707a; /* labels and section numbers */
-  --mark: #087f86; /* decorative accent: rules, icons, dots (not text) */
-  --focus: #06707a;
+  --signal: var(--p-label); /* labels and section numbers */
+  --mark: var(--p-action); /* decorative: rules, icons, markers */
+  --accent: var(--p-action); /* fills and callout markers */
+  --on-accent: #ffffff;
+  --accent-soft: var(--p-glass);
+  --bezel: var(--p-bezel);
+  --focus: var(--p-label);
+  --aqua: var(--p-glass);
+  --btn: var(--p-action); /* primary button fill: white text passes 4.5:1 */
 }
 .dark {
-  --paper: #080d19;
-  --paper-2: #101826;
-  --ink: #ffffff;
-  --ink-2: #aab9c9;
-  --line: #1f2b3d;
-  --line-strong: #4a5b72;
-  --forest: #20d6d2;
-  --forest-hover: #6ee6e3;
-  --on-forest: #080d19;
-  --signal: #20d6d2;
-  --mark: #20d6d2;
-  --focus: #20d6d2;
+  --paper: var(--p-deep);
+  --paper-2: var(--p-deep-2);
+  --ink: var(--p-porcelain);
+  --ink-2: var(--p-deep-ink-2);
+  --line: var(--p-deep-line);
+  --line-strong: #5f7c76;
+  --forest: var(--p-glass);
+  --forest-hover: #cfe3da;
+  --on-forest: var(--p-deep);
+  --signal: var(--p-glass);
+  --mark: var(--p-glass);
+  --accent: var(--p-glass);
+  --on-accent: var(--p-deep);
+  --focus: var(--p-glass);
+  --btn: var(--p-glass);
 }
 
-/* Midnight surface: nav, hero, editorial sections, footer.
-   Re-declares the colour aliases so Tailwind utilities pick up the new values inside it. */
+/* The one dark surface (contact, footer, call-out band). Re-declares the colour aliases so Tailwind utilities pick up the new values inside it. */
 .surface-deep {
-  --paper: #080d19;
-  --paper-2: #0f1726;
-  --ink: #ffffff;
-  --ink-2: #aab9c9;
-  --line: #1f2b3d;
-  --line-strong: #4a5b72;
-  --forest: #20d6d2; /* cyan is the action and emphasis colour on midnight */
-  --forest-hover: #6ee6e3;
-  --on-forest: #080d19;
-  --signal: #20d6d2;
-  --mark: #20d6d2;
-  --focus: #20d6d2;
+  --paper: var(--p-deep);
+  --paper-2: var(--p-deep-2);
+  --ink: var(--p-porcelain);
+  --ink-2: var(--p-deep-ink-2);
+  --line: var(--p-deep-line);
+  --line-strong: #5f7c76;
+  --forest: var(--p-glass);
+  --forest-hover: #cfe3da;
+  --on-forest: var(--p-deep);
+  --signal: var(--p-glass);
+  --mark: var(--p-glass);
+  --accent: var(--p-glass);
+  --on-accent: var(--p-deep);
+  --focus: var(--p-glass);
+  --btn: var(--p-glass);
   --color-paper: var(--paper);
   --color-paper-2: var(--paper-2);
   --color-ink: var(--ink);
@@ -111,25 +155,54 @@
   --color-on-forest: var(--on-forest);
   --color-signal: var(--signal);
   color: var(--ink);
-  background: #080d19;
+  background: var(--p-deep);
 }
 .surface-deep-flat {
-  background: #05080f;
+  background: var(--p-deep);
 }
 
-/* Deep-teal surface: used once, for the mid-page call to action. */
+/* Stage: a soft mint ground behind product screens, so the screens carry the contrast and nothing heavy sits around them. */
+.surface-stage {
+  --paper: var(--p-mint);
+  --paper-2: var(--p-tint);
+  --ink: var(--p-ink);
+  --ink-2: var(--p-ink-2);
+  --line: color-mix(in srgb, var(--p-ink) 14%, transparent);
+  --line-strong: var(--p-line-strong);
+  --forest: var(--p-label);
+  --forest-hover: var(--p-hover);
+  --on-forest: #ffffff;
+  --signal: var(--p-label);
+  --mark: var(--p-action);
+  --accent: var(--p-action);
+  --on-accent: #ffffff;
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-forest: var(--forest);
+  --color-on-forest: var(--on-forest);
+  --color-signal: var(--signal);
+  color: var(--ink);
+  background:
+    radial-gradient(40rem 22rem at 100% 0%, rgba(var(--p-bloom), 0.45), transparent 70%),
+    var(--p-mint);
+}
+
+/* Sage call-out band: used once, mid-page. */
 .surface-teal {
-  --paper: #064c52;
-  --paper-2: #08595f;
+  --paper: var(--p-action);
+  --paper-2: var(--p-label);
   --ink: #ffffff;
-  --ink-2: #cfdde6;
-  --line: #1d727a;
-  --line-strong: #4f9ba2;
+  --ink-2: #eef5f1;
+  --line: rgba(255, 255, 255, 0.3);
+  --line-strong: rgba(255, 255, 255, 0.6);
   --forest: #ffffff;
-  --forest-hover: #e2fbfa;
-  --on-forest: #064c52;
-  --signal: #7ff0ec;
-  --mark: #20d6d2;
+  --forest-hover: #eef5f1;
+  --on-forest: var(--p-ink);
+  --signal: #ffffff;
+  --mark: #ffffff;
   --focus: #ffffff;
   --color-paper: var(--paper);
   --color-paper-2: var(--paper-2);
@@ -140,8 +213,24 @@
   --color-on-forest: var(--on-forest);
   --color-signal: var(--signal);
   color: var(--ink);
-  background: #064c52;
+  background: var(--p-action);
 }
+
+/* Hero and header band: light and restful, with one soft Sea Glass bloom in the corner. */
+.surface-hero {
+  background:
+    radial-gradient(52rem 34rem at 104% -8%, rgba(var(--p-bloom), 0.6), transparent 68%),
+    linear-gradient(180deg, var(--p-porcelain) 0%, var(--p-tint) 100%);
+  color: var(--ink);
+}
+/* Contact: the dark surface with a soft sage bloom. */
+.surface-gradient {
+  background:
+    radial-gradient(48rem 30rem at 104% -12%, rgba(var(--p-bloom), 0.3), transparent 70%),
+    linear-gradient(118deg, var(--p-deep) 0%, var(--p-deep-2) 100%);
+}
+/* Soft Aqua highlight on dark surfaces */
+.surface-deep h1 .italic, .surface-deep h2 em, .surface-deep h3 em, .surface-deep .accent-italic { color: var(--aqua); }
 
 /* A section that slides over the one above it, instead of a hard straight edge. */
 .sheet {
@@ -150,7 +239,7 @@
   margin-top: -2.25rem;
   border-top-left-radius: 2.25rem;
   border-top-right-radius: 2.25rem;
-  box-shadow: 0 -30px 60px -34px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 -24px 50px -34px rgba(36, 60, 57, 0.22);
 }
 .sheet-light {
   background: var(--paper);
@@ -172,8 +261,8 @@
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(170, 185, 201, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(170, 185, 201, 0.07) 1px, transparent 1px);
+    linear-gradient(color-mix(in srgb, var(--p-ink) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--p-ink) 5%, transparent) 1px, transparent 1px);
   background-size: 56px 56px;
   -webkit-mask-image: radial-gradient(70% 70% at 70% 30%, #000 0%, transparent 75%);
   mask-image: radial-gradient(70% 70% at 70% 30%, #000 0%, transparent 75%);
@@ -183,7 +272,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(360px circle at var(--mx) var(--my), rgba(32, 214, 210, 0.07), transparent 65%);
+  background: radial-gradient(360px circle at var(--mx) var(--my), rgba(var(--p-bloom), 0.35), transparent 65%);
 }
 .hero-canvas > * { position: relative; z-index: 1; }
 
@@ -337,37 +426,6 @@ body {
 /* Heartbeat line: draws in once, then a faint pulse travels along it */
 .ecg-line { stroke-dasharray: 1; stroke-dashoffset: 1; animation: ecg-draw 1.6s 0.6s var(--ease-out-expo) forwards; }
 @keyframes ecg-draw { to { stroke-dashoffset: 0; } }
-
-/* Goddard-inspired depth: deep navy, ocean blue, a teal bloom in one corner.
-   Stops sampled from the Goddard cover (#0A2A59 / #0F5974 / #159797), the navy deepened for text.
-   Used on the hero and the contact section only. Text zones sit on navy; teal never sits behind small text.
-   Contrast on the stops: white 15.0 (navy), 12.7 (mid), 7.8 (ocean); #C9D6E3 body text 10.2 / 8.6 / 5.3. */
-:root { --aqua: #a0f2ed; }
-.surface-gradient {
-  --paper: #0a2552;
-  --paper-2: #0e3363;
-  --ink-2: #c9d6e3;
-  --line: rgba(160, 242, 237, 0.2);
-  --line-strong: rgba(201, 214, 227, 0.5);
-  background:
-    radial-gradient(22rem 26rem at 108% 6%, rgba(21, 151, 151, 0.9), rgba(17, 138, 145, 0.45) 42%, transparent 72%),
-    linear-gradient(118deg, #0a2552 0%, #0b3361 54%, #0e4468 100%);
-}
-@media (min-width: 1024px) {
-  .surface-gradient {
-    background:
-      radial-gradient(56rem 44rem at 104% 14%, rgba(21, 151, 151, 0.9), rgba(17, 138, 145, 0.5) 40%, transparent 72%),
-      radial-gradient(40rem 30rem at 78% 96%, rgba(15, 89, 116, 0.55), transparent 70%),
-      linear-gradient(118deg, #0a2552 0%, #0b3361 52%, #0d4266 100%);
-  }
-}
-/* Soft Aqua for headline highlights on dark surfaces (cyan stays on actions, marks and the heartbeat line) */
-.surface-deep h1 .italic, .surface-deep h2 em, .surface-deep h3 em, .surface-deep .accent-italic { color: var(--aqua); }
-.surface-gradient.hero-canvas::after { background: radial-gradient(360px circle at var(--mx) var(--my), rgba(160, 242, 237, 0.07), transparent 65%); }
-
-@media (min-width: 768px) {
-  body { font-size: 1.1875rem; }
-}
 
 .ecg-rule { transform-origin: left; transform: scaleX(0); animation: ecg-rule 1.4s 0.5s var(--ease-out-expo) forwards; }
 @keyframes ecg-rule { to { transform: scaleX(1); } }

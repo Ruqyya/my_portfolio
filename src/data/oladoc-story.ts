@@ -70,6 +70,8 @@ const tasks: Task[] = [
 ];
 
 export const oladocStory: Partial<CaseStudy> = {
+  headline: "Designing a clearer path from finding care to booking it.",
+  identifier: "Oladoc Healthcare App UX/UI Case Study",
   overview: [
     { k: "The product", v: "Oladoc, a healthcare marketplace: find a doctor, book, consult and follow up." },
     { k: "The core problem", v: "Patients know how they feel, not which doctor to see. Clinic staff worked in tools built only for the doctor." },

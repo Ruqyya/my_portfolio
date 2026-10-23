@@ -108,6 +108,8 @@ export interface CaseStudy {
   features?: Insight[];
   delivered?: string[];
   measured?: { value: string; label: string; source: string }[];
+  headline?: string; // a problem-focused statement used as the page headline
+  identifier?: string; // the plain project name, kept visible for context and search
   overview?: { k: string; v: string }[]; // six cells, readable in 15 seconds
   heroShots?: Shot[]; // images composed beside the title
   tasks?: Task[]; // the finished experience, organised by what a user is trying to do

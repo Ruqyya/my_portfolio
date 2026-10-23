@@ -59,7 +59,7 @@ export default function DecisionExplorer({ decisions }: { decisions: Decision[] 
         <h3 className="text-[clamp(1.6rem,2.8vw,2.4rem)] font-medium leading-tight">{d.title}</h3>
         <p className="mt-3 max-w-2xl text-lg text-ink-2">{d.text}</p>
         {d.shots && d.shots.length > 0 && (
-          <div className="surface-deep mt-8 rounded-[1.6rem] p-5 md:p-8">
+          <div className="surface-stage mt-8 rounded-[1.6rem] p-5 md:p-8">
             <div className={`grid gap-6 ${d.kind === "phone" ? "grid-cols-2 md:grid-cols-4" : d.shots.length > 1 ? "md:grid-cols-2" : ""}`}>
               {d.shots.map((sh) =>
                 d.kind === "phone" ? <Phone key={sh.src} shot={sh} /> : <Browser key={sh.src} shot={sh} className={d.shots!.length === 3 && sh === d.shots![2] ? "md:col-span-2" : ""} />,

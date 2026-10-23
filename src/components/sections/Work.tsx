@@ -40,14 +40,14 @@ function Actions({ p, accent, hasFilm }: { p: Project; accent: string; hasFilm: 
     <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
       <Link
         to={`/work/${p.slug}`}
-        className="group inline-flex h-14 items-center gap-2 rounded-full px-8 text-lg font-semibold text-[#080d19] transition-transform hover:-translate-y-0.5"
+        className="group inline-flex h-14 items-center gap-2 rounded-full px-8 text-lg font-semibold text-[var(--on-accent)] transition-transform hover:-translate-y-0.5"
         style={{ background: accent }}
       >
         Read the case study <ArrowUpRight size={20} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
       </Link>
       {hasFilm && (
         <Link to={`/work/${p.slug}#film`} className="link-draw inline-flex items-center gap-2 py-2 text-lg font-semibold">
-          <Play size={16} aria-hidden /> Watch the film
+          <Play size={16} aria-hidden /> Watch the summary
         </Link>
       )}
     </div>
@@ -56,7 +56,7 @@ function Actions({ p, accent, hasFilm }: { p: Project; accent: string; hasFilm: 
 
 function Stage({ children, accent, className = "" }: { children: React.ReactNode; accent: string; className?: string }) {
   return (
-    <div className={`surface-deep relative rounded-[1.75rem] ${className}`}>
+    <div className={`surface-stage relative rounded-[1.75rem] ${className}`}>
       <span aria-hidden className="absolute left-0 top-10 h-16 w-1 rounded-r-full" style={{ background: accent }} />
       {children}
     </div>
@@ -87,16 +87,16 @@ function OladocStory() {
 
         <Stage accent={accent} className="mt-10 px-4 pb-12 pt-8 md:px-14 md:pb-20 md:pt-14">
           <div className="relative mx-auto aspect-[1.02/1] w-full max-w-[64rem] md:aspect-[1.55/1]">
-            <div className="absolute right-0 top-0 hidden w-[66%] overflow-hidden rounded-xl border border-white/15 bg-paper shadow-[0_50px_80px_-30px_rgba(0,0,0,0.85)] md:block">
+            <div className="absolute right-0 top-0 hidden w-[66%] overflow-hidden rounded-xl border border-white/15 bg-paper shadow-[0_50px_80px_-30px_rgba(36,60,57,0.26)] md:block">
               <img src={src("case/oladoc/frontdesk.webp")} alt="Oladoc front desk portal with a live queue." loading="lazy" width={1600} height={1046} className="block h-auto w-full" />
             </div>
-            <div className="absolute left-0 top-0 w-full overflow-hidden rounded-xl border border-white/15 bg-paper shadow-[0_50px_80px_-30px_rgba(0,0,0,0.85)] md:left-[18%] md:top-[20%] md:w-[62%]">
+            <div className="absolute left-0 top-0 w-full overflow-hidden rounded-xl border border-white/15 bg-paper shadow-[0_50px_80px_-30px_rgba(36,60,57,0.26)] md:left-[18%] md:top-[20%] md:w-[62%]">
               <img src={src("case/oladoc/docdash.webp")} alt="Oladoc doctor portal dashboard." loading="lazy" width={1600} height={1046} className="block h-auto w-full" />
             </div>
             {["home", "sym", "profile"].map((n, i) => (
               <div
                 key={n}
-                className={`absolute bottom-0 w-[30%] rounded-[1.3rem] bg-[#05080f] p-1 shadow-[0_40px_60px_-24px_rgba(0,0,0,0.9)] ring-1 ring-white/20 md:w-[19%] md:rounded-[1.6rem] md:p-1.5 ${["left-[2%] md:left-0", "left-[34%] md:left-[12%]", "left-[66%] md:left-[24%]"][i]}`}
+                className={`absolute bottom-0 w-[30%] rounded-[1.3rem] bg-[var(--bezel)] p-1 shadow-[0_40px_60px_-24px_rgba(36,60,57,0.26)] ring-1 ring-white/20 md:w-[19%] md:rounded-[1.6rem] md:p-1.5 ${["left-[2%] md:left-0", "left-[34%] md:left-[12%]", "left-[66%] md:left-[24%]"][i]}`}
                 style={{ transform: `translateY(${i === 1 ? "-5%" : "0"}) rotate(${(i - 1) * 3}deg)`, zIndex: i === 1 ? 5 : 4 }}
               >
                 <img src={src(`case/oladoc/${n}.webp`)} alt={`Oladoc patient app, ${n === "sym" ? "search by symptom" : n === "profile" ? "doctor profile" : "home"}.`} loading="lazy" width={700} height={1515} className="block h-auto w-full rounded-[1rem] md:rounded-[1.25rem]" />
@@ -226,7 +226,7 @@ function SehatStory() {
           <div className="lg:sticky lg:top-28 lg:col-span-7">
             <Stage accent={accent} className="px-5 pb-14 pt-9 md:px-10 md:pb-16 md:pt-12">
               <div className="relative">
-                <div className="overflow-hidden rounded-xl border border-white/15 bg-paper shadow-[0_50px_80px_-30px_rgba(0,0,0,0.85)]">
+                <div className="overflow-hidden rounded-xl border border-white/15 bg-paper shadow-[0_50px_80px_-30px_rgba(36,60,57,0.26)]">
                   <div className="flex items-center gap-1.5 border-b border-line bg-paper-2 px-3 py-2.5" aria-hidden>
                     <span className="h-2.5 w-2.5 rounded-full bg-line" />
                     <span className="h-2.5 w-2.5 rounded-full bg-line" />
@@ -234,7 +234,7 @@ function SehatStory() {
                   </div>
                   <img src={src("case/sehat/home.webp")} alt="The redesigned Sehat Kahani homepage with the 60-second promise." loading="lazy" className="block h-auto w-full" />
                 </div>
-                <div className="absolute -bottom-12 -right-1 w-[50%] overflow-hidden rounded-xl border border-white/20 bg-paper shadow-2xl shadow-black/70 md:-right-5">
+                <div className="absolute -bottom-12 -right-1 w-[50%] overflow-hidden rounded-xl border border-white/20 bg-paper shadow-2xl shadow-[#243c39]/20 md:-right-5">
                   <img src={src("case/sehat/responsive.webp")} alt="Sehat Kahani layouts for desktop and phone." loading="lazy" className="block h-auto w-full" />
                 </div>
               </div>
@@ -301,13 +301,13 @@ function GalleryCard({ project, n, big }: { project: Project; n: number; big: bo
   return (
     <article className="group h-full">
       <Link to={`/work/${project.slug}`} className="flex h-full flex-col">
-        <div className="relative overflow-hidden rounded-[1.5rem] bg-[#080d19] ring-1 ring-black/5">
+        <div className="relative overflow-hidden rounded-[1.5rem] bg-[var(--bezel)] ring-1 ring-black/5">
           <div className="aspect-video">
             <ProjectMedia project={project} className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.045]" />
           </div>
-          <span className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-[#080d19]/90 to-transparent px-5 pb-4 pt-12 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+          <span className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-[var(--bezel)]/90 to-transparent px-5 pb-4 pt-12 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
             <span className="mono text-white">View case study</span>
-            <span className="grid h-10 w-10 place-items-center rounded-full bg-[#20d6d2] text-[#080d19]"><ArrowUpRight size={18} aria-hidden /></span>
+            <span className="grid h-10 w-10 place-items-center rounded-full bg-[var(--accent)] text-[var(--on-accent)]"><ArrowUpRight size={18} aria-hidden /></span>
           </span>
         </div>
         <div className="mt-5 flex items-baseline gap-4">

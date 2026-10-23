@@ -28,8 +28,8 @@ export default function Nav() {
 
   return (
     <header
-      className={`surface-deep surface-deep-flat fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
-        scrolled || open ? "border-line shadow-lg shadow-black/10" : "border-transparent"
+      className={`fixed inset-x-0 top-0 z-50 border-b bg-paper/90 text-ink backdrop-blur-md transition-colors duration-300 ${
+        scrolled || open ? "border-line shadow-[0_10px_30px_-22px_rgba(36,60,57,0.35)]" : "border-transparent"
       }`}
     >
       <nav aria-label="Main" className="mx-auto flex h-16 max-w-[88rem] items-center justify-between px-5 md:px-10">

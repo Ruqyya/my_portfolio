@@ -15,10 +15,10 @@ export default function BeforeAfter({ before, after }: { before: Shot; after: Sh
         <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
           <img src={`${base}${before.src}`} alt={before.alt} loading="lazy" className="h-full w-full object-cover object-left-top bg-paper-2" />
         </div>
-        <span className="mono absolute left-4 top-4 rounded-full bg-[#080d19]/85 px-3 py-1 text-[#f8fafc]">Before</span>
-        <span className="mono absolute right-4 top-4 rounded-full bg-[#20d6d2] px-3 py-1 text-[#080d19]">After</span>
-        <div aria-hidden className="pointer-events-none absolute inset-y-0 w-0.5 bg-[#20d6d2] shadow-lg" style={{ left: `${pos}%` }}>
-          <span className="absolute left-1/2 top-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-[#20d6d2] text-[#080d19] shadow-xl">↔</span>
+        <span className="mono absolute left-4 top-4 rounded-full bg-[var(--bezel)]/85 px-3 py-1 text-[#f8fafc]">Before</span>
+        <span className="mono absolute right-4 top-4 rounded-full bg-[var(--accent)] px-3 py-1 text-[var(--on-accent)]">After</span>
+        <div aria-hidden className="pointer-events-none absolute inset-y-0 w-0.5 bg-[var(--accent)] shadow-lg" style={{ left: `${pos}%` }}>
+          <span className="absolute left-1/2 top-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-[var(--accent)] text-[var(--on-accent)] shadow-xl">↔</span>
         </div>
         <label htmlFor={id} className="sr-only">
           Compare before and after
