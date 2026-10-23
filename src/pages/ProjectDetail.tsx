@@ -1,3 +1,4 @@
+import DecisionExplorer from "../components/case/DecisionExplorer";
 import { useEffect, useMemo } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Check, ExternalLink, Mail } from "lucide-react";
@@ -41,17 +42,21 @@ export default function ProjectDetail() {
     if (s.users) r.push({ id: "users", label: "Users" });
     if (s.research) r.push({ id: "research", label: "Research" });
     if (s.decisions?.length) r.push({ id: "decisions", label: "Design decisions" });
+    if (s.tradeoffs?.length) r.push({ id: "tradeoffs", label: "Trade-offs" });
     if (s.flow) r.push({ id: "flow", label: "The journey" });
     if (s.before && s.after) r.push({ id: "before-after", label: "Before and after" });
     if (s.stills?.length || s.features?.length) r.push({ id: "screens", label: "The final design" });
     if (s.system) r.push({ id: "system", label: "Design system" });
+    if (s.validation) r.push({ id: "validation", label: "Validation" });
     if (s.delivered || s.measured) r.push({ id: "impact", label: "What it delivers" });
+    if (s.lessons?.length) r.push({ id: "lessons", label: "Lessons learned" });
     if (s.shows?.length) r.push({ id: "shows", label: "What this shows" });
     return r;
   }, [s]);
 
   if (!project || !s) return <Navigate to="/404" replace />;
 
+  const num = (id: string) => String(rail.findIndex((r) => r.id === id) + 1).padStart(2, "0");
   const index = projects.findIndex((p) => p.slug === project.slug);
   const next = projects[(index + 1) % projects.length];
   const tags = project.tags.filter((t) => t !== "Case Study" && t !== project.industry);
@@ -155,7 +160,7 @@ export default function ProjectDetail() {
           {s.context && (
             <section aria-label="Context" className="scroll-mt-24">
               <Reveal>
-                <Eyebrow n="01">The client and the product</Eyebrow>
+                <Eyebrow n={num("overview")}>The client and the product</Eyebrow>
                 <p className="serif mt-5 max-w-3xl text-[clamp(1.5rem,2.6vw,2.2rem)] leading-snug">{s.context.text}</p>
                 {s.context.facts && (
                   <ul className="mt-6 flex flex-wrap gap-2">
@@ -173,7 +178,7 @@ export default function ProjectDetail() {
           {s.problem && (
             <section id="problem" className="scroll-mt-24">
               <Reveal>
-                <Eyebrow n="02">The problem</Eyebrow>
+                <Eyebrow n={num("problem")}>The problem</Eyebrow>
                 <H2>{s.problem.headline}</H2>
               </Reveal>
               <ul className="mt-10 grid gap-5 sm:grid-cols-2">
@@ -199,13 +204,13 @@ export default function ProjectDetail() {
           {s.users && (
             <section id="users" className="scroll-mt-24">
               <Reveal>
-                <Eyebrow n="03">Who it is for</Eyebrow>
+                <Eyebrow n={num("users")}>Who it is for</Eyebrow>
                 {s.users.text && <H2>{s.users.text}</H2>}
               </Reveal>
               <div className="mt-10 grid gap-5 md:grid-cols-3">
                 {s.users.people.map((p, i) => (
-                  <Reveal key={p.name} delay={i * 0.05} className={`rounded-xl border border-line p-6 ${p.quote ? "bg-[#0f1b21] text-[#f7f5f0] md:col-span-3" : "bg-paper-2/60"}`}>
-                    {p.tag && <p className={`mono ${p.quote ? "text-[#c9aa7a]" : "text-signal"}`}>{p.tag}</p>}
+                  <Reveal key={p.name} delay={i * 0.05} className={`rounded-xl border border-line p-6 ${p.quote ? "surface-deep md:col-span-3" : "bg-paper-2/60"}`}>
+                    {p.tag && <p className={`mono text-signal`}>{p.tag}</p>}
                     <h3 className="mt-2 text-2xl font-medium">{p.name}</h3>
                     {p.quote && <p className="serif mt-4 max-w-3xl text-[clamp(1.4rem,2.4vw,2rem)] italic leading-snug">“{p.quote}”</p>}
                     {p.items && (
@@ -225,7 +230,7 @@ export default function ProjectDetail() {
           {s.research && (
             <section id="research" className="scroll-mt-24">
               <Reveal>
-                <Eyebrow n="04">Research into design</Eyebrow>
+                <Eyebrow n={num("research")}>Research into design</Eyebrow>
                 {s.research.text && <H2>{s.research.text}</H2>}
               </Reveal>
               {s.research.insights && (
@@ -265,31 +270,55 @@ export default function ProjectDetail() {
           {s.decisions && s.decisions.length > 0 && (
             <section id="decisions" className="scroll-mt-24">
               <Reveal>
-                <Eyebrow n="05">Design decisions</Eyebrow>
+                <Eyebrow n={num("decisions")}>Design decisions</Eyebrow>
                 <H2>What I decided, and what it looks like.</H2>
               </Reveal>
-              <ol className="mt-12">
-                {s.decisions.map((d, i) => (
-                  <li key={d.title} className={d.shots?.length ? "pb-20" : "pb-10"}>
-                    <Reveal>
-                      <div className="flex items-baseline gap-4">
-                        <span className="serif text-5xl text-signal md:text-6xl">{String(i + 1).padStart(2, "0")}</span>
-                        <div>
-                          <h3 className="text-[clamp(1.6rem,2.8vw,2.4rem)] font-medium leading-tight">{d.title}</h3>
-                          <p className="mt-2 max-w-2xl text-ink-2">{d.text}</p>
+              {s.decisions.filter((x) => x.shots?.length).length >= 2 ? (
+                <Reveal className="mt-12">
+                  <DecisionExplorer decisions={s.decisions} />
+                </Reveal>
+              ) : (
+                <ol className="mt-12">
+                  {s.decisions.map((d, i) => (
+                    <li key={d.title} className={d.shots?.length ? "pb-20" : "pb-10"}>
+                      <Reveal>
+                        <div className="flex items-baseline gap-4">
+                          <span className="serif text-5xl text-signal md:text-6xl">{String(i + 1).padStart(2, "0")}</span>
+                          <div>
+                            <h3 className="text-[clamp(1.6rem,2.8vw,2.4rem)] font-medium leading-tight">{d.title}</h3>
+                            <p className="mt-2 max-w-2xl text-ink-2">{d.text}</p>
+                          </div>
                         </div>
-                      </div>
-                    </Reveal>
-                    {d.shots && d.shots.length > 0 && (
-                      <Reveal delay={0.05} className={`mt-8 grid gap-6 ${d.kind === "phone" ? "grid-cols-2 md:grid-cols-4" : d.shots.length > 1 ? "md:grid-cols-2" : ""}`}>
-                        {d.shots.map((sh) =>
-                          d.kind === "phone" ? <Phone key={sh.src} shot={sh} /> : <Browser key={sh.src} shot={sh} className={d.shots!.length === 3 && sh === d.shots![2] ? "md:col-span-2" : ""} />,
-                        )}
                       </Reveal>
-                    )}
+                      {d.shots && d.shots.length > 0 && (
+                        <Reveal delay={0.05} className={`mt-8 grid gap-6 ${d.kind === "phone" ? "grid-cols-2 md:grid-cols-4" : d.shots.length > 1 ? "md:grid-cols-2" : ""}`}>
+                          {d.shots.map((sh) =>
+                            d.kind === "phone" ? <Phone key={sh.src} shot={sh} /> : <Browser key={sh.src} shot={sh} className={d.shots!.length === 3 && sh === d.shots![2] ? "md:col-span-2" : ""} />,
+                          )}
+                        </Reveal>
+                      )}
+                    </li>
+                  ))}
+                </ol>
+              )}
+            </section>
+          )}
+
+          {/* Trade-offs: only with real material */}
+          {s.tradeoffs && s.tradeoffs.length > 0 && (
+            <section id="tradeoffs" className="scroll-mt-24">
+              <Reveal>
+                <Eyebrow n={num("tradeoffs")}>Trade-offs</Eyebrow>
+                <H2>What I weighed, and what I gave up.</H2>
+              </Reveal>
+              <ul className="mt-10 grid gap-4 md:grid-cols-2">
+                {s.tradeoffs.map((t) => (
+                  <li key={t.title} className="rounded-xl border border-line p-6">
+                    <p className="serif text-2xl">{t.title}</p>
+                    <p className="mt-2 text-ink-2">{t.text}</p>
                   </li>
                 ))}
-              </ol>
+              </ul>
             </section>
           )}
 
@@ -297,7 +326,7 @@ export default function ProjectDetail() {
           {s.flow && (
             <section id="flow" className="scroll-mt-24">
               <Reveal>
-                <Eyebrow n="06">The journey</Eyebrow>
+                <Eyebrow n={num("flow")}>The journey</Eyebrow>
                 <H2>{s.flow.title}</H2>
               </Reveal>
               <ol className="mt-10 grid gap-0 border-y border-line md:grid-flow-col md:auto-cols-fr">
@@ -321,7 +350,7 @@ export default function ProjectDetail() {
           {s.before && s.after && (
             <section id="before-after" className="scroll-mt-24">
               <Reveal>
-                <Eyebrow n="07">Before and after</Eyebrow>
+                <Eyebrow n={num("before-after")}>Before and after</Eyebrow>
                 <H2>The same platform, redesigned.</H2>
               </Reveal>
               <Reveal className="mt-10">
@@ -334,7 +363,7 @@ export default function ProjectDetail() {
           {(s.stills?.length || s.features?.length) && (
             <section id="screens" className="scroll-mt-24">
               <Reveal>
-                <Eyebrow n="08">The final design</Eyebrow>
+                <Eyebrow n={num("screens")}>The final design</Eyebrow>
                 <H2>What the finished experience includes.</H2>
               </Reveal>
               {s.stills && s.stills.length > 0 && (
@@ -369,7 +398,7 @@ export default function ProjectDetail() {
           {s.system && (
             <section id="system" className="scroll-mt-24">
               <Reveal>
-                <Eyebrow n="09">Design system</Eyebrow>
+                <Eyebrow n={num("system")}>Design system</Eyebrow>
                 <H2>{s.system.type ?? "Colour and type"}</H2>
               </Reveal>
               <Reveal className="mt-10">
@@ -398,11 +427,33 @@ export default function ProjectDetail() {
             </section>
           )}
 
+          {/* Validation and iteration */}
+          {s.validation && (
+            <section id="validation" className="scroll-mt-24">
+              <Reveal>
+                <Eyebrow n={num("validation")}>Validation and iteration</Eyebrow>
+                <H2>How it was tested, and what changed.</H2>
+                {s.validation.text && <p className="mt-6 max-w-2xl text-xl text-ink-2">{s.validation.text}</p>}
+              </Reveal>
+              {s.validation.items && (
+                <ul className="mt-10 grid gap-4 md:grid-cols-2">
+                  {s.validation.items.map((t) => (
+                    <li key={t.title} className="rounded-xl border border-line p-6">
+                      <p className="serif text-2xl">{t.title}</p>
+                      {t.thought && <p className="mt-2 text-ink-2"><span className="mono text-signal">Found </span>{t.thought}</p>}
+                      {t.response && <p className="mt-2"><span className="mono text-signal">Changed </span>{t.response}</p>}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          )}
+
           {/* Impact */}
           {(s.delivered || s.measured) && (
             <section id="impact" className="scroll-mt-24">
               <Reveal>
-                <Eyebrow n="10">What it delivers</Eyebrow>
+                <Eyebrow n={num("impact")}>What it delivers</Eyebrow>
                 <H2>The finished design, in short.</H2>
               </Reveal>
               {s.measured && s.measured.length > 0 && (
@@ -430,11 +481,25 @@ export default function ProjectDetail() {
             </section>
           )}
 
+          {/* Lessons */}
+          {s.lessons && s.lessons.length > 0 && (
+            <section id="lessons" className="scroll-mt-24">
+              <Reveal>
+                <Eyebrow n={num("lessons")}>Lessons learned</Eyebrow>
+              </Reveal>
+              <ul className="mt-8 border-t border-line">
+                {s.lessons.map((t) => (
+                  <li key={t} className="serif border-b border-line py-6 text-[clamp(1.4rem,2.4vw,2rem)] leading-snug">{t}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           {/* What this shows */}
           {s.shows && s.shows.length > 0 && (
             <section id="shows" className="scroll-mt-24">
               <Reveal>
-                <Eyebrow n="11">What this shows about my work</Eyebrow>
+                <Eyebrow n={num("shows")}>What this shows about my work</Eyebrow>
               </Reveal>
               <ul className="mt-8 border-t border-line">
                 {s.shows.map((t, i) => (

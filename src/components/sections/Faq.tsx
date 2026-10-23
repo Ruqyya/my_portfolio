@@ -14,7 +14,7 @@ const KEEP = [
 
 export default function Faq() {
   return (
-    <section id="faq" className="surface-tint sheet pb-28 pt-24 md:pb-36 md:pt-32">
+    <section id="faq" className="sheet sheet-light pb-28 pt-24 md:pb-36 md:pt-32">
       <div className="mx-auto grid max-w-[88rem] gap-12 px-5 md:px-10 lg:grid-cols-12">
         <Reveal className="lg:col-span-4">
           <Eyebrow n="06">Before we talk</Eyebrow>

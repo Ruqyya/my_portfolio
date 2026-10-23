@@ -7,7 +7,7 @@ export default function Voices() {
   const [lead, ...rest] = [...testimonials].sort((a, b) => b.review.length - a.review.length);
 
   return (
-    <section id="voices" className="surface-teal sheet pb-28 pt-24 md:pb-36 md:pt-32">
+    <section id="voices" className="sheet sheet-light pb-28 pt-24 md:pb-36 md:pt-32">
       <div className="mx-auto max-w-[88rem] px-5 md:px-10">
         <Reveal>
           <Eyebrow n="04">What clients say</Eyebrow>

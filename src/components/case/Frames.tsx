@@ -7,7 +7,7 @@ const url = (s: Shot) => `${base}${s.src}`;
 export function Phone({ shot, className = "" }: { shot: Shot; className?: string }) {
   return (
     <figure className={`group ${className}`}>
-      <div className="mx-auto w-full max-w-[15rem] rounded-[2.1rem] bg-[#0c1317] p-[7px] shadow-[0_30px_50px_-24px_rgba(23,36,43,0.55)] ring-1 ring-black/20 transition-transform duration-500 group-hover:-translate-y-1.5">
+      <div className="mx-auto w-full max-w-[15rem] rounded-[2.1rem] bg-[#05080f] p-[7px] shadow-[0_30px_50px_-24px_rgba(23,36,43,0.55)] ring-1 ring-black/20 transition-transform duration-500 group-hover:-translate-y-1.5">
         <img
           src={url(shot)}
           alt={shot.alt}

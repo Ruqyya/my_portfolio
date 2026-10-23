@@ -56,6 +56,10 @@ export interface CaseStudy {
   users?: { text?: string; people: Person[] };
   research?: { text?: string; insights?: Insight[]; shot?: Shot };
   decisions?: Decision[];
+  // Shown only when real material exists. Do not fill from guesses: see docs/07-CASE-STUDY-QUESTIONS.md.
+  tradeoffs?: Insight[]; // what was weighed and what was given up
+  validation?: { text?: string; items?: Insight[] }; // testing, feedback and what changed because of it
+  lessons?: string[];
   flow?: { title: string; steps: Step[]; shot?: Shot };
   before?: Shot;
   after?: Shot;

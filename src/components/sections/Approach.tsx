@@ -5,7 +5,7 @@ import portrait from "../../assets/ruqqya_img.png";
 
 export default function Approach() {
   return (
-    <section id="approach" className="sheet sheet-light pb-28 pt-24 md:pb-36 md:pt-32">
+    <section id="approach" className="surface-tint sheet pb-28 pt-24 md:pb-36 md:pt-32">
       <div className="mx-auto grid max-w-[88rem] gap-14 px-5 md:px-10 lg:grid-cols-12 lg:gap-10">
         <Reveal className="lg:col-span-4">
           <Eyebrow n="05">About and process</Eyebrow>

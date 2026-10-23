@@ -5,7 +5,7 @@ import { education, experience } from "../../data/content";
 export default function Experience() {
   return (
     <>
-      <section id="experience" className="surface-tint sheet pb-28 pt-24 md:pb-36 md:pt-32">
+      <section id="experience" className="surface-deep sheet pb-28 pt-24 md:pb-36 md:pt-32">
         <div className="mx-auto max-w-[88rem] px-5 md:px-10">
           <Reveal>
             <Eyebrow n="03">Experience</Eyebrow>

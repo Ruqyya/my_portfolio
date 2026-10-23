@@ -17,7 +17,6 @@ interface Feature {
   slug: string;
   n: string;
   accent: string; // taken from the project's own palette
-  glow: string;
   headline: string;
   decision: number; // index into study.decisions
   flip?: boolean;
@@ -29,7 +28,6 @@ const features: Feature[] = [
     slug: "oladoc-healthcare-app-ui-ux-design",
     n: "01",
     accent: "#FCA025",
-    glow: "rgba(70, 68, 190, 0.55)",
     headline: "One booking, seen from three seats.",
     decision: 0,
     visual: (
@@ -43,7 +41,7 @@ const features: Feature[] = [
         {["home", "sym", "profile"].map((n, i) => (
           <div
             key={n}
-            className="absolute bottom-0 w-[24%] rounded-[1.5rem] bg-[#0a1418] p-1.5 shadow-[0_40px_60px_-24px_rgba(0,0,0,0.85)] ring-1 ring-white/20"
+            className="absolute bottom-0 w-[24%] rounded-[1.5rem] bg-[#05080f] p-1.5 shadow-[0_40px_60px_-24px_rgba(0,0,0,0.85)] ring-1 ring-white/20"
             style={{ left: `${i * 15}%`, transform: `translateY(${i === 1 ? "-6%" : "0"}) rotate(${(i - 1) * 3}deg)`, zIndex: i === 1 ? 5 : 4 }}
           >
             <img src={src(`case/oladoc/${n}.webp`)} alt={`Oladoc patient app, ${n === "sym" ? "search by symptom" : n === "profile" ? "doctor profile" : "home"}.`} loading="lazy" className="block h-auto w-full rounded-[1.2rem]" />
@@ -56,7 +54,6 @@ const features: Feature[] = [
     slug: "marham-pk-healthcare-platform-redesign",
     n: "02",
     accent: "#3CC2B5",
-    glow: "rgba(24, 120, 140, 0.55)",
     headline: "A platform people had to trust before they could use it.",
     decision: 3,
     flip: true,
@@ -67,7 +64,7 @@ const features: Feature[] = [
         </div>
         <figure className="absolute -bottom-6 -left-2 w-[34%] rotate-[-3deg] overflow-hidden rounded-xl border border-white/20 bg-paper shadow-2xl shadow-black/60 md:-left-6">
           <img src={src("case/marham/old_site.webp")} alt="The original Marham.pk before the redesign." loading="lazy" className="block h-auto w-full grayscale" />
-          <figcaption className="mono bg-[#0f1b21] px-3 py-1.5 text-[#f4f0e8]">Before</figcaption>
+          <figcaption className="mono bg-[#080d19] px-3 py-1.5 text-[#ffffff]">Before</figcaption>
         </figure>
       </div>
     ),
@@ -76,7 +73,6 @@ const features: Feature[] = [
     slug: "sehat-kahani-telemedicine-ui-ux-design",
     n: "03",
     accent: "#B4DC4A",
-    glow: "rgba(90, 140, 40, 0.5)",
     headline: "From a health problem to a doctor, with a 60-second promise.",
     decision: 0,
     visual: (
@@ -106,12 +102,12 @@ function FeaturedPanel({ f }: { f: Feature }) {
   return (
     <Reveal>
       <article
-        className="relative overflow-hidden rounded-[2rem] border border-line bg-paper-2/40 p-6 md:p-12"
-        style={{ ["--acc" as string]: f.accent, background: `radial-gradient(60rem 30rem at ${f.flip ? "0%" : "100%"} 0%, ${f.glow}, transparent 62%), #13232a` }}
+        className="relative overflow-hidden rounded-[2rem] border border-line bg-paper p-5 md:p-10"
+        style={{ ["--acc" as string]: f.accent }}
       >
         <div className={`grid items-center gap-12 lg:grid-cols-12 lg:gap-14 ${f.flip ? "lg:[&>*:first-child]:order-2" : ""}`}>
           <div className="lg:col-span-5">
-            <p className="mono flex flex-wrap items-center gap-x-3" style={{ color: f.accent }}>
+            <p className="mono flex flex-wrap items-center gap-x-3 text-signal">
               <span>Case study {f.n}</span>
               <span aria-hidden className="h-px w-6" style={{ background: f.accent }} />
               <span className="text-ink-2">
@@ -127,18 +123,18 @@ function FeaturedPanel({ f }: { f: Feature }) {
 
             <dl className="mt-8 space-y-5 border-t border-line pt-6">
               <div>
-                <dt className="mono" style={{ color: f.accent }}>The problem</dt>
+                <dt className="mono text-signal">The problem</dt>
                 <dd className="mt-1">{s.tldr?.problem}</dd>
               </div>
               <div>
-                <dt className="mono" style={{ color: f.accent }}>My role</dt>
+                <dt className="mono text-signal">My role</dt>
                 <dd className="mt-1">
                   {s.role}. <span className="text-ink-2">{s.deliverables?.map((x, i) => (i ? x.charAt(0).toLowerCase() + x.slice(1) : x)).join(", ")}.</span>
                 </dd>
               </div>
               {d && (
                 <div>
-                  <dt className="mono" style={{ color: f.accent }}>The key decision</dt>
+                  <dt className="mono text-signal">The key decision</dt>
                   <dd className="mt-1">
                     <span className="serif text-xl">{d.title}.</span> <span className="text-ink-2">{d.text}</span>
                   </dd>
@@ -146,7 +142,7 @@ function FeaturedPanel({ f }: { f: Feature }) {
               )}
               {delivers.length > 0 && (
                 <div>
-                  <dt className="mono" style={{ color: f.accent }}>What it delivers</dt>
+                  <dt className="mono text-signal">What it delivers</dt>
                   <dd className="mt-2">
                     <ul className="space-y-1.5">
                       {delivers.map((t) => (
@@ -164,7 +160,7 @@ function FeaturedPanel({ f }: { f: Feature }) {
             <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-3">
               <Link
                 to={`/work/${p.slug}`}
-                className="group inline-flex h-14 items-center gap-2 rounded-full px-7 font-semibold text-[#0f1b21] transition-transform hover:-translate-y-0.5"
+                className="group inline-flex h-14 items-center gap-2 rounded-full px-7 font-semibold text-[#080d19] transition-transform hover:-translate-y-0.5"
                 style={{ background: f.accent }}
               >
                 Read the case study <ArrowUpRight size={18} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -177,7 +173,12 @@ function FeaturedPanel({ f }: { f: Feature }) {
             </div>
           </div>
 
-          <div className="order-first lg:order-none lg:col-span-7">{f.visual}</div>
+          <div className="order-first lg:order-none lg:col-span-7">
+            <div className="surface-deep relative rounded-[1.6rem] px-5 pb-12 pt-8 md:px-10 md:pb-14 md:pt-12">
+              <span aria-hidden className="absolute left-0 top-10 h-16 w-1 rounded-r-full" style={{ background: f.accent }} />
+              {f.visual}
+            </div>
+          </div>
         </div>
       </article>
     </Reveal>
@@ -194,7 +195,7 @@ function Card({ project, n }: { project: Project; n: number }) {
   return (
     <article className="group">
       <Link to={`/work/${project.slug}`} className="block">
-        <div className="border border-line bg-paper-2 p-2 transition-transform duration-500 group-hover:-translate-y-1 md:p-3">
+        <div className="border border-line bg-paper p-2 transition-transform duration-500 group-hover:-translate-y-1 md:p-3">
           <div className="aspect-[16/10] overflow-hidden bg-paper-2">
             <ProjectMedia project={project} className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]" />
           </div>
@@ -216,8 +217,8 @@ export default function Work() {
 
   return (
     <>
-      {/* Dark gallery: the three flagship stories */}
-      <section id="work" className="surface-deep sheet pb-32 pt-24 md:pb-44 md:pt-32">
+      {/* Bright gallery: the three flagship stories, each on a midnight stage */}
+      <section id="work" className="surface-tint sheet pb-32 pt-24 md:pb-44 md:pt-32">
         <div className="mx-auto max-w-[88rem] px-5 md:px-10">
           <Reveal>
             <Eyebrow n="02">Selected work</Eyebrow>

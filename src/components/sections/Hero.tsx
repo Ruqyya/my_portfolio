@@ -96,39 +96,40 @@ export default function Hero() {
 
   return (
     <section id="top" ref={section} onPointerMove={light} className="surface-deep hero-canvas relative z-10 pb-24 pt-28 md:pb-28 md:pt-32">
-      <div className="mx-auto grid max-w-[88rem] gap-14 px-5 md:px-10 lg:grid-cols-12 lg:items-start lg:gap-10">
-        <div className="lg:col-span-6">
-          <p className="mono text-ink-2">Senior Product Designer · Healthcare &amp; SaaS UX</p>
-
+      <div className="mx-auto grid max-w-[88rem] gap-x-10 gap-y-12 px-5 md:px-10 lg:grid-cols-12">
+        <div className="relative z-30 lg:col-span-12">
+          <p className="mono text-ink-2">Senior Product Designer · Healthcare &amp; SaaS</p>
           <h1
-            aria-label="Healthcare software, designed for the patient, the doctor and the front desk."
-            className="mt-6 text-[clamp(2.9rem,5.6vw,5.6rem)] font-medium leading-[1.02]"
+            aria-label="Making the complex feel effortless."
+            className="mt-6 text-[clamp(3.3rem,8.4vw,8.4rem)] font-medium leading-[0.98] tracking-[-0.025em] [word-spacing:0.08em]"
           >
             <span aria-hidden>
-              <Words text="Healthcare software, designed for" start={0.05} />
-              <Words text="the patient, the doctor and the front desk." start={0.3} className="italic text-forest" />
+              <span className="block"><Words text="Making the complex" start={0.05} /></span>
+              <span className="block italic text-forest"><Words text="feel effortless." start={0.3} /></span>
             </span>
           </h1>
+        </div>
 
-          <p className="rise mt-8 max-w-xl text-xl text-ink-2" style={{ animationDelay: "0.3s" }}>
-            I help healthcare and SaaS product teams turn complex workflows into products patients and clinicians trust, from the first
-            research conversation to production UI.
+        <div className="lg:col-span-5">
+          <p className="rise max-w-md text-xl text-ink-2" style={{ animationDelay: "0.3s" }}>
+            I design healthcare and SaaS products that patients and clinicians trust, turning tangled workflows into clear screens, from
+            the first research conversation to production UI.
           </p>
 
-          <div className="rise mt-10" style={{ animationDelay: "0.4s" }}>
+          <div className="rise mt-9" style={{ animationDelay: "0.4s" }}>
             <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
               <a
                 href={MAIL_HREF}
-                className="group inline-flex h-14 items-center gap-3 rounded-full bg-forest px-8 text-lg font-semibold text-on-forest shadow-lg shadow-black/25 transition-transform hover:-translate-y-0.5"
+                className="group inline-flex h-14 items-center gap-3 rounded-full bg-forest px-8 text-lg font-semibold text-on-forest transition-colors hover:bg-[var(--forest-hover)]"
               >
                 <Mail size={20} aria-hidden /> Discuss a project
               </a>
-              <a href="#work" className="group inline-flex items-center gap-2 py-2 text-lg font-semibold">
-                <span className="link-draw">Explore my work</span>
-                <ArrowDown size={18} className="transition-transform group-hover:translate-y-0.5" />
+              <a href="#work" className="group inline-flex h-14 items-center gap-2 rounded-full border border-[var(--line-strong)] px-7 text-lg font-semibold transition-colors hover:border-forest hover:text-forest">
+                View the work
+                <ArrowDown size={18} className="transition-transform group-hover:translate-y-0.5" aria-hidden />
               </a>
             </div>
-            <p className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink-2">
+            <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink-2">
               <span className="inline-flex items-center gap-2">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-forest opacity-60" aria-hidden />
@@ -141,7 +142,11 @@ export default function Hero() {
             </p>
           </div>
 
-          <dl className="rise mt-12 grid max-w-2xl grid-cols-3 gap-4 border-t border-line pt-6" style={{ animationDelay: "0.5s" }}>
+          {/* Heartbeat line from the LinkedIn banner: draws once, then a pulse travels along it */}
+          <svg aria-hidden viewBox="0 0 520 40" className="mt-12 h-10 w-full max-w-[32rem] overflow-visible" fill="none">
+            <path className="ecg-line" d="M0 20 H190 l14 -16 l16 32 l14 -26 l10 10 H520" stroke="var(--brand-cyan)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" pathLength="1" />
+          </svg>
+          <dl className="rise mt-3 grid max-w-xl grid-cols-3 gap-4" style={{ animationDelay: "0.5s" }}>
             {proof.map((p) => (
               <div key={p.value} className="flex flex-col-reverse">
                 <dt className="mt-1 text-xs leading-snug text-ink-2 sm:text-sm">
@@ -156,16 +161,16 @@ export default function Hero() {
 
         {/* Signature piece: the same booking, seen from three seats. Real Figma screens. */}
         <figure
-          className="rise lg:col-span-6"
+          className="rise relative z-10 lg:col-span-7 lg:-mt-36"
           style={{ animationDelay: "0.2s" }}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onFocusCapture={() => setPaused(true)}
           onBlurCapture={() => setPaused(false)}
         >
-          <div className="relative mx-auto aspect-[1.12/1] w-full max-w-[40rem]">
+          <div className="relative mx-auto aspect-[1.12/1] w-full max-w-[40rem] lg:ml-0 lg:mr-[-3vw] lg:max-w-none">
             {/* soft stage */}
-            <div aria-hidden className="absolute inset-[6%] rounded-[2rem] bg-gradient-to-br from-white/[0.07] to-transparent ring-1 ring-white/10" />
+            <div aria-hidden className="absolute inset-[6%] rounded-[2rem] bg-paper-2 ring-1 ring-line" />
 
             <Layer on={active === 1} className="left-[12%] top-[2%] w-[84%]">
               <div className="overflow-hidden rounded-xl border border-line bg-paper shadow-[0_40px_70px_-30px_rgba(0,0,0,0.7)]">
@@ -192,12 +197,12 @@ export default function Hero() {
             </Layer>
 
             <Layer on={active === 0} className="bottom-[1%] left-[2%] w-[27%]">
-              <div className="rounded-[1.6rem] bg-[#0a1418] p-1.5 shadow-[0_40px_60px_-24px_rgba(0,0,0,0.75)] ring-1 ring-white/15">
+              <div className="rounded-[1.6rem] bg-[#05080f] p-1.5 shadow-[0_40px_60px_-24px_rgba(0,0,0,0.75)] ring-1 ring-white/15">
                 <img src={img("sym")} alt="Oladoc patient app: search by symptom." width={700} height={1515} decoding="async" className="block h-auto w-full rounded-[1.3rem]" />
               </div>
             </Layer>
             <Layer on={active === 0} className="bottom-[-2%] left-[26%] w-[22%]">
-              <div className="rounded-[1.4rem] bg-[#0a1418] p-1.5 shadow-[0_40px_60px_-24px_rgba(0,0,0,0.75)] ring-1 ring-white/15">
+              <div className="rounded-[1.4rem] bg-[#05080f] p-1.5 shadow-[0_40px_60px_-24px_rgba(0,0,0,0.75)] ring-1 ring-white/15">
                 <img src={img("profile")} alt="Oladoc patient app: doctor profile with verification, rating and fee." width={700} height={1515} decoding="async" className="block h-auto w-full rounded-[1.1rem]" />
               </div>
             </Layer>
@@ -205,14 +210,14 @@ export default function Hero() {
             {/* Design-tool cursor that moves to whichever portal is being described */}
             <div aria-hidden className="pointer-events-none absolute z-40 transition-all duration-700 ease-out" style={cursorAt}>
               <svg width="22" height="22" viewBox="0 0 24 24" className="drop-shadow-md">
-                <path d="M3 2l7.5 18 2.4-7.1L20 10.5 3 2z" fill="#c9aa7a" stroke="#0f1b21" strokeWidth="1.5" strokeLinejoin="round" />
+                <path d="M3 2l7.5 18 2.4-7.1L20 10.5 3 2z" fill="#20d6d2" stroke="#080d19" strokeWidth="1.5" strokeLinejoin="round" />
               </svg>
-              <span className="ml-4 -mt-1 inline-block whitespace-nowrap rounded-full rounded-tl-none bg-[#c9aa7a] px-2.5 py-1 text-[10px] font-semibold text-[#0f1b21] shadow">Ruqyya</span>
+              <span className="ml-4 -mt-1 inline-block whitespace-nowrap rounded-full rounded-tl-none bg-[#20d6d2] px-2.5 py-1 text-[10px] font-semibold text-[#080d19] shadow">Ruqyya</span>
             </div>
 
             {/* Portrait badge: puts a face next to the work */}
-            <div className="absolute -bottom-9 right-0 z-40 flex items-center gap-3 rounded-full border border-line bg-paper py-2 pl-2 pr-5 shadow-xl shadow-black/30 md:right-4">
-              <img src={portrait} alt="Portrait of Ruqyya" width={56} height={56} className="h-14 w-14 rounded-full object-cover object-top ring-2 ring-[#c9aa7a]" />
+            <div className="absolute -bottom-9 right-0 z-40 flex items-center gap-3 rounded-full border border-line bg-paper py-2 pl-2 pr-5 shadow-xl shadow-black/40 md:right-4">
+              <img src={portrait} alt="Portrait of Ruqyya" width={56} height={56} className="h-14 w-14 rounded-full object-cover object-top ring-2 ring-[#20d6d2]" />
               <span className="text-sm leading-tight">
                 <span className="serif block text-xl">Ruqyya</span>
                 <span className="mono text-ink-2">Lahore · Remote</span>
@@ -261,7 +266,7 @@ export default function Hero() {
           {[...credits, ...credits].map((c, i) => (
             <span key={i} className="flex items-center gap-10">
               <span className="serif text-2xl text-ink md:text-3xl">{c}</span>
-              <span className="text-forest">✦</span>
+              <span className="text-forest">◆</span>
             </span>
           ))}
         </div>

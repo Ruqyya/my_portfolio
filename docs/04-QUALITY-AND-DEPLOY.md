@@ -2,21 +2,20 @@
 
 Measured on 23 Oct 2026 against a local production build (`vite preview`), Chrome headless, Lighthouse with its default simulated throttling. Local numbers are a guide; re-measure after deploying.
 
-## Lighthouse (Porcelain & Ink build, second pass, premium branch)
+## Lighthouse (Midnight & Cyan build, branch `signature`, 24 Oct 2026, local production build)
 
-| Page | Device | Performance | Accessibility | Best practices | SEO | LCP | CLS | TBT |
+| Page | Device | Perf | A11y | Best practices | SEO | LCP | CLS | TBT |
 |---|---|---|---|---|---|---|---|---|
-| Home | Mobile | 82 | 100 | 100 | 100 | 4.6 s | 0 | 40–80 ms |
-| Home | Desktop | 93–96 | 100 | 100 | 100 | 1.4 s | 0 | 0–80 ms |
-| Oladoc case study (before the font change) | Mobile | 94 | 100 | 100 | 100 | 2.9 s | 0.001 | 10 ms |
-| Oladoc case study (before the font change) | Desktop | 100 | 100 | 100 | 100 | 0.8 s | 0.001 | 0 ms |
+| Home | Mobile | 83 | 100 | 100 | 100 | 4.4 s | 0 | 20 ms |
+| Home | Desktop | 95 | 100 | 100 | 100 | 1.5 s | 0 | 0 ms |
+| Oladoc case study | Mobile | 93 | 100 | 100 | 100 | 3.1 s | 0 | 10 ms |
+| Oladoc case study | Desktop | 100 | 100 | 100 | 100 | 0.7 s | 0 | 0 ms |
 
-Scores move a few points between runs. Case-study pages were not re-run after the final font change; the change only affects how fonts load.
+Colour-contrast audit: 0 failures in all four runs. Home mobile performance is still below 90: the page is client-rendered, so first paint waits for the JavaScript (about 79 KB gzipped). Pre-rendering at build time would fix it and was not done.
 
-- **Target missed on the home page:** mobile Performance is 82, below the 90 goal. The cost is first-load JavaScript (React, router, icons, about 77 KB gzipped): the page is rendered in the browser, so the first headline paints only after the script runs. Fixing that properly means pre-rendering the page at build time, which I did not do.
-- Layout shift went from 0.2 (mid-pass regression) to 0 by self-hosting the fonts, preloading the three important files and adding metric-matched fallbacks for all three families.
-- The first build of this redesign scored 57 on mobile.
-- Not audited with Lighthouse: the other film-based project pages and the five Behance-embed pages.
+Device checks this pass (puppeteer, phone 390, tablet 820, desktop 1440): no horizontal overflow and no broken images on home (all three), Oladoc (phone), Marham (tablet), Sehat Kahani (desktop) and Coffee (phone); no JavaScript errors; the only failed requests were cancelled video downloads. The decision explorer was driven by keyboard (ArrowDown moved focus and selection together).
+
+Not done: screen-reader testing, real-device touch testing, a keyboard walk-through of every control, captions, reduced-motion screenshots, the mobile menu opened in a test.
 
 ## Responsive checks
 Run with puppeteer-core driving the installed Chrome at real device sizes (phone 390×844 at 2× pixel density with touch, tablet 820×1180, desktop 1440×900), scrolling the whole page so scroll reveals fire, then checking horizontal overflow, broken images, console errors and failed requests, and saving full-page screenshots.
