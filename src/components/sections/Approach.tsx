@@ -5,7 +5,7 @@ import portrait from "../../assets/ruqqya_img.png";
 
 export default function Approach() {
   return (
-    <section id="approach" className="relative z-10 pt-28 md:pt-44">
+    <section id="approach" className="relative z-10 py-24 md:py-32">
       <div className="mx-auto grid max-w-[88rem] gap-14 px-5 md:px-10 lg:grid-cols-12 lg:gap-10">
         <Reveal className="lg:col-span-4">
           <Eyebrow n="02">Approach</Eyebrow>
@@ -42,12 +42,14 @@ export default function Approach() {
 
           <Reveal delay={0.15}>
             <h3 className="mono mt-16 text-ink-2">How a project runs, in order</h3>
-            <ol className="mt-5 border-t border-line">
+            <ol className="mt-6 grid gap-x-10 gap-y-6 border-t border-line pt-6 sm:grid-cols-2">
               {process.map((p, i) => (
-                <li key={p.step} className="group grid grid-cols-[2.5rem_7rem_1fr] items-baseline gap-3 border-b border-line py-4 md:grid-cols-[3rem_9rem_1fr] md:py-5">
-                  <span className="mono text-signal">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="serif text-xl transition-transform duration-300 group-hover:translate-x-1 md:text-2xl">{p.step}</span>
-                  <span className="text-ink-2">{p.description}</span>
+                <li key={p.step} className="group grid grid-cols-[2.2rem_1fr] gap-x-3">
+                  <span className="mono pt-1.5 text-signal">{String(i + 1).padStart(2, "0")}</span>
+                  <span>
+                    <span className="serif text-2xl transition-transform duration-300 group-hover:translate-x-1">{p.step}</span>
+                    <span className="mt-1 block text-sm text-ink-2">{p.description}</span>
+                  </span>
                 </li>
               ))}
             </ol>

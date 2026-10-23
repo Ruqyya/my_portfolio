@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Mail } from "lucide-react";
+import { MAIL_HREF, proof } from "../../data/contact";
+import portrait from "../../assets/ruqqya_img.png";
 
 const base = import.meta.env.BASE_URL;
 
@@ -25,6 +27,9 @@ const portals = [
     text: "A live queue with check-in status, and a fast way to register a walk-in.",
   },
 ] as const;
+
+// Real projects, shown as a moving credit line under the hero.
+const credits = ["Oladoc", "Marham.pk", "Shumaila's London", "Sehat Kahani", "Zental", "Goddard Veterinary", "Mint Dental", "Victoria Road Dental", "Bond Vet", "Lumina Dental"];
 
 function Words({ text, start, className = "" }: { text: string; start: number; className?: string }) {
   return (
@@ -56,6 +61,7 @@ export default function Hero() {
   const reduce = usePrefersReducedMotion();
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const section = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (reduce || paused) return;
@@ -63,23 +69,26 @@ export default function Hero() {
     return () => clearInterval(t);
   }, [reduce, paused]);
 
+  // A soft light follows the pointer: one CSS variable update, no React re-render.
+  const light = (e: React.PointerEvent) => {
+    if (reduce || e.pointerType !== "mouse" || !section.current) return;
+    const r = section.current.getBoundingClientRect();
+    section.current.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    section.current.style.setProperty("--my", `${e.clientY - r.top}px`);
+  };
+
   const current = portals[active];
+  const cursor = { left: `${current.box.x + current.box.w - 6}%`, top: `${current.box.y + current.box.h - 8}%` };
 
   return (
-    <section id="top" className="surface-deep relative z-10 pb-20 pt-28 md:pb-28 md:pt-36">
+    <section id="top" ref={section} onPointerMove={light} className="surface-deep hero-canvas relative z-10 pt-28 md:pt-32">
       <div className="mx-auto grid max-w-[88rem] gap-14 px-5 md:px-10 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-7">
-          <p className="mono flex flex-wrap items-center gap-x-4 gap-y-1 text-ink-2">
-            <span className="inline-flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-forest" aria-hidden /> Open to new projects
-            </span>
-            <span aria-hidden className="hidden h-px w-8 bg-line sm:block" />
-            <span>Senior Product Designer · Healthcare &amp; SaaS UX</span>
-          </p>
+          <p className="mono text-ink-2">Senior Product Designer · Healthcare &amp; SaaS UX</p>
 
           <h1
             aria-label="Healthcare software, designed for the patient, the doctor and the front desk."
-            className="mt-8 text-[clamp(3rem,7.2vw,6.8rem)] font-medium leading-[1.02]"
+            className="mt-6 text-[clamp(2.8rem,5.5vw,5.4rem)] font-medium leading-[1.02]"
           >
             <span aria-hidden>
               <Words text="Healthcare software, designed for" start={0.05} />
@@ -88,67 +97,117 @@ export default function Hero() {
           </h1>
 
           <p className="rise mt-8 max-w-xl text-lg text-ink-2" style={{ animationDelay: "0.3s" }}>
-            I'm Ruqyya. I design patient apps, clinician portals and clinic websites for healthcare and SaaS teams, from the first
-            research conversation to the last screen.
+            I design patient apps, clinician portals and clinic websites for healthcare and SaaS teams, from the first research
+            conversation to the last screen.
           </p>
 
-          <div className="rise mt-10 flex flex-wrap items-center gap-x-8 gap-y-4" style={{ animationDelay: "0.4s" }}>
-            <a
-              href="#work"
-              className="group inline-flex h-14 items-center gap-3 rounded-full bg-forest px-7 font-semibold text-on-forest transition-transform hover:-translate-y-0.5"
-            >
-              Explore selected work
-              <ArrowDown size={18} className="transition-transform group-hover:translate-y-0.5" />
-            </a>
-            <a href="#approach" className="link-draw py-2 font-semibold">
-              About my approach
-            </a>
-            <a href="#contact" className="link-draw py-2 font-semibold">
-              Get in touch
-            </a>
+          {/* Conversion block: one clear primary action, one low-commitment alternative, then reassurance */}
+          <div className="rise mt-10" style={{ animationDelay: "0.4s" }}>
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+              <a
+                href={MAIL_HREF}
+                className="group inline-flex h-14 items-center gap-3 rounded-full bg-forest px-7 font-semibold text-on-forest shadow-lg shadow-black/20 transition-transform hover:-translate-y-0.5"
+              >
+                <Mail size={18} aria-hidden /> Email me about your project
+              </a>
+              <a href="#work" className="group inline-flex items-center gap-2 py-2 font-semibold">
+                <span className="link-draw">See the work</span>
+                <ArrowDown size={18} className="transition-transform group-hover:translate-y-0.5" />
+              </a>
+            </div>
+            <p className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink-2">
+              <span className="inline-flex items-center gap-2">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-forest opacity-60" aria-hidden />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-forest" aria-hidden />
+                </span>
+                Open to new projects
+              </span>
+              <span>Replies within one business day</span>
+              <span>Remote, any time zone</span>
+            </p>
           </div>
+
+          {/* Proof, quoted from LinkedIn */}
+          <dl className="rise mt-12 grid max-w-2xl grid-cols-3 gap-4 border-t border-line pt-6" style={{ animationDelay: "0.5s" }}>
+            {proof.map((p) => (
+              <div key={p.value} className="flex flex-col-reverse">
+                <dt className="mt-1 text-xs leading-snug text-ink-2 sm:text-sm">
+                  {p.label}
+                  <span className="mono mt-1 block normal-case tracking-normal opacity-80">{p.source}</span>
+                </dt>
+                <dd className="serif text-4xl font-medium text-forest sm:text-5xl">{p.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
         {/* Signature piece: walk through the three rooms of one real product */}
         <figure
-          className="rise lg:col-span-5 lg:mt-10"
+          className="rise lg:col-span-5 lg:mt-6"
           style={{ animationDelay: "0.2s" }}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onFocusCapture={() => setPaused(true)}
           onBlurCapture={() => setPaused(false)}
         >
-          <div className="relative -rotate-1 border border-line bg-paper-2 p-3 shadow-[0_30px_60px_-30px_rgba(20,32,28,0.45)] md:p-4">
-            <div className="relative overflow-hidden">
-              <img
-                src={`${base}videos/oladoc-cover.jpg`}
-                alt="Oladoc, designed end to end: a patient app, a doctor portal and a front desk screen shown side by side."
-                width={1200}
-                height={938}
-                fetchPriority="high"
-                decoding="async"
-                className="block h-auto w-full"
-              />
-              {portals.map((p, i) => (
-                <div
-                  key={p.id}
-                  aria-hidden
-                  className="pointer-events-none absolute transition-all duration-500"
-                  style={{
-                    left: `${p.box.x}%`,
-                    top: `${p.box.y}%`,
-                    width: `${p.box.w}%`,
-                    height: `${p.box.h}%`,
-                    outline: i === active ? "2px solid var(--signal)" : "2px solid transparent",
-                    outlineOffset: "4px",
-                    background: i === active ? "transparent" : "color-mix(in srgb, var(--paper) 50%, transparent)",
-                  }}
+          <div className="relative">
+            <div className="relative -rotate-1 border border-line bg-paper-2 p-3 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.55)] md:p-4">
+              <div className="relative overflow-hidden">
+                <img
+                  src={`${base}videos/oladoc-cover.jpg`}
+                  alt="Oladoc, designed end to end: a patient app, a doctor portal and a front desk screen shown side by side."
+                  width={1200}
+                  height={938}
+                  fetchPriority="high"
+                  decoding="async"
+                  className="block h-auto w-full"
                 />
-              ))}
+                {portals.map((p, i) => (
+                  <div
+                    key={p.id}
+                    aria-hidden
+                    className="pointer-events-none absolute transition-all duration-500"
+                    style={{
+                      left: `${p.box.x}%`,
+                      top: `${p.box.y}%`,
+                      width: `${p.box.w}%`,
+                      height: `${p.box.h}%`,
+                      outline: i === active ? "2px solid var(--signal)" : "2px solid transparent",
+                      outlineOffset: "4px",
+                      background: i === active ? "transparent" : "color-mix(in srgb, var(--paper) 50%, transparent)",
+                    }}
+                  />
+                ))}
+                {/* Design-tool cursor that moves to whichever portal is being described */}
+                <div aria-hidden className="pointer-events-none absolute z-10 transition-all duration-700 ease-out" style={cursor}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" className="drop-shadow-md">
+                    <path d="M3 2l7.5 18 2.4-7.1L20 10.5 3 2z" fill="#f5dc95" stroke="#0a464e" strokeWidth="1.5" strokeLinejoin="round" />
+                  </svg>
+                  <span className="ml-4 -mt-1 inline-block whitespace-nowrap rounded-full rounded-tl-none bg-[#f5dc95] px-2.5 py-1 text-[10px] font-semibold text-[#0a464e] shadow">
+                    Ruqyya
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Portrait badge: puts a face next to the work */}
+            <div className="absolute -bottom-7 -left-3 flex items-center gap-3 rounded-full border border-line bg-paper py-2 pl-2 pr-5 shadow-xl shadow-black/30 md:-left-6">
+              <img
+                src={portrait}
+                alt="Portrait of Ruqyya"
+                width={56}
+                height={56}
+                className="h-14 w-14 rounded-full object-cover object-top ring-2 ring-[#f5dc95]"
+              />
+              <span className="text-sm leading-tight">
+                <span className="serif block text-xl">Ruqyya</span>
+                <span className="mono text-ink-2">Lahore · Remote</span>
+              </span>
             </div>
           </div>
 
-          <figcaption className="mt-6">
+          <figcaption className="mt-14">
             <p className="mono text-ink-2">Fig. 1 · Oladoc, three portals, one product</p>
             <div role="tablist" aria-label="Portals in the Oladoc project" className="mt-4 flex flex-wrap gap-2">
               {portals.map((p, i) => (
@@ -171,7 +230,7 @@ export default function Hero() {
             <div id="portal-panel" role="tabpanel" aria-labelledby={`portal-tab-${current.id}`} aria-live="polite" className="mt-5 min-h-[4.5rem]">
               <p className="serif text-xl leading-snug">{current.text}</p>
             </div>
-            <p className="mono mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-ink-2">
+            <p className="mono mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-ink-2">
               <span>47 screens</span>
               <span>3 portals</span>
               <span>4 journeys</span>
@@ -183,14 +242,21 @@ export default function Hero() {
         </figure>
       </div>
 
-      <div className="mx-auto mt-20 max-w-[88rem] border-y border-line px-5 py-5 md:mt-24 md:px-10">
-        <p className="mono flex flex-wrap items-center gap-x-8 gap-y-2 text-ink-2">
-          <span>5+ years</span>
-          <span>Healthcare UX</span>
-          <span>SaaS platforms</span>
-          <span>Design systems</span>
-          <span>Remote worldwide</span>
-        </p>
+      {/* Moving credit line of real projects */}
+      <div className="relative mt-20 overflow-hidden border-y border-line py-5 md:mt-24" aria-label="Projects I have designed">
+        <div className="marquee flex w-max items-center gap-10 whitespace-nowrap" aria-hidden>
+          {[...credits, ...credits].map((c, i) => (
+            <span key={i} className="flex items-center gap-10">
+              <span className="serif text-2xl text-ink md:text-3xl">{c}</span>
+              <span className="text-forest">✦</span>
+            </span>
+          ))}
+        </div>
+        <ul className="sr-only">
+          {credits.map((c) => (
+            <li key={c}>{c}</li>
+          ))}
+        </ul>
       </div>
     </section>
   );

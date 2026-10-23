@@ -5,6 +5,7 @@ import Eyebrow from "../ui/Eyebrow";
 import Reveal from "../ui/Reveal";
 import ProjectMedia, { hasVideo } from "../ui/ProjectMedia";
 import { projects, getProject, type Project } from "../../data/projects";
+import { MAIL_HREF } from "../../data/contact";
 
 const pick = (slug: string) => getProject(slug) as Project;
 
@@ -33,11 +34,11 @@ function Card({ project, n, size = "md", className = "" }: { project: Project; n
       <Link to={`/work/${project.slug}`} className="block">
         <Frame project={project} />
         <p className="mono mt-5 text-ink-2">{label(project, n)}</p>
-        <h3 className={`mt-2 font-medium leading-tight ${size === "sm" ? "text-2xl" : "text-3xl md:text-4xl"}`}>
+        <h3 className={`mt-2 font-medium leading-tight ${size === "sm" ? "text-lg md:text-2xl" : "text-3xl md:text-4xl"}`}>
           <span className="link-draw">{project.title}</span>
         </h3>
-        <p className="mt-3 max-w-md text-ink-2">{project.summary}</p>
-        <p className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-forest">
+        <p className={`mt-3 max-w-md text-ink-2 ${size === "sm" ? "hidden md:block" : ""}`}>{project.summary}</p>
+        <p className={`mt-4 items-center gap-1 text-sm font-semibold text-forest ${size === "sm" ? "hidden md:inline-flex" : "inline-flex"}`}>
           View project <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </p>
       </Link>
@@ -49,7 +50,7 @@ export default function Work() {
   const [hover, setHover] = useState<Project | null>(null);
 
   return (
-    <section id="work" className="relative z-10 pt-28 md:pt-40">
+    <section id="work" className="surface-tint relative z-10 pb-28 pt-24 md:pb-40 md:pt-32">
       <div className="mx-auto max-w-[88rem] px-5 md:px-10">
         <Reveal>
           <Eyebrow n="01">Selected work</Eyebrow>
@@ -96,7 +97,7 @@ export default function Work() {
                 <p className="mono text-ink-2">{more.length} with film</p>
               </div>
             </Reveal>
-            <div className="mt-10 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-14 lg:grid-cols-3">
               {more.map((p, i) => (
                 <Reveal key={p.slug} delay={(i % 3) * 0.06}>
                   <Card project={p} n={6 + i} size="sm" />
@@ -105,6 +106,24 @@ export default function Work() {
             </div>
           </div>
         )}
+
+        {/* Mid-page call to action, right after the best work */}
+        <Reveal className="mt-24 md:mt-32">
+          <div className="surface-deep flex flex-col gap-6 rounded-sm px-6 py-10 md:flex-row md:items-center md:justify-between md:px-12 md:py-12">
+            <div>
+              <p className="mono text-ink-2">Like what you see?</p>
+              <h3 className="mt-2 max-w-xl text-3xl font-medium leading-tight md:text-4xl">
+                Building a healthcare or SaaS product? <em className="text-forest">Let's talk.</em>
+              </h3>
+            </div>
+            <a
+              href={MAIL_HREF}
+              className="inline-flex h-14 shrink-0 items-center justify-center gap-2 rounded-full bg-forest px-7 font-semibold text-on-forest transition-transform hover:-translate-y-0.5"
+            >
+              Email me about your project <ArrowUpRight size={18} />
+            </a>
+          </div>
+        </Reveal>
 
         {/* 4 · Archive index */}
         {archive.length > 0 && (

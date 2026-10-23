@@ -56,6 +56,41 @@
   background: #08373e;
 }
 
+/* Hero: faint design-canvas grid plus a soft light that follows the mouse */
+.hero-canvas { position: relative; overflow: hidden; --mx: 72%; --my: 22%; }
+.hero-canvas::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(70% 70% at 70% 30%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(70% 70% at 70% 30%, #000 0%, transparent 75%);
+}
+.hero-canvas::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(360px circle at var(--mx) var(--my), rgba(245, 220, 149, 0.1), transparent 65%);
+}
+.hero-canvas > * { position: relative; z-index: 1; }
+
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee { animation: marquee 48s linear infinite; }
+.marquee:hover { animation-play-state: paused; }
+
+/* Light sections get depth from a faint teal wash instead of flat mint */
+.surface-tint {
+  background:
+    radial-gradient(56rem 28rem at 0% 0%, color-mix(in srgb, var(--forest) 9%, transparent), transparent 70%),
+    radial-gradient(48rem 26rem at 100% 100%, color-mix(in srgb, var(--forest) 7%, transparent), transparent 70%),
+    var(--paper-2);
+}
+
 /* Metric-matched fallbacks so the page does not reflow when the web font arrives. */
 @font-face {
   font-family: "Cormorant Fallback G";

@@ -1,11 +1,11 @@
 import Eyebrow from "../ui/Eyebrow";
 import Reveal from "../ui/Reveal";
-import { experience, services, skillGroups, tools } from "../../data/content";
+import { experience, services, tools } from "../../data/content";
 
 export default function Experience() {
   return (
     <>
-      <section id="experience" className="relative z-10 pt-28 md:pt-44">
+      <section id="experience" className="surface-tint relative z-10 py-24 md:py-32">
         <div className="mx-auto max-w-[88rem] px-5 md:px-10">
           <Reveal>
             <Eyebrow n="03">Experience</Eyebrow>
@@ -52,7 +52,7 @@ export default function Experience() {
         </div>
       </section>
 
-      <section id="capabilities" className="relative z-10 pt-28 md:pt-44">
+      <section id="capabilities" className="relative z-10 py-24 md:py-32">
         <div className="mx-auto grid max-w-[88rem] gap-12 px-5 md:px-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-4">
             <Eyebrow n="04">Capabilities</Eyebrow>
@@ -61,24 +61,17 @@ export default function Experience() {
             <p className="mt-3 text-ink-2">{tools.join(" · ")}</p>
           </Reveal>
           <div className="lg:col-span-8">
-            <ul className="border-t border-line">
+            <ul className="grid gap-x-10 border-t border-line sm:grid-cols-2">
               {services.map((s, i) => (
                 <li key={s.title} className="border-b border-line">
-                  <Reveal delay={(i % 4) * 0.04} className="grid gap-1 py-5 md:grid-cols-[14rem_1fr] md:gap-8">
+                  <Reveal delay={(i % 4) * 0.04} className="py-5">
                     <h3 className="text-xl font-medium md:text-2xl">{s.title}</h3>
-                    <p className="text-ink-2">{s.description}</p>
+                    <p className="mt-1 text-sm text-ink-2">{s.description}</p>
                   </Reveal>
                 </li>
               ))}
             </ul>
-            <div className="mt-12 grid gap-8 sm:grid-cols-2">
-              {skillGroups.map((g) => (
-                <div key={g.category}>
-                  <h3 className="mono text-signal">{g.category}</h3>
-                  <p className="mt-2 text-ink-2">{g.items.join(", ")}</p>
-                </div>
-              ))}
-            </div>
+            
           </div>
         </div>
       </section>

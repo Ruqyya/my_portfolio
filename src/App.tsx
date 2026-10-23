@@ -2,6 +2,7 @@ import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
 import Nav from "./components/layout/Nav";
 import Footer from "./components/layout/Footer";
+import StickyCta from "./components/layout/StickyCta";
 import Hero from "./components/sections/Hero";
 import NotFound from "./pages/NotFound";
 
@@ -73,6 +74,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <StickyCta />
     </div>
   );
 }

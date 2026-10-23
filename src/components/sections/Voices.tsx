@@ -7,7 +7,7 @@ export default function Voices() {
   const rest = testimonials.filter((t) => !featured.includes(t));
 
   return (
-    <section id="voices" className="surface-deep relative z-10 mt-28 pb-24 pt-24 md:mt-44 md:pb-32 md:pt-32">
+    <section id="voices" className="surface-deep relative z-10 pb-24 pt-24 md:pb-32 md:pt-32">
       <div className="mx-auto max-w-[88rem] px-5 md:px-10">
         <Reveal>
           <Eyebrow n="05">In their words</Eyebrow>
@@ -30,7 +30,7 @@ export default function Voices() {
         </div>
 
         <ul className="mt-20 grid gap-x-12 gap-y-10 border-t border-line pt-10 md:grid-cols-2 lg:grid-cols-3">
-          {rest.map((t, i) => (
+          {rest.slice(0, 3).map((t, i) => (
             <li key={t.name + i}>
               <Reveal delay={(i % 3) * 0.05}>
                 <p className="text-ink-2">“{t.review}”</p>
@@ -41,6 +41,24 @@ export default function Voices() {
             </li>
           ))}
         </ul>
+        {rest.length > 3 && (
+          <details className="group mt-10 border-t border-line">
+            <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 font-semibold [&::-webkit-details-marker]:hidden">
+              <span>More reviews ({rest.length - 3})</span>
+              <span aria-hidden className="text-forest transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <ul className="grid gap-x-12 gap-y-10 pb-4 pt-6 md:grid-cols-2 lg:grid-cols-3">
+              {rest.slice(3).map((t, i) => (
+                <li key={t.name + i}>
+                  <p className="text-ink-2">“{t.review}”</p>
+                  <p className="mono mt-4">
+                    {t.name} <span className="text-ink-2">· {t.role}, {t.company}</span>
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
 
         <div className="mt-28 grid gap-14 lg:grid-cols-12">
           <Reveal className="lg:col-span-4">

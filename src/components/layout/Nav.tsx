@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
+import { MAIL_HREF } from "../../data/contact";
 
 const links = [
   { to: "/#work", label: "Work" },
@@ -31,7 +32,7 @@ export default function Nav() {
       }`}
     >
       <nav aria-label="Main" className="mx-auto flex h-16 max-w-[88rem] items-center justify-between px-5 md:px-10">
-        <Link to="/" className="group flex items-baseline gap-3" aria-label="Ruqyya Product design, home">
+        <Link to="/" className="group flex items-baseline gap-3">
           <span className="serif text-2xl font-semibold tracking-tight">Ruqyya</span>
           <span className="mono hidden text-ink-2 sm:inline">Product design</span>
         </Link>
@@ -56,10 +57,10 @@ export default function Nav() {
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           <a
-            href="mailto:ghulamruqyya@gmail.com"
+            href={MAIL_HREF}
             className="hidden h-11 items-center rounded-full bg-forest px-5 text-sm font-semibold text-on-forest transition-transform hover:-translate-y-0.5 md:inline-flex"
           >
-            Say hello
+            Email me
           </a>
           <button
             type="button"
@@ -85,8 +86,8 @@ export default function Nav() {
               </li>
             ))}
           </ul>
-          <a href="mailto:ghulamruqyya@gmail.com" className="mt-6 inline-flex h-12 items-center rounded-full bg-forest px-6 font-semibold text-on-forest">
-            Say hello
+          <a href={MAIL_HREF} className="mt-6 inline-flex h-12 items-center rounded-full bg-forest px-6 font-semibold text-on-forest">
+            Email me
           </a>
         </div>
       )}

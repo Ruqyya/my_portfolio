@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import Eyebrow from "../ui/Eyebrow";
 import Reveal from "../ui/Reveal";
+import { MAIL_HREF } from "../../data/contact";
 
 const rows = [
   { k: "Email", v: "ghulamruqyya@gmail.com", href: "mailto:ghulamruqyya@gmail.com" },
@@ -11,7 +12,7 @@ const rows = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="surface-deep relative z-10 mt-28 pb-24 pt-24 md:mt-44 md:pb-32 md:pt-32">
+    <section id="contact" className="surface-deep relative z-10 pb-24 pt-24 md:pb-32 md:pt-32">
       <div className="mx-auto max-w-[88rem] px-5 md:px-10">
         <Reveal>
           <Eyebrow n="07">Contact</Eyebrow>
@@ -22,11 +23,19 @@ export default function Contact() {
             Tell me what you are building and who it is for. I reply within one business day, from Lahore, and work with teams in any
             time zone.
           </p>
+          <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-ink-2">
+            {["What you are building", "Who it is for", "When you need it"].map((t) => (
+              <li key={t} className="flex items-center gap-2">
+                <span aria-hidden className="text-forest">✦</span>
+                {t}
+              </li>
+            ))}
+          </ul>
         </Reveal>
 
         <Reveal delay={0.1}>
           <a
-            href="mailto:ghulamruqyya@gmail.com"
+            href={MAIL_HREF}
             className="group mt-12 flex min-h-16 flex-wrap items-center justify-between gap-4 border-y border-ink py-6 transition-colors hover:bg-paper-2"
           >
             <span className="serif text-[clamp(1.5rem,4vw,3.2rem)] font-medium">ghulamruqyya@gmail.com</span>

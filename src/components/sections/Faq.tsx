@@ -5,7 +5,7 @@ import { faqs } from "../../data/content";
 
 export default function Faq() {
   return (
-    <section id="faq" className="relative z-10 pt-28 md:pt-44">
+    <section id="faq" className="relative z-10 py-24 md:py-32">
       <div className="mx-auto grid max-w-[88rem] gap-12 px-5 md:px-10 lg:grid-cols-12">
         <Reveal className="lg:col-span-4">
           <Eyebrow n="06">Before we talk</Eyebrow>
