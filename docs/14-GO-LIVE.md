@@ -32,4 +32,4 @@ The form then posts directly (name, email, company, project type, message) and s
 Measured results with a method, trade-offs and lessons for the other nine projects, real testimonials with sources, video captions or transcripts, and content for the Behance-only pages. See `docs/05` and `docs/07`.
 
 ## Brand name and logo (24 Oct 2026)
-Working name: **Ruqyya Studio** (assumed from the recommendation; change it in one place each: `src/components/ui/Logo.tsx`, `index.html`, `scripts/postbuild.mjs`, footer). Logo: an "R" drawn like a stethoscope (loop, tube, chest piece) on the site gradient, with "Ruqyya *Studio*" in Fraunces. Files: `src/components/ui/Logo.tsx`, `public/favicon.svg`, `public/og-image.png`. A second concept (block R with a pulse dot) is in `docs/screens/logo-concepts.jpg` if you prefer it.
+Name stays **Creative Ruqyya**. Logo: a "CR" monogram (bold C ring cradling an aqua R, with a spark for "creative") on the site gradient. The site shows the logo only, no written name; screen readers still get "Creative Ruqyya". Files: `src/components/ui/Logo.tsx`, `public/favicon.svg`, `public/og-image.png`.

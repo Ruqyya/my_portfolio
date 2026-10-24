@@ -22,8 +22,8 @@ const setMeta = (html, attr, name, value) =>
 
 let written = 0;
 for (const p of projects) {
-  const title = `${p.title} · Ruqyya Studio`;
-  const desc = `${p.title}: a ${p.industry.toLowerCase()} case study by Ruqyya Studio, Senior Product Designer for healthcare and SaaS.`;
+  const title = `${p.title} · Creative Ruqyya`;
+  const desc = `${p.title}: a ${p.industry.toLowerCase()} case study by Creative Ruqyya, Senior Product Designer for healthcare and SaaS.`;
   const url = `${SITE}/work/${p.slug}`;
   let html = template.replace(/<title>[^<]*<\/title>/, `<title>${esc(title)}</title>`);
   html = setMeta(html, "name", "description", desc);

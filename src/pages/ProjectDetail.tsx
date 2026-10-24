@@ -31,7 +31,7 @@ export default function ProjectDetail() {
   useEffect(() => {
     if (!project) return;
     const prev = document.title;
-    document.title = `${project.study.identifier ?? project.title} · Ruqyya Studio`;
+    document.title = `${project.study.identifier ?? project.title} · Creative Ruqyya`;
     return () => {
       document.title = prev;
     };
