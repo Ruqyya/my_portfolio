@@ -41,6 +41,8 @@ const cycle = ["clear.", "human.", "effortless.", "trusted."];
 
 // Real projects with a film, shown as a drifting strip of covers under the hero.
 const strip = projects.filter((p) => p.study.video);
+// Small WebP thumbnails (public/strip) so the strip stays light; falls back to the full cover.
+const thumb = (p: (typeof projects)[number]) => (p.study.cover ? `${base}strip/${p.study.cover.replace(/^videos\//, "").replace(/-cover\.jpg$/, "")}.webp` : p.coverImage);
 
 function Words({ text, start, className = "" }: { text: string; start: number; className?: string }) {
   return (
@@ -332,7 +334,7 @@ export default function Hero() {
               aria-hidden={i >= strip.length}
               className="group relative block h-40 shrink-0 overflow-hidden rounded-2xl ring-1 ring-white/15 transition-transform duration-500 hover:-translate-y-1 md:h-56"
             >
-              <img src={p.coverImage} alt={i >= strip.length ? "" : `${p.title}, cover`} loading="lazy" className="h-full w-auto object-cover" />
+              <img src={thumb(p)} alt={i >= strip.length ? "" : `${p.title}, cover`} loading="lazy" className="h-full w-auto object-cover" />
               <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0a2552]/90 to-transparent px-4 pb-3 pt-10 text-base font-semibold text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
                 {p.title.replace(/ (Website|UI\/UX|Case Study|Redesign|Design|App).*$/i, "")}
               </span>

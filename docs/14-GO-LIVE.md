@@ -33,3 +33,6 @@ Measured results with a method, trade-offs and lessons for the other nine projec
 
 ## Brand name and logo (24 Oct 2026)
 Name stays **Creative Ruqyya**. Logo: the "CR" mark you supplied, same shape, recoloured to the site brand (white to aqua gradient on dark) by using the artwork as a mask. Files: `public/brand/cr-mark-alpha.png` (mask), `public/brand/cr-mark.png` (original colours), `public/brand/cr-logo-full.png` (original with name). Shown alone in the nav and footer, no written name; screen readers get "Creative Ruqyya". Favicon (`public/favicon.png`) and share image (`public/og-image.png`) use the same mark. The original is a raster image; for print or very large use, ask for an SVG or vector file.
+
+## Results slots (placeholders)
+Each case study can show a row of three measured results. Real numbers go in that project's `measured` list in `src/data/case-studies.ts` (`{ value: "+42%", label: "task completion", source: "how it was measured" }`). To review the layout with dummy values, set `SHOW_PLACEHOLDER_RESULTS = true` in `src/data/contact.ts`; the row then shows "+00%" style placeholders, marked "Placeholder". Keep it `false` on the public site: placeholders are not results, and invented numbers could be checked and disproved by a client.

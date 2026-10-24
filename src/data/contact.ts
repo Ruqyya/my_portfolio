@@ -7,6 +7,9 @@ export const EMAIL = "ghulamruqyya@gmail.com";
 // While these are empty, the booking button opens a prefilled email and the form opens the visitor's email app.
 export const BOOKING_URL = "";
 export const FORM_ENDPOINT = "";
+// While true, case pages show a clearly marked "Placeholder" results row (+00% and so on) so the layout can be reviewed.
+// Keep it false on the public site: the placeholders are not real results. Real numbers go in each case study's `measured` list.
+export const SHOW_PLACEHOLDER_RESULTS = false;
 export const SITE_URL = "https://ruqyya.github.io/my_portfolio";
 
 // One prefilled email so a visitor only has to fill in three short lines.

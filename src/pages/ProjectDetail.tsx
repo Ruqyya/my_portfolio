@@ -7,7 +7,7 @@ import { useEffect, useMemo } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Check, ExternalLink, Mail } from "lucide-react";
 import { projects, getProject } from "../data/projects";
-import { MAIL_HREF } from "../data/contact";
+import { MAIL_HREF, SHOW_PLACEHOLDER_RESULTS } from "../data/contact";
 import Reveal from "../components/ui/Reveal";
 import Eyebrow from "../components/ui/Eyebrow";
 import { Browser, Phone } from "../components/case/Frames";
@@ -554,16 +554,30 @@ export default function ProjectDetail() {
                   </Reveal>
                 </>
               )}
-              {s.measured && s.measured.length > 0 && (
-                <dl className="mt-10 grid gap-8 border-y border-line py-8 sm:grid-cols-3">
-                  {s.measured.map((m) => (
-                    <div key={m.label} className="flex flex-col-reverse">
-                      <dt className="mono mt-2 text-ink-2">{m.label} · {m.source}</dt>
-                      <dd className="serif text-6xl text-forest">{m.value}</dd>
-                    </div>
-                  ))}
-                </dl>
-              )}
+              {(() => {
+                const placeholder = !(s.measured && s.measured.length > 0) && SHOW_PLACEHOLDER_RESULTS;
+                const rows = placeholder
+                  ? [
+                      { value: "+00%", label: "Key metric, e.g. task completion", source: "Placeholder" },
+                      { value: "−00%", label: "Key metric, e.g. drop-off", source: "Placeholder" },
+                      { value: "0.0/5", label: "Key metric, e.g. usability score", source: "Placeholder" },
+                    ]
+                  : s.measured;
+                if (!rows || rows.length === 0) return null;
+                return (
+                  <div className="mt-10">
+                    {placeholder && <p className="mono mb-3 text-signal">Placeholder results, replace with measured numbers in case-studies.ts</p>}
+                    <dl className={`grid gap-8 border-y border-line py-8 sm:grid-cols-3 ${placeholder ? "border-dashed" : ""}`}>
+                      {rows.map((m) => (
+                        <div key={m.label} className="flex flex-col-reverse">
+                          <dt className="mono mt-2 text-ink-2">{m.label} · {m.source}</dt>
+                          <dd className={`serif text-6xl ${placeholder ? "text-ink-2" : "text-forest"}`}>{m.value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                );
+              })()}
               {s.delivered && !s.outcomes && (
                 <ul className="mt-10 grid gap-4 sm:grid-cols-2">
                   {s.delivered.map((d, i) => (
