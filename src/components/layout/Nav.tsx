@@ -3,7 +3,7 @@ import Logo from "../ui/Logo";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
-import { MAIL_HREF } from "../../data/contact";
+import { BOOK_HREF, bookProps } from "../../data/contact";
 
 const links = [
   { to: "/#expertise", label: "Expertise" },
@@ -57,10 +57,11 @@ export default function Nav() {
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           <a
-            href={MAIL_HREF}
+            href={BOOK_HREF}
+            {...bookProps}
             className="hidden h-11 items-center rounded-full bg-forest px-5 text-sm font-semibold text-on-forest transition-transform hover:-translate-y-0.5 md:inline-flex"
           >
-            Discuss a project
+            Book a call
           </a>
           <button
             type="button"
@@ -86,8 +87,8 @@ export default function Nav() {
               </li>
             ))}
           </ul>
-          <a href={MAIL_HREF} className="mt-6 inline-flex h-12 items-center rounded-full bg-forest px-6 font-semibold text-on-forest">
-            Email me
+          <a href={BOOK_HREF} {...bookProps} className="mt-6 inline-flex h-12 items-center rounded-full bg-forest px-6 font-semibold text-on-forest">
+            Book a 15-minute call
           </a>
         </div>
       )}

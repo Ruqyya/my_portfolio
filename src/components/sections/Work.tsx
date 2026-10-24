@@ -6,7 +6,7 @@ import Reveal from "../ui/Reveal";
 import ProjectMedia, { hasVideo } from "../ui/ProjectMedia";
 import BeforeAfter from "../case/BeforeAfter";
 import { projects, getProject, type Project } from "../../data/projects";
-import { MAIL_HREF, proof } from "../../data/contact";
+import { BOOK_HREF, bookProps, proof } from "../../data/contact";
 import { extraProjects } from "../../data/behance-extra";
 
 const base = import.meta.env.BASE_URL;
@@ -347,10 +347,11 @@ export default function Work() {
                 </h3>
               </div>
               <a
-                href={MAIL_HREF}
+                href={BOOK_HREF}
+                {...bookProps}
                 className="inline-flex h-14 shrink-0 items-center justify-center gap-2 rounded-full bg-forest px-8 text-lg font-semibold text-on-forest transition-transform hover:-translate-y-0.5"
               >
-                Discuss a project <ArrowUpRight size={18} />
+                Book a 15-minute call <ArrowUpRight size={18} />
               </a>
             </div>
           </Reveal>

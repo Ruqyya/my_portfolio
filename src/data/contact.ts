@@ -22,6 +22,8 @@ export const BOOK_HREF =
   `mailto:${EMAIL}?subject=${encodeURIComponent("Book a 15-minute intro call")}` +
     `&body=${encodeURIComponent("Hi Ruqyya,\n\nI would like to book a short intro call.\n\nBest days and times (with my time zone):\n\nWhat I'm building:\n\n")}`;
 export const BOOK_EXTERNAL = Boolean(BOOKING_URL);
+// Spread onto a booking link so a real calendar opens in a new tab.
+export const bookProps = BOOK_EXTERNAL ? ({ target: "_blank", rel: "noreferrer" } as const) : {};
 
 // Results quoted from the owner's LinkedIn experience (linkedin.com/in/ghulamruqyya).
 export const proof = [

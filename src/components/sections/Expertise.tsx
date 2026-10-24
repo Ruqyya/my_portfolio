@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Blocks, HeartPulse, LayoutDashboard, Layers, Mail, SearchCheck, Workflow } from "lucide-react";
+import { ArrowUpRight, Blocks, CalendarCheck, HeartPulse, LayoutDashboard, Layers, SearchCheck, Workflow } from "lucide-react";
 import Eyebrow from "../ui/Eyebrow";
 import Reveal from "../ui/Reveal";
-import { MAIL_HREF } from "../../data/contact";
+import { BOOK_HREF, bookProps } from "../../data/contact";
 
 // Six capabilities, each one line, each tied to evidence: a project on this site or a role on LinkedIn.
 const areas = [
@@ -26,10 +26,11 @@ export default function Expertise() {
             </h2>
             <p className="mt-6 max-w-sm text-xl leading-snug text-ink-2">For healthcare and B2B SaaS teams.</p>
             <a
-              href={MAIL_HREF}
+              href={BOOK_HREF}
+              {...bookProps}
               className="mt-8 inline-flex h-14 items-center gap-3 rounded-full bg-forest px-8 text-lg font-semibold text-on-forest transition-colors hover:bg-[var(--forest-hover)]"
             >
-              <Mail size={20} aria-hidden /> Discuss your product
+              <CalendarCheck size={20} aria-hidden /> Book a 15-minute call
             </a>
           </Reveal>
 
