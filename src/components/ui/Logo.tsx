@@ -23,13 +23,12 @@ export function LogoMark({ size = 40, className = "" }: { size?: number; classNa
   );
 }
 
+// Logo only, no written name. The accessible name is still "Ruqyya Studio" for screen readers.
 export default function Logo({ compact = false }: { compact?: boolean }) {
   return (
-    <span className="inline-flex items-center gap-3">
-      <LogoMark size={compact ? 38 : 44} />
-      <span className="serif text-[1.55rem] font-semibold leading-none tracking-tight">
-        Ruqyya <em className="font-medium text-forest">Studio</em>
-      </span>
+    <span className="inline-flex items-center">
+      <LogoMark size={compact ? 46 : 54} />
+      <span className="sr-only">Ruqyya Studio, home</span>
     </span>
   );
 }
