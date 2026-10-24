@@ -17,7 +17,7 @@ export default function Faq() {
     <section id="faq" className="sheet sheet-light pb-28 pt-24 md:pb-36 md:pt-32">
       <div className="mx-auto grid max-w-[88rem] gap-12 px-5 md:px-10 lg:grid-cols-12">
         <Reveal className="lg:col-span-4">
-          <Eyebrow n="06">Before we talk</Eyebrow>
+          <Eyebrow n="05">Before we talk</Eyebrow>
           <h2 className="mt-6 text-[clamp(2.3rem,4.6vw,3.9rem)] font-medium leading-[1.08]">Common questions.</h2>
         </Reveal>
         <div className="lg:col-span-8">

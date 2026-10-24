@@ -34,6 +34,11 @@ const toasts = [
   { icon: "→", title: "Ayesha arrived", sub: "Check in, then send to Dr. Khan" },
 ];
 
+// x%, y%, delay, size: fixed so the layout never shifts
+const sparkles: [number, number, number, number][] = [[8, 18, 0, 10], [37, 12, 2.1, 12], [58, 30, 1.8, 10], [74, 62, 0.3, 12], [91, 78, 2.4, 10], [22, 70, 1.2, 9]];
+
+const cycle = ["clear.", "human.", "effortless.", "trusted."];
+
 // Real projects with a film, shown as a drifting strip of covers under the hero.
 const strip = projects.filter((p) => p.study.video);
 
@@ -131,6 +136,16 @@ export default function Hero() {
       onBlurCapture={() => setPaused(false)}
       className="surface-deep surface-hero hero-canvas relative z-10 pb-20 pt-28 md:pb-24 md:pt-32"
     >
+      {/* Shine: slow aurora glows, a light sweep and a few twinkling points. Decorative only. */}
+      <div aria-hidden className="hero-fx pointer-events-none">
+        <span className="aurora aurora-a" />
+        <span className="aurora aurora-b" />
+        <span className="aurora aurora-c" />
+        <span className="light-sweep" />
+        {sparkles.map(([x, y, d, s2], i) => (
+          <span key={i} className="sparkle" style={{ left: `${x}%`, top: `${y}%`, animationDelay: `${d}s`, width: s2, height: s2 }} />
+        ))}
+      </div>
       <div className="mx-auto grid max-w-[88rem] gap-x-10 gap-y-14 px-5 md:px-10 lg:min-h-[calc(100svh-9rem)] lg:grid-cols-12 lg:items-center">
         <div className="relative z-30 lg:col-span-6">
           <p className="mono flex items-center gap-3 text-ink-2">
@@ -138,13 +153,18 @@ export default function Hero() {
             Senior Product Designer · Healthcare &amp; SaaS
           </p>
           <h1
-            aria-label="Complex healthcare products. Clearer human experiences."
-            className="mt-6 text-[clamp(3rem,6.4vw,6.6rem)] font-medium leading-[0.98] tracking-[-0.03em]"
+            aria-label="Healthcare products that feel clear, human, effortless and trusted."
+            className="mt-6 text-[clamp(3rem,6.4vw,6.6rem)] font-medium leading-[1] tracking-[-0.03em]"
           >
             <span aria-hidden>
-              <span className="block"><Words text="Complex healthcare" start={0.05} /></span>
-              <span className="block"><Words text="products." start={0.2} /></span>
-              <span className="shimmer-text block italic text-forest"><Words text="Clearer human experiences." start={0.35} /></span>
+              <span className="block"><Words text="Healthcare" start={0.05} /></span>
+              <span className="block"><Words text="products that" start={0.2} /></span>
+              <span className="block"><Words text="feel" start={0.35} /> <span className="cycle-box italic">
+                {cycle.map((w, i) => (
+                  <span key={w} className="cycle-word" style={{ animationDelay: `${i * 2.4}s` }}>{w}</span>
+                ))}
+                <span className="cycle-sizer">effortless.</span>
+              </span></span>
             </span>
           </h1>
 
@@ -223,7 +243,7 @@ export default function Hero() {
             </Layer>
 
             {/* One booking, narrated: the card changes with the room that is in front */}
-            <div key={active} aria-hidden className="toast-in absolute -left-4 -top-6 z-40 hidden w-[16.5rem] items-center gap-3 rounded-2xl bg-[#f7fafc] py-3 pl-3 pr-5 text-[#0a2552] shadow-2xl sm:flex">
+            <div key={active} aria-hidden className="toast-in absolute -left-4 -top-6 z-40 hidden w-[17.5rem] items-center gap-3 rounded-2xl bg-[#f7fafc] py-3 pl-3 pr-5 text-[#0a2552] shadow-2xl sm:flex">
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#0f5974] text-lg text-white">{toasts[active].icon}</span>
               <span className="text-[0.95rem] font-semibold leading-tight">
                 {toasts[active].title}

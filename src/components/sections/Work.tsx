@@ -7,6 +7,7 @@ import ProjectMedia, { hasVideo } from "../ui/ProjectMedia";
 import BeforeAfter from "../case/BeforeAfter";
 import { projects, getProject, type Project } from "../../data/projects";
 import { MAIL_HREF, proof } from "../../data/contact";
+import { extraProjects } from "../../data/behance-extra";
 
 const base = import.meta.env.BASE_URL;
 const pick = (slug: string) => getProject(slug) as Project;
@@ -383,6 +384,44 @@ export default function Work() {
               </ul>
             </div>
           )}
+
+          <div className="mt-24 md:mt-32">
+            <Reveal>
+              <div className="flex flex-col justify-between gap-4 border-b border-line pb-6 md:flex-row md:items-end">
+                <h3 className="text-[clamp(2.2rem,4vw,3.6rem)] font-medium leading-none">More on <em className="text-forest">Behance</em></h3>
+                <a href="https://www.behance.net/ghulamruqyya" target="_blank" rel="noreferrer" className="link-draw inline-flex items-center gap-2 py-2 text-lg font-semibold">
+                  See all projects <ArrowUpRight size={18} aria-hidden />
+                </a>
+              </div>
+            </Reveal>
+            <ul className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 md:gap-x-8 md:gap-y-12">
+              {extraProjects.map((x, i) => (
+                <li key={x.url}>
+                  <Reveal delay={(i % 3) * 0.06}>
+                    <a href={x.url} target="_blank" rel="noreferrer" className="group block">
+                      <span className="block overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-black/5">
+                        <img src={x.cover} alt={`${x.title}, cover on Behance`} loading="lazy" className="aspect-[4/3] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]" />
+                      </span>
+                      <span className="mono mt-4 block text-ink-2">{x.kind}</span>
+                      <span className="mt-1 flex items-center gap-2 text-xl font-medium md:text-2xl">
+                        <span className="link-draw">{x.title}</span>
+                        <ArrowUpRight size={18} className="shrink-0 text-forest" aria-hidden />
+                        <span className="sr-only"> (opens Behance)</span>
+                      </span>
+                    </a>
+                  </Reveal>
+                </li>
+              ))}
+              <li>
+                <Reveal delay={0.12} className="h-full">
+                  <a href="https://www.behance.net/ghulamruqyya" target="_blank" rel="noreferrer" className="group flex aspect-[4/3] w-full flex-col items-start justify-between rounded-2xl border border-dashed border-[var(--line-strong)] p-6 transition-colors hover:border-forest md:p-8">
+                    <span className="mono text-ink-2">Behance</span>
+                    <span className="serif text-3xl leading-tight md:text-4xl">See the full portfolio <ArrowUpRight size={26} className="inline text-forest transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden /></span>
+                  </a>
+                </Reveal>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
     </>

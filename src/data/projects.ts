@@ -1,5 +1,6 @@
 import behanceData from "./behance-projects.json";
 import { caseStudies, type CaseStudy } from "./case-studies";
+import { behanceLive } from "./behance-extra";
 
 export interface Project {
   id: number;
@@ -38,7 +39,7 @@ function build(b: (typeof behanceData.projects)[number]): Project {
     year: b.year,
     summary: study.summary ?? b.tags.filter((t) => t !== "Case Study").join(" · "),
     coverImage: study.cover ? `${import.meta.env.BASE_URL}${study.cover}` : b.coverImage,
-    behanceUrl: b.behanceUrl,
+    behanceUrl: behanceLive[b.slug] ?? b.behanceUrl,
     color: INDUSTRY_COLORS[b.industry] ?? "#0EA5E9",
     tags: b.tags,
     study,

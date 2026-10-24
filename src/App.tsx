@@ -9,7 +9,6 @@ import NotFound from "./pages/NotFound";
 const Expertise = lazy(() => import("./components/sections/Expertise"));
 const Work = lazy(() => import("./components/sections/Work"));
 const Approach = lazy(() => import("./components/sections/Approach"));
-const Experience = lazy(() => import("./components/sections/Experience"));
 const Voices = lazy(() => import("./components/sections/Voices"));
 const Faq = lazy(() => import("./components/sections/Faq"));
 const Contact = lazy(() => import("./components/sections/Contact"));
@@ -22,7 +21,6 @@ function Home() {
       <Suspense fallback={<div className="min-h-screen" />}>
         <Expertise />
         <Work />
-        <Experience />
         <Voices />
         <Approach />
         <Faq />

@@ -7,7 +7,6 @@ import { MAIL_HREF } from "../../data/contact";
 const links = [
   { to: "/#expertise", label: "Expertise" },
   { to: "/#work", label: "Work" },
-  { to: "/#experience", label: "Experience" },
   { to: "/#approach", label: "Process" },
   { to: "/#contact", label: "Contact" },
 ];
