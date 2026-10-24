@@ -28,7 +28,7 @@ export default function Contact() {
                 {...(BOOK_EXTERNAL ? { target: "_blank", rel: "noreferrer" } : {})}
                 className="inline-flex h-14 items-center gap-3 rounded-full bg-forest px-8 text-lg font-semibold text-on-forest transition-colors hover:bg-[var(--forest-hover)]"
               >
-                <CalendarCheck size={20} aria-hidden /> Book a 30-minute call
+                <CalendarCheck size={20} aria-hidden /> Book a 15-minute call
               </a>
               <a
                 href={MAIL_HREF}

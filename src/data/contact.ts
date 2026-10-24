@@ -19,7 +19,7 @@ export const MAIL_HREF =
 
 export const BOOK_HREF =
   BOOKING_URL ||
-  `mailto:${EMAIL}?subject=${encodeURIComponent("Book a 30-minute intro call")}` +
+  `mailto:${EMAIL}?subject=${encodeURIComponent("Book a 15-minute intro call")}` +
     `&body=${encodeURIComponent("Hi Ruqyya,\n\nI would like to book a short intro call.\n\nBest days and times (with my time zone):\n\nWhat I'm building:\n\n")}`;
 export const BOOK_EXTERNAL = Boolean(BOOKING_URL);
 
