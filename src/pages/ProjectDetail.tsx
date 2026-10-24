@@ -5,9 +5,9 @@ import TaskShowcase from "../components/case/TaskShowcase";
 import OutcomesPanel from "../components/case/OutcomesPanel";
 import { useEffect, useMemo } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, Check, ExternalLink, Mail } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, CalendarCheck, Check, ExternalLink, Mail } from "lucide-react";
 import { projects, getProject } from "../data/projects";
-import { MAIL_HREF, SHOW_PLACEHOLDER_RESULTS } from "../data/contact";
+import { BOOK_HREF, MAIL_HREF, SHOW_PLACEHOLDER_RESULTS, bookProps } from "../data/contact";
 import Reveal from "../components/ui/Reveal";
 import Eyebrow from "../components/ui/Eyebrow";
 import { Browser, Phone } from "../components/case/Frames";
@@ -92,8 +92,8 @@ export default function ProjectDetail() {
             {s.summary && <p className="mt-8 max-w-2xl text-xl text-ink-2">{s.summary}</p>}
   
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <a href={MAIL_HREF} className="inline-flex h-14 items-center gap-3 rounded-full bg-forest px-7 font-semibold text-on-forest transition-transform hover:-translate-y-0.5">
-                <Mail size={18} aria-hidden /> Discuss a similar project
+              <a href={BOOK_HREF} {...bookProps} className="inline-flex h-14 items-center gap-3 rounded-full bg-forest px-7 font-semibold text-on-forest transition-transform hover:-translate-y-0.5">
+                <CalendarCheck size={18} aria-hidden /> Book a 15-minute call
               </a>
               <a href={s.research ? "#research" : s.tasks || s.stills ? "#screens" : "#film"} className="link-draw py-2 text-lg font-semibold">
                 {s.research ? "Explore the design process ↓" : s.tasks || s.stills ? "See the final experience ↓" : "Watch the project summary ↓"}
@@ -659,9 +659,14 @@ export default function ProjectDetail() {
                 Let's solve your <em className="text-forest">product challenge.</em>
               </h2>
             </div>
-            <a href={MAIL_HREF} className="inline-flex h-14 shrink-0 items-center justify-center gap-2 rounded-full bg-forest px-7 font-semibold text-on-forest transition-transform hover:-translate-y-0.5">
-              Discuss a project <ArrowUpRight size={18} />
-            </a>
+            <div className="flex shrink-0 flex-wrap items-center gap-x-6 gap-y-3">
+              <a href={BOOK_HREF} {...bookProps} className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-forest px-7 font-semibold text-on-forest transition-transform hover:-translate-y-0.5">
+                Book a 15-minute call <ArrowUpRight size={18} />
+              </a>
+              <a href={MAIL_HREF} className="link-draw inline-flex items-center gap-2 py-2 font-semibold">
+                <Mail size={18} aria-hidden /> Email me
+              </a>
+            </div>
           </div>
         </Reveal>
         {project.behanceUrl && (

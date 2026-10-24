@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowDown, ArrowUpRight, Mail } from "lucide-react";
-import { MAIL_HREF, proof } from "../../data/contact";
+import { ArrowDown, ArrowUpRight, CalendarCheck, Mail } from "lucide-react";
+import { BOOK_HREF, MAIL_HREF, bookProps, proof } from "../../data/contact";
 import { projects } from "../../data/projects";
 import portrait from "../../assets/ruqqya_img.png";
 
@@ -175,13 +175,13 @@ export default function Hero() {
 
           <div className="rise mt-9 flex flex-wrap items-center gap-4" style={{ animationDelay: "0.4s" }}>
             <a
-              href="#work"
+              href={BOOK_HREF}
+              {...bookProps}
               onPointerMove={lean}
               onPointerLeave={settle}
               className="magnetic group inline-flex h-14 items-center gap-3 rounded-full bg-forest px-8 text-lg font-semibold text-on-forest transition-colors hover:bg-[var(--forest-hover)]"
             >
-              Explore My Work
-              <ArrowDown size={18} className="transition-transform group-hover:translate-y-0.5" aria-hidden />
+              <CalendarCheck size={20} aria-hidden /> Book a 15-minute call
             </a>
             <a
               href={MAIL_HREF}
@@ -189,7 +189,7 @@ export default function Hero() {
               onPointerLeave={settle}
               className="magnetic inline-flex h-14 items-center gap-3 rounded-full border border-[var(--line-strong)] px-8 text-lg font-semibold transition-colors hover:border-forest hover:text-forest"
             >
-              <Mail size={20} aria-hidden /> Discuss a Project
+              <Mail size={20} aria-hidden /> Email me
             </a>
           </div>
           <p className="rise mt-6 inline-flex items-center gap-2 text-base text-ink-2" style={{ animationDelay: "0.5s" }}>
@@ -198,6 +198,9 @@ export default function Hero() {
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--accent)]" aria-hidden />
             </span>
             Open to new projects · Remote, any time zone
+            <a href="#work" className="link-draw ml-2 inline-flex items-center gap-1 py-1 font-semibold text-forest">
+              Explore my work <ArrowDown size={16} aria-hidden />
+            </a>
           </p>
         </div>
 
