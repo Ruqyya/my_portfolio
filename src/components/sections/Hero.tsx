@@ -143,7 +143,6 @@ export default function Hero() {
         <span className="aurora aurora-a" />
         <span className="aurora aurora-b" />
         <span className="aurora aurora-c" />
-        <span className="light-sweep" />
         {sparkles.map(([x, y, d, s2], i) => (
           <span key={i} className="sparkle" style={{ left: `${x}%`, top: `${y}%`, animationDelay: `${d}s`, width: s2, height: s2 }} />
         ))}
@@ -152,14 +151,14 @@ export default function Hero() {
         <div className="relative z-30 lg:col-span-6">
           <p className="mono flex items-center gap-3 text-ink-2">
             <span aria-hidden className="rule-champagne h-px w-10" />
-            Senior Product Designer · Healthcare &amp; SaaS
+            Senior Product Designer · Digital Products
           </p>
           <h1
-            aria-label="Healthcare products that feel clear, human, effortless and trusted."
+            aria-label="Digital products that feel clear, human, effortless and trusted."
             className="mt-6 text-[clamp(3rem,6.4vw,6.6rem)] font-medium leading-[1] tracking-[-0.03em]"
           >
             <span aria-hidden>
-              <span className="block"><Words text="Healthcare" start={0.05} /></span>
+              <span className="block"><Words text="Digital" start={0.05} /></span>
               <span className="block"><Words text="products that" start={0.2} /></span>
               <span className="block"><Words text="feel" start={0.35} /> <span className="cycle-box italic">
                 {cycle.map((w, i) => (
@@ -171,7 +170,7 @@ export default function Hero() {
           </h1>
 
           <p className="rise mt-7 max-w-md text-xl leading-snug text-ink-2" style={{ animationDelay: "0.3s" }}>
-            Product design for healthcare and SaaS teams, from research to shipped UI.
+            Product design for web and mobile apps, from healthcare to SaaS, from research to shipped UI.
           </p>
 
           <div className="rise mt-9 flex flex-wrap items-center gap-4" style={{ animationDelay: "0.4s" }}>
