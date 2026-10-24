@@ -21,9 +21,9 @@ const portals = [
     text: "Today's appointments, the patient queue and quick actions in one morning view.",
   },
   {
-    id: "desk",
-    label: "Front desk",
-    text: "A live queue with check-in status, and a fast way to register a walk-in.",
+    id: "consult",
+    label: "Consultation",
+    text: "Notes, vitals, allergies and a prescription in one workspace, mid-visit.",
   },
 ] as const;
 
@@ -31,7 +31,7 @@ const portals = [
 const toasts = [
   { icon: "♥", title: "Chest pain → Cardiologist", sub: "124 verified doctors nearby" },
   { icon: "✓", title: "New booking, 5:30 PM", sub: "Ayesha Rahman · clinic visit" },
-  { icon: "→", title: "Ayesha arrived", sub: "Check in, then send to Dr. Khan" },
+  { icon: "●", title: "In consultation, 08:12", sub: "Notes saved · BP 128/84" },
 ];
 
 // x%, y%, delay, size: fixed so the layout never shifts
@@ -226,9 +226,9 @@ export default function Hero() {
                   <span className="h-2 w-2 rounded-full bg-line" />
                   <span className="h-2 w-2 rounded-full bg-line" />
                   <span className="h-2 w-2 rounded-full bg-line" />
-                  <span className="mono ml-3 text-ink-2">Front desk</span>
+                  <span className="mono ml-3 text-ink-2">Consultation</span>
                 </div>
-                <img src={img("frontdesk")} alt="Oladoc front desk: a live queue with check-in status on every row." width={1600} height={1046} decoding="async" className="block h-auto w-full" />
+                <img src={img("consult")} alt="Oladoc consultation workspace: notes, vitals, allergy and medication for the patient in the call." width={1600} height={1046} decoding="async" className="block h-auto w-full" />
               </div>
             </Layer>
 

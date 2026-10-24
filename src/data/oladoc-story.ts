@@ -80,7 +80,7 @@ export const oladocStory: Partial<CaseStudy> = {
     { k: "Target users", v: "Patients, doctors, front-desk staff." },
     { k: "Reported result", v: "+65% intake completion, self-reported. Method not documented." },
   ],
-  heroShots: [shot("docdash", "Oladoc doctor portal."), shot("frontdesk", "Oladoc front desk portal."), shot("sym", "Oladoc patient app, search by symptom."), shot("profile", "Oladoc patient app, doctor profile.")],
+  heroShots: [shot("docdash", "Oladoc doctor portal."), shot("consult", "Oladoc consultation workspace."), shot("sym", "Oladoc patient app, search by symptom."), shot("profile", "Oladoc patient app, doctor profile.")],
 
   problem: {
     headline: "One booking, four places it can go wrong.",

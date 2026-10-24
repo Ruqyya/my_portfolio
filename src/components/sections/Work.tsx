@@ -103,7 +103,7 @@ function OladocStory() {
         <Stage accent={accent} className="mt-10 px-4 pb-12 pt-8 md:px-14 md:pb-20 md:pt-14">
           <div className="relative mx-auto aspect-[1.02/1] w-full max-w-[64rem] md:aspect-[1.55/1]">
             <div className="absolute right-0 top-0 hidden w-[66%] overflow-hidden rounded-xl border border-[var(--line)] bg-paper shadow-[0_50px_80px_-30px_rgba(36,60,57,0.26)] md:block">
-              <img src={src("case/oladoc/frontdesk.webp")} alt="Oladoc front desk portal with a live queue." loading="lazy" width={1600} height={1046} className="block h-auto w-full" />
+              <img src={src("case/oladoc/consult.webp")} alt="Oladoc consultation workspace with notes, vitals and medication." loading="lazy" width={1600} height={1046} className="block h-auto w-full" />
             </div>
             <div className="absolute left-0 top-0 w-full overflow-hidden rounded-xl border border-[var(--line)] bg-paper shadow-[0_50px_80px_-30px_rgba(36,60,57,0.26)] md:left-[18%] md:top-[20%] md:w-[62%]">
               <img src={src("case/oladoc/docdash.webp")} alt="Oladoc doctor portal dashboard." loading="lazy" width={1600} height={1046} className="block h-auto w-full" />
