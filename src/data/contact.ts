@@ -6,7 +6,7 @@ export const EMAIL = "ghulamruqyya@gmail.com";
 // SITE_URL: the public address, used for the sitemap and canonical links (no trailing slash).
 // While these are empty, the booking button opens a prefilled email and the form opens the visitor's email app.
 export const BOOKING_URL = "https://calendly.com/ghulamruqyya/30min";
-export const FORM_ENDPOINT = "";
+export const FORM_ENDPOINT = "https://formspree.io/f/maeeqyqr";
 // While true, case pages show a clearly marked "Placeholder" results row (+00% and so on) so the layout can be reviewed.
 // Keep it false on the public site: the placeholders are not real results. Real numbers go in each case study's `measured` list.
 export const SHOW_PLACEHOLDER_RESULTS = false;

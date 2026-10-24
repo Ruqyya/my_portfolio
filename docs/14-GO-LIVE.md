@@ -14,7 +14,7 @@ Create a free form at formspree.io, copy its URL, and set:
 ```
 export const FORM_ENDPOINT = "https://formspree.io/f/xxxxxxxx";
 ```
-The form then posts directly (name, email, company, project type, message) and shows "message sent". It has validation, a hidden spam trap and a clear error if sending fails. Until then it opens the visitor's email app with the message written out, so no enquiry is lost.
+The form then posts directly (name, email, company, project type, message) and shows "message sent". It has validation, a hidden spam trap and a clear error if sending fails. If the endpoint is ever left empty, it falls back to opening the visitor's email app with the message written out, so no enquiry is lost. Connected to Formspree form maeeqyqr; the first real submission may trigger a Formspree confirmation email to you.
 
 ## 3. Domain
 1. Buy the domain. In the repository settings (Pages) add it as the custom domain, and add the DNS records GitHub shows.
