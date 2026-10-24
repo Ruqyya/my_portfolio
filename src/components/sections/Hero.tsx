@@ -250,8 +250,8 @@ export default function Hero() {
                 <span className="block text-sm font-normal text-[#475569]">{toasts[active].sub}</span>
               </span>
             </div>
-            <span aria-hidden className="hero-float hero-float-b absolute right-[6%] -top-6 z-40 hidden rounded-full bg-[#f7fafc] px-4 py-2 text-base font-semibold text-[#0a2552] shadow-xl sm:inline-block">
-              Total Rs 1,700
+            <span aria-hidden className="hero-float hero-float-b absolute right-[6%] -top-6 z-40 hidden items-center gap-2 rounded-full bg-[#f7fafc] px-4 py-2 text-base font-semibold text-[#0a2552] shadow-xl sm:inline-flex">
+              <span className="grid h-5 w-5 place-items-center rounded-md bg-[#0f5974] text-[11px] text-white">3</span> portals · 47 screens
             </span>
 
             {/* Design-tool cursor that moves to whichever portal is being described */}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Logo from "../ui/Logo";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
@@ -33,8 +34,7 @@ export default function Nav() {
     >
       <nav aria-label="Main" className="mx-auto flex h-16 max-w-[88rem] items-center justify-between px-5 md:px-10">
         <Link to="/" className="group flex items-baseline gap-3">
-          <span className="serif text-2xl font-semibold tracking-tight">Ruqyya</span>
-          <span className="mono hidden text-ink-2 sm:inline">Product design</span>
+          <Logo compact />
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
