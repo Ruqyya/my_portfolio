@@ -32,4 +32,4 @@ The form then posts directly (name, email, company, project type, message) and s
 Measured results with a method, trade-offs and lessons for the other nine projects, real testimonials with sources, video captions or transcripts, and content for the Behance-only pages. See `docs/05` and `docs/07`.
 
 ## Brand name and logo (24 Oct 2026)
-Name stays **Creative Ruqyya**. Logo: a "CR" monogram (bold C ring cradling an aqua R, with a spark for "creative") on the site gradient. The site shows the logo only, no written name; screen readers still get "Creative Ruqyya". Files: `src/components/ui/Logo.tsx`, `public/favicon.svg`, `public/og-image.png`.
+Name stays **Creative Ruqyya**. Logo: a "CR" ligature in bold italic Fraunces (white C, aqua R, overlapping with a cut-out gap so both read). The site shows the logo only, no written name; screen readers still get "Creative Ruqyya". Letters are outlined from the font (SIL OFL) so no font file is needed: `src/components/ui/Logo.tsx`, `src/components/ui/crGlyphs.ts`, `public/favicon.svg` (tile version), `public/og-image.png`.
