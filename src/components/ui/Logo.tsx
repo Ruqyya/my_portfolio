@@ -1,21 +1,11 @@
-import { useId } from "react";
-import { CR } from "./crGlyphs";
+const base = import.meta.env.BASE_URL;
 
-// The mark: "CR" for Creative Ruqyya, set in bold italic Fraunces. The R overlaps the C, and a thin gap cut around the R
-// keeps both letters readable. White C, aqua R. Pure SVG, so it scales without a font file.
+// The brand mark supplied by the owner (public/brand/cr-mark.png), unaltered, on a warm ivory badge so it reads on the dark nav.
 export function LogoMark({ height = 40, className = "" }: { height?: number; className?: string }) {
-  const id = useId();
   return (
-    <svg width={height * CR.aspect} height={height} viewBox={CR.viewBox} className={className} aria-hidden focusable="false">
-      <defs>
-        <mask id={`${id}-m`} maskUnits="userSpaceOnUse" x="-500" y="-1700" width="5000" height="1900">
-          <rect x="-500" y="-1700" width="5000" height="1900" fill="#fff" />
-          <path d={CR.r} transform={`translate(${CR.rx} 0)`} fill="#000" stroke="#000" strokeWidth="100" strokeLinejoin="round" />
-        </mask>
-      </defs>
-      <path d={CR.c} fill="#ffffff" mask={`url(#${id}-m)`} />
-      <path d={CR.r} transform={`translate(${CR.rx} 0)`} fill="#a0f2ed" />
-    </svg>
+    <span className={`inline-flex items-center justify-center rounded-xl bg-[#fcfbf7] ${className}`} style={{ padding: height * 0.12 }}>
+      <img src={`${base}brand/cr-mark.png`} alt="" aria-hidden width={Math.round(height * 1.13)} height={height} style={{ height, width: "auto" }} decoding="async" />
+    </span>
   );
 }
 
@@ -23,7 +13,7 @@ export function LogoMark({ height = 40, className = "" }: { height?: number; cla
 export default function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <span className="inline-flex items-center">
-      <LogoMark height={compact ? 44 : 52} />
+      <LogoMark height={compact ? 42 : 52} />
       <span className="sr-only">Creative Ruqyya, home</span>
     </span>
   );
