@@ -3,11 +3,11 @@
 Everything below is already built. Three values and one setting switch it from "works on GitHub Pages" to "fully live".
 
 ## 1. Booking link
-Create a free Cal.com or Calendly event ("20-minute intro call"). In `src/data/contact.ts` set:
+Create a free Cal.com or Calendly event ("30-minute intro call"). In `src/data/contact.ts` set:
 ```
 export const BOOKING_URL = "https://cal.com/your-name/intro";
 ```
-The "Book a 20-minute call" button then opens your calendar in a new tab. Until then it opens an email already written as a booking request.
+The "Book a 30-minute call" button then opens your calendar in a new tab. Until then it opens an email already written as a booking request.
 
 ## 2. Contact form
 Create a free form at formspree.io, copy its URL, and set:
