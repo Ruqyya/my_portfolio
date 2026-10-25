@@ -206,7 +206,46 @@ export default function Hero() {
 
         {/* The same booking, seen from three seats. Real Oladoc Figma screens; the stack tilts with the pointer and the tabs bring each room forward. */}
         <figure className="rise relative z-10 lg:col-span-6" style={{ animationDelay: "0.2s" }}>
-          <div className="hero-tilt relative mx-auto aspect-[1.04/1] w-full max-w-[40rem]">
+          {/* Phones: one clean screen set at a time, nothing overlapping. The layered stack below is for tablets and up. */}
+          <div className="md:hidden">
+            <div className="stage-gradient flex min-h-[25rem] items-center rounded-[1.75rem] p-4"><div className="w-full">
+              {active === 0 ? (
+                <div className="grid grid-cols-2 gap-4">
+                  {["sym", "profile"].map((n) => (
+                    <div key={n} className="rounded-[1.6rem] bg-[var(--bezel)] p-1.5 shadow-[0_24px_40px_-24px_rgba(0,0,0,0.6)]">
+                      <img src={img(n)} alt={n === "sym" ? "Oladoc patient app: search by symptom." : "Oladoc patient app: doctor profile with verification, rating and fee."} width={700} height={1515} decoding="async" className="block h-auto w-full rounded-[1.3rem]" />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="overflow-hidden rounded-xl border border-line bg-paper shadow-[0_24px_40px_-24px_rgba(0,0,0,0.6)]">
+                  <div className="flex items-center gap-1.5 border-b border-line bg-paper-2 px-3 py-2" aria-hidden>
+                    <span className="h-2 w-2 rounded-full bg-line" />
+                    <span className="h-2 w-2 rounded-full bg-line" />
+                    <span className="h-2 w-2 rounded-full bg-line" />
+                    <span className="mono ml-3 text-ink-2">{active === 1 ? "Doctor portal" : "Consultation"}</span>
+                  </div>
+                  <img
+                    src={img(active === 1 ? "docdash" : "consult")}
+                    alt={active === 1 ? "Oladoc doctor portal: the day's appointments and patient queue." : "Oladoc consultation workspace: notes, vitals, allergy and medication for the patient in the call."}
+                    width={1600}
+                    height={1046}
+                    decoding="async"
+                    className="block h-auto w-full"
+                  />
+                </div>
+              )}
+            </div></div>
+            <div className="mt-4 flex items-center gap-3 rounded-full border border-line bg-paper py-2 pl-2 pr-5">
+              <span className="portrait-disc h-14 w-14 shrink-0 overflow-hidden rounded-full ring-2 ring-[var(--paper)]"><img src={portrait} alt="Portrait of Ruqyya" width={56} height={56} className="h-full w-full object-cover object-top" /></span>
+              <span className="text-base leading-tight">
+                <span className="serif block text-xl">Ruqyya</span>
+                <span className="mono text-ink-2">Lahore · Remote</span>
+              </span>
+            </div>
+          </div>
+
+          <div className="hero-tilt relative mx-auto hidden aspect-[1.04/1] w-full max-w-[40rem] md:block">
             <span aria-hidden className="sonar absolute -inset-6 rounded-[3rem]" />
             <span aria-hidden className="sonar sonar-b absolute -inset-6 rounded-[3rem]" />
             <div aria-hidden className="absolute inset-0 rounded-[2rem] stage-gradient" />
@@ -276,7 +315,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <figcaption className="mt-14 flex flex-wrap items-center gap-x-4 gap-y-3">
+          <figcaption className="mt-6 flex flex-wrap md:mt-14 items-center gap-x-4 gap-y-3">
             <div role="tablist" aria-label="Portals in the Oladoc project" className="flex flex-wrap gap-2">
               {portals.map((p, i) => (
                 <button

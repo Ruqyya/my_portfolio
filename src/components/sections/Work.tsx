@@ -101,7 +101,19 @@ function OladocStory() {
         </div>
 
         <Stage accent={accent} className="mt-10 px-4 pb-12 pt-8 md:px-14 md:pb-20 md:pt-14">
-          <div className="relative mx-auto aspect-[1.02/1] w-full max-w-[64rem] md:aspect-[1.55/1]">
+          <div className="md:hidden">
+            <div className="overflow-hidden rounded-xl border border-[var(--line)] bg-paper shadow-[0_24px_40px_-24px_rgba(0,0,0,0.5)]">
+              <img src={src("case/oladoc/docdash.webp")} alt="Oladoc doctor portal dashboard." loading="lazy" width={1600} height={1046} className="block h-auto w-full" />
+            </div>
+            <div className="mt-4 grid grid-cols-3 gap-3">
+              {["home", "sym", "profile"].map((n) => (
+                <div key={n} className="rounded-[1.1rem] bg-[var(--bezel)] p-1 shadow-[0_20px_30px_-20px_rgba(0,0,0,0.6)]">
+                  <img src={src(`case/oladoc/${n}.webp`)} alt={`Oladoc patient app, ${n === "sym" ? "search by symptom" : n === "profile" ? "doctor profile" : "home"}.`} loading="lazy" width={700} height={1515} className="block h-auto w-full rounded-[0.9rem]" />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative mx-auto hidden aspect-[1.55/1] w-full max-w-[64rem] md:block">
             <div className="absolute right-0 top-0 hidden w-[66%] overflow-hidden rounded-xl border border-[var(--line)] bg-paper shadow-[0_50px_80px_-30px_rgba(36,60,57,0.26)] md:block">
               <img src={src("case/oladoc/consult.webp")} alt="Oladoc consultation workspace with notes, vitals and medication." loading="lazy" width={1600} height={1046} className="block h-auto w-full" />
             </div>
@@ -203,7 +215,7 @@ function SehatStory() {
       <article className="rounded-[2rem] border border-line bg-paper p-5 md:p-12">
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
           <div className="lg:sticky lg:top-28 lg:col-span-7">
-            <Stage accent={accent} className="px-5 pb-14 pt-9 md:px-10 md:pb-16 md:pt-12">
+            <Stage accent={accent} className="px-5 pb-6 pt-9 md:px-10 md:pb-16 md:pt-12">
               <div className="relative">
                 <div className="overflow-hidden rounded-xl border border-[var(--line)] bg-paper shadow-[0_50px_80px_-30px_rgba(36,60,57,0.26)]">
                   <div className="flex items-center gap-1.5 border-b border-line bg-paper-2 px-3 py-2.5" aria-hidden>
@@ -213,7 +225,7 @@ function SehatStory() {
                   </div>
                   <img src={src("case/sehat/home.webp")} alt="The redesigned Sehat Kahani homepage with the 60-second promise." loading="lazy" className="block h-auto w-full" />
                 </div>
-                <div className="absolute -bottom-12 -right-1 w-[50%] overflow-hidden rounded-xl border border-[var(--line)] bg-paper shadow-2xl shadow-[#243c39]/20 md:-right-5">
+                <div className="mt-4 overflow-hidden rounded-xl border border-[var(--line)] bg-paper shadow-2xl shadow-[#243c39]/20 md:absolute md:-bottom-12 md:-right-5 md:mt-0 md:w-[50%]">
                   <img src={src("case/sehat/responsive.webp")} alt="Sehat Kahani layouts for desktop and phone." loading="lazy" className="block h-auto w-full" />
                 </div>
               </div>

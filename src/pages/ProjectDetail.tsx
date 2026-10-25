@@ -102,7 +102,11 @@ export default function ProjectDetail() {
   
               </div>
             {s.heroShots && (
-              <div aria-hidden className="relative mx-auto aspect-[1.08/1] w-full max-w-[34rem] lg:col-span-5">
+              <>
+              <div aria-hidden className="mx-auto w-full max-w-[34rem] md:hidden">
+                <img src={`${base}${s.heroShots[0].src}`} alt="" width={1600} height={1046} className="block h-auto w-full rounded-xl border border-white/15 shadow-[0_24px_40px_-24px_rgba(0,0,0,0.6)]" />
+              </div>
+              <div aria-hidden className="relative mx-auto hidden aspect-[1.08/1] w-full max-w-[34rem] md:block lg:col-span-5">
                 <div className="absolute inset-[5%] rounded-[2rem] stage-gradient" />
                 <img src={`${base}${s.heroShots[0].src}`} alt="" width={1600} height={1046} fetchPriority="high" className="absolute right-[6%] top-[8%] w-[78%] rounded-xl border border-white/15 shadow-[0_40px_70px_-30px_rgba(36,60,57,0.26)]" />
                 <img src={`${base}${s.heroShots[1].src}`} alt="" width={1600} height={1046} loading="lazy" decoding="async" className="absolute bottom-[10%] right-[4%] w-[52%] rounded-xl border border-white/15 shadow-[0_40px_70px_-30px_rgba(36,60,57,0.26)]" />
@@ -110,6 +114,7 @@ export default function ProjectDetail() {
                   <img key={n} src={`${base}${s.heroShots![n].src}`} alt="" width={700} height={1515} loading="lazy" decoding="async" className="absolute bottom-0 w-[24%] rounded-[1.4rem] border-[5px] border-[var(--bezel)] shadow-[0_30px_50px_-20px_rgba(36,60,57,0.26)]" style={{ left: `${i * 17}%`, transform: `rotate(${i ? 3 : -3}deg)` }} />
                 ))}
               </div>
+              </>
             )}
           </div>
 
