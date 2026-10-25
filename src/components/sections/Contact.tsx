@@ -5,7 +5,6 @@ import ContactForm from "./ContactForm";
 import { BOOK_EXTERNAL, BOOK_HREF, EMAIL, MAIL_HREF } from "../../data/contact";
 
 const rows = [
-  { k: "Phone", v: "+92 324 7082535", href: "tel:+923247082535" },
   { k: "LinkedIn", v: "ghulam-ruqyya", href: "https://www.linkedin.com/in/ghulamruqyya/" },
   { k: "Behance", v: "behance.net/ghulamruqyya", href: "https://www.behance.net/ghulamruqyya" },
 ];
@@ -46,7 +45,7 @@ export default function Contact() {
               <ArrowUpRight size={30} className="text-signal transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden />
             </a>
 
-            <dl className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-3">
+            <dl className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2">
               {rows.map((r) => (
                 <div key={r.k}>
                   <dt className="mono text-ink-2">{r.k}</dt>
