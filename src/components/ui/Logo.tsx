@@ -1,22 +1,22 @@
-const base = import.meta.env.BASE_URL;
+import { useId } from "react";
+import { GR } from "./grGlyph";
 
-// The brand mark supplied by the owner (GR in a ring). Its shape is unchanged; it is recoloured with the site's own
-// brand gradient (white to soft aqua) by using the artwork as a mask, so it sits straight on the dark nav with no badge.
-// public/brand/gr-mark-alpha.png is the same artwork as a transparency mask.
+// The owner's GR monogram, as a true vector. Filled with the site's brand gradient (white to soft aqua), so it stays sharp at any size
+// and sits straight on the dark nav with no badge.
 export function LogoMark({ height = 40, className = "" }: { height?: number; className?: string }) {
-  const url = `url(${base}brand/gr-mark-alpha.png)`;
+  const id = useId();
   return (
-    <span
-      aria-hidden
-      className={`inline-block ${className}`}
-      style={{
-        height,
-        width: height,
-        background: "linear-gradient(120deg, #ffffff 0%, #e6fffc 45%, #a0f2ed 80%, #20d6d2 100%)",
-        WebkitMask: `${url} center / contain no-repeat`,
-        mask: `${url} center / contain no-repeat`,
-      }}
-    />
+    <svg width={height} height={height} viewBox={GR.viewBox} className={className} aria-hidden focusable="false">
+      <defs>
+        <linearGradient id={`${id}-g`} x1="170" y1="170" x2="1080" y2="1080" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#ffffff" />
+          <stop offset="0.45" stopColor="#e6fffc" />
+          <stop offset="0.8" stopColor="#a0f2ed" />
+          <stop offset="1" stopColor="#20d6d2" />
+        </linearGradient>
+      </defs>
+      <path d={GR.d} fill={`url(#${id}-g)`} fillRule="evenodd" />
+    </svg>
   );
 }
 
