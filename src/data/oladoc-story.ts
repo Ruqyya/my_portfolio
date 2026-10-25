@@ -200,9 +200,9 @@ export const oladocStory: Partial<CaseStudy> = {
       kind: "wide",
       shots: [
         shot("frontdesk", "Front desk queue with filters, status and one action per row.", "Front desk queue", [
-          { x: 84, y: 23, text: "Filter the queue by state: All, Scheduled, Arrived, With doctor, Done." },
-          { x: 77, y: 31, text: "Check-in status on every row." },
-          { x: 96, y: 33, text: "One action per row: Send in, Check in, Mark done." },
+          { x: 70, y: 23, text: "Filter the queue by state: All, Scheduled, Arrived, With doctor, Done." },
+          { x: 76, y: 39, text: "Check-in status on every row." },
+          { x: 96, y: 32, text: "One action per row: Send in, Check in, Mark done." },
           { x: 97, y: 12, text: "Register a walk-in from anywhere in the queue." },
         ]),
       ],
