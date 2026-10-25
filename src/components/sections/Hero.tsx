@@ -149,6 +149,13 @@ export default function Hero() {
       </div>
       <div className="mx-auto grid max-w-[88rem] gap-x-10 gap-y-14 px-5 md:px-10 lg:min-h-[calc(100svh-9rem)] lg:grid-cols-12 lg:items-center">
         <div className="relative z-30 lg:col-span-6">
+          <p className="rise mb-7 inline-flex items-center gap-2.5 rounded-full border border-line bg-paper-2/60 py-2 pl-3 pr-4 text-base text-ink-2">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent)] opacity-50" aria-hidden />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--accent)]" aria-hidden />
+            </span>
+            Open to new projects · Remote, any time zone
+          </p>
           <p className="mono flex items-center gap-3 text-ink-2">
             <span aria-hidden className="rule-champagne h-px w-10" />
             Senior Product Designer · Digital Products
@@ -192,13 +199,8 @@ export default function Hero() {
               <Mail size={20} aria-hidden /> Email me
             </a>
           </div>
-          <p className="rise mt-6 inline-flex items-center gap-2 text-base text-ink-2" style={{ animationDelay: "0.5s" }}>
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent)] opacity-50" aria-hidden />
-              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--accent)]" aria-hidden />
-            </span>
-            Open to new projects · Remote, any time zone
-            <a href="#work" className="link-draw ml-2 inline-flex items-center gap-1 py-1 font-semibold text-forest">
+          <p className="rise mt-6" style={{ animationDelay: "0.5s" }}>
+            <a href="#work" className="link-draw inline-flex items-center gap-1 py-1 text-base font-semibold text-forest">
               Explore my work <ArrowDown size={16} aria-hidden />
             </a>
           </p>
