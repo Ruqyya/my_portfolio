@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ruqyya.github.io/my_portfolio/sitemap.xml
+Sitemap: https://ghulamruqyya.online/sitemap.xml

@@ -10,7 +10,7 @@ export const FORM_ENDPOINT = "https://formspree.io/f/maeeqyqr";
 // While true, case pages show a clearly marked "Placeholder" results row (+00% and so on) so the layout can be reviewed.
 // Keep it false on the public site: the placeholders are not real results. Real numbers go in each case study's `measured` list.
 export const SHOW_PLACEHOLDER_RESULTS = false;
-export const SITE_URL = "https://ruqyya.github.io/my_portfolio";
+export const SITE_URL = "https://ghulamruqyya.online";
 
 // One prefilled email so a visitor only has to fill in three short lines.
 export const MAIL_HREF =

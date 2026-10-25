@@ -36,3 +36,17 @@ Site name is **Ghulam Ruqyya** (decided 25 Oct 2026), used in titles, share tags
 
 ## Results slots (placeholders)
 Each case study can show a row of three measured results. Real numbers go in that project's `measured` list in `src/data/case-studies.ts` (`{ value: "+42%", label: "task completion", source: "how it was measured" }`). To review the layout with dummy values, set `SHOW_PLACEHOLDER_RESULTS = true` in `src/data/contact.ts`; the row then shows "+00%" style placeholders, marked "Placeholder". Keep it `false` on the public site: placeholders are not results, and invented numbers could be checked and disproved by a client.
+
+## Domain: ghulamruqyya.online (prepared 26 Oct 2026, branch `domain`)
+Already changed in code: `base: '/'` in `vite.config.ts`, `SITE_URL` in `src/data/contact.ts`, `public/CNAME`, `public/robots.txt`. The build, canonical links, share tags and sitemap all use the new address. Tested at the root path on a local server: no overflow, no broken images.
+
+**DNS records to add at your domain registrar** (the domain did not exist in DNS when checked on 26 Oct, so it may need to be registered or its nameservers set first):
+| Type | Name | Value |
+|---|---|---|
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+| CNAME | www | ruqyya.github.io |
+
+**Order matters:** add the DNS records first, wait until `ghulamruqyya.online` resolves (usually 10 to 60 minutes, sometimes a day), then merge `domain` into `main` and set the custom domain in GitHub Pages (Settings, Pages) and tick Enforce HTTPS. If the code goes live before DNS works, the old address stops working.
