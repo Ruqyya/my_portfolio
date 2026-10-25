@@ -49,7 +49,7 @@ export default function Approach() {
               <div className="portrait-disc overflow-hidden rounded-t-[999px]">
                 <img src={portrait} alt="Portrait of Ruqyya" width={408} height={612} loading="lazy" className="aspect-[4/5] w-full object-cover object-top" />
               </div>
-              <figcaption className="mono mt-4 text-ink-2">Ruqyya · Lahore, Pakistan</figcaption>
+              <figcaption className="mono mt-4 text-ink-2">Ghulam Ruqyya · Lahore, Pakistan</figcaption>
             </figure>
           </Reveal>
 

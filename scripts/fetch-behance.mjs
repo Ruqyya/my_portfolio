@@ -92,7 +92,7 @@ function normalizeProject(project) {
     title: project.name,
     industry,
     year: publishedYear,
-    summary: `${project.name} — a ${industry.toLowerCase()} UI/UX project by Creative Ruqyya.`,
+    summary: `${project.name} — a ${industry.toLowerCase()} UI/UX project by Ghulam Ruqyya.`,
     coverImage: pickCover(project.covers),
     behanceUrl: project.url,
     color: project.colors ? rgbToHex(project.colors) : "#2563EB",

@@ -239,7 +239,7 @@ export default function Hero() {
             <div className="mt-4 flex items-center gap-3 rounded-full border border-line bg-paper py-2 pl-2 pr-5">
               <span className="portrait-disc h-14 w-14 shrink-0 overflow-hidden rounded-full ring-2 ring-[var(--paper)]"><img src={portrait} alt="Portrait of Ruqyya" width={56} height={56} className="h-full w-full object-cover object-top" /></span>
               <span className="text-base leading-tight">
-                <span className="serif block text-xl">Ruqyya</span>
+                <span className="serif block text-xl">Ghulam Ruqyya</span>
                 <span className="mono text-ink-2">Lahore · Remote</span>
               </span>
             </div>
@@ -309,7 +309,7 @@ export default function Hero() {
             <div className="absolute -bottom-9 right-0 z-40 flex items-center gap-3 rounded-full border border-line bg-paper py-2 pl-2 pr-5 shadow-[0_16px_30px_-18px_rgba(0,0,0,0.5)] md:right-2">
               <span className="portrait-disc h-14 w-14 shrink-0 overflow-hidden rounded-full ring-2 ring-[var(--paper)]"><img src={portrait} alt="Portrait of Ruqyya" width={56} height={56} className="h-full w-full object-cover object-top" /></span>
               <span className="text-base leading-tight">
-                <span className="serif block text-xl">Ruqyya</span>
+                <span className="serif block text-xl">Ghulam Ruqyya</span>
                 <span className="mono text-ink-2">Lahore · Remote</span>
               </span>
             </div>
