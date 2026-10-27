@@ -32,11 +32,6 @@ export default function DecisionRecords({ decisions }: { decisions: Decision[] }
                     ))}
                   </dl>
                 )}
-                {d.record && (
-                  <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-dashed border-[var(--line-strong)] px-4 py-2 text-base text-ink-2">
-                    <span className="mono text-signal">Outcome</span> Not measured
-                  </p>
-                )}
                 {d.record?.tradeoff && (
                   <p className="mt-6 rounded-2xl bg-paper-2 p-5 text-lg leading-relaxed">
                     <span className="mono mb-1 block text-signal">Trade-off</span>

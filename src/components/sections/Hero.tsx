@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowDown, ArrowUpRight, CalendarCheck, Mail } from "lucide-react";
 import { BOOK_HREF, MAIL_HREF, bookProps, proof } from "../../data/contact";
 import { projects } from "../../data/projects";
-import portrait from "../../assets/ruqqya_img.png";
+import portrait from "../../assets/ruqyya-portrait.webp";
 
 const base = import.meta.env.BASE_URL;
 const img = (n: string) => `${base}case/oladoc/${n}.webp`;
@@ -129,6 +129,7 @@ export default function Hero() {
   return (
     <section
       id="top"
+      data-cta-after
       ref={section}
       onPointerMove={light}
       onPointerLeave={() => section.current && ["--rx", "--ry"].forEach((k) => section.current!.style.setProperty(k, "0deg"))}

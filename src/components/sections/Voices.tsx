@@ -1,7 +1,6 @@
-import { Award } from "lucide-react";
 import Eyebrow from "../ui/Eyebrow";
 import Reveal from "../ui/Reveal";
-import { testimonials, certifications } from "../../data/content";
+import { testimonials } from "../../data/content";
 
 // Only reviews with a real source are shown. Client reviews here come from Fiverr (verified by the owner).
 const Stars = () => (
@@ -12,10 +11,13 @@ const Stars = () => (
   </span>
 );
 
-const initials = (n: string) => n.slice(0, 2).toUpperCase();
+type Review = (typeof testimonials)[number] & { repeat?: boolean };
+const COUNTRY: Record<string, string> = { "United States": "US", Canada: "CA", Belgium: "BE" };
+const mark = (t: Review) => COUNTRY[t.company] ?? t.company.slice(0, 2).toUpperCase();
+const who = (t: Review) => (t.repeat ? "Repeat client" : "Client");
 
 export default function Voices() {
-  const sorted = [...testimonials].sort((a, b) => b.review.length - a.review.length);
+  const sorted = [...(testimonials as Review[])].sort((a, b) => b.review.length - a.review.length);
   const [lead, ...rest] = sorted;
   const small = rest.slice(0, 3);
 
@@ -59,10 +61,10 @@ export default function Voices() {
                 ))}
               </blockquote>
               <figcaption className="relative mt-8 flex items-center gap-4">
-                <span aria-hidden className="grid h-14 w-14 place-items-center rounded-full bg-forest text-lg font-semibold text-on-forest">{initials(lead.name)}</span>
+                <span aria-hidden className="grid h-14 w-14 place-items-center rounded-full bg-forest text-lg font-semibold text-on-forest">{mark(lead)}</span>
                 <span>
-                  <span className="block text-lg font-semibold">{lead.name}</span>
-                  <span className="mono block text-ink-2">{lead.company} · Fiverr client</span>
+                  <span className="block text-lg font-semibold">{who(lead)}, {lead.company}</span>
+                  <span className="mono block text-ink-2">Verified Fiverr review</span>
                 </span>
                 <span className="ml-auto hidden sm:block"><Stars /></span>
               </figcaption>
@@ -78,10 +80,10 @@ export default function Voices() {
                   <blockquote className="serif mt-4 text-[1.55rem] leading-snug">“{t.review}”</blockquote>
                 </div>
                 <figcaption className="mt-6 flex items-center gap-3">
-                  <span aria-hidden className="grid h-11 w-11 place-items-center rounded-full bg-paper-2 text-base font-semibold text-forest">{initials(t.name)}</span>
+                  <span aria-hidden className="grid h-11 w-11 place-items-center rounded-full bg-paper-2 text-base font-semibold text-forest">{mark(t)}</span>
                   <span>
-                    <span className="block font-semibold">{t.name}</span>
-                    <span className="mono block text-ink-2">{t.company} · Fiverr</span>
+                    <span className="block font-semibold">{who(t)}, {t.company}</span>
+                    <span className="mono block text-ink-2">Verified Fiverr review</span>
                   </span>
                 </figcaption>
               </figure>
@@ -89,25 +91,6 @@ export default function Voices() {
           ))}
         </div>
 
-        <Reveal className="mt-16">
-          <div className="flex items-end justify-between gap-4 border-b border-line pb-4">
-            <h3 className="text-3xl font-medium md:text-4xl">Credentials</h3>
-            <p className="mono text-ink-2">{certifications.length} courses · 2022 to 2023</p>
-          </div>
-          <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {certifications.map((c) => (
-              <li key={c.title} className="group flex items-start gap-4 rounded-2xl border border-line bg-paper p-5 transition-transform duration-300 hover:-translate-y-1">
-                <span aria-hidden className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-paper-2 text-forest transition-colors group-hover:bg-forest group-hover:text-on-forest">
-                  <Award size={22} strokeWidth={1.75} />
-                </span>
-                <span className="min-w-0">
-                  <span className="block text-lg font-semibold leading-snug">{c.title}</span>
-                  <span className="mono mt-1.5 block text-ink-2">{c.org} · {c.year}</span>
-                </span>
-              </li>
-            ))}
-          </ul>
-        </Reveal>
       </div>
     </section>
   );

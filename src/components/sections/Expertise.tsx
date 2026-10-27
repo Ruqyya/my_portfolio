@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Blocks, CalendarCheck, HeartPulse, LayoutDashboard, Layers, SearchCheck, Workflow } from "lucide-react";
+import { ArrowUpRight, Blocks, HeartPulse, LayoutDashboard, Layers, SearchCheck, Workflow } from "lucide-react";
 import Eyebrow from "../ui/Eyebrow";
 import Reveal from "../ui/Reveal";
-import { BOOK_HREF, bookProps } from "../../data/contact";
 
 // Six capabilities, each one line, each tied to evidence: a project on this site or a role on LinkedIn.
 const areas = [
@@ -25,13 +24,6 @@ export default function Expertise() {
               Complex products, <em className="text-forest">made usable.</em>
             </h2>
             <p className="mt-6 max-w-sm text-xl leading-snug text-ink-2">For healthcare and B2B SaaS teams.</p>
-            <a
-              href={BOOK_HREF}
-              {...bookProps}
-              className="mt-8 inline-flex h-14 items-center gap-3 rounded-full bg-forest px-8 text-lg font-semibold text-on-forest transition-colors hover:bg-[var(--forest-hover)]"
-            >
-              <CalendarCheck size={20} aria-hidden /> Book a 15-minute call
-            </a>
           </Reveal>
 
           <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-7">

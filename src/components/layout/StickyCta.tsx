@@ -3,14 +3,19 @@ import { useLocation } from "react-router-dom";
 import { CalendarCheck } from "lucide-react";
 import { BOOK_HREF, bookProps } from "../../data/contact";
 
-// Appears once the visitor has scrolled past the hero and stays out of the way of the contact section.
+// Appears once the visitor has scrolled past the hero (the element marked data-cta-after, or 700px
+// on pages without one) and stays out of the way of the contact section.
 export default function StickyCta() {
   const [past, setPast] = useState(false);
   const [atContact, setAtContact] = useState(false);
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const on = () => setPast(window.scrollY > 700);
+    const on = () => {
+      const hero = document.querySelector<HTMLElement>("[data-cta-after]");
+      const limit = hero ? hero.offsetTop + hero.offsetHeight - 120 : 700;
+      setPast(window.scrollY > limit);
+    };
     on();
     window.addEventListener("scroll", on, { passive: true });
     return () => window.removeEventListener("scroll", on);

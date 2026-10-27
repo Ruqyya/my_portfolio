@@ -19,6 +19,20 @@ export default function Nav() {
   const location = useLocation();
 
   useEffect(() => setOpen(false), [location]);
+  // While the phone menu is open: Escape closes it and the page behind it does not scroll.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 24);
     on();
@@ -81,7 +95,7 @@ export default function Nav() {
           <ul className="flex flex-col">
             {links.map((l) => (
               <li key={l.to} className="border-b border-line">
-                <Link to={l.to} className="serif block py-4 text-3xl">
+                <Link to={l.to} onClick={() => setOpen(false)} className="serif block py-4 text-3xl">
                   {l.label}
                 </Link>
               </li>

@@ -10,6 +10,8 @@ function inferIndustry(name) {
   const title = name.toLowerCase();
 
   if (/stock|trading|fintech|finance|bank|crypto/.test(title)) return "Fintech";
+  if (/marham|oladoc|sehat kahani|telemedicine/.test(title)) return "Healthcare";
+  if (/marham|oladoc|sehat kahani|telemedicine/.test(title)) return "Healthcare";
   if (/platform|saas|dashboard/.test(title)) return "SaaS";
   if (/\bapp\b|mobile|ios|android|scanner|qr code/.test(title) && !/website|landing|web design/.test(title)) {
     return "Mobile App";

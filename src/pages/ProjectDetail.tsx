@@ -86,7 +86,7 @@ export default function ProjectDetail() {
               <ArrowLeft size={14} /> All work
             </Link>
             <p className="mono mt-10 text-signal">
-              {s.identifier ?? `Case study — ${project.industry} · ${project.year}`}
+              {s.identifier ?? `Case study — ${project.industry}`}
             </p>
             <h1 className={`mt-4 max-w-5xl font-medium ${s.headline ? "text-[clamp(2.4rem,5vw,4.8rem)] leading-[1.06]" : "text-[clamp(2.8rem,6.6vw,6.2rem)] leading-[1.02]"}`}>{s.headline ?? project.title}</h1>
             {s.summary && <p className="mt-8 max-w-2xl text-xl text-ink-2">{s.summary}</p>}
@@ -542,7 +542,7 @@ export default function ProjectDetail() {
             <section id="impact" className="scroll-mt-24">
               <Reveal>
                 <Eyebrow n={num("impact")}>{s.outcomes ? "Outcomes and reflection" : "What it delivers"}</Eyebrow>
-                <H2>{s.outcomes ? "What is proven, what is intended, and what I learned." : "The finished design, in short."}</H2>
+                <H2>{s.outcomes ? "What the client reported, what the design set out to do, and what I learned." : "The finished design, in short."}</H2>
               </Reveal>
               {s.outcomes && (
                 <>

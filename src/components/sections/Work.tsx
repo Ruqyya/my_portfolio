@@ -91,7 +91,7 @@ function OladocStory() {
             <p className="mono flex flex-wrap items-center gap-x-3 text-signal">
               <span>Case study 01</span>
               <span aria-hidden className="h-px w-8" style={{ background: accent }} />
-              <span className="text-ink-2">{p.industry} · {p.year}</span>
+              <span className="text-ink-2">{p.industry}</span>
             </p>
             <h3 className="mt-5 text-[clamp(2.4rem,5vw,4.6rem)] font-medium leading-[1.02]">
               <Link to={`/work/${p.slug}`} className="link-draw">One booking, seen from <em className="text-forest">three seats.</em></Link>
@@ -169,7 +169,7 @@ function MarhamStory() {
             <p className="mono flex flex-wrap items-center gap-x-3 text-signal">
               <span>Case study 02</span>
               <span aria-hidden className="h-px w-8" style={{ background: accent }} />
-              <span className="text-ink-2">{p.industry} · {p.year}</span>
+              <span className="text-ink-2">{p.industry}</span>
             </p>
             <h3 className="mt-5 text-[clamp(2.2rem,4vw,3.8rem)] font-medium leading-[1.04]">
               <Link to={`/work/${p.slug}`} className="link-draw">A platform people had to <em className="text-forest">trust</em> before they could use it.</Link>
@@ -236,7 +236,7 @@ function SehatStory() {
             <p className="mono flex flex-wrap items-center gap-x-3 text-signal">
               <span>Case study 03</span>
               <span aria-hidden className="h-px w-8" style={{ background: accent }} />
-              <span className="text-ink-2">{p.industry} · {p.year}</span>
+              <span className="text-ink-2">{p.industry}</span>
             </p>
             <h3 className="mt-5 text-[clamp(2.2rem,4vw,3.8rem)] font-medium leading-[1.04]">
               <Link to={`/work/${p.slug}`} className="link-draw">From a health problem to a doctor, with a <em className="text-forest whitespace-nowrap">60‑second</em> promise.</Link>
@@ -293,7 +293,7 @@ function GalleryCard({ project, n, big }: { project: Project; n: number; big: bo
         </div>
         <div className="mt-5 flex items-baseline gap-4">
           <span className="mono text-signal">{String(n).padStart(2, "0")}</span>
-          <p className="mono text-ink-2">{project.industry} · {project.year}</p>
+          <p className="mono text-ink-2">{project.industry}</p>
         </div>
         <h3 className={`mt-2 font-medium leading-[1.12] ${big ? "text-[clamp(1.7rem,2.6vw,2.5rem)]" : "text-[clamp(1.5rem,2vw,1.9rem)]"}`}>
           <span className="link-draw">{project.title}</span>

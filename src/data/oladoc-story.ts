@@ -78,7 +78,7 @@ export const oladocStory: Partial<CaseStudy> = {
     { k: "My role", v: "UX and UI design, end to end." },
     { k: "Scope", v: "3 portals, 1 design system, 47 screens." },
     { k: "Target users", v: "Patients, doctors, front-desk staff." },
-    { k: "Reported result", v: "+65% intake completion, self-reported. Method not documented." },
+    { k: "Result", v: "+65% patient-intake completion, reported by the client after launch (2025)." },
   ],
   heroShots: [shot("docdash", "Oladoc doctor portal."), shot("consult", "Oladoc consultation workspace."), shot("sym", "Oladoc patient app, search by symptom."), shot("profile", "Oladoc patient app, doctor profile.")],
 
@@ -224,8 +224,8 @@ export const oladocStory: Partial<CaseStudy> = {
       {
         value: "+65%",
         label: "patient-intake completion",
-        source: "Oladoc, 2025. Self-reported on my LinkedIn.",
-        status: "Not independently verified. The measurement method, sample and period are not documented in the project files, so treat it as a reported figure, not a proven one.",
+        source: "Oladoc, 2025. Reported by the client after launch.",
+        status: "The client's own figure. The measurement method and sample are not in my project files, so it is shown here as reported, not as my measurement.",
       },
     ],
     qualitative: [

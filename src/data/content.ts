@@ -154,7 +154,7 @@ export const process = [
   { step: "Deliver", description: "Hand off production-ready design with the specs engineering actually needs." },
 ];
 
-/** Client reviews received on Fiverr. */
+/** Client reviews received on Fiverr. `name` is the Fiverr username (kept as the source, not displayed). */
 export const testimonials = [
   {
     name: "imteccz",
@@ -180,6 +180,7 @@ export const testimonials = [
     company: "Canada",
     industry: "UI/UX",
     rating: 5,
+    repeat: true,
     review:
       "my second job with her! i will comeback for more",
   },
@@ -251,7 +252,7 @@ export const unverifiedTestimonials = [
       "Hospital operations software has almost zero room for design experimentation that fails quietly — mistakes show up as real delays for real patients. The bed management redesign was handled with exactly the rigor that context demands.",
   },];
 
-/** Credentials listed on LinkedIn (linkedin.com/in/ghulamruqyya, checked 23 Oct 2026). */
+/** Credentials listed on LinkedIn (linkedin.com/in/ghulamruqyya, checked 23 Oct 2026). Not shown on the site since 28 Oct 2026: short courses read below a senior title. */
 export const certifications = [
   { title: "UI/UX Design", org: "Erozgaar GCWUF", year: "2022" },
   { title: "Create High Fidelity Design and Prototypes in Figma", org: "Coursera", year: "2023" },

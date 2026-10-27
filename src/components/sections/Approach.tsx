@@ -3,7 +3,7 @@ import { Compass, FlaskConical, MousePointerClick, PackageCheck, PenTool, Refres
 import Eyebrow from "../ui/Eyebrow";
 import Reveal from "../ui/Reveal";
 import { process } from "../../data/content";
-import portrait from "../../assets/ruqqya_img.png";
+import portrait from "../../assets/ruqyya-portrait.webp";
 
 // Eight steps in four phases. Wording of each step comes from the owner's own process list (content.ts).
 const icons = [Compass, SearchCheck, Target, PenTool, MousePointerClick, FlaskConical, RefreshCw, PackageCheck];
@@ -47,7 +47,7 @@ export default function Approach() {
             <Eyebrow n="04">About</Eyebrow>
             <figure className="mt-8 max-w-xs">
               <div className="portrait-disc overflow-hidden rounded-t-[999px]">
-                <img src={portrait} alt="Portrait of Ruqyya" width={408} height={612} loading="lazy" className="aspect-[4/5] w-full object-cover object-top" />
+                <img src={portrait} alt="Portrait of Ruqyya" width={320} height={480} loading="lazy" className="aspect-[4/5] w-full object-cover object-top" />
               </div>
               <figcaption className="mono mt-4 text-ink-2">Ghulam Ruqyya · Lahore, Pakistan</figcaption>
             </figure>

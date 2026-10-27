@@ -24,7 +24,7 @@ const List = ({ items }: { items: string[] }) => (
 export default function OutcomesPanel({ o }: { o: Outcomes }) {
   return (
     <div className="grid gap-5 md:grid-cols-2">
-      <Block label="1 · Reported quantitative result" tone="text-signal">
+      <Block label="1 · Client-reported result" tone="text-signal">
         {o.quantitative.map((q) => (
           <div key={q.value}>
             <p className="flex items-baseline gap-4">
@@ -39,7 +39,7 @@ export default function OutcomesPanel({ o }: { o: Outcomes }) {
       <Block label="2 · Documented findings" tone="text-signal">
         <List items={o.qualitative} />
       </Block>
-      <Block label="3 · Intended improvements (not measured)" tone="text-signal">
+      <Block label="3 · What the design set out to improve" tone="text-signal">
         <List items={o.intended} />
       </Block>
       <Block label="4 · Not in the project files" tone="text-signal">
